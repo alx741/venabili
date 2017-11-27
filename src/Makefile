@@ -17,13 +17,17 @@
 ## along with this library.  If not, see <http://www.gnu.org/licenses/>.
 ##
 
-SRC_DIR=./src
-BINARY = $(SRC_DIR)/usbhid
+SRC_DIR=./
+BINARY = $(SRC_DIR)/venabili
 LDSCRIPT=$(SRC_DIR)/f103x8.ld
-OPENCM3_DIR=./lib/libopencm3
+OPENCM3_DIR=../lib/libopencm3
 
-include ./libopencm3.target.mk
+include ../libopencm3.target.mk
 
+all: $(BINARY).bin
 
-clean:
-	cd $(SRC_DIR); rm -f *.o *.d *.elf *.bin *.hex *.srec *.list *.map generated.*
+$(BINARY).bin: $(BINARY).elf
+	arm-none-eabi-objcopy -O binary $< $@
+
+burn: $(BINARY).bin
+	st-flash write $< 0x8000000
