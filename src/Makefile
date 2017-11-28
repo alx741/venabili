@@ -31,3 +31,6 @@ $(BINARY).bin: $(BINARY).elf
 
 burn: $(BINARY).bin
 	st-flash write $< 0x8000000
+
+check:
+	sudo lshw -class input
