@@ -260,6 +260,7 @@ int main(void)
 	rcc_clock_setup_in_hsi_out_48mhz();
 
 	rcc_periph_clock_enable(RCC_GPIOA);
+	rcc_periph_clock_enable(RCC_GPIOB);
 	/*
 	 * This is a somewhat common cheap hack to trigger device re-enumeration
 	 * on startup.  Assuming a fixed external pullup on D+, (For USB-FS)
@@ -279,8 +280,26 @@ int main(void)
 	usbd_dev = usbd_init(&st_usbfs_v1_usb_driver, &dev_descr, &config, usb_strings, 3, usbd_control_buffer, sizeof(usbd_control_buffer));
 	usbd_register_set_config_callback(usbd_dev, hid_set_config);
 
+	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ,
+		      GPIO_CNF_OUTPUT_PUSHPULL, GPIO11);
+	gpio_clear(GPIOB, GPIO11);
+
+    /* usbd_poll is only needed until the enumeration is complete
+    * This seems to be enough time
+    */
+    /* for (int i = 0; i < 500000; i++) */
+    /* { */
+		/* usbd_poll(usbd_dev); */
+    /* } */
+
 	while (1)
+    {
 		usbd_poll(usbd_dev);
+		/* for (int i = 0; i < 1000; i++) // enough for the enumeration to work */
+		/* for (int i = 0; i < 500000; i++) // Enumerations brakes (to much time) */
+		/* 	__asm__("nop"); */
+        /* gpio_toggle(GPIOB, GPIO11); */
+    }
 }
 
 void sys_tick_handler(void)
@@ -290,10 +309,12 @@ void sys_tick_handler(void)
 	uint8_t buf[4] = {0, 0, 0, 0};
 
 	buf[1] = dir;
+	buf[2] = dir;
+	/* buf[3] = dir; */
 	x += dir;
-	if (x > 30)
+	if (x > 90)
 		dir = -dir;
-	if (x < -30)
+	if (x < -90)
 		dir = -dir;
 
 	usbd_ep_write_packet(usbd_dev, 0x81, buf, 4);
