@@ -183,7 +183,7 @@ const struct usb_endpoint_descriptor hid_endpoint = {
 	.bDescriptorType = USB_DT_ENDPOINT,
 	.bEndpointAddress = 0x81,
 	.bmAttributes = USB_ENDPOINT_ATTR_INTERRUPT,
-	.wMaxPacketSize = 12,
+	.wMaxPacketSize = 0x0F,
 	/* .bInterval = 0x20, */
 	.bInterval = 0x0A,
 };
@@ -387,20 +387,48 @@ int main(void)
     }
 }
 
+// Send mouse signal
+/* void sys_tick_handler(void) */
+/* { */
+/* 	static int x = 0; */
+/* 	static int dir = 1; */
+/* 	uint8_t buf[5] = {0, 0, 0, 0, 0}; */
+
+/* 	buf[0] = 0x01; */
+/* 	buf[2] = dir; */
+/* 	buf[3] = dir; */
+/* 	x += dir; */
+/* 	if (x > 30) */
+/* 		dir = -dir; */
+/* 	if (x < -30) */
+/* 		dir = -dir; */
+
+/* 	usbd_ep_write_packet(usbd_dev, 0x81, buf, 5); */
+/* } */
+
+
+// Send keyboard signal
 void sys_tick_handler(void)
 {
-	static int x = 0;
-	static int dir = 1;
-	/* uint8_t buf[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; */
-	uint8_t buf[5] = {0, 0, 0, 0, 0};
+    static int x = 0;
+	uint8_t buf[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+	buf[0] = 0x02;
 
-	buf[0] = 0x01;
-	buf[4] = dir;
-	x += dir;
-	if (x > 30)
-		dir = -dir;
-	if (x < -30)
-		dir = -dir;
+    if (x == 0)
+    {
+        x = 1;
+        // A down
+        buf[1] = 0x40;
+        buf[3] = 0x04;
+        usbd_ep_write_packet(usbd_dev, 0x81, buf, 9);
+    }
+    else
+    {
+        x = 0;
+        // A up
+        buf[1] = 0x40;
+        buf[3] = 0x00;
+        usbd_ep_write_packet(usbd_dev, 0x81, buf, 9);
+    }
 
-	usbd_ep_write_packet(usbd_dev, 0x81, buf, 5);
 }
