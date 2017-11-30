@@ -6,6 +6,8 @@
 #include <libopencm3/usb/usbd.h>
 #include <libopencm3/usb/hid.h>
 
+#include "usb.h"
+
 /* Define this to include the DFU APP interface. */
 #define INCLUDE_DFU_INTERFACE
 
@@ -16,146 +18,6 @@
 
 static usbd_device *usbd_dev;
 
-const struct usb_device_descriptor dev_descr = {
-	.bLength = USB_DT_DEVICE_SIZE,
-	.bDescriptorType = USB_DT_DEVICE,
-	.bcdUSB = 0x0200,
-	.bDeviceClass = 0,
-	.bDeviceSubClass = 0,
-	.bDeviceProtocol = 0,
-	.bMaxPacketSize0 = 64,
-	.idVendor = 0x0483,
-	.idProduct = 0x5710,
-	.bcdDevice = 0x0200,
-	.iManufacturer = 1,
-	.iProduct = 2,
-	.iSerialNumber = 3,
-	.bNumConfigurations = 1,
-};
-
-// Original HID report descriptor
-/* static const uint8_t hid_report_descriptor[] = { */
-/* 	0x05, 0x01, /1* USAGE_PAGE (Generic Desktop)         *1/ */
-/* 	0x09, 0x02, /1* USAGE (Mouse)                        *1/ */
-/* 	0xa1, 0x01, /1* COLLECTION (Application)             *1/ */
-/* 	0x09, 0x01, /1*   USAGE (Pointer)                    *1/ */
-/* 	0xa1, 0x00, /1*   COLLECTION (Physical)              *1/ */
-/* 	0x05, 0x09, /1*     USAGE_PAGE (Button)              *1/ */
-/* 	0x19, 0x01, /1*     USAGE_MINIMUM (Button 1)         *1/ */
-/* 	0x29, 0x03, /1*     USAGE_MAXIMUM (Button 3)         *1/ */
-/* 	0x15, 0x00, /1*     LOGICAL_MINIMUM (0)              *1/ */
-/* 	0x25, 0x01, /1*     LOGICAL_MAXIMUM (1)              *1/ */
-	/* 0x95, 0x03, /1*     REPORT_COUNT (3)                 *1/ */
-/* 	0x75, 0x01, /1*     REPORT_SIZE (1)                  *1/ */
-/* 	0x81, 0x02, /1*     INPUT (Data,Var,Abs)             *1/ */
-/* 	0x95, 0x01, /1*     REPORT_COUNT (1)                 *1/ */
-/* 	0x75, 0x05, /1*     REPORT_SIZE (5)                  *1/ */
-/* 	0x81, 0x01, /1*     INPUT (Cnst,Ary,Abs)             *1/ */
-/* 	0x05, 0x01, /1*     USAGE_PAGE (Generic Desktop)     *1/ */
-/* 	0x09, 0x30, /1*     USAGE (X)                        *1/ */
-/* 	0x09, 0x31, /1*     USAGE (Y)                        *1/ */
-/* 	0x09, 0x38, /1*     USAGE (Wheel)                    *1/ */
-/* 	0x15, 0x81, /1*     LOGICAL_MINIMUM (-127)           *1/ */
-/* 	0x25, 0x7f, /1*     LOGICAL_MAXIMUM (127)            *1/ */
-/* 	0x75, 0x08, /1*     REPORT_SIZE (8)                  *1/ */
-/* 	0x95, 0x03, /1*     REPORT_COUNT (3)                 *1/ */
-/* 	0x81, 0x06, /1*     INPUT (Data,Var,Rel)             *1/ */
-/* 	0xc0,       /1*   END_COLLECTION                     *1/ */
-/* 	0x09, 0x3c, /1*   USAGE (Motion Wakeup)              *1/ */
-/* 	0x05, 0xff, /1*   USAGE_PAGE (Vendor Defined Page 1) *1/ */
-/* 	0x09, 0x01, /1*   USAGE (Vendor Usage 1)             *1/ */
-/* 	0x15, 0x00, /1*   LOGICAL_MINIMUM (0)                *1/ */
-/* 	0x25, 0x01, /1*   LOGICAL_MAXIMUM (1)                *1/ */
-/* 	0x75, 0x01, /1*   REPORT_SIZE (1)                    *1/ */
-/* 	0x95, 0x02, /1*   REPORT_COUNT (2)                   *1/ */
-/* 	0xb1, 0x22, /1*   FEATURE (Data,Var,Abs,NPrf)        *1/ */
-/* 	0x75, 0x06, /1*   REPORT_SIZE (6)                    *1/ */
-/* 	0x95, 0x01, /1*   REPORT_COUNT (1)                   *1/ */
-/* 	0xb1, 0x01, /1*   FEATURE (Cnst,Ary,Abs)             *1/ */
-/* 	0xc0        /1* END_COLLECTION                       *1/ */
-/* }; */
-
-static const uint8_t hid_report_descriptor[] = {
-    // Mouse
-	0x05, 0x01, /* USAGE_PAGE (Generic Desktop)         */
-	0x09, 0x02, /* USAGE (Mouse)                        */
-	0xa1, 0x01, /* COLLECTION (Application)             */
-    0x85, 0x01, /*   REPORT_ID (1)                      */
-	0x09, 0x01, /*   USAGE (Pointer)                    */
-	0xa1, 0x00, /*   COLLECTION (Physical)              */
-	0x05, 0x09, /*     USAGE_PAGE (Button)              */
-	0x19, 0x01, /*     USAGE_MINIMUM (Button 1)         */
-	0x29, 0x03, /*     USAGE_MAXIMUM (Button 3)         */
-	0x15, 0x00, /*     LOGICAL_MINIMUM (0)              */
-	0x25, 0x01, /*     LOGICAL_MAXIMUM (1)              */
-	0x95, 0x03, /*     REPORT_COUNT (3)                 */
-	0x75, 0x01, /*     REPORT_SIZE (1)                  */
-	0x81, 0x02, /*     INPUT (Data,Var,Abs)             */
-	0x95, 0x01, /*     REPORT_COUNT (1)                 */
-	0x75, 0x05, /*     REPORT_SIZE (5)                  */
-	0x81, 0x01, /*     INPUT (Cnst,Ary,Abs)             */
-	0x05, 0x01, /*     USAGE_PAGE (Generic Desktop)     */
-	0x09, 0x30, /*     USAGE (X)                        */
-	0x09, 0x31, /*     USAGE (Y)                        */
-	0x09, 0x38, /*     USAGE (Wheel)                    */
-	0x15, 0x81, /*     LOGICAL_MINIMUM (-127)           */
-	0x25, 0x7f, /*     LOGICAL_MAXIMUM (127)            */
-	0x75, 0x08, /*     REPORT_SIZE (8)                  */
-	0x95, 0x03, /*     REPORT_COUNT (3)                 */
-	0x81, 0x06, /*     INPUT (Data,Var,Rel)             */
-	0xc0,       /*   END_COLLECTION                     */
-
-
-    // Keyboard
-	0x05, 0x01, // USAGE_PAGE (Generic Desktop)
-	0x09, 0x06, // USAGE (Keyboard)
-	0xa1, 0x01, // COLLECTION (Application)
-    0x85, 0x02, //   REPORT_ID (2)
-	0x05, 0x07, //     USAGE_PAGE (Key Codes)
-	0x19, 0xE0, //     USAGE_MINIMUM (224)
-	0x29, 0xE7, //     USAGE_MAXIMUM (231)
-	0x15, 0x00, //     LOGICAL_MINIMUM (0)
-	0x25, 0x01, //     LOGICAL_MAXIMUM (1)
-	0x75, 0x01, //     REPORT_SIZE (1)
-	0x95, 0x08, //     REPORT_COUNT (8)
-	0x81, 0x02, //     INPUT (Data,Var,Abs)
-	0x95, 0x01, //     REPORT_COUNT (1)
-	0x75, 0x08, //     REPORT_SIZE (8)
-	0x81, 0x01, //     INPUT (Cnst)
-	0x95, 0x05, //     REPORT_COUNT (5)
-	0x75, 0x01, //     REPORT_SIZE (1)
-	0x05, 0x08, //     USAGE_PAGE (LEDS)
-	0x19, 0x01, //     USAGE_MINIMUM (1)
-	0x29, 0x05, //     USAGE_MAXIMUM (5)
-    0x91, 0x02, //     OUTPUT(Data,Var,Abs)
-	0x95, 0x01, //     REPORT_COUNT (1)
-	0x75, 0x03, //     REPORT_SIZE (3)
-    0x91, 0x01, //     OUTPUT(Cnst)
-	0x95, 0x06, //     REPORT_COUNT (6)
-	0x75, 0x08, //     REPORT_SIZE (8)
-	0x15, 0x00, //     LOGICAL_MINIMUM (0)
-	0x25, 0x65, //     LOGICAL_MAXIMUM (101)
-	0x05, 0x07, //     USAGE_PAGE (Key Codes)
-	0x19, 0x00, //     USAGE_MINIMUM (0)
-	0x29, 0x65, //     USAGE_MAXIMUM (101)
-	0x81, 0x00, //     INPUT (Data, Array)
-	0xc0,       //   END_COLLECTION
-
-
-
-	0x09, 0x3c, /*   USAGE (Motion Wakeup)              */
-	0x05, 0xff, /*   USAGE_PAGE (Vendor Defined Page 1) */
-	0x09, 0x01, /*   USAGE (Vendor Usage 1)             */
-	0x15, 0x00, /*   LOGICAL_MINIMUM (0)                */
-	0x25, 0x01, /*   LOGICAL_MAXIMUM (1)                */
-	0x75, 0x01, /*   REPORT_SIZE (1)                    */
-	0x95, 0x02, /*   REPORT_COUNT (2)                   */
-	0xb1, 0x22, /*   FEATURE (Data,Var,Abs,NPrf)        */
-	0x75, 0x06, /*   REPORT_SIZE (6)                    */
-	0x95, 0x01, /*   REPORT_COUNT (1)                   */
-	0xb1, 0x01, /*   FEATURE (Cnst,Ary,Abs)             */
-	0xc0        /* END_COLLECTION                       */
-};
 
 static const struct {
 	struct usb_hid_descriptor hid_descriptor;
@@ -340,6 +202,15 @@ static void hid_set_config(usbd_device *dev, uint16_t wValue)
 	systick_counter_enable();
 }
 
+void usb_reenumerate(void)
+{
+    // Pull down D+ a little bit
+	gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ,
+		GPIO_CNF_OUTPUT_PUSHPULL, GPIO12);
+	gpio_clear(GPIOA, GPIO12);
+	for (unsigned i = 0; i < 800000; i++) { __asm__("nop"); }
+}
+
 int main(void)
 {
 	rcc_clock_setup_in_hsi_out_48mhz();
@@ -347,21 +218,7 @@ int main(void)
 	rcc_periph_clock_enable(RCC_GPIOA);
 	rcc_periph_clock_enable(RCC_GPIOB);
 
-	/*
-	 * This is a somewhat common cheap hack to trigger device re-enumeration
-	 * on startup.  Assuming a fixed external pullup on D+, (For USB-FS)
-	 * setting the pin to output, and driving it explicitly low effectively
-	 * "removes" the pullup.  The subsequent USB init will "take over" the
-	 * pin, and it will appear as a proper pullup to the host.
-	 * The magic delay is somewhat arbitrary, no guarantees on USBIF
-	 * compliance here, but "it works" in most places.
-	 */
-	gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ,
-		GPIO_CNF_OUTPUT_PUSHPULL, GPIO12);
-	gpio_clear(GPIOA, GPIO12);
-	for (unsigned i = 0; i < 800000; i++) {
-		__asm__("nop");
-	}
+    usb_reenumerate();
 
 	usbd_dev = usbd_init(&st_usbfs_v1_usb_driver, &dev_descr, &config, usb_strings, 3, usbd_control_buffer, sizeof(usbd_control_buffer));
 	usbd_register_set_config_callback(usbd_dev, hid_set_config);
