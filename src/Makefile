@@ -22,6 +22,8 @@ BINARY = $(SRC_DIR)/venabili
 LDSCRIPT=$(SRC_DIR)/f103x8.ld
 OPENCM3_DIR=../lib/libopencm3
 
+OBJS += usb.o
+
 include ../libopencm3.target.mk
 
 all: $(BINARY).bin
