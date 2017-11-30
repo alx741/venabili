@@ -33,10 +33,54 @@ const struct usb_device_descriptor dev_descr = {
 	.bNumConfigurations = 1,
 };
 
+// Original HID report descriptor
+/* static const uint8_t hid_report_descriptor[] = { */
+/* 	0x05, 0x01, /1* USAGE_PAGE (Generic Desktop)         *1/ */
+/* 	0x09, 0x02, /1* USAGE (Mouse)                        *1/ */
+/* 	0xa1, 0x01, /1* COLLECTION (Application)             *1/ */
+/* 	0x09, 0x01, /1*   USAGE (Pointer)                    *1/ */
+/* 	0xa1, 0x00, /1*   COLLECTION (Physical)              *1/ */
+/* 	0x05, 0x09, /1*     USAGE_PAGE (Button)              *1/ */
+/* 	0x19, 0x01, /1*     USAGE_MINIMUM (Button 1)         *1/ */
+/* 	0x29, 0x03, /1*     USAGE_MAXIMUM (Button 3)         *1/ */
+/* 	0x15, 0x00, /1*     LOGICAL_MINIMUM (0)              *1/ */
+/* 	0x25, 0x01, /1*     LOGICAL_MAXIMUM (1)              *1/ */
+	/* 0x95, 0x03, /1*     REPORT_COUNT (3)                 *1/ */
+/* 	0x75, 0x01, /1*     REPORT_SIZE (1)                  *1/ */
+/* 	0x81, 0x02, /1*     INPUT (Data,Var,Abs)             *1/ */
+/* 	0x95, 0x01, /1*     REPORT_COUNT (1)                 *1/ */
+/* 	0x75, 0x05, /1*     REPORT_SIZE (5)                  *1/ */
+/* 	0x81, 0x01, /1*     INPUT (Cnst,Ary,Abs)             *1/ */
+/* 	0x05, 0x01, /1*     USAGE_PAGE (Generic Desktop)     *1/ */
+/* 	0x09, 0x30, /1*     USAGE (X)                        *1/ */
+/* 	0x09, 0x31, /1*     USAGE (Y)                        *1/ */
+/* 	0x09, 0x38, /1*     USAGE (Wheel)                    *1/ */
+/* 	0x15, 0x81, /1*     LOGICAL_MINIMUM (-127)           *1/ */
+/* 	0x25, 0x7f, /1*     LOGICAL_MAXIMUM (127)            *1/ */
+/* 	0x75, 0x08, /1*     REPORT_SIZE (8)                  *1/ */
+/* 	0x95, 0x03, /1*     REPORT_COUNT (3)                 *1/ */
+/* 	0x81, 0x06, /1*     INPUT (Data,Var,Rel)             *1/ */
+/* 	0xc0,       /1*   END_COLLECTION                     *1/ */
+/* 	0x09, 0x3c, /1*   USAGE (Motion Wakeup)              *1/ */
+/* 	0x05, 0xff, /1*   USAGE_PAGE (Vendor Defined Page 1) *1/ */
+/* 	0x09, 0x01, /1*   USAGE (Vendor Usage 1)             *1/ */
+/* 	0x15, 0x00, /1*   LOGICAL_MINIMUM (0)                *1/ */
+/* 	0x25, 0x01, /1*   LOGICAL_MAXIMUM (1)                *1/ */
+/* 	0x75, 0x01, /1*   REPORT_SIZE (1)                    *1/ */
+/* 	0x95, 0x02, /1*   REPORT_COUNT (2)                   *1/ */
+/* 	0xb1, 0x22, /1*   FEATURE (Data,Var,Abs,NPrf)        *1/ */
+/* 	0x75, 0x06, /1*   REPORT_SIZE (6)                    *1/ */
+/* 	0x95, 0x01, /1*   REPORT_COUNT (1)                   *1/ */
+/* 	0xb1, 0x01, /1*   FEATURE (Cnst,Ary,Abs)             *1/ */
+/* 	0xc0        /1* END_COLLECTION                       *1/ */
+/* }; */
+
 static const uint8_t hid_report_descriptor[] = {
+    // Mouse
 	0x05, 0x01, /* USAGE_PAGE (Generic Desktop)         */
 	0x09, 0x02, /* USAGE (Mouse)                        */
 	0xa1, 0x01, /* COLLECTION (Application)             */
+    0x85, 0x01, /*   REPORT_ID (1)                      */
 	0x09, 0x01, /*   USAGE (Pointer)                    */
 	0xa1, 0x00, /*   COLLECTION (Physical)              */
 	0x05, 0x09, /*     USAGE_PAGE (Button)              */
@@ -60,6 +104,45 @@ static const uint8_t hid_report_descriptor[] = {
 	0x95, 0x03, /*     REPORT_COUNT (3)                 */
 	0x81, 0x06, /*     INPUT (Data,Var,Rel)             */
 	0xc0,       /*   END_COLLECTION                     */
+
+
+    // Keyboard
+	0x05, 0x01, // USAGE_PAGE (Generic Desktop)
+	0x09, 0x06, // USAGE (Keyboard)
+	0xa1, 0x01, // COLLECTION (Application)
+    0x85, 0x02, //   REPORT_ID (2)
+	0x05, 0x07, //     USAGE_PAGE (Key Codes)
+	0x19, 0xE0, //     USAGE_MINIMUM (224)
+	0x29, 0xE7, //     USAGE_MAXIMUM (231)
+	0x15, 0x00, //     LOGICAL_MINIMUM (0)
+	0x25, 0x01, //     LOGICAL_MAXIMUM (1)
+	0x75, 0x01, //     REPORT_SIZE (1)
+	0x95, 0x08, //     REPORT_COUNT (8)
+	0x81, 0x02, //     INPUT (Data,Var,Abs)
+	0x95, 0x01, //     REPORT_COUNT (1)
+	0x75, 0x08, //     REPORT_SIZE (8)
+	0x81, 0x01, //     INPUT (Cnst)
+	0x95, 0x05, //     REPORT_COUNT (5)
+	0x75, 0x01, //     REPORT_SIZE (1)
+	0x05, 0x08, //     USAGE_PAGE (LEDS)
+	0x19, 0x01, //     USAGE_MINIMUM (1)
+	0x29, 0x05, //     USAGE_MAXIMUM (5)
+    0x91, 0x02, //     OUTPUT(Data,Var,Abs)
+	0x95, 0x01, //     REPORT_COUNT (1)
+	0x75, 0x03, //     REPORT_SIZE (3)
+    0x91, 0x01, //     OUTPUT(Cnst)
+	0x95, 0x06, //     REPORT_COUNT (6)
+	0x75, 0x08, //     REPORT_SIZE (8)
+	0x15, 0x00, //     LOGICAL_MINIMUM (0)
+	0x25, 0x65, //     LOGICAL_MAXIMUM (101)
+	0x05, 0x07, //     USAGE_PAGE (Key Codes)
+	0x19, 0x00, //     USAGE_MINIMUM (0)
+	0x29, 0x65, //     USAGE_MAXIMUM (101)
+	0x81, 0x00, //     INPUT (Data, Array)
+	0xc0,       //   END_COLLECTION
+
+
+
 	0x09, 0x3c, /*   USAGE (Motion Wakeup)              */
 	0x05, 0xff, /*   USAGE_PAGE (Vendor Defined Page 1) */
 	0x09, 0x01, /*   USAGE (Vendor Usage 1)             */
@@ -84,7 +167,8 @@ static const struct {
 	.hid_descriptor = {
 		.bLength = sizeof(hid_function),
 		.bDescriptorType = USB_DT_HID,
-		.bcdHID = 0x0100,
+		/* .bcdHID = 0x0100, */
+		.bcdHID = 0x0101,
 		.bCountryCode = 0,
 		.bNumDescriptors = 1,
 	},
@@ -99,8 +183,9 @@ const struct usb_endpoint_descriptor hid_endpoint = {
 	.bDescriptorType = USB_DT_ENDPOINT,
 	.bEndpointAddress = 0x81,
 	.bmAttributes = USB_ENDPOINT_ATTR_INTERRUPT,
-	.wMaxPacketSize = 4,
-	.bInterval = 0x20,
+	.wMaxPacketSize = 12,
+	/* .bInterval = 0x20, */
+	.bInterval = 0x0A,
 };
 
 const struct usb_interface_descriptor hid_iface = {
@@ -110,8 +195,8 @@ const struct usb_interface_descriptor hid_iface = {
 	.bAlternateSetting = 0,
 	.bNumEndpoints = 1,
 	.bInterfaceClass = USB_CLASS_HID,
-	.bInterfaceSubClass = 1, /* boot */
-	.bInterfaceProtocol = 2, /* mouse */
+	.bInterfaceSubClass = 1, // boot device
+	.bInterfaceProtocol = 1, // keyboard boot device
 	.iInterface = 0,
 
 	.endpoint = &hid_endpoint,
@@ -168,7 +253,7 @@ const struct usb_config_descriptor config = {
 	.bConfigurationValue = 1,
 	.iConfiguration = 0,
 	.bmAttributes = 0xC0,
-	.bMaxPower = 0x32,
+	.bMaxPower = 0x32, // TODO: Is this enough power for the LCD display?
 
 	.interface = ifaces,
 };
@@ -306,16 +391,16 @@ void sys_tick_handler(void)
 {
 	static int x = 0;
 	static int dir = 1;
-	uint8_t buf[4] = {0, 0, 0, 0};
+	/* uint8_t buf[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; */
+	uint8_t buf[5] = {0, 0, 0, 0, 0};
 
-	buf[1] = dir;
-	buf[2] = dir;
-	/* buf[3] = dir; */
+	buf[0] = 0x01;
+	buf[4] = dir;
 	x += dir;
-	if (x > 90)
+	if (x > 30)
 		dir = -dir;
-	if (x < -90)
+	if (x < -30)
 		dir = -dir;
 
-	usbd_ep_write_packet(usbd_dev, 0x81, buf, 4);
+	usbd_ep_write_packet(usbd_dev, 0x81, buf, 5);
 }
