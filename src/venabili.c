@@ -346,6 +346,7 @@ int main(void)
 
 	rcc_periph_clock_enable(RCC_GPIOA);
 	rcc_periph_clock_enable(RCC_GPIOB);
+
 	/*
 	 * This is a somewhat common cheap hack to trigger device re-enumeration
 	 * on startup.  Assuming a fixed external pullup on D+, (For USB-FS)
@@ -369,23 +370,21 @@ int main(void)
 		      GPIO_CNF_OUTPUT_PUSHPULL, GPIO11);
 	gpio_clear(GPIOB, GPIO11);
 
-    /* usbd_poll is only needed until the enumeration is complete
-    * This seems to be enough time
-    */
-    /* for (int i = 0; i < 500000; i++) */
-    /* { */
-		/* usbd_poll(usbd_dev); */
-    /* } */
+    nvic_enable_irq(NVIC_USB_HP_CAN_TX_IRQ);
+    nvic_enable_irq(NVIC_USB_LP_CAN_RX0_IRQ);
 
 	while (1)
     {
-		usbd_poll(usbd_dev);
 		/* for (int i = 0; i < 1000; i++) // enough for the enumeration to work */
 		/* for (int i = 0; i < 500000; i++) // Enumerations brakes (to much time) */
 		/* 	__asm__("nop"); */
         /* gpio_toggle(GPIOB, GPIO11); */
     }
 }
+
+void usb_hp_can_tx_isr(void) { usbd_poll(usbd_dev); }
+void usb_lp_can_rx0_isr(void) { usbd_poll(usbd_dev); }
+
 
 // Send mouse signal
 /* void sys_tick_handler(void) */
