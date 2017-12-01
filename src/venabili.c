@@ -32,18 +32,65 @@ int main(void)
 
 	while (1)
     {
-        gpio_set(GPIOB, GPIO1);
-        /* gpio_set(GPIOB, GPIO1); */
+        int nk = sense_keys();
 
-        if (gpio_get(GPIOA, GPIO0))
+        /* if (nk == 0) */
+        /* { */
+        /*     report_key(usbd_dev, MOD_NONE, KEY_NONE); */
+        /* } */
+        /* else if (nk == 1) */
+        /* { */
+        /*     report_key(usbd_dev, MOD_NONE, KEY_A); */
+        /* } */
+        /* else if (nk == 2) */
+        /* { */
+        /*     report_key(usbd_dev, MOD_NONE, KEY_B); */
+        /* } */
+
+        /* gpio_set(GPIOB, GPIO0); */
+        /* static x = 0; */
+        if (keys_matrix[0][0])
+        /* if (gpio_get(GPIOA, GPIO0)) */
         {
-            gpio_set(GPIOB, GPIO0);
-            report_key(usbd_dev, MOD_LEFT_SHIFT, KEY_A);
+            gpio_set(GPIOB, GPIO2);
+            report_key(usbd_dev, MOD_NONE, KEY_A);
         }
         else
         {
+            // Will only report the 6 out of 48 possible simultanious keys
+            // Becouse of USB 6KRO limitation
+            gpio_clear(GPIOB, GPIO2);
             report_key(usbd_dev, MOD_NONE, KEY_NONE);
         }
+
+
+
+        /* uint8_t keys[6] = {0}; */
+
+        /* gpio_set(GPIOB, GPIO0); */
+        /*     if (gpio_get(GPIOA, GPIO0)) */
+        /*     { */
+        /*         keys[0] = KEY_A; */
+        /*     } */
+        /*     else */
+        /*     { */
+        /*         keys[0] = KEY_NONE; */
+        /*     } */
+        /* gpio_clear(GPIOB, GPIO0); */
+
+        /* gpio_set(GPIOB, GPIO1); */
+        /*     if (gpio_get(GPIOA, GPIO1)) */
+        /*     { */
+        /*         keys[1] = KEY_B; */
+        /*     } */
+        /*     else */
+        /*     { */
+        /*         keys[1] = KEY_NONE; */
+        /*     } */
+        /* gpio_clear(GPIOB, GPIO1); */
+
+        /* report_keys(usbd_dev, MOD_NONE, keys); */
+
     }
 }
 
