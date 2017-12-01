@@ -32,8 +32,8 @@ venabili.o: venabili.c /usr/arm-none-eabi/include/stdlib.h \
  ../lib/libopencm3/include/libopencm3/stm32/gpio.h \
  ../lib/libopencm3/include/libopencm3/stm32/f1/gpio.h \
  ../lib/libopencm3/include/libopencm3/stm32/common/gpio_common_all.h \
- ../lib/libopencm3/include/libopencm3/usb/usbd.h \
+ usb.c ../lib/libopencm3/include/libopencm3/usb/usbd.h \
  ../lib/libopencm3/include/libopencm3/usb/usbstd.h \
- ../lib/libopencm3/include/libopencm3/usb/hid.h usb.h \
+ ../lib/libopencm3/include/libopencm3/usb/hid.h \
  ../lib/libopencm3/include/libopencm3/cm3/scb.h \
  ../lib/libopencm3/include/libopencm3/usb/dfu.h
