@@ -31,36 +31,6 @@ int main(void)
     }
 }
 
-// Send mouse signal
-/* void sys_tick_handler(void) */
-/* { */
-/* 	static int x = 0; */
-/* 	static int dir = 1; */
-/* 	uint8_t buf[5] = {0, 0, 0, 0, 0}; */
-
-/* 	buf[0] = 0x01; */
-/* 	buf[2] = dir; */
-/* 	buf[3] = dir; */
-/* 	x += dir; */
-/* 	if (x > 30) */
-/* 		dir = -dir; */
-/* 	if (x < -30) */
-/* 		dir = -dir; */
-
-/* 	usbd_ep_write_packet(usbd_dev, 0x81, buf, 5); */
-/* } */
-
-
-typedef struct _mouse_report_t
-{
-    uint8_t report_id;
-    uint8_t buttons;
-    uint8_t x_axis;
-    uint8_t y_axis;
-    uint8_t wheel;
-}mouse_report_t;
-
-
 // Send keyboard signal
 void sys_tick_handler(void)
 {
