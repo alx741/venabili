@@ -26,6 +26,7 @@
 #define     SGN_ERROR_UNDEFINED 0x03
 
 /* Letters */
+#define     KEY_NONE 0x00
 #define     KEY_A    0x04
 #define     KEY_B    0x05
 #define     KEY_C    0x06
