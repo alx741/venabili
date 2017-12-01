@@ -4,6 +4,7 @@
 #include <libopencm3/stm32/gpio.h>
 
 #include "usb.c"
+#include "sensing.h"
 #include "keyboard.h"
 #include "keys.h"
 
@@ -22,6 +23,10 @@ int main(void)
 		      GPIO_CNF_OUTPUT_PUSHPULL, GPIO11);
 	gpio_clear(GPIOB, GPIO11);
 
+	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ,
+		      GPIO_CNF_OUTPUT_PUSHPULL, GPIO12);
+	gpio_clear(GPIOB, GPIO12);
+
 	while (1)
     {
     }
@@ -29,18 +34,31 @@ int main(void)
 
 void sys_tick_handler(void)
 {
-    static int x = 0;
+    int n = sense_keys();
+    if (pressed_keys[0] == A2)
+    {
+        gpio_set(GPIOB, GPIO11);
+    }
+    if (n == 1)
+    {
+        gpio_set(GPIOB, GPIO12);
+    }
 
-    if (x == 0)
-    {
-        x = 1;
-        report_key(usbd_dev, MOD_LEFT_SHIFT, KEY_A);
-    }
-    else
-    {
-        x = 0;
-        report_key(usbd_dev, MOD_NONE, KEY_NONE);
-    }
+
+
+
+    /* static int x = 0; */
+
+    /* if (x == 0) */
+    /* { */
+    /*     x = 1; */
+    /*     report_key(usbd_dev, MOD_LEFT_SHIFT, KEY_A); */
+    /* } */
+    /* else */
+    /* { */
+    /*     x = 0; */
+    /*     report_key(usbd_dev, MOD_NONE, KEY_NONE); */
+    /* } */
 }
 
 /* USB ISR handlers */
