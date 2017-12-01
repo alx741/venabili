@@ -1,4 +1,5 @@
 #include <libopencm3/usb/usbd.h>
+#include <libopencm3/cm3/nvic.h>
 #include <libopencm3/usb/hid.h>
 
 #define INCLUDE_DFU_INTERFACE
@@ -306,5 +307,9 @@ usbd_device* usb_init(uint8_t *usbd_control_buffer)
 	usbd_dev = usbd_init(&st_usbfs_v1_usb_driver, &dev_descr, &config, usb_strings, 3, usbd_control_buffer, sizeof(usbd_control_buffer));
 
 	usbd_register_set_config_callback(usbd_dev, hid_set_config);
+
+    nvic_enable_irq(NVIC_USB_HP_CAN_TX_IRQ);
+    nvic_enable_irq(NVIC_USB_LP_CAN_RX0_IRQ);
+
     return usbd_dev;
 }
