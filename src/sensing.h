@@ -1,7 +1,8 @@
 #ifndef SENSING_H
 #define SENSING_H
 
-/*   4rows x 12cols  keyboard
+#define NKEYS 48
+/*   4rows x 12cols = 48 keys
  *
  *   -------------------------------------------------
  *   |A 1|A 2|A 3|A 4|A 5|A 6|A 7|A 8|A 9|A10|A11|A12|
@@ -26,7 +27,7 @@ typedef enum
  *
  * Use the 'sense_keys()' function to populate this
  */
-static Mat_keys pressed_keys[48];
+static Mat_keys pressed_keys[NKEYS];
 
 /* Store pressed keys in the 'pressed_keys' array
  *

@@ -1,6 +1,7 @@
+#include <libopencm3/stm32/gpio.h>
 #include "sensing.h"
 
-static Mat_keys pressed_keys[48] = {0};
+static Mat_keys pressed_keys[NKEYS] = {0};
 
 int sense_keys(void)
 {
