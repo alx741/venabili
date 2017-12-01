@@ -71,8 +71,6 @@
 #define     KEY_BACKSPACE    0x2A
 #define     KEY_TAB          0x2B
 #define     KEY_SPACEBAR     0x2C
-
-/* Modifiers */
 #define     KEY_LEFT_CTRL    0xE0
 #define     KEY_LEFT_SHIFT   0xE1
 #define     KEY_LEFT_ALT     0xE2
@@ -81,6 +79,17 @@
 #define     KEY_RIGHT_SHIFT  0xE5
 #define     KEY_RIGHT_ALT    0xE6
 #define     KEY_RIGHT_SUPER  0xE7
+
+/* Modifiers */
+#define     MOD_NONE         0x00
+#define     MOD_LEFT_CTRL    0x01
+#define     MOD_LEFT_SHIFT   0x02
+#define     MOD_LEFT_ALT     0x04
+#define     MOD_LEFT_SUPER   0x08
+#define     MOD_RIGHT_CTRL   0x10
+#define     MOD_RIGHT_SHIFT  0x20
+#define     MOD_RIGHT_ALT    0x40
+#define     MOD_RIGHT_SUPER  0x80
 
 //TODO: Sould define these with SHIFT modifier
 /* Symbols */
