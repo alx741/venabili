@@ -23,6 +23,10 @@
  */
 extern bool keys_matrix[NROWS][NCOLS];
 
+/* Initialize Keyboard matrix sensing
+ */
+void keyboard_sensing_init(void);
+
 /* Store keys state in the 'keys_matrix' array
  *
  * Returns the number of active keys
