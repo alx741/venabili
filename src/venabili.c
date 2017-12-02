@@ -16,19 +16,7 @@ int main(void)
 	/* rcc_clock_setup_in_hsi_out_48mhz(); */
 	rcc_clock_setup_in_hse_8mhz_out_72mhz();
     usbd_dev = usb_init(usbd_control_buffer);
-
-	rcc_periph_clock_enable(RCC_GPIOA);
-	rcc_periph_clock_enable(RCC_GPIOB);
-
-    // PORTA as matrix inputs
-	gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_PULL_UPDOWN, GPIO_ALL);
-
-    // PORTB (0-3) as matrix outputs
-	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO0 | GPIO1 | GPIO2 | GPIO3);
-	gpio_clear(GPIOB, GPIO0 | GPIO1 | GPIO2 | GPIO3);
-
-	/* gpio_set_mode(GPIOB, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT, GPIO12); */
-	/* gpio_clear(GPIOB, GPIO12); */
+    keyboard_sensing_init();
 
 	while (1)
     {
@@ -36,20 +24,19 @@ int main(void)
 
         if (keys_matrix[0][0])
         {
-            gpio_set(GPIOB, GPIO2);
             report_key(usbd_dev, MOD_NONE, KEY_A);
+        }
+        if (keys_matrix[1][1])
+        {
+            report_key(usbd_dev, MOD_NONE, KEY_B);
         }
         else
         {
             // Will only report the 6 out of 48 possible simultanious keys
             // Becouse of USB 6KRO limitation
-            gpio_clear(GPIOB, GPIO2);
             report_key(usbd_dev, MOD_NONE, KEY_NONE);
         }
 
-
-
-        /* report_keys(usbd_dev, MOD_NONE, keys); */
 
     }
 }
