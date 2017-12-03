@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="270mm"
+   height="80mm"
+   viewBox="0 0 270 80"
    version="1.1"
    id="svg8"
    sodipodi:docname="logo.svg"
@@ -25,13 +25,13 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.45254834"
-     inkscape:cx="234.08123"
-     inkscape:cy="583.63724"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="521.27057"
+     inkscape:cy="89.048893"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     showborder="false"
+     showborder="true"
      inkscape:snap-intersection-paths="true"
      inkscape:snap-global="true"
      inkscape:object-paths="true"
@@ -41,7 +41,8 @@
      inkscape:window-height="768"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="0"
+     inkscape:pagecheckerboard="false" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -50,81 +51,50 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(0,-217)">
     <g
-       id="g853">
-      <path
-         inkscape:connector-curvature="0"
-         id="path831"
-         d="m -59.134369,171.71649 -4.233333,7.33234 4.23333,7.33235 4.233334,-7.33235 z"
-         style="fill:none;stroke:#000000;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <path
-         inkscape:connector-curvature="0"
-         id="path837"
-         d="m -83.082917,130.23638 h -8.466667 l 25.664591,44.45237 4.233333,-7.33234 z"
-         style="fill:none;stroke:#000000;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <path
-         style="fill:none;stroke:#000000;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m -35.185823,130.23638 h 8.466667 l -25.664591,44.45237 -4.233333,-7.33234 z"
-         id="path839"
-         inkscape:connector-curvature="0" />
+       id="g842"
+       transform="translate(115.88751,98.425001)">
+      <g
+         style="stroke-width:0.89077574"
+         transform="matrix(1.1217167,0,0,1.123518,-2.25932,-19.556028)"
+         id="g853">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:2.04878402;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -59.134369,171.71649 -4.233333,7.33234 4.23333,7.33235 4.233334,-7.33235 z"
+           id="path831"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:2.04878402;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -83.082917,130.23638 h -8.466667 l 25.664591,44.45237 4.233333,-7.33234 z"
+           id="path837"
+           inkscape:connector-curvature="0" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path839"
+           d="m -35.185823,130.23638 h 8.466667 l -25.664591,44.45237 -4.233333,-7.33234 z"
+           style="fill:none;stroke:#000000;stroke-width:2.04878402;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      </g>
+      <text
+         transform="scale(0.99919807,1.0008026)"
+         id="text819"
+         y="190.22748"
+         x="-51.193462"
+         style="font-style:normal;font-weight:normal;font-size:48.49358749px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:2.25;font-family:Selectric;-inkscape-font-specification:Selectric;stroke-width:0.26458332"
+           y="190.22748"
+           x="-51.193462"
+           id="tspan817"
+           sodipodi:role="line">enabili</tspan></text>
     </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:43.19691467px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="-43.587734"
-       y="186.85611"
-       id="text819"><tspan
-         sodipodi:role="line"
-         id="tspan817"
-         x="-43.587734"
-         y="186.85611"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:2.25;font-family:Selectric;-inkscape-font-specification:Selectric;stroke-width:0.26458332">enabili</tspan></text>
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot831"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26473078"
-       transform="matrix(0.99944311,0,0,0.99944311,252.80081,-558.01425)"><flowRegion
-         id="flowRegion833"
-         style="stroke-width:0.26473078"><rect
-           id="rect835"
-           width="692.1875"
-           height="229.6875"
-           x="-326.5625"
-           y="791.26971"
-           style="stroke-width:0.26473078" /></flowRegion><flowPara
-         id="flowPara837"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Selectric;-inkscape-font-specification:Selectric;stroke-width:0.08598484">Venabili</flowPara></flowRoot>    <g
-       id="g877"
-       transform="matrix(-1,0,0,1,-132.08065,-202.7821)">
-      <path
-         inkscape:connector-curvature="0"
-         id="path873"
-         d="m -105.36149,215.59559 32.415208,56.1448 4.23334,-7.33235 -28.18188,-48.81245 z"
-         style="fill:none;stroke:#000000;stroke-width:2.29999995;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <path
-         inkscape:connector-curvature="0"
-         id="path875"
-         d="m -69.963742,251.90977 20.966,-36.31418 h 8.46667 l -25.17986,43.6128 z"
-         style="fill:none;stroke:#000000;stroke-width:2.29999995;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    </g>
-    <text
-       id="text881"
-       y="69.43322"
-       x="-43.587734"
-       style="font-style:normal;font-weight:normal;font-size:43.19691467px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:2.25;font-family:Selectric;-inkscape-font-specification:Selectric;stroke-width:0.26458332"
-         y="69.43322"
-         x="-43.587734"
-         id="tspan879"
-         sodipodi:role="line">enabili</tspan></text>
   </g>
 </svg>
