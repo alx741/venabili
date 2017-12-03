@@ -1,5 +1,3 @@
-# [The Venabili keyboard](http://venabili.sillybytes.net)
-
 ![The Venabili keyboard](./artwork/logo.png)
 
 A programmable, hackable, layered, vertically staggered mechanical keyboard.
