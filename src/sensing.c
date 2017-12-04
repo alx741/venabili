@@ -34,6 +34,19 @@ void wipe_keys_matrix(void)
     }
 }
 
+int count_pressed(bool mat[NROWS][NCOLS])
+{
+    int n = 0;
+    for (int i = 0; i < NROWS; i++)
+    {
+        for (int j = 0; j < NCOLS; j++)
+        {
+            if (mat[i][j]) { n++; }
+        }
+    }
+    return n;
+}
+
 void wait(void)
 {
 	for (unsigned i = 0; i < 900000; i++) { __asm__("nop"); }
@@ -64,4 +77,20 @@ int sense_keys(void)
     }
     wait();
     return n;
+}
+
+bool pressed(bool mat[NROWS][NCOLS], int i, int j)
+{
+    return mat[i][j];
+}
+
+bool pressed_alone(bool mat[NROWS][NCOLS], int i, int j)
+{
+    return (pressed(mat, i, j) && count_pressed(mat) == 1);
+}
+
+bool tapped(bool mat[NROWS][NCOLS], int i, int j)
+{
+    return (pressed_alone(keys_matrix_previous, i, j)
+            && !pressed(keys_matrix, i, j));
 }
