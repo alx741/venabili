@@ -10,7 +10,7 @@ void report_key(usbd_device* usbd_dev, uint8_t modifier, uint8_t keycode)
     kr._reserved = 0x00;
     kr.modifier = modifier;
     kr.keycodes[0] = keycode;
-    usbd_ep_write_packet(usbd_dev, 0x81, &kr, 9);
+    while(usbd_ep_write_packet(usbd_dev, 0x81, &kr, 9) != 9);
 }
 
 void report_keys(usbd_device* usbd_dev, uint8_t modifier, uint8_t keycodes[6])
@@ -20,13 +20,12 @@ void report_keys(usbd_device* usbd_dev, uint8_t modifier, uint8_t keycodes[6])
     kr._reserved = 0x00;
     kr.modifier = modifier;
     memcpy(kr.keycodes, keycodes, 6);
-    usbd_ep_write_packet(usbd_dev, 0x81, &kr, 9);
+    while(usbd_ep_write_packet(usbd_dev, 0x81, &kr, 9) != 9);
 }
 
 void report_keypress(usbd_device* usbd_dev, uint8_t modifier, uint8_t keycode)
 {
     report_key(usbd_dev, modifier, keycode);
-    for (unsigned i = 0; i < 10; i++) { __asm__("nop"); }
     report_key(usbd_dev, MOD_NONE, KEY_NONE);
 }
 
