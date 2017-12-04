@@ -13,14 +13,23 @@ uint8_t usbd_control_buffer[128];
 
 int main(void)
 {
-	/* rcc_clock_setup_in_hsi_out_48mhz(); */
-	rcc_clock_setup_in_hse_8mhz_out_72mhz();
+    /* rcc_clock_setup_in_hsi_out_48mhz(); */
+    rcc_clock_setup_in_hse_8mhz_out_72mhz();
     usbd_dev = usb_init(usbd_control_buffer);
     keyboard_sensing_init();
 
-	while (1)
+    while (1)
     {
-        /* int nk = sense_keys(); */
+        sense_keys();
+
+        if (PA1 && !A1)
+        {
+            report_keypress(usbd_dev, MOD_NONE, KEY_A);
+        }
+        else if (A1 && A2)
+        {
+            report_keypress(usbd_dev, MOD_NONE, KEY_B);
+        }
 
         /* if (keys_matrix[0][0]) */
         /* { */
@@ -36,11 +45,6 @@ int main(void)
         /*     // Becouse of USB 6KRO limitation */
         /*     report_key(usbd_dev, MOD_NONE, KEY_NONE); */
         /* } */
-
-        /* report_key(usbd_dev, MOD_NONE, KEY_A); */
-        /* report_key(usbd_dev, MOD_NONE, KEY_NONE); */
-        /* report_keypress(usbd_dev, MOD_NONE, KEY_A); */
-        report_keypress(usbd_dev, MOD_LEFT_CTRL, KEY_A);
 
     }
 }
@@ -80,5 +84,11 @@ void sys_tick_handler(void)
 }
 
 /* USB ISR handlers */
-void usb_hp_can_tx_isr(void) { usbd_poll(usbd_dev); }
-void usb_lp_can_rx0_isr(void) { usbd_poll(usbd_dev); }
+void usb_hp_can_tx_isr(void)
+{
+    usbd_poll(usbd_dev);
+}
+void usb_lp_can_rx0_isr(void)
+{
+    usbd_poll(usbd_dev);
+}

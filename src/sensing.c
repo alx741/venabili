@@ -4,6 +4,7 @@
 #include "sensing.h"
 #include "usb_keys.h"
 
+bool keys_matrix_previous[NROWS][NCOLS] = {0};
 bool keys_matrix[NROWS][NCOLS] = {0};
 
 void keyboard_sensing_init(void)
@@ -16,10 +17,10 @@ void keyboard_sensing_init(void)
             GPIO0 | GPIO1 | GPIO2 | GPIO3 | GPIO4 | GPIO5 | GPIO6 | GPIO7
             | GPIO8 | GPIO9 | GPIO10 | GPIO11);
 
-    // PORTB (0-3) as matrix outputs
+    // PORTB (5-8) as matrix outputs
 	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL,
-            GPIO0 | GPIO1 | GPIO2 | GPIO3);
-	gpio_clear(GPIOB, GPIO0 | GPIO1 | GPIO2 | GPIO3);
+            GPIO5 | GPIO6 | GPIO7 | GPIO8);
+	gpio_clear(GPIOB, GPIO5 | GPIO6 | GPIO7 | GPIO8);
 }
 
 void wipe_keys_matrix(void)
@@ -33,39 +34,34 @@ void wipe_keys_matrix(void)
     }
 }
 
+void wait(void)
+{
+	for (unsigned i = 0; i < 900000; i++) { __asm__("nop"); }
+}
+
 int sense_keys(void)
 {
     int n = 0;
+    memcpy(keys_matrix_previous, keys_matrix, sizeof(bool) * NROWS * NCOLS);
     wipe_keys_matrix();
 
-    // Row 1
-    for (int r = 0; r < NROWS; r++)
+    for (int r = 5; r < (NROWS + 5); r++)
     {
         gpio_set(GPIOB, 1 << r);
         for (int c = 0; c < NCOLS; c++)
         {
             if (gpio_get(GPIOA, 1 << c))
             {
-                keys_matrix[r][c] = true;
+                keys_matrix[r-5][c] = true;
                 n++;
+            }
+            else
+            {
+                keys_matrix[r-5][c] = false;
             }
         }
         gpio_clear(GPIOB, 1 << r);
     }
+    wait();
     return n;
 }
-
-/* void mapping(void) */
-/* { */
-/*     for (int i = 0; i < NKEYS; i++) */
-/*     { */
-/*         if (pressed_keys[i] == A1) */
-/*         { */
-/*             pressed_keys[i] = KEY_A; */
-/*         } */
-/*         else if (pressed_keys[i] == A2) */
-/*         { */
-/*             pressed_keys[i] = KEY_B; */
-/*         } */
-/*     } */
-/* } */
