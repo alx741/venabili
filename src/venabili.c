@@ -6,7 +6,7 @@
 #include "usb.c"
 #include "sensing.h"
 #include "keyboard.h"
-#include "keys.h"
+#include "usb_keys.h"
 
 static usbd_device *usbd_dev;
 uint8_t usbd_control_buffer[128];
@@ -20,23 +20,27 @@ int main(void)
 
 	while (1)
     {
-        int nk = sense_keys();
+        /* int nk = sense_keys(); */
 
-        if (keys_matrix[0][0])
-        {
-            report_key(usbd_dev, MOD_NONE, KEY_A);
-        }
-        if (keys_matrix[1][1])
-        {
-            report_key(usbd_dev, MOD_NONE, KEY_B);
-        }
-        else
-        {
-            // Will only report the 6 out of 48 possible simultanious keys
-            // Becouse of USB 6KRO limitation
-            report_key(usbd_dev, MOD_NONE, KEY_NONE);
-        }
+        /* if (keys_matrix[0][0]) */
+        /* { */
+        /*     report_key(usbd_dev, MOD_NONE, KEY_A); */
+        /* } */
+        /* if (keys_matrix[1][1]) */
+        /* { */
+        /*     report_key(usbd_dev, MOD_NONE, KEY_B); */
+        /* } */
+        /* else */
+        /* { */
+        /*     // Will only report the 6 out of 48 possible simultanious keys */
+        /*     // Becouse of USB 6KRO limitation */
+        /*     report_key(usbd_dev, MOD_NONE, KEY_NONE); */
+        /* } */
 
+        /* report_key(usbd_dev, MOD_NONE, KEY_A); */
+        /* report_key(usbd_dev, MOD_NONE, KEY_NONE); */
+        /* report_keypress(usbd_dev, MOD_NONE, KEY_A); */
+        report_keypress(usbd_dev, MOD_LEFT_CTRL, KEY_A);
 
     }
 }
