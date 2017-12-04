@@ -17,73 +17,93 @@ uint8_t usbd_control_buffer[128];
 #define LAYER1  1
 #define LAYER2  2
 
-/* bool layers[NLAYERS][NROWS][NCOLS] = {false}; */
+#define DEFAULT_LAYER LAYER0
 
-/* int current_layer = LAYER0; */
 
-typedef enum _Action_type {KEY_PRESS, LAYER_SELECTION, MACRO, MOUSE_CLICK, MOUSE_MOVEMENT} Action_type;
+#define CMD_NONE           0x0000
+#define CMD_MOUSE_CLICK_1  0x0001
+// ...
+// #define  CMD_something  0x00FF
+
+// Use the LS(n) macro for Layer Selection
+#define _LS_FIRST 0x0100
+#define _LS_LAST  0xFF00
+
+/* Layer Selection
+ *
+ * LS(0) is the first (main) layer
+ *
+ * Up to 64 layers (0 - 63)
+ */
+#define LS(n) {KEY_NONE, MOD_NONE, _LS_START + n}
+
 
 typedef struct
 {
-    uint8_t keycode;
+    uint8_t usb_keycode;
     uint8_t modifiers;
-} Key_press;
+    uint16_t command;
+} Key;
 
-typedef struct
-{
-    uint8_t button;
-} Mouse_click;
+const Key k_hole = {KEY_NONE, MOD_NONE, CMD_NONE};
+const Key k_a = {KEY_A, MOD_NONE, CMD_NONE};
+const Key k_A = {KEY_A, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_c = {KEY_C, MOD_NONE, CMD_NONE};
+const Key k_at = {KEY_2, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_space = {KEY_SPACEBAR, MOD_NONE, CMD_NONE};
+const Key k_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
+const Key k_rshift = {KEY_NONE, MOD_RIGHT_SHIFT, CMD_NONE};
 
-typedef struct
+bool isNormalKey(Key k)
 {
-    uint8_t axis;
-    uint8_t speed;
-} Mouse_movement;
+    return (k.usb_keycode != KEY_NONE || k.modifiers != MOD_NONE)
+            && k.command == CMD_NONE;
+}
 
-typedef struct
+bool isCommandKey(Key k)
 {
-    uint8_t layer;
-} Layer_selection;
+    return !isNormalKey(k);
+}
 
-typedef struct
+bool isLayerSelectionKey(Key k)
 {
-    Action_type action_type;
-    union
+    return isCommandKey(k) && (k.command & 0xFF00);
+}
+
+bool isHoleKey(Key k)
+{
+    return k.usb_keycode == KEY_NONE
+        && k.modifiers == MOD_NONE
+        && k.command == CMD_NONE;
+}
+
+void execute(Key k)
+{
+    if (isNormalKey(k))
     {
-        Key_press        key_press;
-        Layer_selection  layer_selection;
-        Mouse_click      mouse_click;
-        Mouse_movement   mouse_movement;
-    } action;
-} Key_action;
-
-
-const Mouse_click mc_1 = {0x01};
-const Mouse_movement mm_x = {0x01, 0x10};
-const Mouse_movement mm_y = {0x02, 0x10};
-const Mouse_movement mm_z = {0x03, 0x10};
-
-const Layer_selection ls_0 = {0};
-const Layer_selection ls_1 = {1};
-
-const Key_press k_a = {KEY_A, MOD_NONE};
-const Key_press k_A = {KEY_A, MOD_LEFT_SHIFT};
-const Key_press k_at = {KEY_2, MOD_LEFT_SHIFT};
-const Key_press k_3 = {KEY_3, MOD_NONE};
-/* K_AT.modifiers |= MOD_RIGHT_CTRL; */
-
-void execute(Key_action ka)
-{
-    switch (ka.action_type)
-    {
-        case KEY_PRESS:
-            report_keypress(usbd_dev, ka.action.key_press.modifiers, ka.action.key_press.keycode);
-            break;
-
-        default:
-            /* keypress(KEY_O); */
-            break;
+        report_keypress(usbd_dev, k.modifiers, k.usb_keycode);
     }
+}
+
+/* void map(Key layer[NROWS][NCOLS], bool state[NROWS][NCOLS]) */
+/* { */
+/* } */
+
+/* Should be given the default layer or the currently toggled layer
+ */
+int detect_layer(Key layer[NROWS][NCOLS], bool state[NROWS][NCOLS])
+{
+    /* for (int i = 0; i < 2; i++) */
+    /* { */
+    /*     for (int j = 0; j < 2; j++) */
+    /*     { */
+    /*         if (pressed(keys_matrix, i, j)) */
+    /*         { */
+    /*             execute(layer0[i][j]); */
+    /*         } */
+    /*     } */
+    /* } */
+    return 0;
 }
 
 
@@ -93,35 +113,67 @@ int main(void)
     usbd_dev = usb_init(usbd_control_buffer);
     keyboard_sensing_init();
 
-    /* Key_action layers[1][NROWS][NCOLS] = */
-    Key_action layers[1][2][2] =
+    Key layer0[NROWS][NCOLS] =
     {
-        {
-            { {KEY_PRESS, {k_a}}, {KEY_PRESS, {k_A}}, },
-            { {KEY_PRESS, {k_at}}, {KEY_PRESS, {k_3}}, },
-        },
+        {k_a, k_A},
+        {k_c, k_lctrl},
+        {k_space, LS(1)},
+        {k_hole, LS(2)},
     };
+
+    /* Key_action layers[1][3][2] = */
+    /* { */
+    /*     { */
+    /*         { {KEY_PRESS, {k_a}}, {KEY_PRESS, {k_A}}, }, */
+    /*         { {KEY_PRESS, {k_at}}, {KEY_PRESS, {k_3}}, }, */
+    /*         /1* { {KEY_PRESS, {k_c}}, {KEY_MOD, {m_lshift}}, }, *1/ */
+    /*     }, */
+    /* }; */
 
     while (1)
     {
         sense_keys();
 
-        if (pressed(A1))
-        {
-            execute(layers[0][0][0]);
-        }
-        else if (pressed(A2))
-        {
-            execute(layers[0][0][1]);
-        }
-        else if (pressed(B1))
-        {
-            execute(layers[0][1][0]);
-        }
-        else if (pressed(B2))
-        {
-            execute(layers[0][1][1]);
-        }
+        /* if (isHoleKey(layer0[3][0])) */
+        /* { */
+        /*     report_keypress(usbd_dev, MOD_NONE, KEY_Y); */
+        /* } */
+
+        /* for (int i = 0; i < 2; i++) */
+        /* { */
+        /*     for (int j = 0; j < 2; j++) */
+        /*     { */
+        /*         if (pressed(keys_matrix, i, j)) */
+        /*         { */
+        /*             execute(layer0[i][j]); */
+        /*         } */
+        /*     } */
+        /* } */
+
+        /* if (pressed(A1)) */
+        /* { */
+        /*     execute(layers[0][0][0]); */
+        /* } */
+        /* else if (pressed(A2)) */
+        /* { */
+        /*     execute(layers[0][0][1]); */
+        /* } */
+        /* else if (pressed(B1)) */
+        /* { */
+        /*     execute(layers[0][1][0]); */
+        /* } */
+        /* else if (pressed(B2)) */
+        /* { */
+        /*     execute(layers[0][1][1]); */
+        /* } */
+        /* else if (pressed(C1)) */
+        /* { */
+        /*     execute(layers[0][2][0]); */
+        /* } */
+        /* else if (pressed(C2)) */
+        /* { */
+        /*     execute(layers[0][2][1]); */
+        /* } */
 
 
 
