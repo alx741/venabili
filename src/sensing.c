@@ -2,7 +2,7 @@
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/rcc.h>
 #include "sensing.h"
-#include "keys.h"
+#include "usb_keys.h"
 
 bool keys_matrix[NROWS][NCOLS] = {0};
 
