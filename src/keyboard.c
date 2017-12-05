@@ -1,18 +1,17 @@
-#define NLAYERS 4
+#include "sensing.h"
+#include "usb_keys.h"
+#include "keys.h"
+#include "keyboard.h"
 
-void execute(Key k)
-{
-    if (isNormalKey(k))
-    {
-        report_keypress(usbd_dev, k.modifiers, k.usb_keycode);
-    }
-}
+/* void execute(Key k) */
+/* { */
+/*     if (isNormalKey(k)) */
+/*     { */
+/*         report_keypress(usbd_dev, k.modifiers, k.usb_keycode); */
+/*     } */
+/* } */
 
 
-/* Should be given the default layer or the currently toggled layer
- *
- * Returns the selected layer number
- */
 int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS][NCOLS])
 {
     for (int i = 0; i < NROWS; i++)
@@ -31,8 +30,6 @@ int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS]
     return current_layer;
 }
 
-/* Get pressed modifiers in LAYER
- */
 uint8_t get_modifiers(const Key layer[NROWS][NCOLS])
 {
     uint8_t mods = MOD_NONE;
@@ -53,8 +50,6 @@ uint8_t get_modifiers(const Key layer[NROWS][NCOLS])
 }
 
 
-/* Infect keys in given LAYER with MODS
- */
 void infect_with_modifiers(uint16_t mods, Key layer[NROWS][NCOLS])
 {
     for (int i = 0; i < NROWS; i++)
@@ -93,5 +88,3 @@ void report_layer(layer)
 
 }
 #endif
-
-

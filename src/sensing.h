@@ -24,6 +24,9 @@
 #ifndef SENSING_H
 #define SENSING_H
 
+#include <stdbool.h>
+
+
 /*************************
  *   KEYBOARD SENSING
  *************************/
@@ -85,7 +88,7 @@ bool isPressed_alone(bool state[NROWS][NCOLS], int i, int j);
 
 /* Tell if a key was tapped (pressed and released) alone
  */
-bool tapped_alone(bool state[NROWS][NCOLS], int i, int j);
+bool tapped_alone(int i, int j);
 
 
 
