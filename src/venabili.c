@@ -11,23 +11,25 @@
 #include "keys.h"
 #include "keyboard.h"
 
+void report_layer(int);
+
 void report_layer(layer)
 {
     if (layer == 0)
     {
-        report_keypress( MOD_NONE, KEY_0);
+        report_keypress(MOD_NONE, KEY_0);
     }
     else if (layer == 1)
     {
-        report_keypress( MOD_NONE, KEY_1);
+        report_keypress(MOD_NONE, KEY_1);
     }
     else if (layer == 2)
     {
-        report_keypress( MOD_NONE, KEY_2);
+        report_keypress(MOD_NONE, KEY_2);
     }
     else if (layer == 3)
     {
-        report_keypress( MOD_NONE, KEY_3);
+        report_keypress(MOD_NONE, KEY_3);
     }
 
 }
@@ -79,7 +81,7 @@ int main(void)
 
         current_layer = get_layer_selection(0, layers);
 
-        /* report_layer(current_layer); */
+        report_layer(current_layer);
 
         uint8_t mods = get_modifiers(layers[current_layer]);
         infect_with_modifiers(mods, layers[current_layer]);
