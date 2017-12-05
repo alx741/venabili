@@ -17,8 +17,6 @@ uint8_t usbd_control_buffer[128];
 #define LAYER1  1
 #define LAYER2  2
 
-#define DEFAULT_LAYER LAYER0
-
 #define CMD_NONE           0x0000
 #define CMD_MOUSE_CLICK_1  0x0001
 // ...
@@ -44,9 +42,6 @@ typedef struct
     uint16_t command;
 } Key;
 
-
-/* Key layers[NLAYERS][NROWS][NCOLS]; */
-/* Key** layers[NLAYERS]; */
 
 const Key k_hole = {KEY_NONE, MOD_NONE, CMD_NONE};
 const Key k_a = {KEY_A, MOD_NONE, CMD_NONE};
@@ -88,24 +83,21 @@ void execute(Key k)
     }
 }
 
-/* void map(Key layer[NROWS][NCOLS], bool state[NROWS][NCOLS]) */
-/* { */
-/* } */
 
 /* Should be given the default layer or the currently toggled layer
+ *
+ * Returns the selected layer number
  */
-/* int detect_layer(Key current_layer[NROWS][NCOLS]) */
-int detect_layer(int current_layer, Key layers[NLAYERS][NROWS][NCOLS])
+int detect_layer_selection(uint16_t current_layer, Key layers[NLAYERS][NROWS][NCOLS])
 {
     for (int i = 0; i < NROWS; i++)
     {
         for (int j = 0; j < NCOLS; j++)
         {
             Key k = layers[current_layer][i][j];
-            if (pressed(keys_matrix, i, j) && isLayerSelectionKey(k))
+            if (isLayerSelectionKey(k) && pressed(keys_matrix, i, j))
             {
-                // Extract the layer number from the command (upper byte)
-                return (k.command - 0x00FF - 1);
+                return detect_layer_selection(k.command - 0x00FF - 1, layers);
             }
         }
     }
@@ -114,14 +106,13 @@ int detect_layer(int current_layer, Key layers[NLAYERS][NROWS][NCOLS])
     return current_layer;
 }
 
-
 int main(void)
 {
     rcc_clock_setup_in_hse_8mhz_out_72mhz();
     usbd_dev = usb_init(usbd_control_buffer);
     keyboard_sensing_init();
 
-    int CURRENT_LAYER = DEFAULT_LAYER;
+    int current_layer = 0;
 
     /* layers = */
     Key layers[NLAYERS][NROWS][NCOLS]=
@@ -154,57 +145,26 @@ int main(void)
     {
         sense_keys();
 
-        int l = detect_layer(CURRENT_LAYER, layers);
-        CURRENT_LAYER = l;
+        current_layer = detect_layer_selection(0, layers);
 
-        if (CURRENT_LAYER == 0)
+        if (current_layer == 0)
         {
             report_keypress(usbd_dev, MOD_NONE, KEY_0);
         }
-        else if (CURRENT_LAYER == 1)
+        else if (current_layer == 1)
         {
             report_keypress(usbd_dev, MOD_NONE, KEY_1);
         }
-        else if (CURRENT_LAYER == 2)
+        else if (current_layer == 2)
         {
             report_keypress(usbd_dev, MOD_NONE, KEY_2);
         }
 
-        /* for (int i = 0; i < 2; i++) */
-        /* { */
-        /*     for (int j = 0; j < 2; j++) */
-        /*     { */
-        /*         if (pressed(keys_matrix, i, j)) */
-        /*         { */
-        /*             execute(layer0[i][j]); */
-        /*         } */
-        /*     } */
-        /* } */
 
-        /* if (pressed(A1)) */
-        /* { */
-        /*     execute(layers[0][0][0]); */
-        /* } */
-        /* else if (pressed(A2)) */
-        /* { */
-        /*     execute(layers[0][0][1]); */
-        /* } */
-        /* else if (pressed(B1)) */
-        /* { */
-        /*     execute(layers[0][1][0]); */
-        /* } */
-        /* else if (pressed(B2)) */
-        /* { */
-        /*     execute(layers[0][1][1]); */
-        /* } */
-        /* else if (pressed(C1)) */
-        /* { */
-        /*     execute(layers[0][2][0]); */
-        /* } */
-        /* else if (pressed(C2)) */
-        /* { */
-        /*     execute(layers[0][2][1]); */
-        /* } */
+
+
+
+
 
 
 
@@ -268,18 +228,6 @@ int main(void)
 
 void sys_tick_handler(void)
 {
-    /* static int x = 0; */
-
-    /* if (x == 0) */
-    /* { */
-    /*     x = 1; */
-    /*     report_key(usbd_dev, MOD_LEFT_SHIFT, KEY_A); */
-    /* } */
-    /* else */
-    /* { */
-    /*     x = 0; */
-    /*     report_key(usbd_dev, MOD_NONE, KEY_NONE); */
-    /* } */
 }
 
 /* USB ISR handlers */
