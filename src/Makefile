@@ -22,6 +22,7 @@ BINARY = $(SRC_DIR)/venabili
 LDSCRIPT=$(SRC_DIR)/f103x8.ld
 OPENCM3_DIR=../lib/libopencm3
 
+OBJS += usb.o
 OBJS += usb_keyboard.o
 OBJS += usb_mouse.o
 OBJS += sensing.o

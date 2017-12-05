@@ -3,6 +3,8 @@
 
 #define NLAYERS 4
 
+void execute(Key k);
+
 /* Should be given the default layer or the currently toggled layer
  *
  * Returns the selected layer number
@@ -16,7 +18,5 @@ uint8_t get_modifiers(const Key layer[NROWS][NCOLS]);
 /* Infect keys in given LAYER with MODS
  */
 void infect_with_modifiers(uint16_t mods, Key layer[NROWS][NCOLS]);
-
-void report_layer(layer);
 
 #endif // KEYBOARD_H

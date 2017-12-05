@@ -1,6 +1,12 @@
+#include <stddef.h>
 #include <libopencm3/usb/usbd.h>
 #include <libopencm3/cm3/nvic.h>
 #include <libopencm3/usb/hid.h>
+#include <libopencm3/cm3/systick.h>
+#include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/gpio.h>
+
+#include "usb.h"
 
 #define INCLUDE_DFU_INTERFACE
 
@@ -10,7 +16,7 @@
 #endif
 
 
-static usbd_device *usbd_dev;
+usbd_device *usbd_dev;
 uint8_t usbd_control_buffer[128];
 
 
