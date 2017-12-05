@@ -4,9 +4,9 @@
 #include <libopencm3/stm32/gpio.h>
 
 #include "usb.c"
-#include "sensing.h"
-#include "usb_keyboard.h"
 #include "usb_keys.h"
+#include "usb_keyboard.h"
+#include "sensing.h"
 
 #include "keys.h"
 #include "keyboard.h"

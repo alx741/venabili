@@ -32,7 +32,7 @@ typedef struct
  *
  * LS(0) is the first (main) layer
  *
- * Up to 64 layers (0 - 63)
+ * Up to 256 layers
  */
 #define LS(n) {KEY_NONE, MOD_NONE, _LS_FIRST + n}
 
