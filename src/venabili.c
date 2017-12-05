@@ -32,15 +32,13 @@ void report_layer(layer)
     }
 }
 
+
 int main(void)
 {
     rcc_clock_setup_in_hse_8mhz_out_72mhz();
     usb_init();
     keyboard_sensing_init();
 
-    int current_layer = 0;
-
-    /* layers = */
     Key layers[NLAYERS][NROWS][NCOLS]=
     {
 
@@ -75,14 +73,16 @@ int main(void)
 
     while (1)
     {
-        int pressed = sense_keys();
+        Key pressed_keys[NKEYS] = {0};
 
-        current_layer = get_layer_selection(0, layers);
+        int n_pressed_keys = sense_keys();
+        int current_layer = get_layer_selection(0, layers);
+        map_layer(layers[current_layer], pressed_keys);
 
-        report_layer(current_layer);
+        /* report_layer(current_layer); */
 
-        uint8_t mods = get_modifiers(layers[current_layer]);
-        infect_with_modifiers(mods, layers[current_layer]);
+        /* uint8_t mods = get_modifiers(layers[current_layer]); */
+        /* infect_with_modifiers(mods, layers[current_layer]); */
 
         /* execute(layers[current_layer][0][0]); */
     }

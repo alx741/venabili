@@ -32,9 +32,33 @@ int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS]
     return current_layer;
 }
 
+void map_layer(const Key layer[NROWS][NCOLS], Key pressed_keys[NKEYS])
+{
+    int i = 0;
+    Key_coordinate* k = &PRESSED_KEYS[0];
+
+    while (! isNullCoordinate(*k))
+    {
+        pressed_keys[i++] = layer[k->i][k->j];
+        k++;
+    }
+}
+
+
+
 uint8_t get_modifiers(const Key layer[NROWS][NCOLS])
 {
     uint8_t mods = MOD_NONE;
+
+    /* Key_coordinate* k = &PRESSED_KEYS[0]; */
+    /* while (! isNullCoordinate(*k)) */
+    /* { */
+    /*     if (isModifierKey(*k)) */
+    /*     { */
+    /*         mods |= k.modifiers; */
+    /*     } */
+    /*     k++; */
+    /* } */
 
     for (int i = 0; i < NROWS; i++)
     {
