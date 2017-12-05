@@ -9,7 +9,6 @@
 #include "usb_keys.h"
 
 #include "keys.h"
-#include "keys.c"
 #include "keyboard.c"
 
 static usbd_device *usbd_dev;
