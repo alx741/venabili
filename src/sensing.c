@@ -4,8 +4,14 @@
 #include "sensing.h"
 #include "usb_keys.h"
 
-bool KMAT_PREV_STATE[NROWS][NCOLS] = {0};
-bool KMAT_STATE[NROWS][NCOLS] = {0};
+int N_PRESSED = 0;
+int N_PREV_PRESSED = 0;
+bool KMAT_PREV_STATE[NROWS][NCOLS] = { { false } };
+bool KMAT_STATE[NROWS][NCOLS] = { { false } };
+Key_coordinate PRESSED_KEYS[NKEYS] = { {0, 0} };
+Key_coordinate PRESSED_PREV_KEYS[NKEYS] = { {0, 0} };
+
+const Key_coordinate NULL_COORDINATE = {-1, -1};
 
 void keyboard_sensing_init(void)
 {
@@ -23,15 +29,12 @@ void keyboard_sensing_init(void)
 	gpio_clear(GPIOB, GPIO5 | GPIO6 | GPIO7 | GPIO8);
 }
 
-void wipe_kmat_state(void)
+void backup_and_wipe_current_state(void)
 {
-    for (int i = 0; i < NROWS; i++)
-    {
-        for (int j = 0; j < NCOLS; j++)
-        {
-            KMAT_STATE[i][j] = false;
-        }
-    }
+    memcpy(KMAT_PREV_STATE, KMAT_STATE, sizeof(bool) * NROWS * NCOLS);
+    memcpy(PRESSED_PREV_KEYS, PRESSED_KEYS, sizeof(Key_coordinate) * NKEYS);
+    memset(KMAT_STATE, 0, sizeof(bool) * NROWS * NCOLS);
+    memset(PRESSED_KEYS, 0, sizeof(Key_coordinate) * NKEYS);
 }
 
 int count_pressed(bool state[NROWS][NCOLS])
@@ -55,8 +58,7 @@ void wait(void)
 int sense_keys(void)
 {
     int n = 0;
-    memcpy(KMAT_PREV_STATE, KMAT_STATE, sizeof(bool) * NROWS * NCOLS);
-    wipe_kmat_state();
+    backup_and_wipe_current_state();
 
     for (int r = 5; r < (NROWS + 5); r++)
     {

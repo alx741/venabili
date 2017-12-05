@@ -12,7 +12,6 @@
 #include "keyboard.h"
 
 void report_layer(int);
-
 void report_layer(layer)
 {
     if (layer == 0)
@@ -85,6 +84,8 @@ int main(void)
 
         uint8_t mods = get_modifiers(layers[current_layer]);
         infect_with_modifiers(mods, layers[current_layer]);
+
+        /* execute(layers[current_layer][0][0]); */
     }
 }
 

@@ -26,7 +26,6 @@
 
 #include <stdbool.h>
 
-
 /*************************
  *   KEYBOARD SENSING
  *************************/
@@ -54,13 +53,30 @@
  *
  */
 
+/* Phisical coordinate of a key in the matrix
+ */
+typedef struct
+{
+    uint8_t i, j;
+} Key_coordinate;
 
-/* Keys status will be stored in these two matrices
+/* The NULL_COORDINATE indicates the end of an array of pressed keys
+ *
+ * e.g.  k = &PRESSED_KEYS[0]; while (k != NULL_COORDINATE) { k++; }
+ */
+extern const Key_coordinate NULL_COORDINATE;
+
+
+/* Keys status will be stored in these
  *
  * Use the 'sense_keys()' function to populate them
  */
-extern bool KMAT_PREV_STATE[NROWS][NCOLS];
-extern bool KMAT_STATE[NROWS][NCOLS];
+extern int N_PRESSED; // Number of keys currently pressed
+extern int N_PREV_PRESSED; // Number of keys previously pressed
+extern bool KMAT_STATE[NROWS][NCOLS]; // Matrix of current state
+extern bool KMAT_PREV_STATE[NROWS][NCOLS]; // Matrix of previous state
+extern Key_coordinate PRESSED_KEYS[NKEYS]; // Coordinates of currently pressed keys
+extern Key_coordinate PRESSED_PREV_KEYS[NKEYS]; // Coordinates of previous pressed keys
 
 
 /* Initialize Keyboard matrix sensing
