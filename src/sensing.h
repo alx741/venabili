@@ -67,6 +67,7 @@ typedef struct
 extern const Key_coordinate NULL_COORDINATE;
 
 
+// TODO: Make this private and export state only through functions
 /* Keys status will be stored in these
  *
  * Use the 'sense_keys()' function to populate them
