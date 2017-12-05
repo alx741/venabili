@@ -30,7 +30,6 @@ void report_layer(layer)
     {
         report_keypress(MOD_NONE, KEY_3);
     }
-
 }
 
 int main(void)
@@ -76,7 +75,7 @@ int main(void)
 
     while (1)
     {
-        sense_keys();
+        int pressed = sense_keys();
 
         current_layer = get_layer_selection(0, layers);
 

@@ -11,8 +11,6 @@ bool KMAT_STATE[NROWS][NCOLS] = { { false } };
 Key_coordinate PRESSED_KEYS[NKEYS] = { {0, 0} };
 Key_coordinate PRESSED_PREV_KEYS[NKEYS] = { {0, 0} };
 
-const Key_coordinate NULL_COORDINATE = {-1, -1};
-
 void keyboard_sensing_init(void)
 {
 	rcc_periph_clock_enable(RCC_GPIOA);
@@ -57,7 +55,8 @@ int sense_keys(void)
 {
     int n = 0;
     int i, j = 0; // Key index
-    /* int k_index = 0; */
+    Key_coordinate coordinate = {0, 0};
+
 
     backup_and_wipe_current_state();
 
@@ -68,10 +67,12 @@ int sense_keys(void)
         for (int c = 0; c < NCOLS; c++)
         {
             j = c;
+            coordinate.i = i;
+            coordinate.j = j;
             if (gpio_get(GPIOA, 1 << c))
             {
                 KMAT_STATE[i][j] = true;
-                n++;
+                PRESSED_KEYS[n++] = coordinate;
             }
             else
             {
@@ -81,6 +82,8 @@ int sense_keys(void)
         gpio_clear(GPIOB, 1 << r);
     }
 
+    PRESSED_KEYS[n].i = -1;
+    PRESSED_KEYS[n].j = -1;
     N_PRESSED = n;
     return n;
 }
@@ -99,4 +102,9 @@ bool tapped_alone(int i, int j)
 {
     return (isPressed_alone(KMAT_PREV_STATE, i, j)
             && !isPressed(KMAT_STATE, i, j));
+}
+
+bool isNullCoordinate(Key_coordinate kc)
+{
+    return (kc.i == -1 && kc.j == -1);
 }

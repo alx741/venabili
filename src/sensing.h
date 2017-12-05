@@ -57,14 +57,15 @@
  */
 typedef struct
 {
-    uint8_t i, j;
+    int8_t i, j;
 } Key_coordinate;
 
-/* The NULL_COORDINATE indicates the end of an array of pressed keys
+/* A NULL COORDINATE indicates the end of an array of pressed keys
  *
- * e.g.  k = &PRESSED_KEYS[0]; while (k != NULL_COORDINATE) { k++; }
+ * e.g.  Key_coordinate* k = &PRESSED_KEYS[0];
+ *       while (! isNullCoordinate(*k)) { k++; }
  */
-extern const Key_coordinate NULL_COORDINATE;
+bool isNullCoordinate(Key_coordinate kc);
 
 
 // TODO: Make this private and export state only through functions
