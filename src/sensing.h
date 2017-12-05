@@ -1,5 +1,32 @@
+/*
+ *  This file is part of Venabili.
+ *
+ *  Venabili is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Venabili is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Venabili.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+/*
+ * This module handles phisical keyboard and mouse state sensing
+ */
+
+
 #ifndef SENSING_H
 #define SENSING_H
+
+/*************************
+ *   KEYBOARD SENSING
+ *************************/
 
 #define NROWS 4
 #define NCOLS 12
@@ -59,5 +86,12 @@ bool isPressed_alone(bool state[NROWS][NCOLS], int i, int j);
 /* Tell if a key was tapped (pressed and released) alone
  */
 bool tapped_alone(bool state[NROWS][NCOLS], int i, int j);
+
+
+
+/*************************
+ *    MOUSE SENSING
+ *************************/
+
 
 #endif // SENSING_H
