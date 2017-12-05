@@ -5,7 +5,7 @@
 
 #include "usb.c"
 #include "sensing.h"
-#include "keyboard.h"
+#include "usb_keyboard.h"
 #include "usb_keys.h"
 
 static usbd_device *usbd_dev;
