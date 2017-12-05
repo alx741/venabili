@@ -1,5 +1,5 @@
-#ifndef MOUSE_H
-#define MOUSE_H
+#include <libopencm3/usb/usbd.h>
+#include "usb_mouse.h"
 
 typedef struct _mouse_report_t
 {
@@ -9,6 +9,3 @@ typedef struct _mouse_report_t
     uint8_t y_axis;
     uint8_t wheel;
 } mouse_report_t;
-
-#endif // MOUSE_H
-
