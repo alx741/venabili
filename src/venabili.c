@@ -110,9 +110,8 @@ int detect_layer(int current_layer, Key layers[NLAYERS][NROWS][NCOLS])
         }
     }
 
-    // If no layer selection key is pressed,
-    // the the selected layout is the main one (0)
-    return 0;
+    // If no layer selection key is pressed, the layer remains the same
+    return current_layer;
 }
 
 
