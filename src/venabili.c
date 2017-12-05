@@ -16,9 +16,6 @@ uint8_t usbd_control_buffer[128];
 
 #define NLAYERS 4
 
-
-
-
 void execute(Key k)
 {
     if (isNormalKey(k))
