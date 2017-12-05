@@ -8,80 +8,17 @@
 #include "usb_keyboard.h"
 #include "usb_keys.h"
 
+#include "keys.h"
+#include "keys.c"
+#include "keyboard.c"
+
 static usbd_device *usbd_dev;
 uint8_t usbd_control_buffer[128];
 
 #define NLAYERS 4
 
-#define LAYER0  0
-#define LAYER1  1
-#define LAYER2  2
-#define LAYER3  3
-
-#define CMD_NONE           0x0000
-#define CMD_MOUSE_CLICK_1  0x0001
-// ...
-// #define  CMD_something  0x00FF
-
-// Use the LS(n) macro for Layer Selection
-#define _LS_FIRST 0x0100
-#define _LS_LAST  0xFF00
-
-/* Layer Selection
- *
- * LS(0) is the first (main) layer
- *
- * Up to 64 layers (0 - 63)
- */
-#define LS(n) {KEY_NONE, MOD_NONE, _LS_FIRST + n}
 
 
-typedef struct
-{
-    uint8_t usb_keycode;
-    uint8_t modifiers;
-    uint16_t command;
-} Key;
-
-
-const Key k_hole = {KEY_NONE, MOD_NONE, CMD_NONE};
-const Key k_a = {KEY_A, MOD_NONE, CMD_NONE};
-const Key k_A = {KEY_A, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_c = {KEY_C, MOD_NONE, CMD_NONE};
-const Key k_at = {KEY_2, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_space = {KEY_SPACEBAR, MOD_NONE, CMD_NONE};
-const Key k_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
-const Key k_rshift = {KEY_NONE, MOD_RIGHT_SHIFT, CMD_NONE};
-
-bool isNormalKey(Key k)
-{
-    return (k.usb_keycode != KEY_NONE || k.modifiers != MOD_NONE)
-            && k.command == CMD_NONE;
-}
-
-bool isCommandKey(Key k)
-{
-    return !isNormalKey(k);
-}
-
-bool isLayerSelectionKey(Key k)
-{
-    return isCommandKey(k) && (k.command & 0xFF00);
-}
-
-bool isModifierKey(Key k)
-{
-    return isNormalKey(k)
-        && k.usb_keycode == KEY_NONE
-        && k.modifiers != MOD_NONE;
-}
-
-bool isHoleKey(Key k)
-{
-    return k.usb_keycode == KEY_NONE
-        && k.modifiers == MOD_NONE
-        && k.command == CMD_NONE;
-}
 
 void execute(Key k)
 {

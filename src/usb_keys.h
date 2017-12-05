@@ -15,6 +15,8 @@
  *  along with Venabili.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef USB_KEYS_H
+#define USB_KEYS_H
 
 /* This file declares Key Codes for the USB Keyboard/Keypad Page, according to
  * the "HID Usage Tables 1.12" specification file (Table 12).
@@ -113,3 +115,5 @@
 #define     MOD_RIGHT_SHIFT  0x20
 #define     MOD_RIGHT_ALT    0x40
 #define     MOD_RIGHT_SUPER  0x80
+
+#endif // USB_KEYS_H
