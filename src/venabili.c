@@ -11,13 +11,10 @@
 #include "keys.h"
 #include "keyboard.h"
 
-uint8_t usbd_control_buffer[128];
-
-
 int main(void)
 {
     rcc_clock_setup_in_hse_8mhz_out_72mhz();
-    usb_init(usbd_control_buffer);
+    usb_init();
     keyboard_sensing_init();
 
     int current_layer = 0;

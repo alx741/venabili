@@ -9,7 +9,10 @@
 #include <libopencm3/usb/dfu.h>
 #endif
 
+
 static usbd_device *usbd_dev;
+uint8_t usbd_control_buffer[128];
+
 
 static const uint8_t hid_report_descriptor[] =
 {
@@ -301,7 +304,7 @@ void usb_reenumerate(void)
 	for (unsigned i = 0; i < 800000; i++) { __asm__("nop"); }
 }
 
-void usb_init(uint8_t *usbd_control_buffer)
+void usb_init()
 {
     usbd_device *dev;
 
@@ -314,5 +317,4 @@ void usb_init(uint8_t *usbd_control_buffer)
     nvic_enable_irq(NVIC_USB_LP_CAN_RX0_IRQ);
 
     usbd_dev = dev;
-    /* return usbd_dev; */
 }
