@@ -24,6 +24,7 @@ OPENCM3_DIR=../lib/libopencm3
 
 OBJS += usb_keyboard.o
 OBJS += usb_mouse.o
+OBJS += keys.o
 OBJS += sensing.o
 
 include ../libopencm3.target.mk
