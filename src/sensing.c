@@ -35,6 +35,9 @@ void backup_and_wipe_current_state(void)
     memcpy(PRESSED_PREV_KEYS, PRESSED_KEYS, sizeof(Key_coordinate) * NKEYS);
     memset(KMAT_STATE, 0, sizeof(bool) * NROWS * NCOLS);
     memset(PRESSED_KEYS, 0, sizeof(Key_coordinate) * NKEYS);
+
+    N_PREV_PRESSED = N_PRESSED;
+    N_PRESSED = 0;
 }
 
 int count_pressed(bool state[NROWS][NCOLS])
@@ -50,34 +53,35 @@ int count_pressed(bool state[NROWS][NCOLS])
     return n;
 }
 
-void wait(void)
-{
-	for (unsigned i = 0; i < 900000; i++) { __asm__("nop"); }
-}
-
 int sense_keys(void)
 {
     int n = 0;
+    int i, j = 0; // Key index
+    /* int k_index = 0; */
+
     backup_and_wipe_current_state();
 
     for (int r = 5; r < (NROWS + 5); r++)
     {
+        i = r - 5;
         gpio_set(GPIOB, 1 << r);
         for (int c = 0; c < NCOLS; c++)
         {
+            j = c;
             if (gpio_get(GPIOA, 1 << c))
             {
-                KMAT_STATE[r-5][c] = true;
+                KMAT_STATE[i][j] = true;
                 n++;
             }
             else
             {
-                KMAT_STATE[r-5][c] = false;
+                KMAT_STATE[i][j] = false;
             }
         }
         gpio_clear(GPIOB, 1 << r);
     }
-    /* wait(); */
+
+    N_PRESSED = n;
     return n;
 }
 
