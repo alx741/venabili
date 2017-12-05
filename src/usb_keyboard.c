@@ -1,6 +1,6 @@
 #include <string.h>
 #include <libopencm3/usb/usbd.h>
-#include "keyboard.h"
+#include "usb_keyboard.h"
 #include "usb_keys.h"
 
 void report_key(usbd_device* usbd_dev, uint8_t modifier, uint8_t keycode)
@@ -29,24 +29,24 @@ void report_keypress(usbd_device* usbd_dev, uint8_t modifier, uint8_t keycode)
     report_key(usbd_dev, MOD_NONE, KEY_NONE);
 }
 
-void report_character(usbd_device* usbd_dev, char c)
-{
-    switch(c)
-    {
-        case ' ':
-            report_keypress(usbd_dev, MOD_NONE, KEY_SPACEBAR);
-            break;
+/* void report_character(usbd_device* usbd_dev, char c) */
+/* { */
+/*     switch(c) */
+/*     { */
+/*         case ' ': */
+/*             report_keypress(usbd_dev, MOD_NONE, KEY_SPACEBAR); */
+/*             break; */
 
-        case '!':
-            report_keypress(usbd_dev, MOD_NONE, KEY_SPACEBAR);
-            break;
+/*         case '!': */
+/*             report_keypress(usbd_dev, MOD_NONE, KEY_SPACEBAR); */
+/*             break; */
 
-        case '"':
-            report_keypress(usbd_dev, MOD_NONE, KEY_SPACEBAR);
-            break;
+/*         case '"': */
+/*             report_keypress(usbd_dev, MOD_NONE, KEY_SPACEBAR); */
+/*             break; */
 
-        default:
-            // code
-            break;
-    }
-}
+/*         default: */
+/*             // code */
+/*             break; */
+/*     } */
+/* } */
