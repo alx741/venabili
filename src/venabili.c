@@ -103,7 +103,7 @@ int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS]
         for (int j = 0; j < NCOLS; j++)
         {
             Key k = layers[current_layer][i][j];
-            if (isLayerSelectionKey(k) && pressed(keys_matrix, i, j))
+            if (isLayerSelectionKey(k) && isPressed(KMAT_STATE, i, j))
             {
                 return get_layer_selection(k.command - 0x00FF - 1, layers);
             }
@@ -125,7 +125,7 @@ uint8_t get_modifiers(const Key layer[NROWS][NCOLS])
         for (int j = 0; j < NCOLS; j++)
         {
             Key k = layer[i][j];
-            if (isModifierKey(k) && pressed(keys_matrix, i, j))
+            if (isModifierKey(k) && isPressed(KMAT_STATE, i, j))
             {
                 mods |= k.modifiers;
             }
@@ -145,7 +145,7 @@ void infect_with_modifiers(uint16_t mods, Key layer[NROWS][NCOLS])
         for (int j = 0; j < NCOLS; j++)
         {
             Key k = layer[i][j];
-            if (isNormalKey(k) && !isModifierKey(k) && pressed(keys_matrix, i, j))
+            if (isNormalKey(k) && !isModifierKey(k) && isPressed(KMAT_STATE, i, j))
             {
                 k.modifiers |= mods;
             }

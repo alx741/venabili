@@ -4,8 +4,8 @@
 #include "sensing.h"
 #include "usb_keys.h"
 
-bool keys_matrix_previous[NROWS][NCOLS] = {0};
-bool keys_matrix[NROWS][NCOLS] = {0};
+bool KMAT_PREV_STATE[NROWS][NCOLS] = {0};
+bool KMAT_STATE[NROWS][NCOLS] = {0};
 
 void keyboard_sensing_init(void)
 {
@@ -23,25 +23,25 @@ void keyboard_sensing_init(void)
 	gpio_clear(GPIOB, GPIO5 | GPIO6 | GPIO7 | GPIO8);
 }
 
-void wipe_keys_matrix(void)
+void wipe_kmat_state(void)
 {
     for (int i = 0; i < NROWS; i++)
     {
         for (int j = 0; j < NCOLS; j++)
         {
-            keys_matrix[i][j] = false;
+            KMAT_STATE[i][j] = false;
         }
     }
 }
 
-int count_pressed(bool mat[NROWS][NCOLS])
+int count_pressed(bool state[NROWS][NCOLS])
 {
     int n = 0;
     for (int i = 0; i < NROWS; i++)
     {
         for (int j = 0; j < NCOLS; j++)
         {
-            if (mat[i][j]) { n++; }
+            if (state[i][j]) { n++; }
         }
     }
     return n;
@@ -55,8 +55,8 @@ void wait(void)
 int sense_keys(void)
 {
     int n = 0;
-    memcpy(keys_matrix_previous, keys_matrix, sizeof(bool) * NROWS * NCOLS);
-    wipe_keys_matrix();
+    memcpy(KMAT_PREV_STATE, KMAT_STATE, sizeof(bool) * NROWS * NCOLS);
+    wipe_kmat_state();
 
     for (int r = 5; r < (NROWS + 5); r++)
     {
@@ -65,32 +65,32 @@ int sense_keys(void)
         {
             if (gpio_get(GPIOA, 1 << c))
             {
-                keys_matrix[r-5][c] = true;
+                KMAT_STATE[r-5][c] = true;
                 n++;
             }
             else
             {
-                keys_matrix[r-5][c] = false;
+                KMAT_STATE[r-5][c] = false;
             }
         }
         gpio_clear(GPIOB, 1 << r);
     }
-    wait();
+    /* wait(); */
     return n;
 }
 
-bool pressed(bool mat[NROWS][NCOLS], int i, int j)
+bool isPressed(bool state[NROWS][NCOLS], int i, int j)
 {
-    return mat[i][j];
+    return state[i][j];
 }
 
-bool pressed_alone(bool mat[NROWS][NCOLS], int i, int j)
+bool isPressed_alone(bool state[NROWS][NCOLS], int i, int j)
 {
-    return (pressed(mat, i, j) && count_pressed(mat) == 1);
+    return (isPressed(state, i, j) && count_pressed(state) == 1);
 }
 
-bool tapped(bool mat[NROWS][NCOLS], int i, int j)
+bool tapped_alone(bool state[NROWS][NCOLS], int i, int j)
 {
-    return (pressed_alone(keys_matrix_previous, i, j)
-            && !pressed(keys_matrix, i, j));
+    return (isPressed_alone(KMAT_PREV_STATE, i, j)
+            && !isPressed(KMAT_STATE, i, j));
 }

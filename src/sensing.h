@@ -25,39 +25,39 @@
  */
 
 
+/* Keys status will be stored in these two matrices
+ *
+ * Use the 'sense_keys()' function to populate them
+ */
+extern bool KMAT_PREV_STATE[NROWS][NCOLS];
+extern bool KMAT_STATE[NROWS][NCOLS];
+
+
 /* Initialize Keyboard matrix sensing
  */
 void keyboard_sensing_init(void);
 
 
-/* Keys status will be stored in these two matrices
- *
- * Use the 'sense_keys()' function to populate them
- */
-extern bool keys_matrix_previous[NROWS][NCOLS];
-extern bool keys_matrix[NROWS][NCOLS];
-
-
-/* Stores keys state in 'keys_matrix'
- * Moves previous keys state to 'keys_matrix_previous'
+/* Stores keys state in 'KMAT_STATE'
+ * Moves previous keys state to 'KMAT_PREV_STATE'
  *
  * Returns the number of active keys
  */
 int sense_keys(void);
 
 
-/* Tell if a particular key is pressed
+/* Tell if a particular key is currently pressed
  */
-bool pressed(bool mat[NROWS][NCOLS], int i, int j);
+bool isPressed(bool state[NROWS][NCOLS], int i, int j);
 
 
-/* Tell if only this and no other key is pressed
+/* Tell if only this and no other key is currently pressed
  */
-bool pressed_alone(bool mat[NROWS][NCOLS], int i, int j);
+bool isPressed_alone(bool state[NROWS][NCOLS], int i, int j);
 
 
-/* Tell if a key was tapped (pressed and released alone)
+/* Tell if a key was tapped (pressed and released) alone
  */
-bool tapped(bool mat[NROWS][NCOLS], int i, int j);
+bool tapped_alone(bool state[NROWS][NCOLS], int i, int j);
 
 #endif // SENSING_H
