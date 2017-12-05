@@ -2,8 +2,8 @@
 #define KEYS_H
 
 #include <stdlib.h>
-/* #include <libopencm3/cm3/systick.h> */
-#include <libopencm3/stm32/rcc.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 /* A KEY might be either a normal keyboard symbol with its applied modifiers
  * or a special command

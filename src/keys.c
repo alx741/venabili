@@ -1,7 +1,6 @@
 #include "usb_keys.h"
 #include "keys.h"
 
-
 bool isNormalKey(Key k)
 {
     return (k.usb_keycode != KEY_NONE || k.modifiers != MOD_NONE)
