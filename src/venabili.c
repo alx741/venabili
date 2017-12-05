@@ -69,6 +69,13 @@ bool isLayerSelectionKey(Key k)
     return isCommandKey(k) && (k.command & 0xFF00);
 }
 
+bool isModifierKey(Key k)
+{
+    return isNormalKey(k)
+        && k.usb_keycode == KEY_NONE
+        && k.modifiers != MOD_NONE;
+}
+
 bool isHoleKey(Key k)
 {
     return k.usb_keycode == KEY_NONE
@@ -89,7 +96,7 @@ void execute(Key k)
  *
  * Returns the selected layer number
  */
-int detect_layer_selection(uint16_t current_layer, Key layers[NLAYERS][NROWS][NCOLS])
+int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS][NCOLS])
 {
     for (int i = 0; i < NROWS; i++)
     {
@@ -98,7 +105,7 @@ int detect_layer_selection(uint16_t current_layer, Key layers[NLAYERS][NROWS][NC
             Key k = layers[current_layer][i][j];
             if (isLayerSelectionKey(k) && pressed(keys_matrix, i, j))
             {
-                return detect_layer_selection(k.command - 0x00FF - 1, layers);
+                return get_layer_selection(k.command - 0x00FF - 1, layers);
             }
         }
     }
@@ -106,6 +113,70 @@ int detect_layer_selection(uint16_t current_layer, Key layers[NLAYERS][NROWS][NC
     // If no layer selection key is pressed, the layer remains the same
     return current_layer;
 }
+
+/* Get pressed modifiers in LAYER
+ */
+uint8_t get_modifiers(const Key layer[NROWS][NCOLS])
+{
+    uint8_t mods = MOD_NONE;
+
+    for (int i = 0; i < NROWS; i++)
+    {
+        for (int j = 0; j < NCOLS; j++)
+        {
+            Key k = layer[i][j];
+            if (isModifierKey(k) && pressed(keys_matrix, i, j))
+            {
+                mods |= k.modifiers;
+            }
+        }
+    }
+
+    return mods;
+}
+
+
+/* Infect keys in given LAYER with MODS
+ */
+void infect_with_modifiers(uint16_t mods, Key layer[NROWS][NCOLS])
+{
+    for (int i = 0; i < NROWS; i++)
+    {
+        for (int j = 0; j < NCOLS; j++)
+        {
+            Key k = layer[i][j];
+            if (isNormalKey(k) && !isModifierKey(k) && pressed(keys_matrix, i, j))
+            {
+                k.modifiers |= mods;
+            }
+        }
+    }
+}
+
+
+#ifdef DEBUG
+void report_layer(layer)
+{
+    if (layer == 0)
+    {
+        report_keypress(usbd_dev, MOD_NONE, KEY_0);
+    }
+    else if (layer == 1)
+    {
+        report_keypress(usbd_dev, MOD_NONE, KEY_1);
+    }
+    else if (layer == 2)
+    {
+        report_keypress(usbd_dev, MOD_NONE, KEY_2);
+    }
+    else if (layer == 3)
+    {
+        report_keypress(usbd_dev, MOD_NONE, KEY_3);
+    }
+
+}
+#endif
+
 
 int main(void)
 {
@@ -152,32 +223,14 @@ int main(void)
     {
         sense_keys();
 
-        current_layer = detect_layer_selection(0, layers);
+        current_layer = get_layer_selection(0, layers);
 
-        if (current_layer == 0)
-        {
-            report_keypress(usbd_dev, MOD_NONE, KEY_0);
-        }
-        else if (current_layer == 1)
-        {
-            report_keypress(usbd_dev, MOD_NONE, KEY_1);
-        }
-        else if (current_layer == 2)
-        {
-            report_keypress(usbd_dev, MOD_NONE, KEY_2);
-        }
-        else if (current_layer == 3)
-        {
-            report_keypress(usbd_dev, MOD_NONE, KEY_3);
-        }
+        #ifdef DEBUG
+        report_layer(current_layer);
+        #endif
 
-
-
-
-
-
-
-
+        uint8_t mods = get_modifiers(layers[current_layer]);
+        infect_with_modifiers(mods, layers[current_layer]);
 
 /*         if (pressed(D1)) */
 /*         { */
