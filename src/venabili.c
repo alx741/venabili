@@ -67,62 +67,6 @@ int main(void)
 
         uint8_t mods = get_modifiers(layers[current_layer]);
         infect_with_modifiers(mods, layers[current_layer]);
-
-/*         if (pressed(D1)) */
-/*         { */
-/*             current_layer = LAYER1; */
-
-/*             if (pressed(A1)){ keypress(KEY_A); } */
-/*             if (pressed(A2)){ keypress(KEY_B); } */
-/*             if (pressed(B1)){ keypress(KEY_C); } */
-/*             if (pressed(B2)){ keypress(KEY_D); } */
-/*             if (pressed(C1)){ keypress(KEY_E); } */
-/*             if (pressed(C2)){ keypress(KEY_F); } */
-/*             //if (pressed(D1)){  } */
-/*             if (pressed(D2)){ keypress(KEY_G); } */
-/*         } */
-
-/*         else if (pressed(D2)) */
-/*         { */
-/*             current_layer = LAYER2; */
-
-/*             if (pressed(A1)){ keypress(KEY_H); } */
-/*             if (pressed(A2)){ keypress(KEY_I); } */
-/*             if (pressed(B1)){ keypress(KEY_J); } */
-/*             if (pressed(B2)){ keypress(KEY_K); } */
-/*             if (pressed(C1)){ keypress(KEY_L); } */
-/*             /1* if (pressed(C2)){ keypress(KEY_M); } *1/ */
-
-/*             if (tapped(C2)) { keypress(KEY_ENTER); } // TAP */
-
-/*             if (pressed(C2)) */
-/*             { */
-/*                 if (pressed(A1)){ report_keypress(usbd_dev, MOD_LEFT_SHIFT, KEY_H); } */
-/*                 // ... */
-/*                 //if (pressed(C2)){ // SHIFT + M  } */
-/*             } */
-
-/*             //if (pressed(D2)){  } */
-/*         } */
-
-/*         else if (pressed(PD2) && !pressed(D2)) // Reset layer */
-/*         { */
-/*             current_layer = LAYER0; */
-/*         } */
-
-/*         // Layer 0 */
-/*         else */
-/*         { */
-/*             if (pressed(A1)){ keypress(KEY_1); } */
-/*             if (pressed(A2)){ keypress(KEY_2); } */
-/*             if (pressed(B1)){ keypress(KEY_3); } */
-/*             if (pressed(B2)){ keypress(KEY_4); } */
-/*             if (pressed(C1)){ keypress(KEY_5); } */
-/*             if (pressed(C2)){ keypress(KEY_6); } */
-
-/*         } */
-
-
     }
 }
 
