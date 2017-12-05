@@ -9,6 +9,8 @@
 #include <libopencm3/usb/dfu.h>
 #endif
 
+static usbd_device *usbd_dev;
+
 static const uint8_t hid_report_descriptor[] =
 {
     // Mouse
@@ -299,17 +301,18 @@ void usb_reenumerate(void)
 	for (unsigned i = 0; i < 800000; i++) { __asm__("nop"); }
 }
 
-usbd_device* usb_init(uint8_t *usbd_control_buffer)
+void usb_init(uint8_t *usbd_control_buffer)
 {
-    usbd_device *usbd_dev;
+    usbd_device *dev;
 
     usb_reenumerate();
-	usbd_dev = usbd_init(&st_usbfs_v1_usb_driver, &dev_descr, &config, usb_strings, 3, usbd_control_buffer, sizeof(usbd_control_buffer));
+	dev = usbd_init(&st_usbfs_v1_usb_driver, &dev_descr, &config, usb_strings, 3, usbd_control_buffer, sizeof(usbd_control_buffer));
 
-	usbd_register_set_config_callback(usbd_dev, hid_set_config);
+	usbd_register_set_config_callback(dev, hid_set_config);
 
     nvic_enable_irq(NVIC_USB_HP_CAN_TX_IRQ);
     nvic_enable_irq(NVIC_USB_LP_CAN_RX0_IRQ);
 
-    return usbd_dev;
+    usbd_dev = dev;
+    /* return usbd_dev; */
 }
