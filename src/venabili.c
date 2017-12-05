@@ -9,7 +9,7 @@
 #include "usb_keys.h"
 
 #include "keys.h"
-#include "keyboard.c"
+#include "keyboard.h"
 
 uint8_t usbd_control_buffer[128];
 

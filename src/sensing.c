@@ -89,7 +89,7 @@ bool isPressed_alone(bool state[NROWS][NCOLS], int i, int j)
     return (isPressed(state, i, j) && count_pressed(state) == 1);
 }
 
-bool tapped_alone(bool state[NROWS][NCOLS], int i, int j)
+bool tapped_alone(int i, int j)
 {
     return (isPressed_alone(KMAT_PREV_STATE, i, j)
             && !isPressed(KMAT_STATE, i, j));
