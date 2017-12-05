@@ -11,11 +11,12 @@
 static usbd_device *usbd_dev;
 uint8_t usbd_control_buffer[128];
 
-#define NLAYERS 3
+#define NLAYERS 4
 
 #define LAYER0  0
 #define LAYER1  1
 #define LAYER2  2
+#define LAYER3  3
 
 #define CMD_NONE           0x0000
 #define CMD_MOUSE_CLICK_1  0x0001
@@ -129,10 +130,16 @@ int main(void)
         // Layer 1
         {
             {LS(2), k_A},
-            {k_c, k_lctrl},
+            {k_c, k_a},
         },
 
         // Layer 2
+        {
+            {k_a, LS(3)},
+            {k_c, k_hole},
+        },
+
+        // Layer 3
         {
             {k_a, k_A},
             {k_c, k_lctrl},
@@ -158,6 +165,10 @@ int main(void)
         else if (current_layer == 2)
         {
             report_keypress(usbd_dev, MOD_NONE, KEY_2);
+        }
+        else if (current_layer == 3)
+        {
+            report_keypress(usbd_dev, MOD_NONE, KEY_3);
         }
 
 
