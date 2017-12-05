@@ -1,6 +1,10 @@
 ![The Venabili keyboard](./artwork/logo.png)
 
-A programmable, hackable, layered, vertically staggered mechanical keyboard.
+* Mechanical
+* Layered
+* Programmable
+* Ergonomic
+* Hackable
 
 ## Why?
 
