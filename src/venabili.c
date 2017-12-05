@@ -19,7 +19,6 @@ uint8_t usbd_control_buffer[128];
 
 #define DEFAULT_LAYER LAYER0
 
-
 #define CMD_NONE           0x0000
 #define CMD_MOUSE_CLICK_1  0x0001
 // ...
@@ -35,7 +34,7 @@ uint8_t usbd_control_buffer[128];
  *
  * Up to 64 layers (0 - 63)
  */
-#define LS(n) {KEY_NONE, MOD_NONE, _LS_START + n}
+#define LS(n) {KEY_NONE, MOD_NONE, _LS_FIRST + n}
 
 
 typedef struct
@@ -44,6 +43,10 @@ typedef struct
     uint8_t modifiers;
     uint16_t command;
 } Key;
+
+
+/* Key layers[NLAYERS][NROWS][NCOLS]; */
+/* Key** layers[NLAYERS]; */
 
 const Key k_hole = {KEY_NONE, MOD_NONE, CMD_NONE};
 const Key k_a = {KEY_A, MOD_NONE, CMD_NONE};
@@ -91,18 +94,24 @@ void execute(Key k)
 
 /* Should be given the default layer or the currently toggled layer
  */
-int detect_layer(Key layer[NROWS][NCOLS], bool state[NROWS][NCOLS])
+/* int detect_layer(Key current_layer[NROWS][NCOLS]) */
+int detect_layer(int current_layer, Key layers[NLAYERS][NROWS][NCOLS])
 {
-    /* for (int i = 0; i < 2; i++) */
-    /* { */
-    /*     for (int j = 0; j < 2; j++) */
-    /*     { */
-    /*         if (pressed(keys_matrix, i, j)) */
-    /*         { */
-    /*             execute(layer0[i][j]); */
-    /*         } */
-    /*     } */
-    /* } */
+    for (int i = 0; i < NROWS; i++)
+    {
+        for (int j = 0; j < NCOLS; j++)
+        {
+            Key k = layers[current_layer][i][j];
+            if (pressed(keys_matrix, i, j) && isLayerSelectionKey(k))
+            {
+                // Extract the layer number from the command (upper byte)
+                return (k.command - 0x00FF - 1);
+            }
+        }
+    }
+
+    // If no layer selection key is pressed,
+    // the the selected layout is the main one (0)
     return 0;
 }
 
@@ -113,31 +122,54 @@ int main(void)
     usbd_dev = usb_init(usbd_control_buffer);
     keyboard_sensing_init();
 
-    Key layer0[NROWS][NCOLS] =
+    int CURRENT_LAYER = DEFAULT_LAYER;
+
+    /* layers = */
+    Key layers[NLAYERS][NROWS][NCOLS]=
     {
-        {k_a, k_A},
-        {k_c, k_lctrl},
-        {k_space, LS(1)},
-        {k_hole, LS(2)},
+
+        // Layer 0
+        {
+            {k_a, k_A},
+            {k_c, k_lctrl},
+            {k_space, LS(1)},
+            {k_hole, k_A},
+        },
+
+        // Layer 1
+        {
+            {LS(2), k_A},
+            {k_c, k_lctrl},
+        },
+
+        // Layer 2
+        {
+            {k_a, k_A},
+            {k_c, k_lctrl},
+        },
+
     };
 
-    /* Key_action layers[1][3][2] = */
-    /* { */
-    /*     { */
-    /*         { {KEY_PRESS, {k_a}}, {KEY_PRESS, {k_A}}, }, */
-    /*         { {KEY_PRESS, {k_at}}, {KEY_PRESS, {k_3}}, }, */
-    /*         /1* { {KEY_PRESS, {k_c}}, {KEY_MOD, {m_lshift}}, }, *1/ */
-    /*     }, */
-    /* }; */
 
     while (1)
     {
         sense_keys();
 
-        /* if (isHoleKey(layer0[3][0])) */
-        /* { */
-        /*     report_keypress(usbd_dev, MOD_NONE, KEY_Y); */
-        /* } */
+        int l = detect_layer(CURRENT_LAYER, layers);
+        CURRENT_LAYER = l;
+
+        if (CURRENT_LAYER == 0)
+        {
+            report_keypress(usbd_dev, MOD_NONE, KEY_0);
+        }
+        else if (CURRENT_LAYER == 1)
+        {
+            report_keypress(usbd_dev, MOD_NONE, KEY_1);
+        }
+        else if (CURRENT_LAYER == 2)
+        {
+            report_keypress(usbd_dev, MOD_NONE, KEY_2);
+        }
 
         /* for (int i = 0; i < 2; i++) */
         /* { */
