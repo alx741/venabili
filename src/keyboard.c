@@ -9,7 +9,7 @@ void execute(Key k)
 {
     if (isNormalKey(k))
     {
-        report_keypress( k.modifiers, k.usb_keycode);
+        report_keypress(k.modifiers, k.usb_keycode);
     }
 }
 

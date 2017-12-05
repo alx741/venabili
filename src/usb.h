@@ -5,6 +5,8 @@
 
 extern usbd_device *usbd_dev;
 
+/* Initialize USB subsystem
+ */
 void usb_init(void);
 
 #endif // USB_H
