@@ -64,27 +64,3 @@ void infect_with_modifiers(uint16_t mods, Key layer[NROWS][NCOLS])
         }
     }
 }
-
-
-#ifdef DEBUG
-void report_layer(layer)
-{
-    if (layer == 0)
-    {
-        report_keypress(usbd_dev, MOD_NONE, KEY_0);
-    }
-    else if (layer == 1)
-    {
-        report_keypress(usbd_dev, MOD_NONE, KEY_1);
-    }
-    else if (layer == 2)
-    {
-        report_keypress(usbd_dev, MOD_NONE, KEY_2);
-    }
-    else if (layer == 3)
-    {
-        report_keypress(usbd_dev, MOD_NONE, KEY_3);
-    }
-
-}
-#endif
