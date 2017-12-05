@@ -1,15 +1,17 @@
+#include <stdint.h>
 #include "sensing.h"
 #include "usb_keys.h"
+#include "usb_keyboard.h"
 #include "keys.h"
 #include "keyboard.h"
 
-/* void execute(Key k) */
-/* { */
-/*     if (isNormalKey(k)) */
-/*     { */
-/*         report_keypress(usbd_dev, k.modifiers, k.usb_keycode); */
-/*     } */
-/* } */
+void execute(Key k)
+{
+    if (isNormalKey(k))
+    {
+        report_keypress( k.modifiers, k.usb_keycode);
+    }
+}
 
 
 int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS][NCOLS])

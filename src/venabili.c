@@ -3,7 +3,7 @@
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 
-#include "usb.c"
+#include "usb.h"
 #include "usb_keys.h"
 #include "usb_keyboard.h"
 #include "sensing.h"
@@ -15,19 +15,19 @@ void report_layer(layer)
 {
     if (layer == 0)
     {
-        report_keypress(usbd_dev, MOD_NONE, KEY_0);
+        report_keypress( MOD_NONE, KEY_0);
     }
     else if (layer == 1)
     {
-        report_keypress(usbd_dev, MOD_NONE, KEY_1);
+        report_keypress( MOD_NONE, KEY_1);
     }
     else if (layer == 2)
     {
-        report_keypress(usbd_dev, MOD_NONE, KEY_2);
+        report_keypress( MOD_NONE, KEY_2);
     }
     else if (layer == 3)
     {
-        report_keypress(usbd_dev, MOD_NONE, KEY_3);
+        report_keypress( MOD_NONE, KEY_3);
     }
 
 }
