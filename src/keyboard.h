@@ -17,4 +17,6 @@ uint8_t get_modifiers(const Key layer[NROWS][NCOLS]);
  */
 void infect_with_modifiers(uint16_t mods, Key layer[NROWS][NCOLS]);
 
+void report_layer(layer);
+
 #endif // KEYBOARD_H

@@ -11,6 +11,27 @@
 #include "keys.h"
 #include "keyboard.h"
 
+void report_layer(layer)
+{
+    if (layer == 0)
+    {
+        report_keypress(usbd_dev, MOD_NONE, KEY_0);
+    }
+    else if (layer == 1)
+    {
+        report_keypress(usbd_dev, MOD_NONE, KEY_1);
+    }
+    else if (layer == 2)
+    {
+        report_keypress(usbd_dev, MOD_NONE, KEY_2);
+    }
+    else if (layer == 3)
+    {
+        report_keypress(usbd_dev, MOD_NONE, KEY_3);
+    }
+
+}
+
 int main(void)
 {
     rcc_clock_setup_in_hse_8mhz_out_72mhz();
@@ -58,9 +79,7 @@ int main(void)
 
         current_layer = get_layer_selection(0, layers);
 
-        #ifdef DEBUG
-        report_layer(current_layer);
-        #endif
+        /* report_layer(current_layer); */
 
         uint8_t mods = get_modifiers(layers[current_layer]);
         infect_with_modifiers(mods, layers[current_layer]);
