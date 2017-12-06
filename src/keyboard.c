@@ -32,61 +32,41 @@ int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS]
     return current_layer;
 }
 
-void map_layer(const Key layer[NROWS][NCOLS], Key pressed_keys[NKEYS])
+void map_layer(const Key layer[NROWS][NCOLS], Key keys[NKEYS])
 {
     int i = 0;
     Key_coordinate* k = &PRESSED_KEYS[0];
 
     while (! isNullCoordinate(*k))
     {
-        pressed_keys[i++] = layer[k->i][k->j];
+        keys[i++] = layer[k->i][k->j];
         k++;
     }
 }
 
 
-
-uint8_t get_modifiers(const Key layer[NROWS][NCOLS])
+uint8_t retrieve_modifiers(Key keys[NKEYS], int n)
 {
     uint8_t mods = MOD_NONE;
-
-    /* Key_coordinate* k = &PRESSED_KEYS[0]; */
-    /* while (! isNullCoordinate(*k)) */
-    /* { */
-    /*     if (isModifierKey(*k)) */
-    /*     { */
-    /*         mods |= k.modifiers; */
-    /*     } */
-    /*     k++; */
-    /* } */
-
-    for (int i = 0; i < NROWS; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < NCOLS; j++)
+        if (isModifierKey(keys[i]))
         {
-            Key k = layer[i][j];
-            if (isModifierKey(k) && isPressed(KMAT_STATE, i, j))
-            {
-                mods |= k.modifiers;
-            }
+            mods |= keys[i].modifiers;
         }
     }
-
     return mods;
 }
 
 
-void infect_with_modifiers(uint16_t mods, Key layer[NROWS][NCOLS])
+void apply_modifiers(Key keys[NKEYS], int n)
 {
-    for (int i = 0; i < NROWS; i++)
+    uint8_t mods = retrieve_modifiers(keys, n);
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < NCOLS; j++)
+        if (isNormalKey(keys[i]))
         {
-            Key k = layer[i][j];
-            if (isNormalKey(k) && !isModifierKey(k) && isPressed(KMAT_STATE, i, j))
-            {
-                k.modifiers |= mods;
-            }
+            keys[i].modifiers |= mods;
         }
     }
 }

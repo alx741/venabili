@@ -11,12 +11,13 @@ void execute(Key k);
  */
 int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS][NCOLS]);
 
-/* Get pressed modifiers in LAYER
+/* Fill KEYS with the currently pressed keys in the LAYER
  */
-uint8_t get_modifiers(const Key layer[NROWS][NCOLS]);
+void map_layer(const Key layer[NROWS][NCOLS], Key keys[NKEYS]);
 
-/* Infect keys in given LAYER with MODS
+/* Apply pressed modifiers to normal keys in KEYS array
+ * of N pressed keys
  */
-void infect_with_modifiers(uint16_t mods, Key layer[NROWS][NCOLS]);
+void apply_modifiers(Key keys[NKEYS], int n);
 
 #endif // KEYBOARD_H
