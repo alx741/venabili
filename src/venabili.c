@@ -45,21 +45,21 @@ int main(void)
         // Layer 0
         {
             {k_a, k_A},
-            {k_c, k_lctrl},
+            {k_a, k_lctrl},
             {k_space, LS(1)},
-            {k_hole, k_A},
+            {k_hole, k_rshift},
         },
 
         // Layer 1
         {
-            {LS(2), k_A},
-            {k_c, k_a},
+            {LS(2), k_B},
+            {k_b, k_b},
         },
 
         // Layer 2
         {
-            {k_a, LS(3)},
-            {k_c, k_hole},
+            {k_hole, LS(3)},
+            {k_c, k_rshift},
         },
 
         // Layer 3
@@ -78,13 +78,9 @@ int main(void)
         int n_pressed_keys = sense_keys();
         int current_layer = get_layer_selection(0, layers);
         map_layer(layers[current_layer], pressed_keys);
-
+        apply_modifiers(pressed_keys, n_pressed_keys);
+        execute(pressed_keys, n_pressed_keys);
         /* report_layer(current_layer); */
-
-        /* uint8_t mods = get_modifiers(layers[current_layer]); */
-        /* infect_with_modifiers(mods, layers[current_layer]); */
-
-        /* execute(layers[current_layer][0][0]); */
     }
 }
 
