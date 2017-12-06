@@ -16,11 +16,11 @@ typedef struct
 } Key;
 
 
-
 /* Posible special commands
  */
-#define CMD_NONE           0x0000
-#define CMD_MOUSE_CLICK_1  0x0001
+#define CMD_NONE             0x0000
+#define CMD_LOCK_LAYER       0x0001
+/* #define CMD_MOUSE_CLICK_1  0x0002 */
 // ...
 // #define  CMD_something  0x00FF
 
@@ -62,9 +62,34 @@ bool isEmptyKey(Key k);
 
 
 
-/* Predefined keys
+/* ****************************
+ *        Predefined keys
+ *        ---------------
+ *
+ *   - Keys (prefix: k_)
+ *      |-- Special
+ *      |-- Letters
+ *      |-- Numbers
+ *      |-- Symbols
+ *      |-- Non-printables
+ *      |-- Modifiers
+ *
+ *   - Commands (prefix: c_)
+ *      |-- Mouse (prefix: m_)
+ *
+ *
+ * ****************************
  */
+
+
+/**********
+ *  Keys
+ *********/
+
+/* Special */
 extern const Key     k_empty;
+
+/* Letters */
 extern const Key     k_a;
 extern const Key     k_A;
 extern const Key     k_b;
@@ -73,10 +98,26 @@ extern const Key     k_c;
 extern const Key     k_C;
 extern const Key     k_d;
 extern const Key     k_D;
+
+/* Symbols */
 extern const Key     k_at;
+
+/* Non-printables */
 extern const Key     k_space;
+
+/* Modifiers */
 extern const Key     k_lctrl;
 extern const Key     k_rshift;
 // ...
+
+
+/***********
+ * Commands
+ ***********/
+
+/* Layers */
+// For layer selection use the LS(n) macro
+extern const Key    c_layer_lock;
+
 
 #endif // KEYS_H
