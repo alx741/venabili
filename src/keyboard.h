@@ -3,7 +3,7 @@
 
 #define NLAYERS 4
 
-void execute(Key k);
+void execute(const Key keys[NKEYS], int n);
 
 /* Should be given the default layer or the currently toggled layer
  *

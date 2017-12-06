@@ -5,11 +5,15 @@
 #include "keys.h"
 #include "keyboard.h"
 
-void execute(Key k)
+void execute(const Key keys[NKEYS], int n)
 {
-    if (isNormalKey(k))
+    for (int i = 0; i < n; i++)
     {
-        report_keypress(k.modifiers, k.usb_keycode);
+        Key k = keys[i];
+        if (isNormalKey(k))
+        {
+            report_keypress(k.modifiers, k.usb_keycode);
+        }
     }
 }
 
