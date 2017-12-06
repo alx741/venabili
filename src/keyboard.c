@@ -12,6 +12,7 @@ void execute(const Key keys[NKEYS], int n)
         Key k = keys[i];
         if (isNormalKey(k))
         {
+            // FIXME: Use USB 6KRO
             report_keypress(k.modifiers, k.usb_keycode);
         }
     }

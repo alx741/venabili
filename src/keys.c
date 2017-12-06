@@ -31,8 +31,6 @@ bool isEmptyKey(Key k)
         && k.command == CMD_NONE;
 }
 
-/* Predefined keys
- */
 const Key k_empty = {KEY_NONE, MOD_NONE, CMD_NONE};
 const Key k_a = {KEY_A, MOD_NONE, CMD_NONE};
 const Key k_A = {KEY_A, MOD_LEFT_SHIFT, CMD_NONE};
@@ -47,3 +45,5 @@ const Key k_space = {KEY_SPACEBAR, MOD_NONE, CMD_NONE};
 const Key k_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
 const Key k_rshift = {KEY_NONE, MOD_RIGHT_SHIFT, CMD_NONE};
 // ...
+
+extern const Key c_layer_lock = {KEY_NONE, MOD_NONE, CMD_LOCK_LAYER};
