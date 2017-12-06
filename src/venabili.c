@@ -44,28 +44,28 @@ int main(void)
 
         // Layer 0
         {
-            {k_a, k_A},
+            {k_d, k_A},
             {k_a, k_lctrl},
             {k_space, LS(1)},
-            {k_hole, k_rshift},
+            {k_empty, k_rshift},
         },
 
         // Layer 1
         {
             {LS(2), k_B},
-            {k_b, k_b},
+            {k_empty, k_b},
         },
 
         // Layer 2
         {
-            {k_hole, LS(3)},
+            {k_empty, LS(3)},
             {k_c, k_rshift},
         },
 
         // Layer 3
         {
-            {k_a, k_A},
-            {k_c, k_lctrl},
+            {k_empty, k_empty},
+            {k_d, k_D},
         },
 
     };

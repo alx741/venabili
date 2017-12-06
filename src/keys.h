@@ -55,22 +55,24 @@ bool isLayerSelectionKey(Key k);
  */
 bool isModifierKey(Key k);
 
-/* Tell if a KEY is a "hole"
- * A "hole" key allows a keypress to reach the bottom layer
+/* Tell if a KEY is a "empty"
+ * An "empty" key does nothing
  */
-bool isHoleKey(Key k);
+bool isEmptyKey(Key k);
 
 
 
 /* Predefined keys
  */
-extern const Key     k_hole;
+extern const Key     k_empty;
 extern const Key     k_a;
 extern const Key     k_A;
 extern const Key     k_b;
 extern const Key     k_B;
 extern const Key     k_c;
 extern const Key     k_C;
+extern const Key     k_d;
+extern const Key     k_D;
 extern const Key     k_at;
 extern const Key     k_space;
 extern const Key     k_lctrl;
