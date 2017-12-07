@@ -3,7 +3,7 @@
 
 #define NLAYERS 4
 
-void execute(const Key keys[NKEYS], int n);
+void execute(const Key keys[NKEYS]);
 
 /* Should be given the default layer or the currently toggled layer
  *
@@ -18,6 +18,6 @@ void map_layer(const Key layer[NROWS][NCOLS], Key keys[NKEYS]);
 /* Apply pressed modifiers to normal keys in KEYS array
  * of N pressed keys
  */
-void apply_modifiers(Key keys[NKEYS], int n);
+void apply_modifiers(Key keys[NKEYS]);
 
 #endif // KEYBOARD_H

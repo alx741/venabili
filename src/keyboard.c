@@ -5,9 +5,9 @@
 #include "keys.h"
 #include "keyboard.h"
 
-void execute(const Key keys[NKEYS], int n)
+void execute(const Key keys[NKEYS])
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < N_PRESSED; i++)
     {
         Key k = keys[i];
         if (isNormalKey(k))
@@ -50,10 +50,10 @@ void map_layer(const Key layer[NROWS][NCOLS], Key keys[NKEYS])
 }
 
 
-uint8_t retrieve_modifiers(Key keys[NKEYS], int n)
+uint8_t retrieve_modifiers(Key keys[NKEYS])
 {
     uint8_t mods = MOD_NONE;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < N_PRESSED; i++)
     {
         if (isModifierKey(keys[i]))
         {
@@ -64,10 +64,10 @@ uint8_t retrieve_modifiers(Key keys[NKEYS], int n)
 }
 
 
-void apply_modifiers(Key keys[NKEYS], int n)
+void apply_modifiers(Key keys[NKEYS])
 {
-    uint8_t mods = retrieve_modifiers(keys, n);
-    for (int i = 0; i < n; i++)
+    uint8_t mods = retrieve_modifiers(keys);
+    for (int i = 0; i < N_PRESSED; i++)
     {
         if (isNormalKey(keys[i]))
         {
