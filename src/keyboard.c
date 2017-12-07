@@ -6,6 +6,7 @@
 #include "keyboard.h"
 
 int CURRENT_LAYER = 0;
+int CURRENT_LOCKED_LAYER = 0;
 bool LAYER_LOCKED = false;
 
 void execute(const Key keys[NKEYS])
@@ -23,7 +24,9 @@ void execute(const Key keys[NKEYS])
         {
             if (areKeysEqual(k, c_layer_lock))
             {
-                report_keypress(MOD_NONE, KEY_C);
+                CURRENT_LOCKED_LAYER = CURRENT_LAYER;
+                LAYER_LOCKED = true;
+                /* report_keypress(MOD_NONE, KEY_C); */
             }
         }
     }
@@ -32,8 +35,6 @@ void execute(const Key keys[NKEYS])
 
 int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS][NCOLS])
 {
-    if (LAYER_LOCKED) { return CURRENT_LAYER; }
-
     for (int i = 0; i < NROWS; i++)
     {
         for (int j = 0; j < NCOLS; j++)
@@ -53,8 +54,15 @@ int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS]
 
 void select_layer(const Key layers[NLAYERS][NROWS][NCOLS])
 {
-    // Start layer evaluation from layer 0
-    CURRENT_LAYER = get_layer_selection(0, layers);
+    if (LAYER_LOCKED)
+    {
+        CURRENT_LAYER = get_layer_selection(CURRENT_LOCKED_LAYER, layers);
+    }
+    else
+    {
+        // Start layer evaluation from layer 0
+        CURRENT_LAYER = get_layer_selection(0, layers);
+    }
 }
 
 

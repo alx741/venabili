@@ -59,7 +59,7 @@ int main(void)
         // Layer 2
         {
             {k_empty, LS(3)},
-            {k_c, k_rshift},
+            {k_c, c_layer_lock},
         },
 
         // Layer 3
