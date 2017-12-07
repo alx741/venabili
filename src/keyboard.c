@@ -49,7 +49,6 @@ void execute(const Key keys[NKEYS])
 
 void handle_6_normal_keys(Key k[6], int n)
 {
-    // FIXME: Use USB 6KRO
     uint8_t mods = 0;
     uint8_t keycodes[6] = {0};
 
@@ -59,9 +58,7 @@ void handle_6_normal_keys(Key k[6], int n)
         mods |= k[i].modifiers;
         keycodes[i] = k[i].usb_keycode;
     }
-    // report_upto_6_keypress(mods, keycodes);
-
-    /* report_keypress(k.modifiers, k.usb_keycode); */
+    report_6_keypress(mods, keycodes);
 }
 
 void handle_command_keys(Key k)
