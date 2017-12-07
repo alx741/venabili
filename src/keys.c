@@ -31,6 +31,13 @@ bool isEmptyKey(Key k)
         && k.command == CMD_NONE;
 }
 
+bool areKeysEqual(Key k1, Key k2)
+{
+    return k1.usb_keycode == k2.usb_keycode
+            && k1.modifiers == k2.modifiers
+            && k1.command == k2.command;
+}
+
 const Key k_empty = {KEY_NONE, MOD_NONE, CMD_NONE};
 const Key k_a = {KEY_A, MOD_NONE, CMD_NONE};
 const Key k_A = {KEY_A, MOD_LEFT_SHIFT, CMD_NONE};

@@ -60,6 +60,10 @@ bool isModifierKey(Key k);
  */
 bool isEmptyKey(Key k);
 
+/* Tell if two keys are equal
+ */
+bool areKeysEqual(Key k1, Key k2);
+
 
 
 /* ****************************
