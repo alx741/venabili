@@ -53,7 +53,7 @@ int main(void)
         // Layer 1
         {
             {LS(2), k_B},
-            {k_empty, k_b},
+            {k_empty, c_layer_lock},
         },
 
         // Layer 2

@@ -5,6 +5,8 @@
 #include "keys.h"
 #include "keyboard.h"
 
+int LOCKED_LAYER = 0;
+
 void execute(const Key keys[NKEYS])
 {
     for (int i = 0; i < N_PRESSED; i++)
@@ -15,12 +17,22 @@ void execute(const Key keys[NKEYS])
             // FIXME: Use USB 6KRO
             report_keypress(k.modifiers, k.usb_keycode);
         }
+
+        else if (isCommandKey(k))
+        {
+            if (areKeysEqual(k, c_layer_lock))
+            {
+                report_keypress(MOD_NONE, KEY_C);
+            }
+        }
     }
 }
 
 
 int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS][NCOLS])
 {
+    if (LOCKED_LAYER != 0) { return LOCKED_LAYER; }
+
     for (int i = 0; i < NROWS; i++)
     {
         for (int j = 0; j < NCOLS; j++)
