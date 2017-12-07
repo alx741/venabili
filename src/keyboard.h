@@ -5,15 +5,13 @@
 
 void execute(const Key keys[NKEYS]);
 
-/* Should be given the default layer or the currently toggled layer
- *
- * Returns the selected layer number
+/* Selects a layer based on user commands
  */
-int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS][NCOLS]);
+void select_layer(const Key layers[NLAYERS][NROWS][NCOLS]);
 
-/* Fill KEYS with the currently pressed keys in the LAYER
+/* Fill KEYS with the currently pressed keys in the current layer
  */
-void map_layer(const Key layer[NROWS][NCOLS], Key keys[NKEYS]);
+void map_layer(const Key layers[NLAYERS][NROWS][NCOLS], Key keys[NKEYS]);
 
 /* Apply pressed modifiers to normal keys in KEYS array
  * of N pressed keys
