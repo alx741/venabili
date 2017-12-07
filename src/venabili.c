@@ -73,19 +73,19 @@ int main(void)
 
     while (1)
     {
-        Key pressed_keys[NKEYS] = {0};
-
-        sense_keys();
-        select_layer();
-        map_layer(pressed_keys);
-        apply_modifiers(pressed_keys);
-        execute(pressed_keys);
-        /* report_layer(current_layer); */
     }
 }
 
 void sys_tick_handler(void)
 {
+    Key pressed_keys[NKEYS] = {0};
+
+    sense_keys();
+    select_layer();
+    map_layer(pressed_keys);
+    apply_modifiers(pressed_keys);
+    execute(pressed_keys);
+    /* report_layer(current_layer); */
 }
 
 /* USB ISR handlers */
