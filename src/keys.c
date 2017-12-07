@@ -53,4 +53,4 @@ const Key k_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
 const Key k_rshift = {KEY_NONE, MOD_RIGHT_SHIFT, CMD_NONE};
 // ...
 
-extern const Key c_layer_lock = {KEY_NONE, MOD_NONE, CMD_LOCK_LAYER};
+const Key c_layer_lock = {KEY_NONE, MOD_NONE, CMD_LOCK_LAYER};

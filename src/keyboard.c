@@ -9,6 +9,12 @@ int CURRENT_LAYER = 0;
 int CURRENT_LOCKED_LAYER = 0;
 bool LAYER_LOCKED = false;
 
+int get_layer_selection(uint16_t current_layer,
+                        const Key layers[NLAYERS][NROWS][NCOLS]);
+void lock_layer(void);
+void unlock_layer(void);
+void handle_command_keys(Key k);
+
 void execute(const Key keys[NKEYS])
 {
     for (int i = 0; i < N_PRESSED; i++)
@@ -22,18 +28,44 @@ void execute(const Key keys[NKEYS])
 
         else if (isCommandKey(k))
         {
-            if (areKeysEqual(k, c_layer_lock))
-            {
-                CURRENT_LOCKED_LAYER = CURRENT_LAYER;
-                LAYER_LOCKED = true;
-                /* report_keypress(MOD_NONE, KEY_C); */
-            }
+            handle_command_keys(k);
+        }
+    }
+}
+
+void handle_command_keys(Key k)
+{
+    if (areKeysEqual(k, c_layer_lock))
+    {
+        // Togle layer locking
+        if (LAYER_LOCKED)
+        {
+            unlock_layer();
+        }
+        else
+        {
+            lock_layer();
         }
     }
 }
 
 
-int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS][NCOLS])
+void select_layer(const Key layers[NLAYERS][NROWS][NCOLS])
+{
+    if (LAYER_LOCKED)
+    {
+        CURRENT_LAYER = get_layer_selection(CURRENT_LOCKED_LAYER, layers);
+    }
+    else
+    {
+        // Start layer evaluation from layer 0
+        CURRENT_LAYER = get_layer_selection(0, layers);
+    }
+}
+
+
+int get_layer_selection(uint16_t current_layer,
+                        const Key layers[NLAYERS][NROWS][NCOLS])
 {
     for (int i = 0; i < NROWS; i++)
     {
@@ -52,24 +84,10 @@ int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS]
 }
 
 
-void select_layer(const Key layers[NLAYERS][NROWS][NCOLS])
-{
-    if (LAYER_LOCKED)
-    {
-        CURRENT_LAYER = get_layer_selection(CURRENT_LOCKED_LAYER, layers);
-    }
-    else
-    {
-        // Start layer evaluation from layer 0
-        CURRENT_LAYER = get_layer_selection(0, layers);
-    }
-}
-
-
 void map_layer(const Key layers[NLAYERS][NROWS][NCOLS], Key keys[NKEYS])
 {
     int i = 0;
-    Key_coordinate* k = &PRESSED_KEYS[0];
+    Key_coordinate *k = &PRESSED_KEYS[0];
 
     while (! isNullCoordinate(*k))
     {
@@ -103,4 +121,17 @@ void apply_modifiers(Key keys[NKEYS])
             keys[i].modifiers |= mods;
         }
     }
+}
+
+
+void lock_layer()
+{
+    CURRENT_LOCKED_LAYER = CURRENT_LAYER;
+    LAYER_LOCKED = true;
+}
+
+void unlock_layer()
+{
+    CURRENT_LOCKED_LAYER = 0;
+    LAYER_LOCKED = false;
 }
