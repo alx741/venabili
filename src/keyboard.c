@@ -9,11 +9,10 @@ int CURRENT_LAYER = 0;
 int CURRENT_LOCKED_LAYER = 0;
 bool LAYER_LOCKED = false;
 
-int get_layer_selection(uint16_t current_layer,
-                        const Key layers[NLAYERS][NROWS][NCOLS]);
+void handle_normal_keys(Key k);
+void handle_command_keys(Key k);
 void lock_layer(void);
 void unlock_layer(void);
-void handle_command_keys(Key k);
 
 void execute(const Key keys[NKEYS])
 {
@@ -22,15 +21,19 @@ void execute(const Key keys[NKEYS])
         Key k = keys[i];
         if (isNormalKey(k))
         {
-            // FIXME: Use USB 6KRO
-            report_keypress(k.modifiers, k.usb_keycode);
+            handle_normal_keys(k);
         }
-
         else if (isCommandKey(k))
         {
             handle_command_keys(k);
         }
     }
+}
+
+void handle_normal_keys(Key k)
+{
+    // FIXME: Use USB 6KRO
+    report_keypress(k.modifiers, k.usb_keycode);
 }
 
 void handle_command_keys(Key k)
@@ -46,20 +49,6 @@ void handle_command_keys(Key k)
         {
             lock_layer();
         }
-    }
-}
-
-
-void select_layer(const Key layers[NLAYERS][NROWS][NCOLS])
-{
-    if (LAYER_LOCKED)
-    {
-        CURRENT_LAYER = get_layer_selection(CURRENT_LOCKED_LAYER, layers);
-    }
-    else
-    {
-        // Start layer evaluation from layer 0
-        CURRENT_LAYER = get_layer_selection(0, layers);
     }
 }
 
@@ -81,6 +70,20 @@ int get_layer_selection(uint16_t current_layer,
 
     // If no layer selection key is pressed, the layer remains the same
     return current_layer;
+}
+
+
+void select_layer(const Key layers[NLAYERS][NROWS][NCOLS])
+{
+    if (LAYER_LOCKED)
+    {
+        CURRENT_LAYER = get_layer_selection(CURRENT_LOCKED_LAYER, layers);
+    }
+    else
+    {
+        // Start layer evaluation from layer 0
+        CURRENT_LAYER = get_layer_selection(0, layers);
+    }
 }
 
 
