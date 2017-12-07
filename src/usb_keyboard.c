@@ -9,34 +9,34 @@
 typedef struct _keyboard_report_t
 {
     uint8_t report_id;
-    uint8_t modifier;
+    uint8_t modifiers;
     uint8_t _reserved;
     uint8_t keycodes[6];
 } keyboard_report_t;
 
-void report_key(uint8_t modifier, uint8_t keycode)
+void report_key(uint8_t modifiers, uint8_t keycode)
 {
     keyboard_report_t kr = {0};
     kr.report_id = 0x02;
     kr._reserved = 0x00;
-    kr.modifier = modifier;
+    kr.modifiers = modifiers;
     kr.keycodes[0] = keycode;
     while(usbd_ep_write_packet(usbd_dev, 0x81, &kr, 9) != 9);
 }
 
-void report_keys(uint8_t modifier, uint8_t keycodes[6])
+void report_keys(uint8_t modifiers, uint8_t keycodes[6])
 {
     keyboard_report_t kr = {0};
     kr.report_id = 0x02;
     kr._reserved = 0x00;
-    kr.modifier = modifier;
+    kr.modifiers = modifiers;
     memcpy(kr.keycodes, keycodes, 6);
     while(usbd_ep_write_packet(usbd_dev, 0x81, &kr, 9) != 9);
 }
 
-void report_keypress(uint8_t modifier, uint8_t keycode)
+void report_keypress(uint8_t modifiers, uint8_t keycode)
 {
-    report_key(modifier, keycode);
+    report_key(modifiers, keycode);
     report_key(MOD_NONE, KEY_NONE);
 }
 

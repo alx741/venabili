@@ -9,31 +9,59 @@ int CURRENT_LAYER = 0;
 int CURRENT_LOCKED_LAYER = 0;
 bool LAYER_LOCKED = false;
 
-void handle_normal_keys(Key k);
+void handle_6_normal_keys(Key k[6], int n);
 void handle_command_keys(Key k);
 void lock_layer(void);
 void unlock_layer(void);
 
+// USB can handle up to 6KRO
+#define XKRO  6
+
 void execute(const Key keys[NKEYS])
 {
+    Key normal_keys[XKRO] = {0};
+    int n_normal_keys = 0;
+
     for (int i = 0; i < N_PRESSED; i++)
     {
         Key k = keys[i];
-        if (isNormalKey(k))
+
+        if (isEmptyKey(k))
         {
-            handle_normal_keys(k);
+            // Ignore it
+        }
+        // Modifiers are already applied to normal keys, so ignore them
+        else if (isNormalKey(k) && !isModifierKey(k))
+        {
+            if (n_normal_keys < XKRO)
+            {
+                normal_keys[n_normal_keys++] = k;
+            }
         }
         else if (isCommandKey(k))
         {
             handle_command_keys(k);
         }
     }
+
+    handle_6_normal_keys(normal_keys, n_normal_keys);
 }
 
-void handle_normal_keys(Key k)
+void handle_6_normal_keys(Key k[6], int n)
 {
     // FIXME: Use USB 6KRO
-    report_keypress(k.modifiers, k.usb_keycode);
+    uint8_t mods = 0;
+    uint8_t keycodes[6] = {0};
+
+    // Combine modifiers
+    for (int i = 0; i < n; i++)
+    {
+        mods |= k[i].modifiers;
+        keycodes[i] = k[i].usb_keycode;
+    }
+    // report_upto_6_keypress(mods, keycodes);
+
+    /* report_keypress(k.modifiers, k.usb_keycode); */
 }
 
 void handle_command_keys(Key k)
