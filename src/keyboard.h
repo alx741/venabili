@@ -5,13 +5,15 @@
 
 void execute(const Key keys[NKEYS]);
 
+void add_layer(const Key layer[NROWS][NCOLS]);
+
 /* Selects a layer based on user commands
  */
-void select_layer(const Key layers[NLAYERS][NROWS][NCOLS]);
+void select_layer(void);
 
 /* Fill KEYS with the currently pressed keys in the current layer
  */
-void map_layer(const Key layers[NLAYERS][NROWS][NCOLS], Key keys[NKEYS]);
+void map_layer(Key keys[NKEYS]);
 
 /* Apply pressed modifiers to normal keys in KEYS array
  * of N pressed keys

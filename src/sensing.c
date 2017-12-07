@@ -60,6 +60,7 @@ int sense_keys(void)
 
     backup_and_wipe_current_state();
 
+        /* for (unsigned z = 0; z < 1000000; z++) { __asm__("nop"); } */
     for (int r = 5; r < (NROWS + 5); r++)
     {
         i = r - 5;

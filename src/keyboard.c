@@ -5,9 +5,12 @@
 #include "keys.h"
 #include "keyboard.h"
 
-int CURRENT_LAYER = 0;
-int CURRENT_LOCKED_LAYER = 0;
-bool LAYER_LOCKED = false;
+static Key LAYERS[NLAYERS][NROWS][NCOLS];
+static int N_LAYERS = 0;
+
+static int CURRENT_LAYER = 0;
+static int CURRENT_LOCKED_LAYER = 0;
+static bool LAYER_LOCKED = false;
 
 void handle_6_normal_keys(Key k[6], int n);
 void handle_command_keys(Key k);
@@ -78,6 +81,18 @@ void handle_command_keys(Key k)
 }
 
 
+void add_layer(const Key layer[NROWS][NCOLS])
+{
+    for (int i = 0; i < NROWS; i++)
+    {
+        for (int j = 0; j < NCOLS; j++)
+        {
+            LAYERS[N_LAYERS][i][j] = layer[i][j];
+        }
+    }
+    N_LAYERS++;
+}
+
 int get_layer_selection(uint16_t current_layer,
                         const Key layers[NLAYERS][NROWS][NCOLS])
 {
@@ -98,28 +113,28 @@ int get_layer_selection(uint16_t current_layer,
 }
 
 
-void select_layer(const Key layers[NLAYERS][NROWS][NCOLS])
+void select_layer()
 {
     if (LAYER_LOCKED)
     {
-        CURRENT_LAYER = get_layer_selection(CURRENT_LOCKED_LAYER, layers);
+        CURRENT_LAYER = get_layer_selection(CURRENT_LOCKED_LAYER, LAYERS);
     }
     else
     {
         // Start layer evaluation from layer 0
-        CURRENT_LAYER = get_layer_selection(0, layers);
+        CURRENT_LAYER = get_layer_selection(0, LAYERS);
     }
 }
 
 
-void map_layer(const Key layers[NLAYERS][NROWS][NCOLS], Key keys[NKEYS])
+void map_layer(Key keys[NKEYS])
 {
     int i = 0;
     Key_coordinate *k = &PRESSED_KEYS[0];
 
     while (! isNullCoordinate(*k))
     {
-        keys[i++] = layers[CURRENT_LAYER][k->i][k->j];
+        keys[i++] = LAYERS[CURRENT_LAYER][k->i][k->j];
         k++;
     }
 }
