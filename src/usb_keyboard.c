@@ -24,7 +24,7 @@ void report_key(uint8_t modifiers, uint8_t keycode)
     while(usbd_ep_write_packet(usbd_dev, 0x81, &kr, 9) != 9);
 }
 
-void report_keys(uint8_t modifiers, uint8_t keycodes[6])
+void report_6_keys(uint8_t modifiers, uint8_t keycodes[6])
 {
     keyboard_report_t kr = {0};
     kr.report_id = 0x02;
@@ -37,6 +37,12 @@ void report_keys(uint8_t modifiers, uint8_t keycodes[6])
 void report_keypress(uint8_t modifiers, uint8_t keycode)
 {
     report_key(modifiers, keycode);
+    report_key(MOD_NONE, KEY_NONE);
+}
+
+void report_6_keypress(uint8_t modifiers, uint8_t keycodes[6])
+{
+    report_6_keys(modifiers, keycodes);
     report_key(MOD_NONE, KEY_NONE);
 }
 
