@@ -5,7 +5,8 @@
 #include "keys.h"
 #include "keyboard.h"
 
-int LOCKED_LAYER = 0;
+int CURRENT_LAYER = 0;
+bool LAYER_LOCKED = false;
 
 void execute(const Key keys[NKEYS])
 {
@@ -31,7 +32,7 @@ void execute(const Key keys[NKEYS])
 
 int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS][NCOLS])
 {
-    if (LOCKED_LAYER != 0) { return LOCKED_LAYER; }
+    if (LAYER_LOCKED) { return CURRENT_LAYER; }
 
     for (int i = 0; i < NROWS; i++)
     {
@@ -49,14 +50,22 @@ int get_layer_selection(uint16_t current_layer, const Key layers[NLAYERS][NROWS]
     return current_layer;
 }
 
-void map_layer(const Key layer[NROWS][NCOLS], Key keys[NKEYS])
+
+void select_layer(const Key layers[NLAYERS][NROWS][NCOLS])
+{
+    // Start layer evaluation from layer 0
+    CURRENT_LAYER = get_layer_selection(0, layers);
+}
+
+
+void map_layer(const Key layers[NLAYERS][NROWS][NCOLS], Key keys[NKEYS])
 {
     int i = 0;
     Key_coordinate* k = &PRESSED_KEYS[0];
 
     while (! isNullCoordinate(*k))
     {
-        keys[i++] = layer[k->i][k->j];
+        keys[i++] = layers[CURRENT_LAYER][k->i][k->j];
         k++;
     }
 }

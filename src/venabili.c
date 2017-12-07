@@ -76,8 +76,8 @@ int main(void)
         Key pressed_keys[NKEYS] = {0};
 
         sense_keys();
-        int current_layer = get_layer_selection(0, layers);
-        map_layer(layers[current_layer], pressed_keys);
+        select_layer(layers);
+        map_layer(layers, pressed_keys);
         apply_modifiers(pressed_keys);
         execute(pressed_keys);
         /* report_layer(current_layer); */
