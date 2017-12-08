@@ -4,7 +4,7 @@
 #include "sensing.h"
 #include "usb_keys.h"
 
-#define DEBOUNCE_FACTOR 50
+#define DEBOUNCE_FACTOR 30
 
 int N_PRESSED = 0;
 int N_PREV_PRESSED = 0;
