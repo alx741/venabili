@@ -4,8 +4,6 @@
 #include "sensing.h"
 #include "usb_keys.h"
 
-#define DEBOUNCE_FACTOR 20
-
 int N_PRESSED = 0;
 int N_PREV_PRESSED = 0;
 bool KMAT_PREV_STATE[NROWS][NCOLS] = { { false } };
