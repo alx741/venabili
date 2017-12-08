@@ -131,7 +131,6 @@ static const struct {
 	.hid_descriptor = {
 		.bLength = sizeof(hid_function),
 		.bDescriptorType = USB_DT_HID,
-		/* .bcdHID = 0x0100, */
 		.bcdHID = 0x0101,
 		.bCountryCode = 0,
 		.bNumDescriptors = 1,
@@ -148,8 +147,7 @@ const struct usb_endpoint_descriptor hid_endpoint = {
 	.bEndpointAddress = 0x81,
 	.bmAttributes = USB_ENDPOINT_ATTR_INTERRUPT,
 	.wMaxPacketSize = 0x0F,
-	/* .bInterval = 0x20, */
-	.bInterval = 0x0A,
+	.bInterval = 0x0A, // 10ms polling interval
 };
 
 const struct usb_interface_descriptor hid_iface = {
@@ -162,9 +160,7 @@ const struct usb_interface_descriptor hid_iface = {
 	.bInterfaceSubClass = 1, // boot device
 	.bInterfaceProtocol = 1, // keyboard boot device
 	.iInterface = 0,
-
 	.endpoint = &hid_endpoint,
-
 	.extra = &hid_function,
 	.extralen = sizeof(hid_function),
 };
