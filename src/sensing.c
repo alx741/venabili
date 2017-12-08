@@ -109,20 +109,29 @@ int sense_keys(void)
     return n;
 }
 
-bool isPressed(bool state[NROWS][NCOLS], int i, int j)
+bool currently_pressed(int i, int j)
 {
-    return state[i][j];
+    return KMAT_STATE[i][j];
 }
 
-bool isPressed_alone(bool state[NROWS][NCOLS], int i, int j)
+bool previously_pressed(int i, int j)
 {
-    return (isPressed(state, i, j) && count_pressed(state) == 1);
+    return KMAT_PREV_STATE[i][j];
 }
 
-bool tapped_alone(int i, int j)
+bool currently_pressed_alone(int i, int j)
 {
-    return (isPressed_alone(KMAT_PREV_STATE, i, j)
-            && !isPressed(KMAT_STATE, i, j));
+    return (currently_pressed(i, j) && N_PRESSED == 1);
+}
+
+bool previously_pressed_alone(int i, int j)
+{
+    return (previously_pressed(i, j) && N_PREV_PRESSED == 1);
+}
+
+bool tapped(int i, int j)
+{
+    return (previously_pressed(i, j) && !currently_pressed(i, j));
 }
 
 bool isNullCoordinate(Key_coordinate kc)

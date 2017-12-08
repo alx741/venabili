@@ -68,16 +68,14 @@ typedef struct
 bool isNullCoordinate(Key_coordinate kc);
 
 
-// TODO: Make this private and export state only through functions
 /* Keys status will be stored in these
  *
  * Use the 'sense_keys()' function to populate them
  */
 extern int N_PRESSED; // Number of keys currently pressed
-extern int N_PREV_PRESSED; // Number of keys previously pressed
-extern bool KMAT_STATE[NROWS][NCOLS]; // Matrix of current state
-extern bool KMAT_PREV_STATE[NROWS][NCOLS]; // Matrix of previous state
 extern Key_coordinate PRESSED_KEYS[NKEYS]; // Coordinates of currently pressed keys
+
+extern int N_PREV_PRESSED; // Number of keys previously pressed
 extern Key_coordinate PRESSED_PREV_KEYS[NKEYS]; // Coordinates of previous pressed keys
 
 
@@ -94,19 +92,21 @@ void keyboard_sensing_init(void);
 int sense_keys(void);
 
 
-/* Tell if a particular key is currently pressed
+/* Tell if a particular key is/was pressed
  */
-bool isPressed(bool state[NROWS][NCOLS], int i, int j);
+bool currently_pressed(int i, int j);
+bool previously_pressed(int i, int j);
 
 
-/* Tell if only this and no other key is currently pressed
+/* Tell if only this and no other key is/was pressed
  */
-bool isPressed_alone(bool state[NROWS][NCOLS], int i, int j);
+bool currently_pressed_alone(int i, int j);
+bool previously_pressed_alone(int i, int j);
 
 
-/* Tell if a key was tapped (pressed and released) alone
+/* Tell if a key was tapped (pressed and released)
  */
-bool tapped_alone(int i, int j);
+bool tapped(int i, int j);
 
 
 
