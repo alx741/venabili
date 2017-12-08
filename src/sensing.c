@@ -12,8 +12,6 @@ bool KMAT_PREV_STATE[NROWS][NCOLS] = { { false } };
 bool KMAT_STATE[NROWS][NCOLS] = { { false } };
 Key_coordinate PRESSED_KEYS[NKEYS] = { {0, 0} };
 Key_coordinate PRESSED_PREV_KEYS[NKEYS] = { {0, 0} };
-// Misc
-bool matricesAreEqual(bool m1[NROWS][NCOLS], bool m2[NROWS][NCOLS]);
 
 void keyboard_sensing_init(void)
 {
@@ -130,16 +128,4 @@ bool tapped_alone(int i, int j)
 bool isNullCoordinate(Key_coordinate kc)
 {
     return (kc.i == -1 && kc.j == -1);
-}
-
-bool matricesAreEqual(bool m1[NROWS][NCOLS], bool m2[NROWS][NCOLS])
-{
-    for (int i = 0; i < NROWS; i++)
-    {
-        for (int j = 0; j < NCOLS; j++)
-        {
-            if (m1[i][j] != m2[i][j]) { return false; }
-        }
-    }
-    return true;
 }
