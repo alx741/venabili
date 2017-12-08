@@ -11,58 +11,37 @@
 #include "keys.h"
 #include "keyboard.h"
 
-void report_layer(int);
-void report_layer(layer)
-{
-    if (layer == 0)
-    {
-        report_keypress(MOD_NONE, KEY_0);
-    }
-    else if (layer == 1)
-    {
-        report_keypress(MOD_NONE, KEY_1);
-    }
-    else if (layer == 2)
-    {
-        report_keypress(MOD_NONE, KEY_2);
-    }
-    else if (layer == 3)
-    {
-        report_keypress(MOD_NONE, KEY_3);
-    }
-}
-
 int main(void)
 {
     rcc_clock_setup_in_hse_8mhz_out_72mhz();
     usb_init();
     keyboard_sensing_init();
 
-    Key layer0[NROWS][NCOLS] = 
-        {
-            {k_d, k_A},
-            {k_a, k_lctrl},
-            {k_space, LS(1)},
-            {k_empty, k_rshift},
-        };
+    Key layer0[NROWS][NCOLS] =
+    {
+        {k_d, k_A},
+        {k_a, k_lctrl},
+        {k_space, LS(1)},
+        {k_empty, k_rshift},
+    };
 
-    Key layer1[NROWS][NCOLS] = 
-        {
-            {LS(2), k_B},
-            {k_empty, c_layer_lock},
-        };
+    Key layer1[NROWS][NCOLS] =
+    {
+        {LS(2), k_B},
+        {k_empty, c_layer_lock},
+    };
 
-    Key layer2[NROWS][NCOLS] = 
-        {
-            {k_empty, LS(3)},
-            {k_c, c_layer_lock},
-        };
+    Key layer2[NROWS][NCOLS] =
+    {
+        {k_empty, LS(3)},
+        {k_c, c_layer_lock},
+    };
 
-    Key layer3[NROWS][NCOLS] = 
-        {
-            {k_empty, k_empty},
-            {k_d, k_D},
-        };
+    Key layer3[NROWS][NCOLS] =
+    {
+        {k_empty, k_empty},
+        {k_d, k_D},
+    };
 
 
     add_layer(layer0);
@@ -85,7 +64,6 @@ void sys_tick_handler(void)
     map_layer(pressed_keys);
     apply_modifiers(pressed_keys);
     execute(pressed_keys);
-    /* report_layer(current_layer); */
 }
 
 /* USB ISR handlers */
