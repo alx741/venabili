@@ -4,12 +4,16 @@
 #include "sensing.h"
 #include "usb_keys.h"
 
+#define DEBOUNCE_FACTOR 50
+
 int N_PRESSED = 0;
 int N_PREV_PRESSED = 0;
 bool KMAT_PREV_STATE[NROWS][NCOLS] = { { false } };
 bool KMAT_STATE[NROWS][NCOLS] = { { false } };
 Key_coordinate PRESSED_KEYS[NKEYS] = { {0, 0} };
 Key_coordinate PRESSED_PREV_KEYS[NKEYS] = { {0, 0} };
+// Misc
+bool matricesAreEqual(bool m1[NROWS][NCOLS], bool m2[NROWS][NCOLS]);
 
 void keyboard_sensing_init(void)
 {
@@ -57,10 +61,13 @@ int sense_keys(void)
     int i, j = 0; // Key index
     Key_coordinate coordinate = {0, 0};
 
+    // Debouncing variables
+    int debounce_counter = 0;
+    bool key_state = false;
+    bool key_prev_state = false;
 
     backup_and_wipe_current_state();
 
-        /* for (unsigned z = 0; z < 1000000; z++) { __asm__("nop"); } */
     for (int r = 5; r < (NROWS + 5); r++)
     {
         i = r - 5;
@@ -70,6 +77,21 @@ int sense_keys(void)
             j = c;
             coordinate.i = i;
             coordinate.j = j;
+
+            // Debounce
+            debounce_counter = 0;
+            while (debounce_counter < DEBOUNCE_FACTOR)
+            {
+                key_state = gpio_get(GPIOA, 1 << c);
+                // Some bouncing going on
+                if (key_state != key_prev_state) { debounce_counter = 0; }
+                // Seems stable
+                else { debounce_counter++; }
+                key_prev_state = key_state;
+                key_state = false;
+            }
+
+            // Read key state
             if (gpio_get(GPIOA, 1 << c))
             {
                 KMAT_STATE[i][j] = true;
@@ -108,4 +130,16 @@ bool tapped_alone(int i, int j)
 bool isNullCoordinate(Key_coordinate kc)
 {
     return (kc.i == -1 && kc.j == -1);
+}
+
+bool matricesAreEqual(bool m1[NROWS][NCOLS], bool m2[NROWS][NCOLS])
+{
+    for (int i = 0; i < NROWS; i++)
+    {
+        for (int j = 0; j < NCOLS; j++)
+        {
+            if (m1[i][j] != m2[i][j]) { return false; }
+        }
+    }
+    return true;
 }
