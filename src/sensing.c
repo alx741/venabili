@@ -40,19 +40,6 @@ void backup_and_wipe_current_state(void)
     N_PRESSED = 0;
 }
 
-int count_pressed(bool state[NROWS][NCOLS])
-{
-    int n = 0;
-    for (int i = 0; i < NROWS; i++)
-    {
-        for (int j = 0; j < NCOLS; j++)
-        {
-            if (state[i][j]) { n++; }
-        }
-    }
-    return n;
-}
-
 int sense_keys(void)
 {
     int n = 0;
