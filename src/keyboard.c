@@ -101,7 +101,7 @@ int get_layer_selection(uint16_t current_layer,
         for (int j = 0; j < NCOLS; j++)
         {
             Key k = layers[current_layer][i][j];
-            if (isLayerSelectionKey(k) && isPressed(KMAT_STATE, i, j))
+            if (isLayerSelectionKey(k) && currently_pressed(i, j))
             {
                 return get_layer_selection(k.command - 0x00FF - 1, layers);
             }
