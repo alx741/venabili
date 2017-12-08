@@ -61,7 +61,7 @@ void handle_6_normal_keys(Key k[6], int n)
         mods |= k[i].modifiers;
         keycodes[i] = k[i].usb_keycode;
     }
-    report_6_keypress(mods, keycodes);
+    report_6_keys(mods, keycodes);
 }
 
 void handle_command_keys(Key k)
