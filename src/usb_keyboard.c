@@ -46,7 +46,17 @@ void report_6_keypress(uint8_t modifiers, uint8_t keycodes[6])
     report_key(MOD_NONE, KEY_NONE);
 }
 
-void report_char(char c)
+void type_string(const char *s)
+{
+    char c = *s;
+    while (c != 0)
+    {
+        type_char(c);
+        c = *(++s);
+    }
+}
+
+void type_char(char c)
 {
     switch(c)
     {
@@ -246,6 +256,14 @@ void report_char(char c)
             report_keypress(MOD_LEFT_SHIFT, KEY_CLOSE_BRACKET); break;
         case '~':
             report_keypress(MOD_LEFT_SHIFT, KEY_GRAVE_ACCENT); break;
+
+
+        case '\n':
+            report_keypress(MOD_NONE, KEY_ENTER); break;
+        case '\t':
+            report_keypress(MOD_NONE, KEY_TAB); break;
+        case '\b':
+            report_keypress(MOD_NONE, KEY_BACKSPACE); break;
 
         default:
             break;
