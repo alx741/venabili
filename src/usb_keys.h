@@ -103,6 +103,38 @@
 #define     KEY_SEMICOLON       0x33  //   :
 #define     KEY_SINGLE_QUOTE    0x34  //   "
 #define     KEY_GRAVE_ACCENT    0x35  //   ~
+#define     KEY_COMMA           0x36  //   <
+#define     KEY_DOT             0x37  //   >
+#define     KEY_SLASH           0x38  //   ?
+
+
+/* Special */
+#define     KEY_CAPS            0x39
+#define     KEY_F1              0x3A
+#define     KEY_F2              0x3B
+#define     KEY_F3              0x3C
+#define     KEY_F4              0x3D
+#define     KEY_F5              0x3E
+#define     KEY_F6              0x3F
+#define     KEY_F7              0x40
+#define     KEY_F8              0x41
+#define     KEY_F9              0x42
+#define     KEY_F10             0x43
+#define     KEY_F11             0x44
+#define     KEY_F12             0x45
+#define     KEY_PRINT_SCREEN    0x46
+#define     KEY_SCROLL_LOCK     0x47
+#define     KEY_PAUSE           0x48
+#define     KEY_INSERT          0x49
+#define     KEY_HOME            0x4A
+#define     KEY_PAGE_UP         0x4B
+#define     KEY_DELETE          0x4C
+#define     KEY_END             0x4D
+#define     KEY_PAGE_DOWN       0x4E
+#define     KEY_RIGHT_ARROW     0x4F
+#define     KEY_LEFT_ARROW      0x50
+#define     KEY_DOWN_ARROW      0x51
+#define     KEY_UP_ARROW        0x52
 
 
 /* Modifiers */
