@@ -5,7 +5,7 @@
 #include "keys.h"
 #include "keyboard.h"
 
-static Key LAYERS[NLAYERS][NROWS][NCOLS];
+static Mapkey LAYERS[NLAYERS][NROWS][NCOLS];
 static int N_LAYERS = 0;
 
 static int CURRENT_LAYER = 0;
@@ -81,7 +81,7 @@ void handle_command_keys(Key k)
 }
 
 
-void add_layer(const Key layer[NROWS][NCOLS])
+void add_layer(const Mapkey layer[NROWS][NCOLS])
 {
     for (int i = 0; i < NROWS; i++)
     {
@@ -99,10 +99,10 @@ int get_layer_selection(uint16_t current_layer)
     {
         for (int j = 0; j < NCOLS; j++)
         {
-            Key k = LAYERS[current_layer][i][j];
-            if (isLayerSelectionKey(k) && currently_pressed(i, j))
+            Mapkey k = LAYERS[current_layer][i][j];
+            if (isLayerSelectionKey(k.hold) && currently_pressed(i, j))
             {
-                return get_layer_selection(k.command - 0x00FF - 1);
+                return get_layer_selection(k.hold.command - 0x00FF - 1);
             }
         }
     }

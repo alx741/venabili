@@ -22,8 +22,8 @@ typedef struct
  */
 typedef struct
 {
-    Key key1; // Key when normally pressed
-    Key key2; // Key when held pressed
+    Key press; // Key when pressed
+    Key hold; // Key when held
 } Mapkey;
 
 
