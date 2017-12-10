@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <libopencm3/cm3/systick.h>
 #include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/gpio.h>
 
 #include "usb.h"
 #include "usb_keys.h"
@@ -16,10 +17,13 @@ int main(void)
     usb_init();
     keyboard_sensing_init();
 
+	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
+	gpio_clear(GPIOB, GPIO13);
+
     Mapkey layer0[NROWS][NCOLS] =
     {
-        { {k_d, k_empty }, {k_A, k_empty} },
-        { {k_a, k_empty}, {k_empty, k_rshift} },
+        { {k_d, k_empty }, {k_empty, k_rshift} },
+        { {k_a, k_empty}, {k_c, k_rshift} },
         /* {k_space, LS(1)}, */
         /* {k_empty, k_rshift}, */
     };
@@ -60,9 +64,9 @@ void sys_tick_handler(void)
 
     sense_keys();
     select_layer();
-    map_layer(pressed_keys);
-    apply_modifiers(pressed_keys);
-    execute(pressed_keys);
+    int n_pressed_keys = map_layer(pressed_keys);
+    apply_modifiers(pressed_keys, n_pressed_keys);
+    execute(pressed_keys, n_pressed_keys);
 }
 
 /* USB ISR handlers */
