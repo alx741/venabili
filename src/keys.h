@@ -5,15 +5,26 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-/* A KEY might be either a normal keyboard symbol with its applied modifiers
+/* A Key might be either a normal keyboard symbol with its applied modifiers
  * or a special command
  */
 typedef struct
 {
+    // Normal Key
     uint8_t usb_keycode;
     uint8_t modifiers;
+
+    // Command key
     uint16_t command;
 } Key;
+
+/* Mapkey is used to map keys in layers
+ */
+typedef struct
+{
+    Key key1; // Key when normally pressed
+    Key key2; // Key when held pressed
+} Mapkey;
 
 
 /* Posible special commands
