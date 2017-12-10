@@ -1,4 +1,8 @@
 #include <stdint.h>
+#include <libopencm3/stm32/timer.h>
+#include <libopencm3/stm32/rcc.h>
+#include <libopencm3/cm3/nvic.h>
+#include <libopencm3/stm32/gpio.h> // FIXME: debug only
 #include "sensing.h"
 #include "usb_keys.h"
 #include "usb_keyboard.h"
@@ -12,10 +16,14 @@ static int CURRENT_LAYER = 0;
 static int CURRENT_LOCKED_LAYER = 0;
 static bool LAYER_LOCKED = false;
 
+#define TAP_TIMEOUT_MS  250
+static bool TAP_IS_TIMEDOUT = false;
+
 void handle_6_normal_keys(Key k[6], int n);
 void handle_command_keys(Key k);
 void lock_layer(void);
 void unlock_layer(void);
+void reset_tap_timer(void);
 
 // USB can handle up to 6KRO
 #define XKRO  6
@@ -210,4 +218,37 @@ void unlock_layer()
 {
     CURRENT_LOCKED_LAYER = 0;
     LAYER_LOCKED = false;
+}
+
+void keyboard_init(void)
+{
+    // Enable tap timer interrupt
+	nvic_enable_irq(NVIC_TIM2_IRQ);
+	nvic_set_priority(NVIC_TIM2_IRQ, 1);
+	rcc_periph_clock_enable(RCC_TIM2);
+    reset_tap_timer();
+}
+
+void tim2_isr(void)
+{
+    TAP_IS_TIMEDOUT = true;
+	TIM_SR(TIM2) &= ~TIM_SR_UIF; // Clear interrupt flag
+    gpio_toggle(GPIOB, GPIO13);
+    reset_tap_timer();
+}
+
+void reset_tap_timer(void)
+{
+    TAP_IS_TIMEDOUT = false;
+	TIM_CNT(TIM2) = 1;
+	TIM_PSC(TIM2) = 72000; // 1000 counts per second (1ms)
+	TIM_ARR(TIM2) = TAP_TIMEOUT_MS;
+	TIM_DIER(TIM2) |= TIM_DIER_UIE; // Enable TIM2 interrupt
+
+    // Configure TIM2
+	TIM_CR1(TIM2) |= TIM_CR1_DIR_UP;
+	TIM_CR1(TIM2) |= TIM_CR1_OPM;
+
+    // Start TIM2
+	TIM_CR1(TIM2) |= TIM_CR1_CEN;
 }

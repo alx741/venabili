@@ -3,6 +3,8 @@
 
 #define NLAYERS 4
 
+void keyboard_init(void);
+
 void execute(const Key keys[NKEYS], int n);
 
 void add_layer(const Mapkey layer[NROWS][NCOLS]);
