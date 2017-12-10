@@ -1,6 +1,16 @@
 #include "usb_keys.h"
 #include "keys.h"
 
+bool hasPressKey(Mapkey mk)
+{
+    return (! isEmptyKey(mk.press));
+}
+
+bool hasHoldKey(Mapkey mk)
+{
+    return (! isEmptyKey(mk.hold));
+}
+
 bool isNormalKey(Key k)
 {
     return (k.usb_keycode != KEY_NONE || k.modifiers != MOD_NONE)
