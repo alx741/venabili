@@ -16,37 +16,37 @@ int main(void)
     usb_init();
     keyboard_sensing_init();
 
-    Key layer0[NROWS][NCOLS] =
+    Mapkey layer0[NROWS][NCOLS] =
     {
-        {k_d, k_A},
-        {k_a, k_lctrl},
-        {k_space, LS(1)},
-        {k_empty, k_rshift},
+        { {k_d, k_empty }, {k_A, k_empty} },
+        { {k_a, k_empty}, {k_empty, k_rshift} },
+        /* {k_space, LS(1)}, */
+        /* {k_empty, k_rshift}, */
     };
 
-    Key layer1[NROWS][NCOLS] =
-    {
-        {LS(2), k_B},
-        {k_empty, c_layer_lock},
-    };
+    /* Key layer1[NROWS][NCOLS] = */
+    /* { */
+    /*     {LS(2), k_B}, */
+    /*     {k_empty, c_layer_lock}, */
+    /* }; */
 
-    Key layer2[NROWS][NCOLS] =
-    {
-        {k_empty, LS(3)},
-        {k_c, c_layer_lock},
-    };
+    /* Key layer2[NROWS][NCOLS] = */
+    /* { */
+    /*     {k_empty, LS(3)}, */
+    /*     {k_c, c_layer_lock}, */
+    /* }; */
 
-    Key layer3[NROWS][NCOLS] =
-    {
-        {k_empty, k_empty},
-        {k_d, k_D},
-    };
+    /* Key layer3[NROWS][NCOLS] = */
+    /* { */
+    /*     {k_empty, k_empty}, */
+    /*     {k_d, k_D}, */
+    /* }; */
 
 
     add_layer(layer0);
-    add_layer(layer1);
-    add_layer(layer2);
-    add_layer(layer3);
+    /* add_layer(layer1); */
+    /* add_layer(layer2); */
+    /* add_layer(layer3); */
 
 
     while (1)
