@@ -93,17 +93,16 @@ void add_layer(const Key layer[NROWS][NCOLS])
     N_LAYERS++;
 }
 
-int get_layer_selection(uint16_t current_layer,
-                        const Key layers[NLAYERS][NROWS][NCOLS])
+int get_layer_selection(uint16_t current_layer)
 {
     for (int i = 0; i < NROWS; i++)
     {
         for (int j = 0; j < NCOLS; j++)
         {
-            Key k = layers[current_layer][i][j];
+            Key k = LAYERS[current_layer][i][j];
             if (isLayerSelectionKey(k) && currently_pressed(i, j))
             {
-                return get_layer_selection(k.command - 0x00FF - 1, layers);
+                return get_layer_selection(k.command - 0x00FF - 1);
             }
         }
     }
@@ -117,12 +116,12 @@ void select_layer()
 {
     if (LAYER_LOCKED)
     {
-        CURRENT_LAYER = get_layer_selection(CURRENT_LOCKED_LAYER, LAYERS);
+        CURRENT_LAYER = get_layer_selection(CURRENT_LOCKED_LAYER);
     }
     else
     {
         // Start layer evaluation from layer 0
-        CURRENT_LAYER = get_layer_selection(0, LAYERS);
+        CURRENT_LAYER = get_layer_selection(0);
     }
 }
 
