@@ -111,6 +111,11 @@ bool previously_pressed_alone(int i, int j);
 bool tapped(int i, int j);
 
 
+/* Tell if a key was tapped alone
+ */
+bool tapped_alone(int i, int j);
+
+
 
 /*************************
  *    MOUSE SENSING

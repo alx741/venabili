@@ -119,6 +119,11 @@ bool tapped(int i, int j)
     return (previously_pressed(i, j) && !currently_pressed(i, j));
 }
 
+bool tapped_alone(int i, int j)
+{
+    return (previously_pressed_alone(i, j) && !currently_pressed(i, j));
+}
+
 bool isNullCoordinate(Key_coordinate kc)
 {
     return (kc.i == -1 && kc.j == -1);

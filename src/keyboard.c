@@ -20,12 +20,12 @@ void unlock_layer(void);
 // USB can handle up to 6KRO
 #define XKRO  6
 
-void execute(const Key keys[NKEYS])
+void execute(const Key keys[NKEYS], int n)
 {
     Key normal_keys[XKRO] = {0};
     int n_normal_keys = 0;
 
-    for (int i = 0; i < N_PRESSED; i++)
+    for (int i = 0; i < n; i++)
     {
         Key k = keys[i];
 
@@ -126,16 +126,50 @@ void select_layer()
 }
 
 
-void map_layer(Key keys[NKEYS])
+int map_layer(Key keys[NKEYS])
 {
-    int i = 0;
-    Key_coordinate *k = &PRESSED_KEYS[0];
+    int index = 0;
 
-    while (! isNullCoordinate(*k))
+    for (int i = 0; i < NROWS; i++)
     {
-        keys[i++] = LAYERS[CURRENT_LAYER][k->i][k->j];
-        k++;
+        for (int j = 0; j < NCOLS; j++)
+        {
+            Mapkey k = LAYERS[CURRENT_LAYER][i][j];
+            if (currently_pressed(i, j))
+            {
+                // Only press functionality
+                if (hasPressKey(k) && ! hasHoldKey(k))
+                {
+                    keys[index++] = k.press;
+                }
+
+                // Only hold functionality
+                else if (! hasPressKey(k) && hasHoldKey(k))
+                {
+                    keys[index++] = k.hold;
+                }
+
+                // Double functionality
+                else if (hasPressKey(k) && hasHoldKey(k) && N_PRESSED > 1)
+                {
+                    keys[index++] = k.hold;
+                }
+
+            }
+
+            // Tap functionality is only triggered when the key is tapped alone
+            else if (tapped_alone(i, j))
+            {
+                // Double functionality
+                if (hasPressKey(k) && hasHoldKey(k))
+                {
+                    keys[index++] = k.press;
+                }
+            }
+        }
     }
+
+    return index;
 }
 
 
@@ -153,10 +187,10 @@ uint8_t retrieve_modifiers(Key keys[NKEYS])
 }
 
 
-void apply_modifiers(Key keys[NKEYS])
+void apply_modifiers(Key keys[NKEYS], int n)
 {
     uint8_t mods = retrieve_modifiers(keys);
-    for (int i = 0; i < N_PRESSED; i++)
+    for (int i = 0; i < n; i++)
     {
         if (isNormalKey(keys[i]))
         {
