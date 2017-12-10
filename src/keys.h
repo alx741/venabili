@@ -48,6 +48,14 @@ typedef struct
 #define LS(n) {KEY_NONE, MOD_NONE, _LS_FIRST + n}
 
 
+/* Tell if Mapkey has press key functionality
+ */
+bool hasPressKey(Mapkey mk);
+
+/* Tell if Mapkey has hold key functionality
+ */
+bool hasHoldKey(Mapkey mk);
+
 
 /* Tell if a KEY is normal
  * It's not a command key
