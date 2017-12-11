@@ -34,7 +34,7 @@
 #define NCOLS 12
 #define NKEYS (NROWS * NCOLS) // 48
 
-#define DEBOUNCE_FACTOR 10
+#define DEBOUNCE_FACTOR 20
 
 /*
  *

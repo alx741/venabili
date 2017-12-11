@@ -2,7 +2,6 @@
 #include <libopencm3/stm32/timer.h>
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/cm3/nvic.h>
-#include <libopencm3/stm32/gpio.h> // FIXME: debug only
 #include "sensing.h"
 #include "usb_keys.h"
 #include "usb_keyboard.h"
@@ -16,7 +15,7 @@ static int CURRENT_LAYER = 0;
 static int CURRENT_LOCKED_LAYER = 0;
 static bool LAYER_LOCKED = false;
 
-#define TAP_TIMEOUT_MS  250
+#define TAP_TIMEOUT_MS  1500
 static bool TAP_IS_TIMEDOUT = false;
 
 void handle_6_normal_keys(Key k[6], int n);
@@ -158,18 +157,24 @@ int map_layer(Key keys[NKEYS])
                 }
 
                 // Double functionality
-                else if (hasPressKey(k) && hasHoldKey(k) && N_PRESSED > 1)
+                else if (hasPressKey(k) && hasHoldKey(k))
                 {
                     keys[index++] = k.hold;
                 }
 
             }
 
-            // Tap functionality is only triggered when the key is tapped alone
-            else if (tapped_alone(i, j))
+            if (hasPressKey(k) && hasHoldKey(k))
             {
-                // Double functionality
-                if (hasPressKey(k) && hasHoldKey(k))
+                // Reset Tap timer on first pressed of a key with Tap
+                // functionality
+                if (! previously_pressed(i, j) && currently_pressed(i, j))
+                {
+                    reset_tap_timer();
+                }
+
+                // Tap functionality is only triggered when tapped alone
+                else if (tapped_alone(i, j) && ! TAP_IS_TIMEDOUT)
                 {
                     keys[index++] = k.press;
                 }
@@ -233,8 +238,6 @@ void tim2_isr(void)
 {
     TAP_IS_TIMEDOUT = true;
 	TIM_SR(TIM2) &= ~TIM_SR_UIF; // Clear interrupt flag
-    gpio_toggle(GPIOB, GPIO13);
-    reset_tap_timer();
 }
 
 void reset_tap_timer(void)
