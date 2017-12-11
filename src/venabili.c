@@ -19,8 +19,8 @@ int main(void)
     keyboard_init();
 
     // FIXME: debug only
-	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
-	gpio_clear(GPIOB, GPIO13);
+	/* gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13); */
+	/* gpio_clear(GPIOB, GPIO13); */
 
     Mapkey layer0[NROWS][NCOLS] =
     {
