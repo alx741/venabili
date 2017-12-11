@@ -13,7 +13,7 @@ typedef struct _mouse_report_t
     uint8_t wheel;
 } mouse_report_t;
 
-void report_mouse_movement(MouseAxis axis, MouseDir dir)
+void report_mouse_movement(MouseMovement m)
 {
     mouse_report_t mr = {0};
     mr.report_id = MOUSE_REPORT_ID;

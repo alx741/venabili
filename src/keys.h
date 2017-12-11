@@ -29,18 +29,18 @@ typedef struct
 
 /* Posible special commands
  */
-#define CMD_NONE             0x0000
-#define CMD_LOCK_LAYER       0x0001
+#define CMD_NONE               0x0000
+#define CMD_LOCK_LAYER         0x0001
 // Reserved 0x0002 - 0x000F
-#define CMD_MOUSE_X_UP       0x0010
-#define CMD_MOUSE_X_DOWN     0x0011
-#define CMD_MOUSE_Y_UP       0x0012
-#define CMD_MOUSE_Y_DOWN     0x0013
-#define CMD_MOUSE_Z_UP       0x0014 // Wheel
-#define CMD_MOUSE_Z_DOWN     0x0015
-#define CMD_MOUSE_CLICK_1    0x0016
-#define CMD_MOUSE_CLICK_2    0x0017
-#define CMD_MOUSE_CLICK_3    0x0018
+#define CMD_MOUSE_UP           0x0010
+#define CMD_MOUSE_DOWN         0x0011
+#define CMD_MOUSE_LEFT         0x0012
+#define CMD_MOUSE_RIGHT        0x0013
+#define CMD_MOUSE_WHEEL_UP     0x0014
+#define CMD_MOUSE_WHEEL_DOWN   0x0015
+#define CMD_MOUSE_CLICK_1      0x0016
+#define CMD_MOUSE_CLICK_2      0x0017
+#define CMD_MOUSE_CLICK_3      0x0018
 // ... Up to 0x00FF
 
 // Use the LS(n) macro for Layer Selection
@@ -275,12 +275,12 @@ extern const Key    c_layer_lock;
 
 
 /* Mouse */
-extern const Key    m_x_up;
-extern const Key    m_x_down;
-extern const Key    m_y_up;
-extern const Key    m_y_down;
-extern const Key    m_z_up; // Wheel
-extern const Key    m_z_down;
+extern const Key    m_up;
+extern const Key    m_down;
+extern const Key    m_left;
+extern const Key    m_right;
+extern const Key    m_wheel_up;
+extern const Key    m_wheel_down;
 extern const Key    m_click_1;
 extern const Key    m_click_2;
 extern const Key    m_click_3;
