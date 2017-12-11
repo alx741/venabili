@@ -168,7 +168,38 @@ extern const Key     k_rsuper;
 
 
 /* Symbols */
+extern const Key     k_back_quote;
+extern const Key     k_double_quote;
+extern const Key     k_single_quote;
+extern const Key     k_tilde;
+extern const Key     k_bang;
 extern const Key     k_at;
+extern const Key     k_hash;
+extern const Key     k_dollar;
+extern const Key     k_percent;
+extern const Key     k_caret;
+extern const Key     k_ampersand;
+extern const Key     k_asterisk;
+extern const Key     k_hyphen;
+extern const Key     k_under_score;
+extern const Key     k_equal;
+extern const Key     k_plus;
+extern const Key     k_semicolon;
+extern const Key     k_colon;
+extern const Key     k_dot;
+extern const Key     k_comma;
+extern const Key     k_slash;
+extern const Key     k_question_mark;
+extern const Key     k_backslash;
+extern const Key     k_pipe;
+extern const Key     k_greater_than;
+extern const Key     k_less_than;
+extern const Key     k_open_paren;
+extern const Key     k_close_paren;
+extern const Key     k_open_bracket;
+extern const Key     k_close_bracket;
+extern const Key     k_open_brace;
+extern const Key     k_close_brace;
 
 
 /* Non-printables */

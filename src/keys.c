@@ -56,6 +56,7 @@ bool areKeysEqual(Key k1, Key k2)
 
 const Key k_empty = {KEY_NONE, MOD_NONE, CMD_NONE};
 
+
 const Key k_a = {KEY_A, MOD_NONE, CMD_NONE}; const Key k_A = {KEY_A, MOD_LEFT_SHIFT, CMD_NONE};
 const Key k_b = {KEY_B, MOD_NONE, CMD_NONE}; const Key k_B = {KEY_B, MOD_LEFT_SHIFT, CMD_NONE};
 const Key k_c = {KEY_C, MOD_NONE, CMD_NONE}; const Key k_C = {KEY_C, MOD_LEFT_SHIFT, CMD_NONE};
@@ -83,6 +84,8 @@ const Key k_x = {KEY_X, MOD_NONE, CMD_NONE}; const Key k_X = {KEY_X, MOD_LEFT_SH
 const Key k_y = {KEY_Y, MOD_NONE, CMD_NONE}; const Key k_Y = {KEY_Y, MOD_LEFT_SHIFT, CMD_NONE};
 const Key k_z = {KEY_Z, MOD_NONE, CMD_NONE}; const Key k_Z = {KEY_Z, MOD_LEFT_SHIFT, CMD_NONE};
 
+
+
 const Key k_0 = {KEY_0, MOD_NONE, CMD_NONE};
 const Key k_1 = {KEY_1, MOD_NONE, CMD_NONE};
 const Key k_2 = {KEY_2, MOD_NONE, CMD_NONE};
@@ -95,8 +98,6 @@ const Key k_8 = {KEY_8, MOD_NONE, CMD_NONE};
 const Key k_9 = {KEY_9, MOD_NONE, CMD_NONE};
 
 
-const Key k_at = {KEY_2, MOD_LEFT_SHIFT, CMD_NONE};
-
 
 const Key k_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
 const Key k_lshift = {KEY_NONE, MOD_LEFT_SHIFT, CMD_NONE};
@@ -108,12 +109,47 @@ const Key k_ralt = {KEY_NONE, MOD_RIGHT_ALT, CMD_NONE};
 const Key k_rsuper = {KEY_NONE, MOD_RIGHT_SUPER, CMD_NONE};
 
 
+
+const Key k_back_quote = {KEY_GRAVE_ACCENT, MOD_NONE, CMD_NONE};
+const Key k_double_quote = {KEY_SINGLE_QUOTE, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_single_quote = {KEY_SINGLE_QUOTE, MOD_NONE, CMD_NONE};
+const Key k_tilde = {KEY_GRAVE_ACCENT, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_bang = {KEY_1, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_at = {KEY_2, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_hash = {KEY_3, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_dollar = {KEY_4, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_percent = {KEY_5, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_caret = {KEY_6, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_ampersand = {KEY_7, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_asterisk = {KEY_8, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_hyphen = {KEY_HYPHEN, MOD_NONE, CMD_NONE};
+const Key k_under_score = {KEY_HYPHEN, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_equal = {KEY_EQUAL, MOD_NONE, CMD_NONE};
+const Key k_plus = {KEY_EQUAL, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_semicolon = {KEY_SEMICOLON, MOD_NONE, CMD_NONE};
+const Key k_colon = {KEY_SEMICOLON, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_dot = {KEY_DOT, MOD_NONE, CMD_NONE};
+const Key k_comma = {KEY_DOT, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_slash = {KEY_SLASH, MOD_NONE, CMD_NONE};
+const Key k_question_mark = {KEY_SLASH, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_backslash = {KEY_BACKSLASH, MOD_NONE, CMD_NONE};
+const Key k_pipe = {KEY_BACKSLASH, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_greater_than = {KEY_DOT, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_less_than = {KEY_COMMA, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_open_paren = {KEY_9, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_close_paren = {KEY_0, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_open_bracket = {KEY_OPEN_BRACKET, MOD_NONE, CMD_NONE};
+const Key k_close_bracket = {KEY_CLOSE_BRACKET, MOD_NONE, CMD_NONE};
+const Key k_open_brace = {KEY_OPEN_BRACKET, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_close_brace = {KEY_CLOSE_BRACKET, MOD_LEFT_SHIFT, CMD_NONE};
+
+
+
 const Key k_enter = {KEY_ENTER, MOD_NONE, CMD_NONE};
 const Key k_escape = {KEY_ESCAPE, MOD_NONE, CMD_NONE};
 const Key k_backspace = {KEY_BACKSPACE, MOD_NONE, CMD_NONE};
 const Key k_tab = {KEY_TAB, MOD_NONE, CMD_NONE};
 const Key k_space = {KEY_SPACEBAR, MOD_NONE, CMD_NONE};
-
 const Key k_print_screen = {KEY_PRINT_SCREEN, MOD_NONE, CMD_NONE};
 const Key k_scroll_lock = {KEY_SCROLL_LOCK, MOD_NONE, CMD_NONE};
 const Key k_pause = {KEY_PAUSE, MOD_NONE, CMD_NONE};
@@ -127,7 +163,6 @@ const Key k_arrow_up = {KEY_UP_ARROW, MOD_NONE, CMD_NONE};
 const Key k_arrow_down = {KEY_DOWN_ARROW, MOD_NONE, CMD_NONE};
 const Key k_arrow_left = {KEY_LEFT_ARROW, MOD_NONE, CMD_NONE};
 const Key k_arrow_right = {KEY_RIGHT_ARROW, MOD_NONE, CMD_NONE};
-
 const Key k_f1 = {KEY_F1, MOD_NONE, CMD_NONE};
 const Key k_f2 = {KEY_F2, MOD_NONE, CMD_NONE};
 const Key k_f3 = {KEY_F3, MOD_NONE, CMD_NONE};
@@ -140,5 +175,7 @@ const Key k_f9 = {KEY_F9, MOD_NONE, CMD_NONE};
 const Key k_f10 = {KEY_F10, MOD_NONE, CMD_NONE};
 const Key k_f11 = {KEY_F11, MOD_NONE, CMD_NONE};
 const Key k_f12 = {KEY_F12, MOD_NONE, CMD_NONE};
+
+
 
 const Key c_layer_lock = {KEY_NONE, MOD_NONE, CMD_LOCK_LAYER};
