@@ -84,6 +84,13 @@ bool isEmptyKey(Key k);
 bool areKeysEqual(Key k1, Key k2);
 
 
+/* Create a new key, using modifiers from usb_keys.h
+ * and an existing key
+ *
+ * e.g.   "RCTRL + LSHIFT + c"
+ *        makeKey(MOD_RIGHT_CTRL | MOD_LEFT_SHIFT, k_c);
+ */
+Key makeKey(uint8_t modifiers, Key k);
 
 /* ****************************
  *        Predefined keys
@@ -157,14 +164,14 @@ extern const Key     k_9;
 
 
 /* Modifiers */
-extern const Key     k_lctrl;
-extern const Key     k_lshift;
-extern const Key     k_lalt;
-extern const Key     k_lsuper;
-extern const Key     k_rctrl;
-extern const Key     k_rshift;
-extern const Key     k_ralt;
-extern const Key     k_rsuper;
+extern const Key     m_lctrl;
+extern const Key     m_lshift;
+extern const Key     m_lalt;
+extern const Key     m_lsuper;
+extern const Key     m_rctrl;
+extern const Key     m_rshift;
+extern const Key     m_ralt;
+extern const Key     m_rsuper;
 
 
 /* Symbols */
