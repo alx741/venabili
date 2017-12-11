@@ -161,7 +161,13 @@ extern const Key     k_space;
 
 /* Modifiers */
 extern const Key     k_lctrl;
+extern const Key     k_lshift;
+extern const Key     k_lalt;
+extern const Key     k_lsuper;
+extern const Key     k_rctrl;
 extern const Key     k_rshift;
+extern const Key     k_ralt;
+extern const Key     k_rsuper;
 // ...
 
 

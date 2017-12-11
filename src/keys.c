@@ -97,8 +97,16 @@ const Key k_9 = {KEY_9, MOD_NONE, CMD_NONE};
 
 const Key k_at = {KEY_2, MOD_LEFT_SHIFT, CMD_NONE};
 const Key k_space = {KEY_SPACEBAR, MOD_NONE, CMD_NONE};
+
+
 const Key k_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
+const Key k_lshift = {KEY_NONE, MOD_LEFT_SHIFT, CMD_NONE};
+const Key k_lalt = {KEY_NONE, MOD_LEFT_ALT, CMD_NONE};
+const Key k_lsuper = {KEY_NONE, MOD_LEFT_SUPER, CMD_NONE};
+const Key k_rctrl = {KEY_NONE, MOD_RIGHT_CTRL, CMD_NONE};
 const Key k_rshift = {KEY_NONE, MOD_RIGHT_SHIFT, CMD_NONE};
-// ...
+const Key k_ralt = {KEY_NONE, MOD_RIGHT_ALT, CMD_NONE};
+const Key k_rsuper = {KEY_NONE, MOD_RIGHT_SUPER, CMD_NONE};
+
 
 const Key c_layer_lock = {KEY_NONE, MOD_NONE, CMD_LOCK_LAYER};
