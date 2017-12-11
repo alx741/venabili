@@ -96,7 +96,6 @@ const Key k_9 = {KEY_9, MOD_NONE, CMD_NONE};
 
 
 const Key k_at = {KEY_2, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_space = {KEY_SPACEBAR, MOD_NONE, CMD_NONE};
 
 
 const Key k_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
@@ -108,5 +107,38 @@ const Key k_rshift = {KEY_NONE, MOD_RIGHT_SHIFT, CMD_NONE};
 const Key k_ralt = {KEY_NONE, MOD_RIGHT_ALT, CMD_NONE};
 const Key k_rsuper = {KEY_NONE, MOD_RIGHT_SUPER, CMD_NONE};
 
+
+const Key k_enter = {KEY_ENTER, MOD_NONE, CMD_NONE};
+const Key k_escape = {KEY_ESCAPE, MOD_NONE, CMD_NONE};
+const Key k_backspace = {KEY_BACKSPACE, MOD_NONE, CMD_NONE};
+const Key k_tab = {KEY_TAB, MOD_NONE, CMD_NONE};
+const Key k_space = {KEY_SPACEBAR, MOD_NONE, CMD_NONE};
+
+const Key k_print_screen = {KEY_PRINT_SCREEN, MOD_NONE, CMD_NONE};
+const Key k_scroll_lock = {KEY_SCROLL_LOCK, MOD_NONE, CMD_NONE};
+const Key k_pause = {KEY_PAUSE, MOD_NONE, CMD_NONE};
+const Key k_insert = {KEY_INSERT, MOD_NONE, CMD_NONE};
+const Key k_delete = {KEY_DELETE, MOD_NONE, CMD_NONE};
+const Key k_home = {KEY_HOME, MOD_NONE, CMD_NONE};
+const Key k_end = {KEY_END, MOD_NONE, CMD_NONE};
+const Key k_pageup = {KEY_PAGE_UP, MOD_NONE, CMD_NONE};
+const Key k_pagedown = {KEY_PAGE_DOWN, MOD_NONE, CMD_NONE};
+const Key k_arrow_up = {KEY_UP_ARROW, MOD_NONE, CMD_NONE};
+const Key k_arrow_down = {KEY_DOWN_ARROW, MOD_NONE, CMD_NONE};
+const Key k_arrow_left = {KEY_LEFT_ARROW, MOD_NONE, CMD_NONE};
+const Key k_arrow_right = {KEY_RIGHT_ARROW, MOD_NONE, CMD_NONE};
+
+const Key k_f1 = {KEY_F1, MOD_NONE, CMD_NONE};
+const Key k_f2 = {KEY_F2, MOD_NONE, CMD_NONE};
+const Key k_f3 = {KEY_F3, MOD_NONE, CMD_NONE};
+const Key k_f4 = {KEY_F4, MOD_NONE, CMD_NONE};
+const Key k_f5 = {KEY_F5, MOD_NONE, CMD_NONE};
+const Key k_f6 = {KEY_F6, MOD_NONE, CMD_NONE};
+const Key k_f7 = {KEY_F7, MOD_NONE, CMD_NONE};
+const Key k_f8 = {KEY_F8, MOD_NONE, CMD_NONE};
+const Key k_f9 = {KEY_F9, MOD_NONE, CMD_NONE};
+const Key k_f10 = {KEY_F10, MOD_NONE, CMD_NONE};
+const Key k_f11 = {KEY_F11, MOD_NONE, CMD_NONE};
+const Key k_f12 = {KEY_F12, MOD_NONE, CMD_NONE};
 
 const Key c_layer_lock = {KEY_NONE, MOD_NONE, CMD_LOCK_LAYER};
