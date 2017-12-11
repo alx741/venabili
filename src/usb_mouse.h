@@ -1,12 +1,11 @@
 #ifndef USB_MOUSE_H
 #define USB_MOUSE_H
 
-typedef enum _mouse_axis {X, Y, Z} MouseAxis;
-typedef enum _mouse_dir {UP, DOWN} MouseDir;
+typedef enum _mouse_axis {UP, DOWN, LEFT, RIGHT, WHEELUP WHEELDOWN} MouseMovement;
 
 /* Report mouse movement
  */
-void report_mouse_movement(MouseAxis axis, MouseDir dir);
+void report_mouse_movement(MouseMovement m);
 
 #endif // USB_MOUSE_H
 

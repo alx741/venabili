@@ -5,6 +5,7 @@
 #include "sensing.h"
 #include "usb_keys.h"
 #include "usb_keyboard.h"
+#include "usb_mouse.h"
 #include "keys.h"
 #include "keyboard.h"
 
@@ -86,22 +87,23 @@ void handle_command_keys(Key k)
 
 void handle_mouse_command_keys(Key k)
 {
-    if (areKeysEqual(k, m_x_up))
+    if (areKeysEqual(k, m_up))
+    {
+        report_mouse_movement(X, UP);
+    }
+    else if (areKeysEqual(k, m_down))
     {
     }
-    else if (areKeysEqual(k, m_x_down))
+    else if (areKeysEqual(k, m_left))
     {
     }
-    else if (areKeysEqual(k, m_y_up))
+    else if (areKeysEqual(k, m_right))
     {
     }
-    else if (areKeysEqual(k, m_y_down))
+    else if (areKeysEqual(k, m_wheel_up))
     {
     }
-    else if (areKeysEqual(k, m_z_up))
-    {
-    }
-    else if (areKeysEqual(k, m_z_down))
+    else if (areKeysEqual(k, m_wheel_down))
     {
     }
     else if (areKeysEqual(k, m_click_1))
