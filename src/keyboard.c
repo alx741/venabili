@@ -142,6 +142,7 @@ int map_layer(Key keys[NKEYS])
         for (int j = 0; j < NCOLS; j++)
         {
             Mapkey k = LAYERS[CURRENT_LAYER][i][j];
+            // Handle normal key presses
             if (currently_pressed(i, j))
             {
                 // Only press functionality
@@ -164,6 +165,7 @@ int map_layer(Key keys[NKEYS])
 
             }
 
+            // Handle Taps
             if (hasPressKey(k) && hasHoldKey(k))
             {
                 // Reset Tap timer on first pressed of a key with Tap
