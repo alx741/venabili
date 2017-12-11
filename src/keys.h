@@ -113,14 +113,33 @@ bool areKeysEqual(Key k1, Key k2);
 extern const Key     k_empty;
 
 /* Letters */
-extern const Key     k_a;
-extern const Key     k_A;
-extern const Key     k_b;
-extern const Key     k_B;
-extern const Key     k_c;
-extern const Key     k_C;
-extern const Key     k_d;
-extern const Key     k_D;
+//                Lower case     Upper case
+extern const Key     k_a,           k_A;
+extern const Key     k_b,           k_B;
+extern const Key     k_c,           k_C;
+extern const Key     k_d,           k_D;
+extern const Key     k_e,           k_E;
+extern const Key     k_f,           k_F;
+extern const Key     k_g,           k_G;
+extern const Key     k_h,           k_H;
+extern const Key     k_i,           k_I;
+extern const Key     k_j,           k_J;
+extern const Key     k_k,           k_K;
+extern const Key     k_l,           k_L;
+extern const Key     k_m,           k_M;
+extern const Key     k_n,           k_N;
+extern const Key     k_o,           k_O;
+extern const Key     k_p,           k_P;
+extern const Key     k_q,           k_Q;
+extern const Key     k_r,           k_R;
+extern const Key     k_s,           k_S;
+extern const Key     k_t,           k_T;
+extern const Key     k_u,           k_U;
+extern const Key     k_v,           k_V;
+extern const Key     k_w,           k_W;
+extern const Key     k_x,           k_X;
+extern const Key     k_y,           k_Y;
+extern const Key     k_z,           k_Z;
 
 /* Symbols */
 extern const Key     k_at;
