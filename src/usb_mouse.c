@@ -19,16 +19,25 @@ void report_mouse_movement(MouseMovement m)
     mr.report_id = MOUSE_REPORT_ID;
     mr.buttons = 0;
 
-    switch (axis)
+    switch (m)
     {
-        case X:
-            mr.x_axis = 1; // FIXME: use proper value here
+        case UP:
+            mr.y_axis = -1; // FIXME: use proper value here
             break;
-        case Y:
-            mr.y_axis = 1; // FIXME: use proper value here
+        case DOWN:
+            mr.y_axis = 1;
             break;
-        case Z:
-            mr.wheel = 1; // FIXME: use proper value here
+        case RIGHT:
+            mr.x_axis = 1;
+            break;
+        case LEFT:
+            mr.x_axis = -1;
+            break;
+        case WHEELUP:
+            mr.wheel = 1;
+            break;
+        case WHEELDOWN:
+            mr.wheel = -1;
             break;
     }
     while(usbd_ep_write_packet(usbd_dev, 0x81, &mr, 5) != 5);

@@ -34,8 +34,8 @@ int main(void)
     {
         { {m_up, k_empty }, {k_empty, m_rshift} },
         { {m_down, k_empty}, {k_b, m_rshift} },
-        { {k_space, k_empty}, {k_empty, k_empty}},
-        { {k_empty, k_empty}, {k_empty, m_rshift}},
+        { {m_left, k_empty}, {k_empty, k_empty}},
+        { {m_right, k_empty}, {k_empty, m_rshift}},
     };
 
 
