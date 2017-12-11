@@ -58,6 +58,26 @@ Key makeKey(uint8_t mods, Key k)
 }
 
 
+Key apply_mod(Key k, uint8_t mod)
+{
+    Key new;
+    new.modifiers = k.modifiers;
+    new.modifiers |= mod;
+    new.usb_keycode = k.usb_keycode;
+    new.command = k.command;
+    return new;
+}
+
+Key Lctrl(Key k)  { return apply_mod(k, MOD_LEFT_CTRL); }
+Key Lshift(Key k) { return apply_mod(k, MOD_LEFT_SHIFT); }
+Key Lalt(Key k)   { return apply_mod(k, MOD_LEFT_ALT); }
+Key Lsuper(Key k) { return apply_mod(k, MOD_LEFT_SUPER); }
+Key Rctrl(Key k)  { return apply_mod(k, MOD_RIGHT_CTRL); }
+Key Rshift(Key k) { return apply_mod(k, MOD_RIGHT_SHIFT); }
+Key Ralt(Key k)   { return apply_mod(k, MOD_RIGHT_ALT); }
+Key Rsuper(Key k) { return apply_mod(k, MOD_RIGHT_SUPER); }
+
+
 
 /**********
  *  Keys
