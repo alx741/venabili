@@ -20,6 +20,7 @@ static bool TAP_IS_TIMEDOUT = false;
 
 void handle_6_normal_keys(Key k[6], int n);
 void handle_command_keys(Key k);
+void handle_mouse_command_keys(Key k);
 void lock_layer(void);
 void unlock_layer(void);
 void reset_tap_timer(void);
@@ -76,14 +77,41 @@ void handle_command_keys(Key k)
     if (areKeysEqual(k, c_layer_lock))
     {
         // Togle layer locking
-        if (LAYER_LOCKED)
-        {
-            unlock_layer();
-        }
-        else
-        {
-            lock_layer();
-        }
+        if (LAYER_LOCKED) { unlock_layer(); }
+        else { lock_layer(); }
+    }
+
+    else if (isMouseCommandKey(k)) { handle_mouse_command_keys(k); }
+}
+
+void handle_mouse_command_keys(Key k)
+{
+    if (areKeysEqual(k, m_x_up))
+    {
+    }
+    else if (areKeysEqual(k, m_x_down))
+    {
+    }
+    else if (areKeysEqual(k, m_y_up))
+    {
+    }
+    else if (areKeysEqual(k, m_y_down))
+    {
+    }
+    else if (areKeysEqual(k, m_z_up))
+    {
+    }
+    else if (areKeysEqual(k, m_z_down))
+    {
+    }
+    else if (areKeysEqual(k, m_click_1))
+    {
+    }
+    else if (areKeysEqual(k, m_click_2))
+    {
+    }
+    else if (areKeysEqual(k, m_click_3))
+    {
     }
 }
 
