@@ -92,6 +92,11 @@ bool isEmptyKey(Key k);
 bool areKeysEqual(Key k1, Key k2);
 
 
+/* Tell if a key is a mouse command key
+ */
+bool isMouseCommandKey(Key k);
+
+
 /* Apply modifiers to a key
  *
  * e.g.   Rctrl(Lshift(k_a)) = CTRL + SHIFT + a

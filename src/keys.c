@@ -48,15 +48,18 @@ bool areKeysEqual(Key k1, Key k2)
             && k1.command == k2.command;
 }
 
-Key makeKey(uint8_t mods, Key k)
+bool isMouseCommandKey(Key k)
 {
-    Key key;
-    key.modifiers = mods;
-    key.modifiers |= k.modifiers;
-    key.usb_keycode = k.usb_keycode;
-    return key;
+    return (areKeysEqual(k, m_x_up)
+            || areKeysEqual(k, m_x_down)
+            || areKeysEqual(k, m_y_up)
+            || areKeysEqual(k, m_y_down)
+            || areKeysEqual(k, m_z_up)
+            || areKeysEqual(k, m_z_down)
+            || areKeysEqual(k, m_click_1)
+            || areKeysEqual(k, m_click_2)
+            || areKeysEqual(k, m_click_3));
 }
-
 
 Key apply_mod(Key k, uint8_t mod)
 {
