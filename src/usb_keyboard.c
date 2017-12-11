@@ -1,10 +1,9 @@
 #include <string.h>
 #include <stdint.h>
 #include <libopencm3/usb/usbd.h>
+#include "usb.h"
 #include "usb_keyboard.h"
 #include "usb_keys.h"
-
-#include "usb.h"
 
 #define KEYBOARD_REPORT_ID 0x02
 
