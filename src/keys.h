@@ -141,6 +141,18 @@ extern const Key     k_x,           k_X;
 extern const Key     k_y,           k_Y;
 extern const Key     k_z,           k_Z;
 
+/* Numbers */
+extern const Key     k_0;
+extern const Key     k_1;
+extern const Key     k_2;
+extern const Key     k_3;
+extern const Key     k_4;
+extern const Key     k_5;
+extern const Key     k_6;
+extern const Key     k_7;
+extern const Key     k_8;
+extern const Key     k_9;
+
 /* Symbols */
 extern const Key     k_at;
 

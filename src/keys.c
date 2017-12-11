@@ -83,6 +83,18 @@ const Key k_x = {KEY_X, MOD_NONE, CMD_NONE}; const Key k_X = {KEY_X, MOD_LEFT_SH
 const Key k_y = {KEY_Y, MOD_NONE, CMD_NONE}; const Key k_Y = {KEY_Y, MOD_LEFT_SHIFT, CMD_NONE};
 const Key k_z = {KEY_Z, MOD_NONE, CMD_NONE}; const Key k_Z = {KEY_Z, MOD_LEFT_SHIFT, CMD_NONE};
 
+const Key k_0 = {KEY_0, MOD_NONE, CMD_NONE};
+const Key k_1 = {KEY_1, MOD_NONE, CMD_NONE};
+const Key k_2 = {KEY_2, MOD_NONE, CMD_NONE};
+const Key k_3 = {KEY_3, MOD_NONE, CMD_NONE};
+const Key k_4 = {KEY_4, MOD_NONE, CMD_NONE};
+const Key k_5 = {KEY_5, MOD_NONE, CMD_NONE};
+const Key k_6 = {KEY_6, MOD_NONE, CMD_NONE};
+const Key k_7 = {KEY_7, MOD_NONE, CMD_NONE};
+const Key k_8 = {KEY_8, MOD_NONE, CMD_NONE};
+const Key k_9 = {KEY_9, MOD_NONE, CMD_NONE};
+
+
 const Key k_at = {KEY_2, MOD_LEFT_SHIFT, CMD_NONE};
 const Key k_space = {KEY_SPACEBAR, MOD_NONE, CMD_NONE};
 const Key k_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
