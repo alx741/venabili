@@ -208,3 +208,13 @@ const Key k_f12 = {KEY_F12, MOD_NONE, CMD_NONE};
 
 
 const Key c_layer_lock = {KEY_NONE, MOD_NONE, CMD_LOCK_LAYER};
+
+const Key m_x_up = {KEY_NONE, MOD_NONE, CMD_MOUSE_X_UP};
+const Key m_x_down = {KEY_NONE, MOD_NONE, CMD_MOUSE_X_DOWN};
+const Key m_y_up = {KEY_NONE, MOD_NONE, CMD_MOUSE_Y_UP};
+const Key m_y_down = {KEY_NONE, MOD_NONE, CMD_MOUSE_Y_DOWN};
+const Key m_z_up = {KEY_NONE, MOD_NONE, CMD_MOUSE_Z_UP};
+const Key m_z_down = {KEY_NONE, MOD_NONE, CMD_MOUSE_Z_DOWN};
+const Key m_click_1 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_1};
+const Key m_click_2 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_2};
+const Key m_click_3 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_3};
