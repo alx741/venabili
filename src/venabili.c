@@ -19,40 +19,28 @@ int main(void)
     keyboard_init();
 
     // FIXME: debug only
-	/* gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13); */
-	/* gpio_clear(GPIOB, GPIO13); */
+	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
+	gpio_clear(GPIOB, GPIO13);
 
     Mapkey layer0[NROWS][NCOLS] =
     {
-        { {k_d, k_empty }, {k_empty, m_rshift} },
-        { {k_a, k_empty}, {k_c, m_rshift} },
-        /* {k_space, LS(1)}, */
-        /* {k_empty, k_rshift}, */
+        { {k_a, k_empty }, {k_empty, m_rshift} },
+        { {k_a, k_empty}, {k_open_paren, m_lshift} },
+        { {k_space, k_empty}, {k_empty, LS(1)}},
+        { {k_empty, k_empty}, {k_close_paren, m_rshift}},
     };
 
-    /* Key layer1[NROWS][NCOLS] = */
-    /* { */
-    /*     {LS(2), k_B}, */
-    /*     {k_empty, c_layer_lock}, */
-    /* }; */
-
-    /* Key layer2[NROWS][NCOLS] = */
-    /* { */
-    /*     {k_empty, LS(3)}, */
-    /*     {k_c, c_layer_lock}, */
-    /* }; */
-
-    /* Key layer3[NROWS][NCOLS] = */
-    /* { */
-    /*     {k_empty, k_empty}, */
-    /*     {k_d, k_D}, */
-    /* }; */
+    Mapkey layer1[NROWS][NCOLS] =
+    {
+        { {k_b, k_empty }, {k_empty, m_rshift} },
+        { {k_b, k_empty}, {k_b, m_rshift} },
+        { {k_space, k_empty}, {k_empty, k_empty}},
+        { {k_empty, k_empty}, {k_empty, m_rshift}},
+    };
 
 
     add_layer(layer0);
-    /* add_layer(layer1); */
-    /* add_layer(layer2); */
-    /* add_layer(layer3); */
+    add_layer(layer1);
 
 
     while (1)
