@@ -112,6 +112,7 @@ bool areKeysEqual(Key k1, Key k2);
 /* Special */
 extern const Key     k_empty;
 
+
 /* Letters */
 //                Lower case     Upper case
 extern const Key     k_a,           k_A;
@@ -141,6 +142,7 @@ extern const Key     k_x,           k_X;
 extern const Key     k_y,           k_Y;
 extern const Key     k_z,           k_Z;
 
+
 /* Numbers */
 extern const Key     k_0;
 extern const Key     k_1;
@@ -153,11 +155,6 @@ extern const Key     k_7;
 extern const Key     k_8;
 extern const Key     k_9;
 
-/* Symbols */
-extern const Key     k_at;
-
-/* Non-printables */
-extern const Key     k_space;
 
 /* Modifiers */
 extern const Key     k_lctrl;
@@ -168,7 +165,45 @@ extern const Key     k_rctrl;
 extern const Key     k_rshift;
 extern const Key     k_ralt;
 extern const Key     k_rsuper;
-// ...
+
+
+/* Symbols */
+extern const Key     k_at;
+
+
+/* Non-printables */
+extern const Key     k_enter;
+extern const Key     k_escape;
+extern const Key     k_backspace;
+extern const Key     k_tab;
+extern const Key     k_space;
+
+extern const Key     k_print_screen;
+extern const Key     k_scroll_lock;
+extern const Key     k_pause;
+extern const Key     k_insert;
+extern const Key     k_delete;
+extern const Key     k_home;
+extern const Key     k_end;
+extern const Key     k_pageup;
+extern const Key     k_pagedown;
+extern const Key     k_arrow_up;
+extern const Key     k_arrow_down;
+extern const Key     k_arrow_left;
+extern const Key     k_arrow_right;
+
+extern const Key     k_f1;
+extern const Key     k_f2;
+extern const Key     k_f3;
+extern const Key     k_f4;
+extern const Key     k_f5;
+extern const Key     k_f6;
+extern const Key     k_f7;
+extern const Key     k_f8;
+extern const Key     k_f9;
+extern const Key     k_f10;
+extern const Key     k_f11;
+extern const Key     k_f12;
 
 
 /***********
