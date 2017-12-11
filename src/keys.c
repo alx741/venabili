@@ -48,6 +48,15 @@ bool areKeysEqual(Key k1, Key k2)
             && k1.command == k2.command;
 }
 
+Key makeKey(uint8_t mods, Key k)
+{
+    Key key;
+    key.modifiers = mods;
+    key.modifiers |= k.modifiers;
+    key.usb_keycode = k.usb_keycode;
+    return key;
+}
+
 
 
 /**********
@@ -99,14 +108,14 @@ const Key k_9 = {KEY_9, MOD_NONE, CMD_NONE};
 
 
 
-const Key k_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
-const Key k_lshift = {KEY_NONE, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_lalt = {KEY_NONE, MOD_LEFT_ALT, CMD_NONE};
-const Key k_lsuper = {KEY_NONE, MOD_LEFT_SUPER, CMD_NONE};
-const Key k_rctrl = {KEY_NONE, MOD_RIGHT_CTRL, CMD_NONE};
-const Key k_rshift = {KEY_NONE, MOD_RIGHT_SHIFT, CMD_NONE};
-const Key k_ralt = {KEY_NONE, MOD_RIGHT_ALT, CMD_NONE};
-const Key k_rsuper = {KEY_NONE, MOD_RIGHT_SUPER, CMD_NONE};
+const Key m_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
+const Key m_lshift = {KEY_NONE, MOD_LEFT_SHIFT, CMD_NONE};
+const Key m_lalt = {KEY_NONE, MOD_LEFT_ALT, CMD_NONE};
+const Key m_lsuper = {KEY_NONE, MOD_LEFT_SUPER, CMD_NONE};
+const Key m_rctrl = {KEY_NONE, MOD_RIGHT_CTRL, CMD_NONE};
+const Key m_rshift = {KEY_NONE, MOD_RIGHT_SHIFT, CMD_NONE};
+const Key m_ralt = {KEY_NONE, MOD_RIGHT_ALT, CMD_NONE};
+const Key m_rsuper = {KEY_NONE, MOD_RIGHT_SUPER, CMD_NONE};
 
 
 

@@ -24,8 +24,8 @@ int main(void)
 
     Mapkey layer0[NROWS][NCOLS] =
     {
-        { {k_d, k_empty }, {k_empty, k_rshift} },
-        { {k_a, k_empty}, {k_c, k_rshift} },
+        { {k_d, k_empty }, {k_empty, m_rshift} },
+        { {k_a, k_empty}, {k_c, m_rshift} },
         /* {k_space, LS(1)}, */
         /* {k_empty, k_rshift}, */
     };
