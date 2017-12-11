@@ -6,6 +6,8 @@
 
 #include "usb.h"
 
+#define KEYBOARD_REPORT_ID 0x02
+
 typedef struct _keyboard_report_t
 {
     uint8_t report_id;
@@ -17,7 +19,7 @@ typedef struct _keyboard_report_t
 void report_key(uint8_t modifiers, uint8_t keycode)
 {
     keyboard_report_t kr = {0};
-    kr.report_id = 0x02;
+    kr.report_id = KEYBOARD_REPORT_ID;
     kr._reserved = 0x00;
     kr.modifiers = modifiers;
     kr.keycodes[0] = keycode;
@@ -27,7 +29,7 @@ void report_key(uint8_t modifiers, uint8_t keycode)
 void report_6_keys(uint8_t modifiers, uint8_t keycodes[6])
 {
     keyboard_report_t kr = {0};
-    kr.report_id = 0x02;
+    kr.report_id = KEYBOARD_REPORT_ID;
     kr._reserved = 0x00;
     kr.modifiers = modifiers;
     memcpy(kr.keycodes, keycodes, 6);
