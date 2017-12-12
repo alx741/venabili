@@ -87,12 +87,12 @@ void handle_command_keys(Key k)
 
 void handle_mouse_command_keys(Key k)
 {
-    if (areKeysEqual(k, m_up))              { report_mouse_movement(UP); }
-    else if (areKeysEqual(k, m_down))       { report_mouse_movement(DOWN); }
-    else if (areKeysEqual(k, m_left))       { report_mouse_movement(LEFT); }
-    else if (areKeysEqual(k, m_right))      { report_mouse_movement(RIGHT); }
-    else if (areKeysEqual(k, m_wheel_up))   { report_mouse_movement(WHEELUP); }
-    else if (areKeysEqual(k, m_wheel_down)) { report_mouse_movement(WHEELDOWN); }
+    if (areKeysEqual(k, m_up))              { report_mouse_movement(UP, 15); }
+    else if (areKeysEqual(k, m_down))       { report_mouse_movement(DOWN, 15); }
+    else if (areKeysEqual(k, m_left))       { report_mouse_movement(LEFT, 15); }
+    else if (areKeysEqual(k, m_right))      { report_mouse_movement(RIGHT, 15); }
+    else if (areKeysEqual(k, m_wheel_up))   { report_mouse_movement(WHEELUP, 15); }
+    else if (areKeysEqual(k, m_wheel_down)) { report_mouse_movement(WHEELDOWN, 15); }
     else if (areKeysEqual(k, m_click_1))    { }
     else if (areKeysEqual(k, m_click_2))    { }
     else if (areKeysEqual(k, m_click_3))    { }
