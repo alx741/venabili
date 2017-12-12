@@ -156,6 +156,19 @@ typedef struct
 #define LS(n) {KEY_NONE, MOD_NONE, _LS_FIRST + n}
 
 
+/* Mouse movement macro
+ *
+ * M(movement, speed)
+ *
+ * Posible movements are:
+ *      m_up, m_down, m_right, m_left, m_wheel_up, m_wheel_down
+ *
+ * Posible speeds are:
+ *      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40
+ */
+#define M(m_command, speed) m_command##_##speed
+
+
 /* Tell if Mapkey has press key functionality
  */
 bool hasPressKey(Mapkey mk);
@@ -375,36 +388,14 @@ extern const Key    c_layer_lock;
 
 
 /* Mouse */
-//                                  Speeds
-extern const Key    m_up_1, m_up_2, m_up_3, m_up_4, m_up_5,
-                    m_up_6, m_up_7, m_up_8, m_up_9, m_up_10,
-                    m_up_15, m_up_20, m_up_25, m_up_30, m_up_35, m_up_40;
-
-extern const Key    m_down_1, m_down_2, m_down_3, m_down_4, m_down_5,
-                    m_down_6, m_down_7, m_down_8, m_down_9, m_down_10,
-                    m_down_15, m_down_20, m_down_25, m_down_30, m_down_35, m_down_40;
-
-extern const Key    m_right_1, m_right_2, m_right_3, m_right_4, m_right_5,
-                    m_right_6, m_right_7, m_right_8, m_right_9, m_right_10,
-                    m_right_15, m_right_20, m_right_25, m_right_30, m_right_35, m_right_40;
-
-extern const Key    m_left_1, m_left_2, m_left_3, m_left_4, m_left_5,
-                    m_left_6, m_left_7, m_left_8, m_left_9, m_left_10,
-                    m_left_15, m_left_20, m_left_25, m_left_30, m_left_35, m_left_40;
-
-extern const Key    m_wheel_up_1, m_wheel_up_2, m_wheel_up_3, m_wheel_up_4, m_wheel_up_5,
-                    m_wheel_up_6, m_wheel_up_7, m_wheel_up_8, m_wheel_up_9, m_wheel_up_10,
-                    m_wheel_up_15, m_wheel_up_20, m_wheel_up_25, m_wheel_up_30, m_wheel_up_35, m_wheel_up_40;
-
-extern const Key    m_wheel_down_1, m_wheel_down_2, m_wheel_down_3, m_wheel_down_4, m_wheel_down_5,
-                    m_wheel_down_6, m_wheel_down_7, m_wheel_down_8, m_wheel_down_9, m_wheel_down_10,
-                    m_wheel_down_15, m_wheel_down_20, m_wheel_down_25, m_wheel_down_30, m_wheel_down_35, m_wheel_down_40;
-
-/* extern const Key    m_down; */
-/* extern const Key    m_left; */
-/* extern const Key    m_right; */
-/* extern const Key    m_wheel_up; */
-/* extern const Key    m_wheel_down; */
+/* For mouse movement use the M(movement, speed) macro
+ *
+ * Posible movements are:
+ *      m_up, m_down, m_right, m_left, m_wheel_up, m_wheel_down
+ *
+ * Posible speeds are:
+ *      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40
+ */
 extern const Key    m_click_1;
 extern const Key    m_click_2;
 extern const Key    m_click_3;

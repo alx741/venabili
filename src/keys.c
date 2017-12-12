@@ -51,15 +51,15 @@ bool areKeysEqual(Key k1, Key k2)
 bool isMouseCommandKey(Key k)
 {
     // FIXME: Use 16 bits mouse commands range
-    return (areKeysEqual(k, m_up)
-            || areKeysEqual(k, m_down)
-            || areKeysEqual(k, m_left)
-            || areKeysEqual(k, m_right)
-            || areKeysEqual(k, m_wheel_up)
-            || areKeysEqual(k, m_wheel_down)
-            || areKeysEqual(k, m_click_1)
-            || areKeysEqual(k, m_click_2)
-            || areKeysEqual(k, m_click_3));
+    /* return (areKeysEqual(k, m_up) */
+    /*         || areKeysEqual(k, m_down) */
+    /*         || areKeysEqual(k, m_left) */
+    /*         || areKeysEqual(k, m_right) */
+    /*         || areKeysEqual(k, m_wheel_up) */
+    /*         || areKeysEqual(k, m_wheel_down) */
+    /*         || areKeysEqual(k, m_click_1) */
+    /*         || areKeysEqual(k, m_click_2) */
+    /*         || areKeysEqual(k, m_click_3)); */
 }
 
 Key apply_mod(Key k, uint8_t mod)
@@ -213,12 +213,12 @@ const Key k_f12 = {KEY_F12, MOD_NONE, CMD_NONE};
 
 const Key c_layer_lock = {KEY_NONE, MOD_NONE, CMD_LOCK_LAYER};
 
-const Key m_up = {KEY_NONE, MOD_NONE, CMD_MOUSE_UP};
-const Key m_down = {KEY_NONE, MOD_NONE, CMD_MOUSE_DOWN};
-const Key m_left = {KEY_NONE, MOD_NONE, CMD_MOUSE_LEFT};
-const Key m_right = {KEY_NONE, MOD_NONE, CMD_MOUSE_RIGHT};
-const Key m_wheel_up = {KEY_NONE, MOD_NONE, CMD_MOUSE_WHEEL_UP};
-const Key m_wheel_down = {KEY_NONE, MOD_NONE, CMD_MOUSE_WHEEL_DOWN};
-const Key m_click_1 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_1};
-const Key m_click_2 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_2};
-const Key m_click_3 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_3};
+/* const Key m_up = {KEY_NONE, MOD_NONE, CMD_MOUSE_UP}; */
+/* const Key m_down = {KEY_NONE, MOD_NONE, CMD_MOUSE_DOWN}; */
+/* const Key m_left = {KEY_NONE, MOD_NONE, CMD_MOUSE_LEFT}; */
+/* const Key m_right = {KEY_NONE, MOD_NONE, CMD_MOUSE_RIGHT}; */
+/* const Key m_wheel_up = {KEY_NONE, MOD_NONE, CMD_MOUSE_WHEEL_UP}; */
+/* const Key m_wheel_down = {KEY_NONE, MOD_NONE, CMD_MOUSE_WHEEL_DOWN}; */
+/* const Key m_click_1 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_1}; */
+/* const Key m_click_2 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_2}; */
+/* const Key m_click_3 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_3}; */
