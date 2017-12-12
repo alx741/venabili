@@ -18,33 +18,25 @@ int main(void)
     keyboard_sensing_init();
     keyboard_init();
 
-    // FIXME: debug only
-	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
-	gpio_clear(GPIOB, GPIO13);
-
     Key layer0[NROWS][NCOLS] =
     {
-        { k_a, k_C },
-        { k_b, HLshift(k_open_paren) },
-        /* { k_a, HOLD_RSHIFT(k_open_paren) }, */
-
-        /* { {k_a, k_empty }, {k_empty, m_rshift} }, */
-        /* { {k_a, k_empty}, {k_open_paren, m_lshift} }, */
-        /* { {k_space, k_empty}, {k_empty, LS(1)}}, */
-        /* { {k_empty, k_empty}, {k_close_paren, m_rshift}}, */
+        { k_a, k_b                    },
+        { k_c, HLshift(k_open_paren)  },
+        { k_d, LS(1)                  },
+        { k_e, HLshift(k_close_paren) },
     };
 
-    /* Mapkey layer1[NROWS][NCOLS] = */
-    /* { */
-    /*     { {MU(10), k_empty }, {k_empty, m_rshift} }, */
-    /*     { {MD(5), k_empty}, {k_b, m_rshift} }, */
-    /*     { {ML(15), k_empty}, {k_empty, k_empty}}, */
-    /*     { {MR(1), k_empty}, {k_empty, m_rshift}}, */
-    /* }; */
+    Key layer1[NROWS][NCOLS] =
+    {
+        { MU(10), k_empty },
+        { MD(5),  k_empty },
+        { ML(15), k_empty },
+        { MR(1),  k_empty },
+    };
 
 
     add_layer(layer0);
-    /* add_layer(layer1); */
+    add_layer(layer1);
 
 
     while (1)
