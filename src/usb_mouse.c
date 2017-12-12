@@ -22,7 +22,7 @@ void report_mouse_movement(MouseMovement m, uint8_t speed)
     switch (m)
     {
         case UP:
-            mr.y_axis = -1 * speed; // FIXME: use proper value here
+            mr.y_axis = -1 * speed;
             break;
         case DOWN:
             mr.y_axis = 1 * speed;
