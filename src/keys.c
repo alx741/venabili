@@ -50,6 +50,7 @@ bool areKeysEqual(Key k1, Key k2)
 
 bool isMouseCommandKey(Key k)
 {
+    // FIXME: Use 16 bits mouse commands range
     return (areKeysEqual(k, m_up)
             || areKeysEqual(k, m_down)
             || areKeysEqual(k, m_left)
