@@ -5,7 +5,7 @@ typedef enum _mouse_axis {UP, DOWN, LEFT, RIGHT, WHEELUP, WHEELDOWN} MouseMoveme
 
 /* Report mouse movement
  */
-void report_mouse_movement(MouseMovement m);
+void report_mouse_movement(MouseMovement m, uint8_t speed);
 
 #endif // USB_MOUSE_H
 
