@@ -50,16 +50,9 @@ bool areKeysEqual(Key k1, Key k2)
 
 bool isMouseCommandKey(Key k)
 {
-    // FIXME: Use 16 bits mouse commands range
-    /* return (areKeysEqual(k, m_up) */
-    /*         || areKeysEqual(k, m_down) */
-    /*         || areKeysEqual(k, m_left) */
-    /*         || areKeysEqual(k, m_right) */
-    /*         || areKeysEqual(k, m_wheel_up) */
-    /*         || areKeysEqual(k, m_wheel_down) */
-    /*         || areKeysEqual(k, m_click_1) */
-    /*         || areKeysEqual(k, m_click_2) */
-    /*         || areKeysEqual(k, m_click_3)); */
+    return isCommandKey(k)
+        && k.command >= 0x0010
+        && k.command <= 0x001A;
 }
 
 Key apply_mod(Key k, uint8_t mod)
