@@ -22,9 +22,10 @@ int main(void)
 	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
 	gpio_clear(GPIOB, GPIO13);
 
-    Mapkey layer0[NROWS][NCOLS] =
+    Key layer0[NROWS][NCOLS] =
     {
-        { k_a, k_A },
+        { k_a, k_C },
+        { k_b, HLshift(k_open_paren) },
         /* { k_a, HOLD_RSHIFT(k_open_paren) }, */
 
         /* { {k_a, k_empty }, {k_empty, m_rshift} }, */

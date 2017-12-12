@@ -1,14 +1,19 @@
 #include "usb_keys.h"
 #include "keys.h"
 
-bool hasPressKey(Mapkey mk)
-{
-    return (! isEmptyKey(mk.press));
-}
+/* bool hasPressKey(Mapkey mk) */
+/* { */
+/*     return (! isEmptyKey(mk.press)); */
+/* } */
 
-bool hasHoldKey(Mapkey mk)
+/* bool hasHoldKey(Mapkey mk) */
+/* { */
+/*     return (! isEmptyKey(mk.hold)); */
+/* } */
+
+bool hasHoldKey(Key k)
 {
-    return (! isEmptyKey(mk.hold));
+    return k.hold_mod != MOD_NONE;
 }
 
 bool isNormalKey(Key k)
@@ -132,6 +137,17 @@ Key apply_mod(Key k, uint8_t mod)
     Key new;
     new.modifiers = k.modifiers;
     new.modifiers |= mod;
+    new.hold_mod = k.hold_mod;
+    new.usb_keycode = k.usb_keycode;
+    new.command = k.command;
+    return new;
+}
+
+Key apply_hold_mod(Key k, uint8_t mod)
+{
+    Key new;
+    new.modifiers = k.modifiers;
+    new.hold_mod = mod;
     new.usb_keycode = k.usb_keycode;
     new.command = k.command;
     return new;
@@ -145,6 +161,16 @@ Key Rctrl(Key k)  { return apply_mod(k, MOD_RIGHT_CTRL); }
 Key Rshift(Key k) { return apply_mod(k, MOD_RIGHT_SHIFT); }
 Key Ralt(Key k)   { return apply_mod(k, MOD_RIGHT_ALT); }
 Key Rsuper(Key k) { return apply_mod(k, MOD_RIGHT_SUPER); }
+
+
+Key HLctrl(Key k)  { return apply_hold_mod(k, MOD_LEFT_CTRL); }
+Key HLshift(Key k) { return apply_hold_mod(k, MOD_LEFT_SHIFT); }
+Key HLalt(Key k)   { return apply_hold_mod(k, MOD_LEFT_ALT); }
+Key HLsuper(Key k) { return apply_hold_mod(k, MOD_LEFT_SUPER); }
+Key HRctrl(Key k)  { return apply_hold_mod(k, MOD_RIGHT_CTRL); }
+Key HRshift(Key k) { return apply_hold_mod(k, MOD_RIGHT_SHIFT); }
+Key HRalt(Key k)   { return apply_hold_mod(k, MOD_RIGHT_ALT); }
+Key HRsuper(Key k) { return apply_hold_mod(k, MOD_RIGHT_SUPER); }
 
 
 #define mkNormalKey(keycode) {keycode, MOD_NONE, MOD_NONE, CMD_NONE}
