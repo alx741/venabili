@@ -121,6 +121,19 @@ bool areKeysEqual(Key k1, Key k2);
  */
 bool isMouseCommandKey(Key k);
 
+/* Identify direction of mouse command key
+ */
+bool isMouseUpKey(Key k);
+bool isMouseDownKey(Key k);
+bool isMouseRightKey(Key k);
+bool isMouseLeftKey(Key k);
+bool isMouseWheelUpKey(Key k);
+bool isMouseWheelDownKey(Key k);
+
+/* Get mouse movement speed from mouse command key
+ */
+uint8_t getMouseKeySpeed(Key k);
+
 
 /* Apply modifiers to a key
  *

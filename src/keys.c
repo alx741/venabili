@@ -50,6 +50,13 @@ bool areKeysEqual(Key k1, Key k2)
 
 
 // Mouse commands identification
+bool isMouseCommandKey(Key k)
+{
+    return isCommandKey(k)
+        && k.command >= 0x0010
+        && k.command <= 0x007A;
+}
+
 bool isMouseUpKey(Key k)
 {
     return isCommandKey(k)
@@ -92,12 +99,12 @@ bool isMouseWheelDownKey(Key k)
         && k.command <= 0x006F;
 }
 
-bool isMouseCommandKey(Key k)
+uint8_t getMouseKeySpeed(Key k)
 {
-    return isCommandKey(k)
-        && k.command >= 0x0010
-        && k.command <= 0x007A;
+    return 1;
 }
+
+
 
 Key apply_mod(Key k, uint8_t mod)
 {
