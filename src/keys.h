@@ -23,11 +23,11 @@ typedef struct
 
 /* Mapkey is used to map keys in layers
  */
-typedef struct
-{
-    Key press; // Key when pressed
-    Key hold; // Key when held
-} Mapkey;
+/* typedef struct */
+/* { */
+/*     Key press; // Key when pressed */
+/*     Key hold; // Key when held */
+/* } Mapkey; */
 
 
 /* Posible special commands
@@ -79,11 +79,12 @@ typedef struct
 
 /* Tell if Mapkey has press key functionality
  */
-bool hasPressKey(Mapkey mk);
+/* bool hasPressKey(Mapkey mk); */
 
 /* Tell if Mapkey has hold key functionality
  */
-bool hasHoldKey(Mapkey mk);
+/* bool hasHoldKey(Mapkey mk); */
+bool hasHoldKey(Key k);
 
 
 /* Tell if a KEY is normal
@@ -144,6 +145,14 @@ Key Lalt(Key k);        Key Ralt(Key k);
 Key Lsuper(Key k);      Key Rsuper(Key k);
 
 
+/* Make a key behave like a modifier when held
+ *
+ * e.g.  HRshift(k_a) = 'a' when pressed, RShift when held
+ */
+Key HLctrl(Key k);       Key HRctrl(Key k);
+Key HLshift(Key k);      Key HRshift(Key k);
+Key HLalt(Key k);        Key HRalt(Key k);
+Key HLsuper(Key k);      Key HRsuper(Key k);
 
 
 

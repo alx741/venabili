@@ -9,7 +9,7 @@
 #include "keys.h"
 #include "keyboard.h"
 
-static Mapkey LAYERS[NLAYERS][NROWS][NCOLS];
+static Key LAYERS[NLAYERS][NROWS][NCOLS];
 static int N_LAYERS = 0;
 
 static int CURRENT_LAYER = 0;
@@ -105,7 +105,7 @@ void handle_mouse_command_keys(Key k)
 }
 
 
-void add_layer(const Mapkey layer[NROWS][NCOLS])
+void add_layer(const Key layer[NROWS][NCOLS])
 {
     for (int i = 0; i < NROWS; i++)
     {
@@ -123,10 +123,10 @@ int get_layer_selection(uint16_t current_layer)
     {
         for (int j = 0; j < NCOLS; j++)
         {
-            Mapkey k = LAYERS[current_layer][i][j];
-            if (isLayerSelectionKey(k.hold) && currently_pressed(i, j))
+            Key k = LAYERS[current_layer][i][j];
+            if (isLayerSelectionKey(k) && currently_pressed(i, j))
             {
-                return get_layer_selection(k.hold.command - 0x00FF - 1);
+                return get_layer_selection(k.command - 0x00FF - 1);
             }
         }
     }
@@ -158,32 +158,38 @@ int map_layer(Key keys[NKEYS])
     {
         for (int j = 0; j < NCOLS; j++)
         {
-            Mapkey k = LAYERS[CURRENT_LAYER][i][j];
+            Key k = LAYERS[CURRENT_LAYER][i][j];
             // Handle normal key presses
             if (currently_pressed(i, j))
             {
-                // Only press functionality
-                if (hasPressKey(k) && ! hasHoldKey(k))
+                /* // Only press functionality */
+                /* if (hasPressKey(k) && ! hasHoldKey(k)) */
+                /* { */
+                /*     keys[index++] = k.press; */
+                /* } */
+
+                /* // Only hold functionality */
+                /* else if (! hasPressKey(k) && hasHoldKey(k)) */
+                /* { */
+                /*     keys[index++] = k.hold; */
+                /* } */
+
+                if (hasHoldKey(k)) // Double functionality
                 {
-                    keys[index++] = k.press;
+                    Key nk = {KEY_NONE, k.hold_mod, k.hold_mod, CMD_NONE};
+                    keys[index++] = nk;
+                }
+                else // Only press functionality
+                {
+                    keys[index++] = k;
                 }
 
-                // Only hold functionality
-                else if (! hasPressKey(k) && hasHoldKey(k))
-                {
-                    keys[index++] = k.hold;
-                }
-
-                // Double functionality
-                else if (hasPressKey(k) && hasHoldKey(k))
-                {
-                    keys[index++] = k.hold;
-                }
 
             }
 
             // Handle Taps
-            if (hasPressKey(k) && hasHoldKey(k))
+            /* if (hasPressKey(k) && hasHoldKey(k)) */
+            if (hasHoldKey(k))
             {
                 // Reset Tap timer on first pressed of a key with Tap
                 // functionality
@@ -195,7 +201,7 @@ int map_layer(Key keys[NKEYS])
                 // Tap functionality is only triggered when tapped alone
                 else if (tapped_alone(i, j) && ! TAP_IS_TIMEDOUT)
                 {
-                    keys[index++] = k.press;
+                    keys[index++] = k;
                 }
             }
         }
