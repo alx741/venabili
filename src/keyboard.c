@@ -87,16 +87,21 @@ void handle_command_keys(Key k)
 
 void handle_mouse_command_keys(Key k)
 {
-    if (isMouseUpKey(k)) { report_mouse_movement(UP, getMouseKeySpeed(k)); }
-    /* if (areKeysEqual(k, m_up))              { report_mouse_movement(UP, 15); } */
-    /* else if (areKeysEqual(k, m_down))       { report_mouse_movement(DOWN, 15); } */
-    /* else if (areKeysEqual(k, m_left))       { report_mouse_movement(LEFT, 15); } */
-    /* else if (areKeysEqual(k, m_right))      { report_mouse_movement(RIGHT, 15); } */
-    /* else if (areKeysEqual(k, m_wheel_up))   { report_mouse_movement(WHEELUP, 15); } */
-    /* else if (areKeysEqual(k, m_wheel_down)) { report_mouse_movement(WHEELDOWN, 15); } */
-    /* else if (areKeysEqual(k, m_click_1))    { } */
-    /* else if (areKeysEqual(k, m_click_2))    { } */
-    /* else if (areKeysEqual(k, m_click_3))    { } */
+    if (isMouseMovementKey(k))
+    {
+        uint8_t speed = getMouseMovementSpeed(k);
+        if (isMouseUpKey(k))             { report_mouse_movement(UP, speed); }
+        else if (isMouseDownKey(k))      { report_mouse_movement(DOWN, speed); }
+        else if (isMouseRightKey(k))     { report_mouse_movement(RIGHT, speed); }
+        else if (isMouseLeftKey(k))      { report_mouse_movement(LEFT, speed); }
+        else if (isMouseWheelUpKey(k))   { report_mouse_movement(WHEELUP, speed); }
+        else if (isMouseWheelDownKey(k)) { report_mouse_movement(WHEELDOWN, speed); }
+    }
+    else if (isMouseClickKey(k))
+    {
+        /* uint8_t button = getMouseClickButton(k); */
+        /* report_mouse_click(button); */
+    }
 }
 
 

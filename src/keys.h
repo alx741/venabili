@@ -42,11 +42,11 @@ typedef struct
 #define CMD_MOUSE_LEFT           0x0040 // - 0x004F
 #define CMD_MOUSE_WHEELUP        0x0050 // - 0x005F
 #define CMD_MOUSE_WHEELDOWN      0x0060 // - 0x006F
-#define CMD_MOUSE_CLICK_1        0x0076
-#define CMD_MOUSE_CLICK_2        0x0077
-#define CMD_MOUSE_CLICK_3        0x0078
-#define CMD_MOUSE_CLICK_4        0x0079
-#define CMD_MOUSE_CLICK_5        0x007A
+#define CMD_MOUSE_CLICK_1        0x0070
+#define CMD_MOUSE_CLICK_2        0x0071
+#define CMD_MOUSE_CLICK_3        0x0072
+#define CMD_MOUSE_CLICK_4        0x0073
+#define CMD_MOUSE_CLICK_5        0x0074
 // ... Up to 0x00FF
 
 // Use the LS(n) macro for Layer Selection
@@ -62,17 +62,10 @@ typedef struct
 #define LS(n) {KEY_NONE, MOD_NONE, _LS_FIRST + n}
 
 
-/* Mouse movement macro
+/* Mouse movement macros
  *
- * M(movement, speed)
- *
- * Posible movements are:
- *      m_up, m_down, m_right, m_left, m_wheel_up, m_wheel_down
- *
- * Posible speeds are:
- *      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40
+ * Valid speeds are between 0 and 15
  */
-/* #define M(m_command, speed) m_command##_##speed */
 #define MU(speed) {KEY_NONE, MOD_NONE, CMD_MOUSE_UP + speed}
 #define MD(speed) {KEY_NONE, MOD_NONE, CMD_MOUSE_DOWN + speed}
 #define MR(speed) {KEY_NONE, MOD_NONE, CMD_MOUSE_RIGHT + speed}
@@ -117,9 +110,11 @@ bool isEmptyKey(Key k);
 bool areKeysEqual(Key k1, Key k2);
 
 
-/* Tell if a key is a mouse command key
+/* Identify Mouse command keys
  */
 bool isMouseCommandKey(Key k);
+bool isMouseMovementKey(Key k);
+bool isMouseClickKey(Key k);
 
 /* Identify direction of mouse command key
  */
@@ -130,9 +125,10 @@ bool isMouseLeftKey(Key k);
 bool isMouseWheelUpKey(Key k);
 bool isMouseWheelDownKey(Key k);
 
-/* Get mouse movement speed from mouse command key
+/* Get mouse atributes from command key
  */
-uint8_t getMouseKeySpeed(Key k);
+uint8_t getMouseMovementSpeed(Key k);
+uint8_t getMouseClickButton(Key k);
 
 
 /* Apply modifiers to a key
