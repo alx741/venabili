@@ -14,6 +14,9 @@ typedef struct
     uint8_t usb_keycode;
     uint8_t modifiers;
 
+    // Double functionality hold key
+    uint8_t hold_mod;
+
     // Command key
     uint16_t command;
 } Key;

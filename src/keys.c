@@ -147,142 +147,133 @@ Key Ralt(Key k)   { return apply_mod(k, MOD_RIGHT_ALT); }
 Key Rsuper(Key k) { return apply_mod(k, MOD_RIGHT_SUPER); }
 
 
+#define mkNormalKey(keycode) {keycode, MOD_NONE, MOD_NONE, CMD_NONE}
+#define mkNormalShiftedKey(keycode) {keycode, MOD_LEFT_SHIFT, MOD_NONE, CMD_NONE}
+#define mkCommandKey(command) {KEY_NONE, MOD_NONE, MOD_NONE, command}
+
 
 /**********
  *  Keys
  *********/
 
-const Key k_empty = {KEY_NONE, MOD_NONE, CMD_NONE};
+const Key k_empty = mkCommandKey(CMD_NONE);
+
+const Key k_a = mkNormalKey(KEY_A),   k_A = mkNormalShiftedKey(KEY_A);
+const Key k_b = mkNormalKey(KEY_B),   k_B = mkNormalShiftedKey(KEY_B);
+const Key k_c = mkNormalKey(KEY_C),   k_C = mkNormalShiftedKey(KEY_C);
+const Key k_d = mkNormalKey(KEY_D),   k_D = mkNormalShiftedKey(KEY_D);
+const Key k_e = mkNormalKey(KEY_E),   k_E = mkNormalShiftedKey(KEY_E);
+const Key k_f = mkNormalKey(KEY_F),   k_F = mkNormalShiftedKey(KEY_F);
+const Key k_g = mkNormalKey(KEY_G),   k_G = mkNormalShiftedKey(KEY_G);
+const Key k_h = mkNormalKey(KEY_H),   k_H = mkNormalShiftedKey(KEY_H);
+const Key k_i = mkNormalKey(KEY_I),   k_I = mkNormalShiftedKey(KEY_I);
+const Key k_j = mkNormalKey(KEY_J),   k_J = mkNormalShiftedKey(KEY_J);
+const Key k_k = mkNormalKey(KEY_K),   k_K = mkNormalShiftedKey(KEY_K);
+const Key k_l = mkNormalKey(KEY_L),   k_L = mkNormalShiftedKey(KEY_L);
+const Key k_m = mkNormalKey(KEY_M),   k_M = mkNormalShiftedKey(KEY_M);
+const Key k_n = mkNormalKey(KEY_N),   k_N = mkNormalShiftedKey(KEY_N);
+const Key k_o = mkNormalKey(KEY_O),   k_O = mkNormalShiftedKey(KEY_O);
+const Key k_p = mkNormalKey(KEY_P),   k_P = mkNormalShiftedKey(KEY_P);
+const Key k_q = mkNormalKey(KEY_Q),   k_Q = mkNormalShiftedKey(KEY_Q);
+const Key k_r = mkNormalKey(KEY_R),   k_R = mkNormalShiftedKey(KEY_R);
+const Key k_s = mkNormalKey(KEY_S),   k_S = mkNormalShiftedKey(KEY_S);
+const Key k_t = mkNormalKey(KEY_T),   k_T = mkNormalShiftedKey(KEY_T);
+const Key k_u = mkNormalKey(KEY_U),   k_U = mkNormalShiftedKey(KEY_U);
+const Key k_v = mkNormalKey(KEY_V),   k_V = mkNormalShiftedKey(KEY_V);
+const Key k_w = mkNormalKey(KEY_W),   k_W = mkNormalShiftedKey(KEY_W);
+const Key k_x = mkNormalKey(KEY_X),   k_X = mkNormalShiftedKey(KEY_X);
+const Key k_y = mkNormalKey(KEY_Y),   k_Y = mkNormalShiftedKey(KEY_Y);
+const Key k_z = mkNormalKey(KEY_Z),   k_Z = mkNormalShiftedKey(KEY_Z);
+
+const Key k_0 = mkNormalKey(KEY_0);
+const Key k_1 = mkNormalKey(KEY_1);
+const Key k_2 = mkNormalKey(KEY_2);
+const Key k_3 = mkNormalKey(KEY_3);
+const Key k_4 = mkNormalKey(KEY_4);
+const Key k_5 = mkNormalKey(KEY_5);
+const Key k_6 = mkNormalKey(KEY_6);
+const Key k_7 = mkNormalKey(KEY_7);
+const Key k_8 = mkNormalKey(KEY_8);
+const Key k_9 = mkNormalKey(KEY_9);
+
+const Key m_lctrl  = { KEY_NONE, MOD_LEFT_CTRL, CMD_NONE, CMD_NONE};
+const Key m_lshift = { KEY_NONE, MOD_LEFT_SHIFT, CMD_NONE, CMD_NONE};
+const Key m_lalt   = { KEY_NONE, MOD_LEFT_ALT, CMD_NONE, CMD_NONE};
+const Key m_lsuper = { KEY_NONE, MOD_LEFT_SUPER, CMD_NONE, CMD_NONE};
+const Key m_rctrl  = { KEY_NONE, MOD_RIGHT_CTRL, CMD_NONE, CMD_NONE};
+const Key m_rshift = { KEY_NONE, MOD_RIGHT_SHIFT, CMD_NONE, CMD_NONE};
+const Key m_ralt   = { KEY_NONE, MOD_RIGHT_ALT, CMD_NONE, CMD_NONE};
+const Key m_rsuper = { KEY_NONE, MOD_RIGHT_SUPER, CMD_NONE, CMD_NONE};
+
+const Key k_back_quote    = mkNormalKey(KEY_GRAVE_ACCENT);
+const Key k_single_quote  = mkNormalKey(KEY_SINGLE_QUOTE);
+const Key k_hyphen        = mkNormalKey(KEY_HYPHEN);
+const Key k_equal         = mkNormalKey(KEY_EQUAL);
+const Key k_semicolon     = mkNormalKey(KEY_SEMICOLON);
+const Key k_dot           = mkNormalKey(KEY_DOT);
+const Key k_slash         = mkNormalKey(KEY_SLASH);
+const Key k_backslash     = mkNormalKey(KEY_BACKSLASH);
+const Key k_double_quote  = mkNormalShiftedKey(KEY_SINGLE_QUOTE);
+const Key k_tilde         = mkNormalShiftedKey(KEY_GRAVE_ACCENT);
+const Key k_bang          = mkNormalShiftedKey(KEY_1);
+const Key k_at            = mkNormalShiftedKey(KEY_2);
+const Key k_hash          = mkNormalShiftedKey(KEY_3);
+const Key k_dollar        = mkNormalShiftedKey(KEY_4);
+const Key k_percent       = mkNormalShiftedKey(KEY_5);
+const Key k_caret         = mkNormalShiftedKey(KEY_6);
+const Key k_ampersand     = mkNormalShiftedKey(KEY_7);
+const Key k_asterisk      = mkNormalShiftedKey(KEY_8);
+const Key k_under_score   = mkNormalShiftedKey(KEY_HYPHEN);
+const Key k_plus          = mkNormalShiftedKey(KEY_EQUAL);
+const Key k_colon         = mkNormalShiftedKey(KEY_SEMICOLON);
+const Key k_comma         = mkNormalShiftedKey(KEY_DOT);
+const Key k_question_mark = mkNormalShiftedKey(KEY_SLASH);
+const Key k_pipe          = mkNormalShiftedKey(KEY_BACKSLASH);
+const Key k_greater_than  = mkNormalShiftedKey(KEY_DOT);
+const Key k_less_than     = mkNormalShiftedKey(KEY_COMMA);
+const Key k_open_paren    = mkNormalShiftedKey(KEY_9);
+const Key k_close_paren   = mkNormalShiftedKey(KEY_0);
+const Key k_open_bracket  = mkNormalKey(KEY_OPEN_BRACKET);
+const Key k_close_bracket = mkNormalKey(KEY_CLOSE_BRACKET);
+const Key k_open_brace    = mkNormalShiftedKey(KEY_OPEN_BRACKET);
+const Key k_close_brace   = mkNormalShiftedKey(KEY_CLOSE_BRACKET);
+
+const Key k_enter        = mkNormalKey(KEY_ENTER);
+const Key k_escape       = mkNormalKey(KEY_ESCAPE);
+const Key k_backspace    = mkNormalKey(KEY_BACKSPACE);
+const Key k_tab          = mkNormalKey(KEY_TAB);
+const Key k_space        = mkNormalKey(KEY_SPACEBAR);
+const Key k_print_screen = mkNormalKey(KEY_PRINT_SCREEN);
+const Key k_scroll_lock  = mkNormalKey(KEY_SCROLL_LOCK);
+const Key k_pause        = mkNormalKey(KEY_PAUSE);
+const Key k_insert       = mkNormalKey(KEY_INSERT);
+const Key k_delete       = mkNormalKey(KEY_DELETE);
+const Key k_home         = mkNormalKey(KEY_HOME);
+const Key k_end          = mkNormalKey(KEY_END);
+const Key k_pageup       = mkNormalKey(KEY_PAGE_UP);
+const Key k_pagedown     = mkNormalKey(KEY_PAGE_DOWN);
+const Key k_arrow_up     = mkNormalKey(KEY_UP_ARROW);
+const Key k_arrow_down   = mkNormalKey(KEY_DOWN_ARROW);
+const Key k_arrow_left   = mkNormalKey(KEY_LEFT_ARROW);
+const Key k_arrow_right  = mkNormalKey(KEY_RIGHT_ARROW);
+const Key k_f1           = mkNormalKey(KEY_F1);
+const Key k_f2           = mkNormalKey(KEY_F2);
+const Key k_f3           = mkNormalKey(KEY_F3);
+const Key k_f4           = mkNormalKey(KEY_F4);
+const Key k_f5           = mkNormalKey(KEY_F5);
+const Key k_f6           = mkNormalKey(KEY_F6);
+const Key k_f7           = mkNormalKey(KEY_F7);
+const Key k_f8           = mkNormalKey(KEY_F8);
+const Key k_f9           = mkNormalKey(KEY_F9);
+const Key k_f10          = mkNormalKey(KEY_F10);
+const Key k_f11          = mkNormalKey(KEY_F11);
+const Key k_f12          = mkNormalKey(KEY_F12);
 
 
-const Key k_a = {KEY_A, MOD_NONE, CMD_NONE}; const Key k_A = {KEY_A, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_b = {KEY_B, MOD_NONE, CMD_NONE}; const Key k_B = {KEY_B, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_c = {KEY_C, MOD_NONE, CMD_NONE}; const Key k_C = {KEY_C, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_d = {KEY_D, MOD_NONE, CMD_NONE}; const Key k_D = {KEY_D, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_e = {KEY_E, MOD_NONE, CMD_NONE}; const Key k_E = {KEY_E, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_f = {KEY_F, MOD_NONE, CMD_NONE}; const Key k_F = {KEY_F, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_g = {KEY_G, MOD_NONE, CMD_NONE}; const Key k_G = {KEY_G, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_h = {KEY_H, MOD_NONE, CMD_NONE}; const Key k_H = {KEY_H, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_i = {KEY_I, MOD_NONE, CMD_NONE}; const Key k_I = {KEY_I, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_j = {KEY_J, MOD_NONE, CMD_NONE}; const Key k_J = {KEY_J, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_k = {KEY_K, MOD_NONE, CMD_NONE}; const Key k_K = {KEY_K, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_l = {KEY_L, MOD_NONE, CMD_NONE}; const Key k_L = {KEY_L, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_m = {KEY_M, MOD_NONE, CMD_NONE}; const Key k_M = {KEY_M, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_n = {KEY_N, MOD_NONE, CMD_NONE}; const Key k_N = {KEY_N, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_o = {KEY_O, MOD_NONE, CMD_NONE}; const Key k_O = {KEY_O, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_p = {KEY_P, MOD_NONE, CMD_NONE}; const Key k_P = {KEY_P, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_q = {KEY_Q, MOD_NONE, CMD_NONE}; const Key k_Q = {KEY_Q, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_r = {KEY_R, MOD_NONE, CMD_NONE}; const Key k_R = {KEY_R, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_s = {KEY_S, MOD_NONE, CMD_NONE}; const Key k_S = {KEY_S, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_t = {KEY_T, MOD_NONE, CMD_NONE}; const Key k_T = {KEY_T, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_u = {KEY_U, MOD_NONE, CMD_NONE}; const Key k_U = {KEY_U, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_v = {KEY_V, MOD_NONE, CMD_NONE}; const Key k_V = {KEY_V, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_w = {KEY_W, MOD_NONE, CMD_NONE}; const Key k_W = {KEY_W, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_x = {KEY_X, MOD_NONE, CMD_NONE}; const Key k_X = {KEY_X, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_y = {KEY_Y, MOD_NONE, CMD_NONE}; const Key k_Y = {KEY_Y, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_z = {KEY_Z, MOD_NONE, CMD_NONE}; const Key k_Z = {KEY_Z, MOD_LEFT_SHIFT, CMD_NONE};
+const Key c_layer_lock = mkCommandKey(CMD_LOCK_LAYER);
 
-
-
-const Key k_0 = {KEY_0, MOD_NONE, CMD_NONE};
-const Key k_1 = {KEY_1, MOD_NONE, CMD_NONE};
-const Key k_2 = {KEY_2, MOD_NONE, CMD_NONE};
-const Key k_3 = {KEY_3, MOD_NONE, CMD_NONE};
-const Key k_4 = {KEY_4, MOD_NONE, CMD_NONE};
-const Key k_5 = {KEY_5, MOD_NONE, CMD_NONE};
-const Key k_6 = {KEY_6, MOD_NONE, CMD_NONE};
-const Key k_7 = {KEY_7, MOD_NONE, CMD_NONE};
-const Key k_8 = {KEY_8, MOD_NONE, CMD_NONE};
-const Key k_9 = {KEY_9, MOD_NONE, CMD_NONE};
-
-
-
-const Key m_lctrl = {KEY_NONE, MOD_LEFT_CTRL, CMD_NONE};
-const Key m_lshift = {KEY_NONE, MOD_LEFT_SHIFT, CMD_NONE};
-const Key m_lalt = {KEY_NONE, MOD_LEFT_ALT, CMD_NONE};
-const Key m_lsuper = {KEY_NONE, MOD_LEFT_SUPER, CMD_NONE};
-const Key m_rctrl = {KEY_NONE, MOD_RIGHT_CTRL, CMD_NONE};
-const Key m_rshift = {KEY_NONE, MOD_RIGHT_SHIFT, CMD_NONE};
-const Key m_ralt = {KEY_NONE, MOD_RIGHT_ALT, CMD_NONE};
-const Key m_rsuper = {KEY_NONE, MOD_RIGHT_SUPER, CMD_NONE};
-
-
-
-const Key k_back_quote = {KEY_GRAVE_ACCENT, MOD_NONE, CMD_NONE};
-const Key k_double_quote = {KEY_SINGLE_QUOTE, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_single_quote = {KEY_SINGLE_QUOTE, MOD_NONE, CMD_NONE};
-const Key k_tilde = {KEY_GRAVE_ACCENT, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_bang = {KEY_1, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_at = {KEY_2, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_hash = {KEY_3, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_dollar = {KEY_4, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_percent = {KEY_5, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_caret = {KEY_6, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_ampersand = {KEY_7, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_asterisk = {KEY_8, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_hyphen = {KEY_HYPHEN, MOD_NONE, CMD_NONE};
-const Key k_under_score = {KEY_HYPHEN, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_equal = {KEY_EQUAL, MOD_NONE, CMD_NONE};
-const Key k_plus = {KEY_EQUAL, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_semicolon = {KEY_SEMICOLON, MOD_NONE, CMD_NONE};
-const Key k_colon = {KEY_SEMICOLON, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_dot = {KEY_DOT, MOD_NONE, CMD_NONE};
-const Key k_comma = {KEY_DOT, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_slash = {KEY_SLASH, MOD_NONE, CMD_NONE};
-const Key k_question_mark = {KEY_SLASH, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_backslash = {KEY_BACKSLASH, MOD_NONE, CMD_NONE};
-const Key k_pipe = {KEY_BACKSLASH, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_greater_than = {KEY_DOT, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_less_than = {KEY_COMMA, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_open_paren = {KEY_9, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_close_paren = {KEY_0, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_open_bracket = {KEY_OPEN_BRACKET, MOD_NONE, CMD_NONE};
-const Key k_close_bracket = {KEY_CLOSE_BRACKET, MOD_NONE, CMD_NONE};
-const Key k_open_brace = {KEY_OPEN_BRACKET, MOD_LEFT_SHIFT, CMD_NONE};
-const Key k_close_brace = {KEY_CLOSE_BRACKET, MOD_LEFT_SHIFT, CMD_NONE};
-
-
-
-const Key k_enter = {KEY_ENTER, MOD_NONE, CMD_NONE};
-const Key k_escape = {KEY_ESCAPE, MOD_NONE, CMD_NONE};
-const Key k_backspace = {KEY_BACKSPACE, MOD_NONE, CMD_NONE};
-const Key k_tab = {KEY_TAB, MOD_NONE, CMD_NONE};
-const Key k_space = {KEY_SPACEBAR, MOD_NONE, CMD_NONE};
-const Key k_print_screen = {KEY_PRINT_SCREEN, MOD_NONE, CMD_NONE};
-const Key k_scroll_lock = {KEY_SCROLL_LOCK, MOD_NONE, CMD_NONE};
-const Key k_pause = {KEY_PAUSE, MOD_NONE, CMD_NONE};
-const Key k_insert = {KEY_INSERT, MOD_NONE, CMD_NONE};
-const Key k_delete = {KEY_DELETE, MOD_NONE, CMD_NONE};
-const Key k_home = {KEY_HOME, MOD_NONE, CMD_NONE};
-const Key k_end = {KEY_END, MOD_NONE, CMD_NONE};
-const Key k_pageup = {KEY_PAGE_UP, MOD_NONE, CMD_NONE};
-const Key k_pagedown = {KEY_PAGE_DOWN, MOD_NONE, CMD_NONE};
-const Key k_arrow_up = {KEY_UP_ARROW, MOD_NONE, CMD_NONE};
-const Key k_arrow_down = {KEY_DOWN_ARROW, MOD_NONE, CMD_NONE};
-const Key k_arrow_left = {KEY_LEFT_ARROW, MOD_NONE, CMD_NONE};
-const Key k_arrow_right = {KEY_RIGHT_ARROW, MOD_NONE, CMD_NONE};
-const Key k_f1 = {KEY_F1, MOD_NONE, CMD_NONE};
-const Key k_f2 = {KEY_F2, MOD_NONE, CMD_NONE};
-const Key k_f3 = {KEY_F3, MOD_NONE, CMD_NONE};
-const Key k_f4 = {KEY_F4, MOD_NONE, CMD_NONE};
-const Key k_f5 = {KEY_F5, MOD_NONE, CMD_NONE};
-const Key k_f6 = {KEY_F6, MOD_NONE, CMD_NONE};
-const Key k_f7 = {KEY_F7, MOD_NONE, CMD_NONE};
-const Key k_f8 = {KEY_F8, MOD_NONE, CMD_NONE};
-const Key k_f9 = {KEY_F9, MOD_NONE, CMD_NONE};
-const Key k_f10 = {KEY_F10, MOD_NONE, CMD_NONE};
-const Key k_f11 = {KEY_F11, MOD_NONE, CMD_NONE};
-const Key k_f12 = {KEY_F12, MOD_NONE, CMD_NONE};
-
-
-
-const Key c_layer_lock = {KEY_NONE, MOD_NONE, CMD_LOCK_LAYER};
-
-
-
-/* Mouse */
-const Key m_click_1 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_1};
-const Key m_click_2 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_2};
-const Key m_click_3 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_3};
-const Key m_click_4 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_4};
-const Key m_click_5 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_5};
+const Key m_click_1 = mkCommandKey(CMD_MOUSE_CLICK_1);
+const Key m_click_2 = mkCommandKey(CMD_MOUSE_CLICK_2);
+const Key m_click_3 = mkCommandKey(CMD_MOUSE_CLICK_3);
+const Key m_click_4 = mkCommandKey(CMD_MOUSE_CLICK_4);
+const Key m_click_5 = mkCommandKey(CMD_MOUSE_CLICK_5);
