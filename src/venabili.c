@@ -24,23 +24,26 @@ int main(void)
 
     Mapkey layer0[NROWS][NCOLS] =
     {
-        { {k_a, k_empty }, {k_empty, m_rshift} },
-        { {k_a, k_empty}, {k_open_paren, m_lshift} },
-        { {k_space, k_empty}, {k_empty, LS(1)}},
-        { {k_empty, k_empty}, {k_close_paren, m_rshift}},
+        { k_a, k_A },
+        /* { k_a, HOLD_RSHIFT(k_open_paren) }, */
+
+        /* { {k_a, k_empty }, {k_empty, m_rshift} }, */
+        /* { {k_a, k_empty}, {k_open_paren, m_lshift} }, */
+        /* { {k_space, k_empty}, {k_empty, LS(1)}}, */
+        /* { {k_empty, k_empty}, {k_close_paren, m_rshift}}, */
     };
 
-    Mapkey layer1[NROWS][NCOLS] =
-    {
-        { {MU(10), k_empty }, {k_empty, m_rshift} },
-        { {MD(5), k_empty}, {k_b, m_rshift} },
-        { {ML(15), k_empty}, {k_empty, k_empty}},
-        { {MR(1), k_empty}, {k_empty, m_rshift}},
-    };
+    /* Mapkey layer1[NROWS][NCOLS] = */
+    /* { */
+    /*     { {MU(10), k_empty }, {k_empty, m_rshift} }, */
+    /*     { {MD(5), k_empty}, {k_b, m_rshift} }, */
+    /*     { {ML(15), k_empty}, {k_empty, k_empty}}, */
+    /*     { {MR(1), k_empty}, {k_empty, m_rshift}}, */
+    /* }; */
 
 
     add_layer(layer0);
-    add_layer(layer1);
+    /* add_layer(layer1); */
 
 
     while (1)
