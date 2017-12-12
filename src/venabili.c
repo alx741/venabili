@@ -33,9 +33,9 @@ int main(void)
     Mapkey layer1[NROWS][NCOLS] =
     {
         { {MU(10), k_empty }, {k_empty, m_rshift} },
-        /* { {M(m_down, 10), k_empty}, {k_b, m_rshift} }, */
-        /* { {M(m_left, 10), k_empty}, {k_empty, k_empty}}, */
-        /* { {M(m_right, 10), k_empty}, {k_empty, m_rshift}}, */
+        { {MD(5), k_empty}, {k_b, m_rshift} },
+        { {ML(15), k_empty}, {k_empty, k_empty}},
+        { {MR(1), k_empty}, {k_empty, m_rshift}},
     };
 
 

@@ -54,7 +54,21 @@ bool isMouseCommandKey(Key k)
 {
     return isCommandKey(k)
         && k.command >= 0x0010
-        && k.command <= 0x007A;
+        && k.command <= 0x0074;
+}
+
+bool isMouseMovementKey(Key k)
+{
+    return isMouseCommandKey(k)
+        && k.command >= 0x0010
+        && k.command <= 0x006F;
+}
+
+bool isMouseClickKey(Key k)
+{
+    return isMouseCommandKey(k)
+        && k.command >= 0x0070
+        && k.command <= 0x0074;
 }
 
 bool isMouseUpKey(Key k)
@@ -99,9 +113,16 @@ bool isMouseWheelDownKey(Key k)
         && k.command <= 0x006F;
 }
 
-uint8_t getMouseKeySpeed(Key k)
+uint8_t getMouseMovementSpeed(Key k)
 {
-    return 1;
+    // Movement speed is in the first nibble
+    return k.command & 0x000F;
+}
+
+uint8_t getMouseClickButton(Key k)
+{
+    // Click button is in the first nibble
+    return k.command & 0x000F;
 }
 
 
