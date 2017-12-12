@@ -141,6 +141,8 @@ typedef struct
 #define CMD_MOUSE_CLICK_1        0x0016
 #define CMD_MOUSE_CLICK_2        0x0017
 #define CMD_MOUSE_CLICK_3        0x0018
+#define CMD_MOUSE_CLICK_4        0x0019
+#define CMD_MOUSE_CLICK_5        0x001A
 // ... Up to 0x00FF
 
 // Use the LS(n) macro for Layer Selection
@@ -388,16 +390,41 @@ extern const Key    c_layer_lock;
 
 
 /* Mouse */
-/* For mouse movement use the M(movement, speed) macro
- *
- * Posible movements are:
- *      m_up, m_down, m_right, m_left, m_wheel_up, m_wheel_down
- *
- * Posible speeds are:
- *      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40
- */
 extern const Key    m_click_1;
 extern const Key    m_click_2;
 extern const Key    m_click_3;
+extern const Key    m_click_4;
+extern const Key    m_click_5;
+
+// For mouse movement use the M(movement, speed) macro
+extern const Key
+    m_up_1, m_up_2, m_up_3, m_up_4, m_up_5,
+    m_up_6, m_up_7, m_up_8, m_up_9, m_up_10,
+    m_up_15, m_up_20, m_up_25, m_up_30, m_up_35, m_up_40;
+
+extern const Key
+    m_down_1, m_down_2, m_down_3, m_down_4, m_down_5,
+    m_down_6, m_down_7, m_down_8, m_down_9, m_down_10,
+    m_down_15, m_down_20, m_down_25, m_down_30, m_down_35, m_down_40;
+
+extern const Key
+    m_right_1, m_right_2, m_right_3, m_right_4, m_right_5,
+    m_right_6, m_right_7, m_right_8, m_right_9, m_right_10,
+    m_right_15, m_right_20, m_right_25, m_right_30, m_right_35, m_right_40;
+
+extern const Key
+    m_left_1, m_left_2, m_left_3, m_left_4, m_left_5,
+    m_left_6, m_left_7, m_left_8, m_left_9, m_left_10,
+    m_left_15, m_left_20, m_left_25, m_left_30, m_left_35, m_left_40;
+
+extern const Key
+    m_wheelup_1, m_wheelup_2, m_wheelup_3, m_wheelup_4, m_wheelup_5,
+    m_wheelup_6, m_wheelup_7, m_wheelup_8, m_wheelup_9, m_wheelup_10,
+    m_wheelup_15, m_wheelup_20, m_wheelup_25, m_wheelup_30, m_wheelup_35, m_wheelup_40;
+
+extern const Key
+    m_wheeldown_1, m_wheeldown_2, m_wheeldown_3, m_wheeldown_4, m_wheeldown_5,
+    m_wheeldown_6, m_wheeldown_7, m_wheeldown_8, m_wheeldown_9, m_wheeldown_10,
+    m_wheeldown_15, m_wheeldown_20, m_wheeldown_25, m_wheeldown_30, m_wheeldown_35, m_wheeldown_40;
 
 #endif // KEYS_H

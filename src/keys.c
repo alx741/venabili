@@ -213,12 +213,26 @@ const Key k_f12 = {KEY_F12, MOD_NONE, CMD_NONE};
 
 const Key c_layer_lock = {KEY_NONE, MOD_NONE, CMD_LOCK_LAYER};
 
-/* const Key m_up = {KEY_NONE, MOD_NONE, CMD_MOUSE_UP}; */
-/* const Key m_down = {KEY_NONE, MOD_NONE, CMD_MOUSE_DOWN}; */
-/* const Key m_left = {KEY_NONE, MOD_NONE, CMD_MOUSE_LEFT}; */
-/* const Key m_right = {KEY_NONE, MOD_NONE, CMD_MOUSE_RIGHT}; */
-/* const Key m_wheel_up = {KEY_NONE, MOD_NONE, CMD_MOUSE_WHEEL_UP}; */
-/* const Key m_wheel_down = {KEY_NONE, MOD_NONE, CMD_MOUSE_WHEEL_DOWN}; */
-/* const Key m_click_1 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_1}; */
-/* const Key m_click_2 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_2}; */
-/* const Key m_click_3 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_3}; */
+
+
+/* Mouse */
+const Key m_up_1 =  {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_1};
+const Key m_up_2 =  {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_2};
+const Key m_up_3 =  {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_3};
+const Key m_up_4 =  {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_4};
+const Key m_up_5 =  {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_5};
+const Key m_up_6 =  {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_6};
+const Key m_up_7 =  {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_7};
+const Key m_up_8 =  {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_8};
+const Key m_up_9 =  {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_9};
+const Key m_up_10 = {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_10};
+const Key m_up_15 = {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_15};
+const Key m_up_20 = {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_20};
+const Key m_up_25 = {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_25};
+const Key m_up_30 = {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_30};
+const Key m_up_35 = {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_35};
+const Key m_up_40 = {KEY_NONE, MOD_NONE, CMD_MOUSE_UP_40};
+
+const Key m_click_1 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_1};
+const Key m_click_2 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_2};
+const Key m_click_3 = {KEY_NONE, MOD_NONE, CMD_MOUSE_CLICK_3};
