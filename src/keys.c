@@ -58,64 +58,64 @@ bool areKeysEqual(Key k1, Key k2)
 bool isMouseCommandKey(Key k)
 {
     return isCommandKey(k)
-        && k.command >= 0x0010
-        && k.command <= 0x0074;
+        && k.command >= CMD_MOUSE_UP
+        && k.command <= CMD_MOUSE_CLICK_5;
 }
 
 bool isMouseMovementKey(Key k)
 {
     return isMouseCommandKey(k)
-        && k.command >= 0x0010
-        && k.command <= 0x006F;
+        && k.command >= CMD_MOUSE_UP
+        && k.command < CMD_MOUSE_CLICK_5;
 }
 
 bool isMouseClickKey(Key k)
 {
     return isMouseCommandKey(k)
-        && k.command >= 0x0070
-        && k.command <= 0x0074;
+        && k.command >= CMD_MOUSE_CLICK_1
+        && k.command <= CMD_MOUSE_CLICK_5;
 }
 
 bool isMouseUpKey(Key k)
 {
     return isCommandKey(k)
-        && k.command >= 0x0010
-        && k.command <= 0x001F;
+        && k.command >= CMD_MOUSE_UP
+        && k.command < CMD_MOUSE_DOWN;
 }
 
 bool isMouseDownKey(Key k)
 {
     return isCommandKey(k)
-        && k.command >= 0x0020
-        && k.command <= 0x002F;
+        && k.command >= CMD_MOUSE_DOWN
+        && k.command < CMD_MOUSE_RIGHT;
 }
 
 bool isMouseRightKey(Key k)
 {
     return isCommandKey(k)
-        && k.command >= 0x0030
-        && k.command <= 0x003F;
+        && k.command >= CMD_MOUSE_RIGHT
+        && k.command < CMD_MOUSE_LEFT;
 }
 
 bool isMouseLeftKey(Key k)
 {
     return isCommandKey(k)
-        && k.command >= 0x0040
-        && k.command <= 0x004F;
+        && k.command >= CMD_MOUSE_LEFT
+        && k.command < CMD_MOUSE_WHEELUP;
 }
 
 bool isMouseWheelUpKey(Key k)
 {
     return isCommandKey(k)
-        && k.command >= 0x0050
-        && k.command <= 0x005F;
+        && k.command >= CMD_MOUSE_WHEELUP
+        && k.command < CMD_MOUSE_WHEELDOWN;
 }
 
 bool isMouseWheelDownKey(Key k)
 {
     return isCommandKey(k)
-        && k.command >= 0x0060
-        && k.command <= 0x006F;
+        && k.command >= CMD_MOUSE_WHEELDOWN
+        && k.command < CMD_MOUSE_CLICK_1;
 }
 
 uint8_t getMouseMovementSpeed(Key k)
