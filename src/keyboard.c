@@ -87,6 +87,7 @@ void handle_command_keys(Key k)
 
 void handle_mouse_command_keys(Key k)
 {
+    if (isMouseUpKey(k)) { report_mouse_movement(UP, getMouseKeySpeed(k)); }
     /* if (areKeysEqual(k, m_up))              { report_mouse_movement(UP, 15); } */
     /* else if (areKeysEqual(k, m_down))       { report_mouse_movement(DOWN, 15); } */
     /* else if (areKeysEqual(k, m_left))       { report_mouse_movement(LEFT, 15); } */
