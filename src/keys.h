@@ -30,17 +30,117 @@ typedef struct
 /* Posible special commands
  */
 #define CMD_NONE               0x0000
+
+// Layers
 #define CMD_LOCK_LAYER         0x0001
 // Reserved 0x0002 - 0x000F
-#define CMD_MOUSE_UP           0x0010
-#define CMD_MOUSE_DOWN         0x0011
-#define CMD_MOUSE_LEFT         0x0012
-#define CMD_MOUSE_RIGHT        0x0013
-#define CMD_MOUSE_WHEEL_UP     0x0014
-#define CMD_MOUSE_WHEEL_DOWN   0x0015
-#define CMD_MOUSE_CLICK_1      0x0016
-#define CMD_MOUSE_CLICK_2      0x0017
-#define CMD_MOUSE_CLICK_3      0x0018
+
+// Mouse
+#define CMD_MOUSE_UP_1           0x0010
+#define CMD_MOUSE_UP_2           0x0011
+#define CMD_MOUSE_UP_3           0x0012
+#define CMD_MOUSE_UP_4           0x0013
+#define CMD_MOUSE_UP_5           0x0014
+#define CMD_MOUSE_UP_6           0x0015
+#define CMD_MOUSE_UP_7           0x0016
+#define CMD_MOUSE_UP_8           0x0017
+#define CMD_MOUSE_UP_9           0x0018
+#define CMD_MOUSE_UP_10          0x0019
+#define CMD_MOUSE_UP_15          0x001A
+#define CMD_MOUSE_UP_20          0x001B
+#define CMD_MOUSE_UP_25          0x001C
+#define CMD_MOUSE_UP_30          0x001D
+#define CMD_MOUSE_UP_35          0x001E
+#define CMD_MOUSE_UP_40          0x001F
+
+#define CMD_MOUSE_DOWN_1         0x0020
+#define CMD_MOUSE_DOWN_2         0x0021
+#define CMD_MOUSE_DOWN_3         0x0022
+#define CMD_MOUSE_DOWN_4         0x0023
+#define CMD_MOUSE_DOWN_5         0x0024
+#define CMD_MOUSE_DOWN_6         0x0025
+#define CMD_MOUSE_DOWN_7         0x0026
+#define CMD_MOUSE_DOWN_8         0x0027
+#define CMD_MOUSE_DOWN_9         0x0028
+#define CMD_MOUSE_DOWN_10        0x0029
+#define CMD_MOUSE_DOWN_15        0x002A
+#define CMD_MOUSE_DOWN_20        0x002B
+#define CMD_MOUSE_DOWN_25        0x002C
+#define CMD_MOUSE_DOWN_30        0x002D
+#define CMD_MOUSE_DOWN_35        0x002E
+#define CMD_MOUSE_DOWN_40        0x002F
+
+#define CMD_MOUSE_LEFT_1         0x0030
+#define CMD_MOUSE_LEFT_2         0x0031
+#define CMD_MOUSE_LEFT_3         0x0032
+#define CMD_MOUSE_LEFT_4         0x0033
+#define CMD_MOUSE_LEFT_5         0x0034
+#define CMD_MOUSE_LEFT_6         0x0035
+#define CMD_MOUSE_LEFT_7         0x0036
+#define CMD_MOUSE_LEFT_8         0x0037
+#define CMD_MOUSE_LEFT_9         0x0038
+#define CMD_MOUSE_LEFT_10        0x0039
+#define CMD_MOUSE_LEFT_15        0x003A
+#define CMD_MOUSE_LEFT_20        0x003B
+#define CMD_MOUSE_LEFT_25        0x003C
+#define CMD_MOUSE_LEFT_30        0x003D
+#define CMD_MOUSE_LEFT_35        0x003E
+#define CMD_MOUSE_LEFT_40        0x003F
+
+#define CMD_MOUSE_RIGHT_1        0x0040
+#define CMD_MOUSE_RIGHT_2        0x0041
+#define CMD_MOUSE_RIGHT_3        0x0042
+#define CMD_MOUSE_RIGHT_4        0x0043
+#define CMD_MOUSE_RIGHT_5        0x0044
+#define CMD_MOUSE_RIGHT_6        0x0045
+#define CMD_MOUSE_RIGHT_7        0x0046
+#define CMD_MOUSE_RIGHT_8        0x0047
+#define CMD_MOUSE_RIGHT_9        0x0048
+#define CMD_MOUSE_RIGHT_10       0x0049
+#define CMD_MOUSE_RIGHT_15       0x004A
+#define CMD_MOUSE_RIGHT_20       0x004B
+#define CMD_MOUSE_RIGHT_25       0x004C
+#define CMD_MOUSE_RIGHT_30       0x004D
+#define CMD_MOUSE_RIGHT_35       0x004E
+#define CMD_MOUSE_RIGHT_40       0x004F
+
+#define CMD_MOUSE_WHEEL_UP_1     0x0050
+#define CMD_MOUSE_WHEEL_UP_2     0x0051
+#define CMD_MOUSE_WHEEL_UP_3     0x0052
+#define CMD_MOUSE_WHEEL_UP_4     0x0053
+#define CMD_MOUSE_WHEEL_UP_5     0x0054
+#define CMD_MOUSE_WHEEL_UP_6     0x0055
+#define CMD_MOUSE_WHEEL_UP_7     0x0056
+#define CMD_MOUSE_WHEEL_UP_8     0x0057
+#define CMD_MOUSE_WHEEL_UP_9     0x0058
+#define CMD_MOUSE_WHEEL_UP_10    0x0059
+#define CMD_MOUSE_WHEEL_UP_15    0x005A
+#define CMD_MOUSE_WHEEL_UP_20    0x005B
+#define CMD_MOUSE_WHEEL_UP_25    0x005C
+#define CMD_MOUSE_WHEEL_UP_30    0x005D
+#define CMD_MOUSE_WHEEL_UP_35    0x005E
+#define CMD_MOUSE_WHEEL_UP_40    0x005F
+
+#define CMD_MOUSE_WHEEL_DOWN_1   0x0060
+#define CMD_MOUSE_WHEEL_DOWN_2   0x0061
+#define CMD_MOUSE_WHEEL_DOWN_3   0x0062
+#define CMD_MOUSE_WHEEL_DOWN_4   0x0063
+#define CMD_MOUSE_WHEEL_DOWN_5   0x0064
+#define CMD_MOUSE_WHEEL_DOWN_6   0x0065
+#define CMD_MOUSE_WHEEL_DOWN_7   0x0066
+#define CMD_MOUSE_WHEEL_DOWN_8   0x0067
+#define CMD_MOUSE_WHEEL_DOWN_9   0x0068
+#define CMD_MOUSE_WHEEL_DOWN_10  0x0069
+#define CMD_MOUSE_WHEEL_DOWN_15  0x006A
+#define CMD_MOUSE_WHEEL_DOWN_20  0x006B
+#define CMD_MOUSE_WHEEL_DOWN_25  0x006C
+#define CMD_MOUSE_WHEEL_DOWN_30  0x006D
+#define CMD_MOUSE_WHEEL_DOWN_35  0x006E
+#define CMD_MOUSE_WHEEL_DOWN_40  0x006F
+
+#define CMD_MOUSE_CLICK_1        0x0016
+#define CMD_MOUSE_CLICK_2        0x0017
+#define CMD_MOUSE_CLICK_3        0x0018
 // ... Up to 0x00FF
 
 // Use the LS(n) macro for Layer Selection
@@ -275,12 +375,36 @@ extern const Key    c_layer_lock;
 
 
 /* Mouse */
-extern const Key    m_up;
-extern const Key    m_down;
-extern const Key    m_left;
-extern const Key    m_right;
-extern const Key    m_wheel_up;
-extern const Key    m_wheel_down;
+//                                  Speeds
+extern const Key    m_up_1, m_up_2, m_up_3, m_up_4, m_up_5,
+                    m_up_6, m_up_7, m_up_8, m_up_9, m_up_10,
+                    m_up_15, m_up_20, m_up_25, m_up_30, m_up_35, m_up_40;
+
+extern const Key    m_down_1, m_down_2, m_down_3, m_down_4, m_down_5,
+                    m_down_6, m_down_7, m_down_8, m_down_9, m_down_10,
+                    m_down_15, m_down_20, m_down_25, m_down_30, m_down_35, m_down_40;
+
+extern const Key    m_right_1, m_right_2, m_right_3, m_right_4, m_right_5,
+                    m_right_6, m_right_7, m_right_8, m_right_9, m_right_10,
+                    m_right_15, m_right_20, m_right_25, m_right_30, m_right_35, m_right_40;
+
+extern const Key    m_left_1, m_left_2, m_left_3, m_left_4, m_left_5,
+                    m_left_6, m_left_7, m_left_8, m_left_9, m_left_10,
+                    m_left_15, m_left_20, m_left_25, m_left_30, m_left_35, m_left_40;
+
+extern const Key    m_wheel_up_1, m_wheel_up_2, m_wheel_up_3, m_wheel_up_4, m_wheel_up_5,
+                    m_wheel_up_6, m_wheel_up_7, m_wheel_up_8, m_wheel_up_9, m_wheel_up_10,
+                    m_wheel_up_15, m_wheel_up_20, m_wheel_up_25, m_wheel_up_30, m_wheel_up_35, m_wheel_up_40;
+
+extern const Key    m_wheel_down_1, m_wheel_down_2, m_wheel_down_3, m_wheel_down_4, m_wheel_down_5,
+                    m_wheel_down_6, m_wheel_down_7, m_wheel_down_8, m_wheel_down_9, m_wheel_down_10,
+                    m_wheel_down_15, m_wheel_down_20, m_wheel_down_25, m_wheel_down_30, m_wheel_down_35, m_wheel_down_40;
+
+/* extern const Key    m_down; */
+/* extern const Key    m_left; */
+/* extern const Key    m_right; */
+/* extern const Key    m_wheel_up; */
+/* extern const Key    m_wheel_down; */
 extern const Key    m_click_1;
 extern const Key    m_click_2;
 extern const Key    m_click_3;
