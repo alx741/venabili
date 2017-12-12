@@ -229,74 +229,38 @@ extern const Key     m_rsuper;
 
 
 /* Symbols */
-extern const Key     k_back_quote;
-extern const Key     k_double_quote;
-extern const Key     k_single_quote;
-extern const Key     k_tilde;
-extern const Key     k_bang;
-extern const Key     k_at;
-extern const Key     k_hash;
-extern const Key     k_dollar;
-extern const Key     k_percent;
-extern const Key     k_caret;
-extern const Key     k_ampersand;
-extern const Key     k_asterisk;
-extern const Key     k_hyphen;
-extern const Key     k_under_score;
-extern const Key     k_equal;
-extern const Key     k_plus;
-extern const Key     k_semicolon;
-extern const Key     k_colon;
-extern const Key     k_dot;
-extern const Key     k_comma;
-extern const Key     k_slash;
-extern const Key     k_question_mark;
-extern const Key     k_backslash;
-extern const Key     k_pipe;
-extern const Key     k_greater_than;
-extern const Key     k_less_than;
-extern const Key     k_open_paren;
-extern const Key     k_close_paren;
-extern const Key     k_open_bracket;
-extern const Key     k_close_bracket;
-extern const Key     k_open_brace;
-extern const Key     k_close_brace;
+extern const Key     k_back_quote,           k_semicolon;
+extern const Key     k_double_quote,         k_colon;
+extern const Key     k_single_quote,         k_dot;
+extern const Key     k_tilde,                k_comma;
+extern const Key     k_bang,                 k_slash;
+extern const Key     k_at,                   k_question_mark;
+extern const Key     k_hash,                 k_backslash;
+extern const Key     k_dollar,               k_pipe;
+extern const Key     k_percent,              k_greater_than;
+extern const Key     k_caret,                k_less_than;
+extern const Key     k_ampersand,            k_open_paren;
+extern const Key     k_asterisk,             k_close_paren;
+extern const Key     k_hyphen,               k_open_bracket;
+extern const Key     k_under_score,          k_close_bracket;
+extern const Key     k_equal,                k_open_brace;
+extern const Key     k_plus,                 k_close_brace;
 
 
 /* Non-printables */
-extern const Key     k_enter;
-extern const Key     k_escape;
-extern const Key     k_backspace;
-extern const Key     k_tab;
-extern const Key     k_space;
-
-extern const Key     k_print_screen;
-extern const Key     k_scroll_lock;
-extern const Key     k_pause;
-extern const Key     k_insert;
-extern const Key     k_delete;
-extern const Key     k_home;
-extern const Key     k_end;
-extern const Key     k_pageup;
-extern const Key     k_pagedown;
-extern const Key     k_arrow_up;
-extern const Key     k_arrow_down;
-extern const Key     k_arrow_left;
+extern const Key     k_print_screen,         k_f1,         k_enter;
+extern const Key     k_scroll_lock,          k_f2,         k_escape;
+extern const Key     k_pause,                k_f3,         k_backspace;
+extern const Key     k_insert,               k_f4,         k_tab;
+extern const Key     k_delete,               k_f5,         k_space;
+extern const Key     k_home,                 k_f6;
+extern const Key     k_end,                  k_f7;
+extern const Key     k_pageup,               k_f8;
+extern const Key     k_pagedown,             k_f9;
+extern const Key     k_arrow_up,             k_f10;
+extern const Key     k_arrow_down,           k_f11;
+extern const Key     k_arrow_left,           k_f12;
 extern const Key     k_arrow_right;
-
-extern const Key     k_f1;
-extern const Key     k_f2;
-extern const Key     k_f3;
-extern const Key     k_f4;
-extern const Key     k_f5;
-extern const Key     k_f6;
-extern const Key     k_f7;
-extern const Key     k_f8;
-extern const Key     k_f9;
-extern const Key     k_f10;
-extern const Key     k_f11;
-extern const Key     k_f12;
-
 
 
 /***********
