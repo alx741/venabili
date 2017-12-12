@@ -162,7 +162,6 @@ Key Rshift(Key k) { return apply_mod(k, MOD_RIGHT_SHIFT); }
 Key Ralt(Key k)   { return apply_mod(k, MOD_RIGHT_ALT); }
 Key Rsuper(Key k) { return apply_mod(k, MOD_RIGHT_SUPER); }
 
-
 Key HLctrl(Key k)  { return apply_hold_mod(k, MOD_LEFT_CTRL); }
 Key HLshift(Key k) { return apply_hold_mod(k, MOD_LEFT_SHIFT); }
 Key HLalt(Key k)   { return apply_hold_mod(k, MOD_LEFT_ALT); }
@@ -173,14 +172,13 @@ Key HRalt(Key k)   { return apply_hold_mod(k, MOD_RIGHT_ALT); }
 Key HRsuper(Key k) { return apply_hold_mod(k, MOD_RIGHT_SUPER); }
 
 
-#define mkNormalKey(keycode) {keycode, MOD_NONE, MOD_NONE, CMD_NONE}
-#define mkNormalShiftedKey(keycode) {keycode, MOD_LEFT_SHIFT, MOD_NONE, CMD_NONE}
-#define mkCommandKey(command) {KEY_NONE, MOD_NONE, MOD_NONE, command}
-
-
 /**********
  *  Keys
  *********/
+
+#define mkNormalKey(keycode) {keycode, MOD_NONE, MOD_NONE, CMD_NONE}
+#define mkNormalShiftedKey(keycode) {keycode, MOD_LEFT_SHIFT, MOD_NONE, CMD_NONE}
+#define mkCommandKey(command) {KEY_NONE, MOD_NONE, MOD_NONE, command}
 
 const Key k_empty = mkCommandKey(CMD_NONE);
 

@@ -5,8 +5,6 @@
 
 void keyboard_init(void);
 
-void execute(const Key keys[NKEYS], int n);
-
 void add_layer(const Key layer[NROWS][NCOLS]);
 
 /* Selects a layer based on user commands
@@ -21,5 +19,10 @@ int map_layer(Key keys[NKEYS]);
  * of N pressed keys
  */
 void apply_modifiers(Key keys[NKEYS], int n);
+
+/* Execute key pulsations in current layer
+ */
+void execute(const Key keys[NKEYS], int n);
+
 
 #endif // KEYBOARD_H

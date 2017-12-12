@@ -159,23 +159,13 @@ int map_layer(Key keys[NKEYS])
         for (int j = 0; j < NCOLS; j++)
         {
             Key k = LAYERS[CURRENT_LAYER][i][j];
+
             // Handle normal key presses
             if (currently_pressed(i, j))
             {
-                /* // Only press functionality */
-                /* if (hasPressKey(k) && ! hasHoldKey(k)) */
-                /* { */
-                /*     keys[index++] = k.press; */
-                /* } */
-
-                /* // Only hold functionality */
-                /* else if (! hasPressKey(k) && hasHoldKey(k)) */
-                /* { */
-                /*     keys[index++] = k.hold; */
-                /* } */
-
                 if (hasHoldKey(k)) // Double functionality
                 {
+                    // Send a key which is only a modifier
                     Key nk = {KEY_NONE, k.hold_mod, k.hold_mod, CMD_NONE};
                     keys[index++] = nk;
                 }
@@ -183,12 +173,9 @@ int map_layer(Key keys[NKEYS])
                 {
                     keys[index++] = k;
                 }
-
-
             }
 
             // Handle Taps
-            /* if (hasPressKey(k) && hasHoldKey(k)) */
             if (hasHoldKey(k))
             {
                 // Reset Tap timer on first pressed of a key with Tap

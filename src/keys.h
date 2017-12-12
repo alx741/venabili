@@ -5,9 +5,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-/* A Key might be either a normal keyboard symbol with its applied modifiers
- * or a special command
- */
 typedef struct
 {
     // Normal Key
@@ -20,14 +17,6 @@ typedef struct
     // Command key
     uint16_t command;
 } Key;
-
-/* Mapkey is used to map keys in layers
- */
-/* typedef struct */
-/* { */
-/*     Key press; // Key when pressed */
-/*     Key hold; // Key when held */
-/* } Mapkey; */
 
 
 /* Posible special commands
@@ -53,8 +42,8 @@ typedef struct
 // ... Up to 0x00FF
 
 // Use the LS(n) macro for Layer Selection
-#define _LS_FIRST 0x0100
-#define _LS_LAST  0xFF00
+#define LS_FIRST 0x0100
+#define LS_LAST  0xFF00
 
 /* Layer selection macro command
  *
@@ -62,30 +51,24 @@ typedef struct
  *
  * Up to 256 layers
  */
-#define LS(n) {KEY_NONE, MOD_NONE, _LS_FIRST + n}
+#define LS(n) {KEY_NONE, MOD_NONE, MOD_NONE, LS_FIRST + n}
 
 
 /* Mouse movement macros
  *
  * Valid speeds are between 0 and 15
  */
-#define MU(speed) {KEY_NONE, MOD_NONE, CMD_MOUSE_UP + speed}
-#define MD(speed) {KEY_NONE, MOD_NONE, CMD_MOUSE_DOWN + speed}
-#define MR(speed) {KEY_NONE, MOD_NONE, CMD_MOUSE_RIGHT + speed}
-#define ML(speed) {KEY_NONE, MOD_NONE, CMD_MOUSE_LEFT + speed}
-#define MWU(speed) {KEY_NONE, MOD_NONE, CMD_MOUSE_WHEELUP + speed}
-#define MWD(speed) {KEY_NONE, MOD_NONE, CMD_MOUSE_WHEELDOWN + speed}
+#define MU(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_UP + speed}
+#define MD(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_DOWN + speed}
+#define MR(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_RIGHT + speed}
+#define ML(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_LEFT + speed}
+#define MWU(speed) { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_WHEELUP + speed}
+#define MWD(speed) { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_WHEELDOWN + speed}
 
-
-/* Tell if Mapkey has press key functionality
- */
-/* bool hasPressKey(Mapkey mk); */
 
 /* Tell if Mapkey has hold key functionality
  */
-/* bool hasHoldKey(Mapkey mk); */
 bool hasHoldKey(Key k);
-
 
 /* Tell if a KEY is normal
  * It's not a command key
@@ -147,7 +130,7 @@ Key Lsuper(Key k);      Key Rsuper(Key k);
 
 /* Make a key behave like a modifier when held
  *
- * e.g.  HRshift(k_a) = 'a' when pressed, RShift when held
+ * e.g.  HRshift(k_a) = 'a' when tapped, RShift when held
  */
 Key HLctrl(Key k);       Key HRctrl(Key k);
 Key HLshift(Key k);      Key HRshift(Key k);
