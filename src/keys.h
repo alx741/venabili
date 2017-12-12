@@ -104,39 +104,39 @@ typedef struct
 #define CMD_MOUSE_RIGHT_35       0x004E
 #define CMD_MOUSE_RIGHT_40       0x004F
 
-#define CMD_MOUSE_WHEEL_UP_1     0x0050
-#define CMD_MOUSE_WHEEL_UP_2     0x0051
-#define CMD_MOUSE_WHEEL_UP_3     0x0052
-#define CMD_MOUSE_WHEEL_UP_4     0x0053
-#define CMD_MOUSE_WHEEL_UP_5     0x0054
-#define CMD_MOUSE_WHEEL_UP_6     0x0055
-#define CMD_MOUSE_WHEEL_UP_7     0x0056
-#define CMD_MOUSE_WHEEL_UP_8     0x0057
-#define CMD_MOUSE_WHEEL_UP_9     0x0058
-#define CMD_MOUSE_WHEEL_UP_10    0x0059
-#define CMD_MOUSE_WHEEL_UP_15    0x005A
-#define CMD_MOUSE_WHEEL_UP_20    0x005B
-#define CMD_MOUSE_WHEEL_UP_25    0x005C
-#define CMD_MOUSE_WHEEL_UP_30    0x005D
-#define CMD_MOUSE_WHEEL_UP_35    0x005E
-#define CMD_MOUSE_WHEEL_UP_40    0x005F
+#define CMD_MOUSE_WHEELUP_1      0x0050
+#define CMD_MOUSE_WHEELUP_2      0x0051
+#define CMD_MOUSE_WHEELUP_3      0x0052
+#define CMD_MOUSE_WHEELUP_4      0x0053
+#define CMD_MOUSE_WHEELUP_5      0x0054
+#define CMD_MOUSE_WHEELUP_6      0x0055
+#define CMD_MOUSE_WHEELUP_7      0x0056
+#define CMD_MOUSE_WHEELUP_8      0x0057
+#define CMD_MOUSE_WHEELUP_9      0x0058
+#define CMD_MOUSE_WHEELUP_10     0x0059
+#define CMD_MOUSE_WHEELUP_15     0x005A
+#define CMD_MOUSE_WHEELUP_20     0x005B
+#define CMD_MOUSE_WHEELUP_25     0x005C
+#define CMD_MOUSE_WHEELUP_30     0x005D
+#define CMD_MOUSE_WHEELUP_35     0x005E
+#define CMD_MOUSE_WHEELUP_40     0x005F
 
-#define CMD_MOUSE_WHEEL_DOWN_1   0x0060
-#define CMD_MOUSE_WHEEL_DOWN_2   0x0061
-#define CMD_MOUSE_WHEEL_DOWN_3   0x0062
-#define CMD_MOUSE_WHEEL_DOWN_4   0x0063
-#define CMD_MOUSE_WHEEL_DOWN_5   0x0064
-#define CMD_MOUSE_WHEEL_DOWN_6   0x0065
-#define CMD_MOUSE_WHEEL_DOWN_7   0x0066
-#define CMD_MOUSE_WHEEL_DOWN_8   0x0067
-#define CMD_MOUSE_WHEEL_DOWN_9   0x0068
-#define CMD_MOUSE_WHEEL_DOWN_10  0x0069
-#define CMD_MOUSE_WHEEL_DOWN_15  0x006A
-#define CMD_MOUSE_WHEEL_DOWN_20  0x006B
-#define CMD_MOUSE_WHEEL_DOWN_25  0x006C
-#define CMD_MOUSE_WHEEL_DOWN_30  0x006D
-#define CMD_MOUSE_WHEEL_DOWN_35  0x006E
-#define CMD_MOUSE_WHEEL_DOWN_40  0x006F
+#define CMD_MOUSE_WHEELDOWN_1    0x0060
+#define CMD_MOUSE_WHEELDOWN_2    0x0061
+#define CMD_MOUSE_WHEELDOWN_3    0x0062
+#define CMD_MOUSE_WHEELDOWN_4    0x0063
+#define CMD_MOUSE_WHEELDOWN_5    0x0064
+#define CMD_MOUSE_WHEELDOWN_6    0x0065
+#define CMD_MOUSE_WHEELDOWN_7    0x0066
+#define CMD_MOUSE_WHEELDOWN_8    0x0067
+#define CMD_MOUSE_WHEELDOWN_9    0x0068
+#define CMD_MOUSE_WHEELDOWN_10   0x0069
+#define CMD_MOUSE_WHEELDOWN_15   0x006A
+#define CMD_MOUSE_WHEELDOWN_20   0x006B
+#define CMD_MOUSE_WHEELDOWN_25   0x006C
+#define CMD_MOUSE_WHEELDOWN_30   0x006D
+#define CMD_MOUSE_WHEELDOWN_35   0x006E
+#define CMD_MOUSE_WHEELDOWN_40   0x006F
 
 #define CMD_MOUSE_CLICK_1        0x0016
 #define CMD_MOUSE_CLICK_2        0x0017
@@ -390,11 +390,7 @@ extern const Key    c_layer_lock;
 
 
 /* Mouse */
-extern const Key    m_click_1;
-extern const Key    m_click_2;
-extern const Key    m_click_3;
-extern const Key    m_click_4;
-extern const Key    m_click_5;
+extern const Key    m_click_1,  m_click_2,  m_click_3,  m_click_4,  m_click_5;
 
 // For mouse movement use the M(movement, speed) macro
 extern const Key
