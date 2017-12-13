@@ -23,7 +23,7 @@ int main(void)
         { k_a, k_caps                 },
         { k_c, HLshift(k_open_paren)  },
         { k_d, LS(1)                  },
-        { k_e, HLshift(k_close_paren) },
+        { k_A, HLshift(k_close_paren) },
     };
 
     Key layer1[NROWS][NCOLS] =
