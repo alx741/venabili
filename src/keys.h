@@ -248,7 +248,7 @@ extern const Key     k_scroll_lock,          k_f2,         k_escape;
 extern const Key     k_pause,                k_f3,         k_backspace;
 extern const Key     k_insert,               k_f4,         k_tab;
 extern const Key     k_delete,               k_f5,         k_space;
-extern const Key     k_home,                 k_f6;
+extern const Key     k_home,                 k_f6,         k_caps;
 extern const Key     k_end,                  k_f7;
 extern const Key     k_pageup,               k_f8;
 extern const Key     k_pagedown,             k_f9;

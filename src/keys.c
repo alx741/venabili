@@ -267,6 +267,7 @@ const Key k_escape       = mkNormalKey(KEY_ESCAPE);
 const Key k_backspace    = mkNormalKey(KEY_BACKSPACE);
 const Key k_tab          = mkNormalKey(KEY_TAB);
 const Key k_space        = mkNormalKey(KEY_SPACEBAR);
+const Key k_caps         = mkNormalKey(KEY_CAPS);
 const Key k_print_screen = mkNormalKey(KEY_PRINT_SCREEN);
 const Key k_scroll_lock  = mkNormalKey(KEY_SCROLL_LOCK);
 const Key k_pause        = mkNormalKey(KEY_PAUSE);
@@ -292,6 +293,7 @@ const Key k_f9           = mkNormalKey(KEY_F9);
 const Key k_f10          = mkNormalKey(KEY_F10);
 const Key k_f11          = mkNormalKey(KEY_F11);
 const Key k_f12          = mkNormalKey(KEY_F12);
+
 
 
 const Key c_layer_lock = mkCommandKey(CMD_LOCK_LAYER);
