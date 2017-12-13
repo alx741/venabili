@@ -18,6 +18,10 @@ int main(void)
     keyboard_sensing_init();
     keyboard_init();
 
+    // FIXME: DEBUG ONLY
+	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
+	gpio_clear(GPIOB, GPIO13);
+
     Key layer0[NROWS][NCOLS] =
     {
         { k_a, k_caps                 },
