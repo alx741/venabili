@@ -38,12 +38,7 @@ void execute(const Key keys[NKEYS], int n)
     {
         Key k = keys[i];
 
-        if (isEmptyKey(k))
-        {
-            // Ignore it
-        }
-        // Modifiers are already applied to normal keys, so ignore them
-        else if (isNormalKey(k) && !isModifierKey(k))
+        if (isNormalKey(k))
         {
             if (n_normal_keys < XKRO)
             {
