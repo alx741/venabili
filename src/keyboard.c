@@ -8,6 +8,7 @@
 #include "usb_mouse.h"
 #include "keys.h"
 #include "keyboard.h"
+#include <libopencm3/stm32/gpio.h>
 
 static Key LAYERS[NLAYERS][NROWS][NCOLS];
 static int N_LAYERS = 0;
@@ -216,6 +217,11 @@ void apply_modifiers(Key keys[NKEYS], int n)
         {
             keys[i].modifiers |= mods;
         }
+    }
+
+    if ((mods & MOD_LEFT_SHIFT) && (mods & MOD_RIGHT_SHIFT))
+    {
+        gpio_set(GPIOB, GPIO13);
     }
 }
 
