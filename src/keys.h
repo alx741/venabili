@@ -135,6 +135,11 @@ uint8_t getMouseMovementSpeed(Key k);
 uint8_t getMouseClickButton(Key k);
 
 
+/* Convert a char to a suitable Key representation
+ */
+Key char2key(char c);
+
+
 /* Apply modifiers to a key
  *
  * e.g.   Rctrl(Lshift(k_a)) = CTRL + SHIFT + a
