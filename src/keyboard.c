@@ -187,7 +187,7 @@ int map_layer(Key keys[NKEYS])
                 }
             }
 
-#ifdef DOUBLE_SHIFT_CAPS_LOCK
+#ifdef ENABLE_DOUBLE_SHIFT_CAPS_LOCK
             static bool shifted = false;
             static Key_coordinate shift_coord = {0};
             if ((k.modifiers == MOD_LEFT_SHIFT
@@ -211,7 +211,7 @@ int map_layer(Key keys[NKEYS])
                     shifted = false;
                 }
             }
-#endif // DOUBLE_SHIFT_CAPS_LOCK
+#endif // ENABLE_DOUBLE_SHIFT_CAPS_LOCK
 
         }
     }

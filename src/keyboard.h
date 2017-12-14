@@ -2,7 +2,7 @@
 #define KEYBOARD_H
 
 #define NLAYERS 4
-#define DOUBLE_SHIFT_CAPS_LOCK
+#define ENABLE_DOUBLE_SHIFT_CAPS_LOCK
 
 void keyboard_init(void);
 
