@@ -29,7 +29,7 @@ void add_string_macro(const char macro[MACRO_LENGTH])
     wipe_macro(N_MACROS);
     int i = 0;
     const char *c = &macro[0];
-    while (! '\0')
+    while (*c != '\0')
     {
         MACROS[N_MACROS][i++] = char2key(*c);
         c++;
