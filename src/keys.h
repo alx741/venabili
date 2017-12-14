@@ -39,6 +39,10 @@ typedef struct
 #define CMD_MOUSE_CLICK_3        0x0072
 #define CMD_MOUSE_CLICK_4        0x0073
 #define CMD_MOUSE_CLICK_5        0x0074
+
+// Macros
+#define CMD_MACRO_FIRST          0x0075
+#define CMD_MACRO_LAST           0x0090
 // ... Up to 0x00FF
 
 // Use the LS(n) macro for Layer Selection
@@ -49,7 +53,7 @@ typedef struct
  *
  * LS(0) is the first (main) layer
  *
- * Up to 256 layers
+ * Up to 256 layers. From 1 to 256
  */
 #define LS(n) {KEY_NONE, MOD_NONE, MOD_NONE, LS_FIRST + n}
 
@@ -58,12 +62,19 @@ typedef struct
  *
  * Valid speeds are between 0 and 15
  */
-#define MU(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_UP + speed}
-#define MD(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_DOWN + speed}
-#define MR(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_RIGHT + speed}
-#define ML(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_LEFT + speed}
-#define MWU(speed) { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_WHEELUP + speed}
-#define MWD(speed) { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_WHEELDOWN + speed}
+#define MU(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_UP + speed }
+#define MD(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_DOWN + speed }
+#define MR(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_RIGHT + speed }
+#define ML(speed)  { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_LEFT + speed }
+#define MWU(speed) { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_WHEELUP + speed }
+#define MWD(speed) { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MOUSE_WHEELDOWN + speed }
+
+
+/* Macro macros ¯\_(ツ)_/¯
+ *
+ * Valid ids are betwee 1 and 27
+ */
+#define MACRO(id) { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MACRO_FIRST + (id - 1)}
 
 
 /* Tell if Mapkey has hold key functionality
@@ -95,7 +106,6 @@ bool isEmptyKey(Key k);
 /* Tell if two keys are equal
  */
 bool areKeysEqual(Key k1, Key k2);
-
 
 /* Identify Mouse command keys
  */
