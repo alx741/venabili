@@ -19,7 +19,7 @@ typedef struct
 } Key;
 
 
-/* Posible special commands
+/* Possible special commands
  */
 #define CMD_NONE               0x0000
 
