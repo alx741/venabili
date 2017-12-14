@@ -2,7 +2,9 @@
 #define KEYBOARD_H
 
 #define NLAYERS 4
+#define TAP_TIMEOUT_MS  1500
 #define ENABLE_DOUBLE_SHIFT_CAPS_LOCK
+
 
 void keyboard_init(void);
 
