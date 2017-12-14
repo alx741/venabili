@@ -18,6 +18,7 @@ int main(void)
     keyboard_sensing_init();
     keyboard_init();
 
+    // Layers definition
     Key layer0[NROWS][NCOLS] =
     {
         { k_a, k_caps                 },
@@ -34,15 +35,17 @@ int main(void)
         { MR(1),  MACRO(2) },
     };
 
+    // Macros definition
+    Key macro0[MACRO_LENGTH] = { k_V, k_e, k_n, k_a, k_v, k_i, k_l, k_i, k_space, k_empty };
+    Key macro1[MACRO_LENGTH] = { Rctrl(k_c), k_l, k_s, k_enter, k_empty };
+
 
     add_layer(layer0);
     add_layer(layer1);
 
-    Key macro0[MACRO_LENGTH] = { k_V, k_e, k_n, k_a, k_v, k_i, k_l, k_i, k_space, k_empty };
-    Key macro1[MACRO_LENGTH] = { Rctrl(k_c), k_l, k_s, k_enter, k_empty };
     add_macro(macro0);
     add_macro(macro1);
-    add_string_macro("This is Venabili speaking!\n");
+    add_string_macro("This is Venabili typing!");
 
 
     while (1)
