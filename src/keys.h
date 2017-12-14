@@ -72,9 +72,9 @@ typedef struct
 
 /* Macro macros ¯\_(ツ)_/¯
  *
- * Valid ids are betwee 1 and 27
+ * Up to 27 macros. Valid ids are between 0 and 26
  */
-#define MACRO(id) { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MACRO_FIRST + (id - 1)}
+#define MACRO(id) { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MACRO_FIRST + id}
 
 
 /* Tell if Mapkey has hold key functionality
@@ -107,6 +107,13 @@ bool isEmptyKey(Key k);
  */
 bool areKeysEqual(Key k1, Key k2);
 
+
+/* Identify Macro command keys
+ */
+bool isMacroCommandkey(Key k);
+int getMacroId(Key k);
+
+
 /* Identify Mouse command keys
  */
 bool isMouseCommandKey(Key k);
@@ -122,7 +129,7 @@ bool isMouseLeftKey(Key k);
 bool isMouseWheelUpKey(Key k);
 bool isMouseWheelDownKey(Key k);
 
-/* Get mouse atributes from command key
+/* Get mouse attributes from command key
  */
 uint8_t getMouseMovementSpeed(Key k);
 uint8_t getMouseClickButton(Key k);
