@@ -8,7 +8,6 @@
 #include "usb_mouse.h"
 #include "keys.h"
 #include "keyboard.h"
-#include <libopencm3/stm32/gpio.h>
 
 static Key LAYERS[NLAYERS][NROWS][NCOLS];
 static int N_LAYERS = 0;
@@ -187,6 +186,33 @@ int map_layer(Key keys[NKEYS])
                     keys[index++] = k;
                 }
             }
+
+#ifdef DOUBLE_SHIFT_CAPS_LOCK
+            static bool shifted = false;
+            static Key_coordinate shift_coord = {0};
+            if ((k.modifiers == MOD_LEFT_SHIFT
+                    || k.modifiers == MOD_RIGHT_SHIFT
+                    || k.hold_mod == MOD_LEFT_SHIFT
+                    || k.hold_mod == MOD_RIGHT_SHIFT)
+                    && currently_pressed(i, j))
+            {
+                if (!shifted) // First shift pressed
+                {
+                    shifted = true;
+                    shift_coord.i = i;
+                    shift_coord.j = j;
+                }
+                // If the shift keys are in different positions, then
+                // trigger caps lock
+                else if ((shift_coord.i != i || shift_coord.j != j)
+                        && currently_pressed(shift_coord.i, shift_coord.j))
+                {
+                    keys[index++] = k_caps;
+                    shifted = false;
+                }
+            }
+#endif // DOUBLE_SHIFT_CAPS_LOCK
+
         }
     }
 
@@ -217,11 +243,6 @@ void apply_modifiers(Key keys[NKEYS], int n)
         {
             keys[i].modifiers |= mods;
         }
-    }
-
-    if ((mods & MOD_LEFT_SHIFT) && (mods & MOD_RIGHT_SHIFT))
-    {
-        gpio_set(GPIOB, GPIO13);
     }
 }
 

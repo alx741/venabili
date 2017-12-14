@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <libopencm3/cm3/systick.h>
 #include <libopencm3/stm32/rcc.h>
-#include <libopencm3/stm32/gpio.h>
 
 #include "usb.h"
 #include "usb_keys.h"
@@ -17,10 +16,6 @@ int main(void)
     usb_init();
     keyboard_sensing_init();
     keyboard_init();
-
-    // FIXME: DEBUG ONLY
-	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
-	gpio_clear(GPIOB, GPIO13);
 
     Key layer0[NROWS][NCOLS] =
     {
