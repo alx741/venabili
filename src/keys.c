@@ -1,16 +1,6 @@
 #include "usb_keys.h"
 #include "keys.h"
 
-/* bool hasPressKey(Mapkey mk) */
-/* { */
-/*     return (! isEmptyKey(mk.press)); */
-/* } */
-
-/* bool hasHoldKey(Mapkey mk) */
-/* { */
-/*     return (! isEmptyKey(mk.hold)); */
-/* } */
-
 bool hasHoldKey(Key k)
 {
     return k.hold_mod != MOD_NONE;
@@ -53,6 +43,19 @@ bool areKeysEqual(Key k1, Key k2)
             && k1.command == k2.command;
 }
 
+
+// Macro commands identification
+bool isMacroCommandkey(Key k)
+{
+    return isCommandKey(k)
+            && k.command >= CMD_MACRO_FIRST
+            && k.command <= CMD_MACRO_LAST;
+}
+
+int getMacroId(Key k)
+{
+    return k.command - 0x0075;
+}
 
 // Mouse commands identification
 bool isMouseCommandKey(Key k)
