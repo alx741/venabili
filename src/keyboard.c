@@ -76,7 +76,7 @@ void handle_command_keys(Key k)
     }
 
     else if (isMouseCommandKey(k)) { handle_mouse_command_keys(k); }
-    else if (isMacroCommandkey(k)) { report_macro(0); }
+    else if (isMacroCommandkey(k)) { report_macro(getMacroId(k)); }
 }
 
 void handle_mouse_command_keys(Key k)
