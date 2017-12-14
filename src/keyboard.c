@@ -8,6 +8,7 @@
 #include "usb_mouse.h"
 #include "keys.h"
 #include "keyboard.h"
+#include "macros.h"
 
 static Key LAYERS[NLAYERS][NROWS][NCOLS];
 static int N_LAYERS = 0;
@@ -75,6 +76,7 @@ void handle_command_keys(Key k)
     }
 
     else if (isMouseCommandKey(k)) { handle_mouse_command_keys(k); }
+    else if (isMacroCommandkey(k)) { report_macro(0); }
 }
 
 void handle_mouse_command_keys(Key k)

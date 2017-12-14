@@ -9,6 +9,7 @@
 
 #include "keys.h"
 #include "keyboard.h"
+#include "macros.h"
 
 int main(void)
 {
@@ -27,7 +28,7 @@ int main(void)
 
     Key layer1[NROWS][NCOLS] =
     {
-        { MU(10), k_empty },
+        { MU(10), MACRO(0) },
         { MD(5),  k_empty },
         { ML(15), k_empty },
         { MR(1),  k_empty },
@@ -36,6 +37,9 @@ int main(void)
 
     add_layer(layer0);
     add_layer(layer1);
+
+    Key macro0[MACRO_LENGTH] = { k_D, k_a, k_n, k_i, k_e, k_l, k_empty };
+    add_macro(macro0);
 
 
     while (1)
