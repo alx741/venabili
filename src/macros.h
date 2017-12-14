@@ -4,6 +4,8 @@
 #define NMACROS 10
 #define MACRO_LENGTH 20
 
+extern Key MACROS[NMACROS][MACRO_LENGTH];
+
 /* Add a macro
  *
  * Macros end with an empty key 'k_empty'

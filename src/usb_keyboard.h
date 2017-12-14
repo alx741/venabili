@@ -1,6 +1,8 @@
 #ifndef USB_KEYBOARD_H
 #define USB_KEYBOARD_H
 
+#include <stdint.h>
+
 /* Keys reporting
  */
 void report_key(uint8_t modifiers, uint8_t keycode);
