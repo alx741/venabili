@@ -6,8 +6,12 @@
 #define ENABLE_DOUBLE_SHIFT_CAPS_LOCK
 
 
+/* Initialize keyboard
+ */
 void keyboard_init(void);
 
+/* Add a new layer to the keyboard
+ */
 void add_layer(const Key layer[NROWS][NCOLS]);
 
 /* Selects a layer based on user commands

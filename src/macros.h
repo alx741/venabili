@@ -17,6 +17,9 @@ void add_macro(const Key macro[MACRO_LENGTH]);
  * String macros end with a null character '\0'
  */
 void add_string_macro(const char macro[MACRO_LENGTH]);
+
+/* Report a macro to the host
+ */
 void report_macro(int id);
 
 #endif // MACROS_H
