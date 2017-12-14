@@ -10,8 +10,13 @@ extern Key MACROS[NMACROS][MACRO_LENGTH];
  *
  * Macros end with an empty key 'k_empty'
  */
-void add_macro(Key macro[MACRO_LENGTH]);
-void add_string_macro(char macro[MACRO_LENGTH]);
+void add_macro(const Key macro[MACRO_LENGTH]);
+
+/* Add a string macro
+ *
+ * String macros end with a null character '\0'
+ */
+void add_string_macro(const char macro[MACRO_LENGTH]);
 void report_macro(int id);
 
 #endif // MACROS_H

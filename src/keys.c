@@ -306,3 +306,221 @@ const Key m_click_2 = mkCommandKey(CMD_MOUSE_CLICK_2);
 const Key m_click_3 = mkCommandKey(CMD_MOUSE_CLICK_3);
 const Key m_click_4 = mkCommandKey(CMD_MOUSE_CLICK_4);
 const Key m_click_5 = mkCommandKey(CMD_MOUSE_CLICK_5);
+
+
+Key char2key(char c)
+{
+    switch(c)
+    {
+        case 'a':
+            return k_a;
+        case 'b':
+            return k_b;
+        case 'c':
+            return k_c;
+        case 'd':
+            return k_d;
+        case 'e':
+            return k_e;
+        case 'f':
+            return k_f;
+        case 'g':
+            return k_g;
+        case 'h':
+            return k_h;
+        case 'i':
+            return k_i;
+        case 'j':
+            return k_j;
+        case 'k':
+            return k_k;
+        case 'l':
+            return k_l;
+        case 'm':
+            return k_m;
+        case 'n':
+            return k_n;
+        case 'o':
+            return k_o;
+        case 'p':
+            return k_p;
+        case 'q':
+            return k_q;
+        case 'r':
+            return k_r;
+        case 's':
+            return k_s;
+        case 't':
+            return k_t;
+        case 'u':
+            return k_u;
+        case 'v':
+            return k_v;
+        case 'w':
+            return k_w;
+        case 'x':
+            return k_x;
+        case 'y':
+            return k_y;
+        case 'z':
+            return k_z;
+
+
+        case 'A':
+            return k_A;
+        case 'B':
+            return k_B;
+        case 'C':
+            return k_C;
+        case 'D':
+            return k_D;
+        case 'E':
+            return k_E;
+        case 'F':
+            return k_F;
+        case 'G':
+            return k_G;
+        case 'H':
+            return k_H;
+        case 'I':
+            return k_I;
+        case 'J':
+            return k_J;
+        case 'K':
+            return k_K;
+        case 'L':
+            return k_L;
+        case 'M':
+            return k_M;
+        case 'N':
+            return k_N;
+        case 'O':
+            return k_O;
+        case 'P':
+            return k_P;
+        case 'Q':
+            return k_Q;
+        case 'R':
+            return k_R;
+        case 'S':
+            return k_S;
+        case 'T':
+            return k_T;
+        case 'U':
+            return k_U;
+        case 'V':
+            return k_V;
+        case 'W':
+            return k_W;
+        case 'X':
+            return k_X;
+        case 'Y':
+            return k_Y;
+        case 'Z':
+            return k_Z;
+
+
+        case '0':
+            return k_0;
+        case '1':
+            return k_1;
+        case '2':
+            return k_2;
+        case '3':
+            return k_3;
+        case '4':
+            return k_4;
+        case '5':
+            return k_5;
+        case '6':
+            return k_6;
+        case '7':
+            return k_7;
+        case '8':
+            return k_8;
+        case '9':
+            return k_9;
+
+
+        case ' ':
+            return k_space;
+        case '!':
+            return k_bang;
+        case '"':
+            return k_single_quote;
+        case '#':
+            return k_hash;
+        case '$':
+            return k_dollar;
+        case '%':
+            return k_percent;
+        case '&':
+            return k_ampersand;
+        case '\'':
+            return k_single_quote;
+        case '(':
+            return k_open_paren;
+        case ')':
+            return k_close_paren;
+        case '*':
+            return k_asterisk;
+        case '+':
+            return k_plus;
+        case ',':
+            return k_comma;
+        case '-':
+            return k_hyphen;
+        case '.':
+            return k_dot;
+        case '/':
+            return k_slash;
+        case ':':
+            return k_colon;
+        case ';':
+            return k_semicolon;
+        case '<':
+            return k_less_than;
+        case '=':
+            return k_equal;
+        case '>':
+            return k_greater_than;
+        case '?':
+            return k_question_mark;
+        case '@':
+            return k_at;
+        case '[':
+            return k_open_bracket;
+        case '\\':
+            return k_backslash;
+        case ']':
+            return k_close_bracket;
+        case '^':
+            return k_caret;
+        case '_':
+            return k_under_score;
+        case '`':
+            return k_back_quote;
+        case '{':
+            return k_open_brace;
+        case '|':
+            return k_pipe;
+        case '}':
+            return k_close_brace;
+        case '~':
+            return k_tilde;
+
+
+        case '\n':
+            return k_enter;
+        case '\t':
+            return k_tab;
+        case '\b':
+            return k_backspace;
+
+        default:
+            break;
+    }
+
+    // If no other Key fits, then it's an empty key
+    return k_empty;
+}
