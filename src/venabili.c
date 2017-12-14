@@ -29,17 +29,21 @@ int main(void)
     Key layer1[NROWS][NCOLS] =
     {
         { MU(10), MACRO(0) },
-        { MD(5),  k_empty },
+        { MD(5),  MACRO(1) },
         { ML(15), k_empty },
-        { MR(1),  k_empty },
+        { MR(1),  MACRO(2) },
     };
 
 
     add_layer(layer0);
     add_layer(layer1);
 
-    Key macro0[MACRO_LENGTH] = { k_D, k_a, k_n, k_i, k_e, k_l, k_empty };
+    Key macro0[MACRO_LENGTH] = { k_D, k_a, k_n, k_i, k_e, k_l, k_space, k_empty };
+    Key macro1[MACRO_LENGTH] = { k_V, k_e, k_n, k_a, k_v, k_i, k_l, k_i, k_space, k_empty };
+    Key macro2[MACRO_LENGTH] = { Rctrl(k_c), k_l, k_s, k_enter, k_empty };
     add_macro(macro0);
+    add_macro(macro1);
+    add_macro(macro2);
 
 
     while (1)
