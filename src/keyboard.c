@@ -11,16 +11,10 @@
 
 static Key LAYERS[NLAYERS][NROWS][NCOLS];
 static int N_LAYERS = 0;
-
 static int CURRENT_LAYER = 0;
 static int CURRENT_LOCKED_LAYER = 0;
 static bool LAYER_LOCKED = false;
-
-#define TAP_TIMEOUT_MS  1500
 static bool TAP_IS_TIMEDOUT = false;
-
-#define MAX_N_MACROS 10
-#define MAX_MACRO_LENGTH 20
 
 void handle_6_normal_keys(Key k[6], int n);
 void handle_command_keys(Key k);

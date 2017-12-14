@@ -27,6 +27,7 @@ OBJS += usb_keyboard.o
 OBJS += usb_mouse.o
 OBJS += sensing.o
 OBJS += keys.o
+OBJS += macros.o
 OBJS += keyboard.o
 
 include ../libopencm3.target.mk
