@@ -1,5 +1,4 @@
-#ifndef KEYBOARD_H
-#define KEYBOARD_H
+#pragma once
 
 #include "keys_internal.h"
 #include "sensing.h"
@@ -33,6 +32,3 @@ void apply_modifiers(Key keys[NKEYS], int n);
 /* Execute key pulsations in current layer
  */
 void execute(const Key keys[NKEYS], int n);
-
-
-#endif // KEYBOARD_H

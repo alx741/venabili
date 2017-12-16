@@ -1,5 +1,4 @@
-#ifndef KEYS_INTERNAL_H
-#define KEYS_INTERNAL_H
+#pragma once
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -110,5 +109,3 @@ uint8_t getMouseClickButton(Key k);
 /* Convert a char to a suitable Key representation
  */
 Key char2key(char c);
-
-#endif // KEYS_INTERNAL_H
