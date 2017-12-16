@@ -7,6 +7,7 @@
 #include "usb_keyboard.h"
 #include "usb_mouse.h"
 #include "keys_internal.h"
+#include "keys.h"
 #include "keyboard.h"
 #include "macros.h"
 
