@@ -24,6 +24,7 @@
 #ifndef SENSING_H
 #define SENSING_H
 
+#include <stdint.h>
 #include <stdbool.h>
 
 /*************************
