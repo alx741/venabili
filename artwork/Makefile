@@ -8,11 +8,15 @@
 
 
 OUTPUTS = logo.png \
+		  logo_small.png \
 
 make: $(OUTPUTS)
 
-%.png: %.svg
+logo.png: logo.svg
 	inkscape -D $< -e $@
+
+logo_small.png: logo.png
+	convert $< -resize 200x55 $@
 
 clean:
 	rm *.png
