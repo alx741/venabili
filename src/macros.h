@@ -1,5 +1,4 @@
-#ifndef MACROS_H
-#define MACROS_H
+#pragma once
 
 #define NMACROS 10
 #define MACRO_LENGTH 20
@@ -21,5 +20,3 @@ void add_string_macro(const char macro[MACRO_LENGTH]);
 /* Report a macro to the host
  */
 void report_macro(int id);
-
-#endif // MACROS_H

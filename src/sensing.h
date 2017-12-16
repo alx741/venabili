@@ -21,8 +21,7 @@
  */
 
 
-#ifndef SENSING_H
-#define SENSING_H
+#pragma once
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -121,6 +120,3 @@ bool tapped_alone(int i, int j);
 /*************************
  *    MOUSE SENSING
  *************************/
-
-
-#endif // SENSING_H

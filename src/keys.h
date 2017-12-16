@@ -1,5 +1,4 @@
-#ifndef KEYS_H
-#define KEYS_H
+#pragma once
 
 #include "keys_internal.h"
 
@@ -182,5 +181,3 @@ extern const Key    c_layer_lock;
 /* Mouse */
 // For mouse movement use the MU, MD, MR, ML, MWU and MWD macros
 extern const Key    m_click_1,  m_click_2,  m_click_3,  m_click_4,  m_click_5;
-
-#endif // KEYS_H

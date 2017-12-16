@@ -1,5 +1,4 @@
-#ifndef USB_KEYBOARD_H
-#define USB_KEYBOARD_H
+#pragma once
 
 #include <stdint.h>
 
@@ -20,5 +19,3 @@ void type_string(const char *s);
 /* Type a single ASCII character
  */
 void type_char(char c);
-
-#endif // USB_KEYBOARD_H
