@@ -4,7 +4,7 @@
 #include "usb.h"
 #include "usb_keyboard.h"
 #include "usb_keys.h"
-#include "keys.h"
+#include "keys_internal.h"
 
 #define KEYBOARD_REPORT_ID 0x02
 

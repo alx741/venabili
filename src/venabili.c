@@ -7,7 +7,7 @@
 #include "usb_keyboard.h"
 #include "sensing.h"
 
-#include "keys.h"
+#include "keys_internal.h"
 #include "keyboard.h"
 #include "macros.h"
 
