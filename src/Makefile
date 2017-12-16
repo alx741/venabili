@@ -18,7 +18,7 @@
 ##
 
 SRC_DIR=./
-BINARY = $(SRC_DIR)/venabili
+BINARY = $(SRC_DIR)/main
 LDSCRIPT=$(SRC_DIR)/f103x8.ld
 OPENCM3_DIR=../lib/libopencm3
 
