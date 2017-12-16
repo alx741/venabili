@@ -1,4 +1,6 @@
 /*
+ *  Copyright 2017 Daniel Campoverde C. <alx@sillybytes.net>
+ *
  *  This file is part of Venabili.
  *
  *  Venabili is free software: you can redistribute it and/or modify
@@ -17,7 +19,7 @@
 
 
 /*
- * This module handles phisical keyboard and mouse state sensing
+ * This module handles physical keyboard and mouse state sensing
  */
 
 
