@@ -1,5 +1,5 @@
 #include "usb_keys.h"
-#include "keys.h"
+#include "keys_internal.h"
 
 bool hasHoldKey(Key k)
 {

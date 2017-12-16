@@ -1,6 +1,6 @@
 #include <string.h>
 #include "usb_keyboard.h"
-#include "keys.h"
+#include "keys_internal.h"
 #include "macros.h"
 
 Key MACROS[NMACROS][MACRO_LENGTH];
