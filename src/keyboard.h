@@ -28,27 +28,33 @@
 #define ENABLE_DOUBLE_SHIFT_CAPS_LOCK
 
 
-/* Initialize keyboard
+/**
+ * Initialize keyboard
  */
 void keyboard_init(void);
 
-/* Add a new layer to the keyboard
+/**
+ * Add a new layer to the keyboard
  */
 void add_layer(const Key layer[NROWS][NCOLS]);
 
-/* Selects a layer based on user commands
+/**
+ * Selects a layer based on user commands
  */
 void select_layer(void);
 
-/* Fill KEYS with the currently pressed keys in the current layer
+/**
+ * Fill KEYS with the currently pressed keys in the current layer
  */
 int map_layer(Key keys[NKEYS]);
 
-/* Apply pressed modifiers to normal keys in KEYS array
+/**
+ * Apply pressed modifiers to normal keys in KEYS array
  * of N pressed keys
  */
 void apply_modifiers(Key keys[NKEYS], int n);
 
-/* Execute key pulsations in current layer
+/**
+ * Execute key pulsations in current layer
  */
 void execute(const Key keys[NKEYS], int n);
