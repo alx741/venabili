@@ -282,30 +282,30 @@ void unlock_layer()
 void keyboard_init(void)
 {
     // Enable tap timer interrupt
-	nvic_enable_irq(NVIC_TIM2_IRQ);
-	nvic_set_priority(NVIC_TIM2_IRQ, 1);
-	rcc_periph_clock_enable(RCC_TIM2);
+    nvic_enable_irq(NVIC_TIM2_IRQ);
+    nvic_set_priority(NVIC_TIM2_IRQ, 1);
+    rcc_periph_clock_enable(RCC_TIM2);
     reset_tap_timer();
 }
 
 void tim2_isr(void)
 {
     TAP_IS_TIMEDOUT = true;
-	TIM_SR(TIM2) &= ~TIM_SR_UIF; // Clear interrupt flag
+    TIM_SR(TIM2) &= ~TIM_SR_UIF; // Clear interrupt flag
 }
 
 void reset_tap_timer(void)
 {
     TAP_IS_TIMEDOUT = false;
-	TIM_CNT(TIM2) = 1;
-	TIM_PSC(TIM2) = 72000; // 1000 counts per second (1ms)
-	TIM_ARR(TIM2) = TAP_TIMEOUT_MS;
-	TIM_DIER(TIM2) |= TIM_DIER_UIE; // Enable TIM2 interrupt
+    TIM_CNT(TIM2) = 1;
+    TIM_PSC(TIM2) = 72000; // 1000 counts per second (1ms)
+    TIM_ARR(TIM2) = TAP_TIMEOUT_MS;
+    TIM_DIER(TIM2) |= TIM_DIER_UIE; // Enable TIM2 interrupt
 
     // Configure TIM2
-	TIM_CR1(TIM2) |= TIM_CR1_DIR_UP;
-	TIM_CR1(TIM2) |= TIM_CR1_OPM;
+    TIM_CR1(TIM2) |= TIM_CR1_DIR_UP;
+    TIM_CR1(TIM2) |= TIM_CR1_OPM;
 
     // Start TIM2
-	TIM_CR1(TIM2) |= TIM_CR1_CEN;
+    TIM_CR1(TIM2) |= TIM_CR1_CEN;
 }
