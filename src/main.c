@@ -21,15 +21,19 @@
 #include <stdlib.h>
 #include <libopencm3/cm3/systick.h>
 #include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/rtc.h>
+#include <libopencm3/cm3/nvic.h>
+#include <libopencm3/stm32/gpio.h>
 
 #include "usb.h"
 #include "usb_keys.h"
 #include "usb_keyboard.h"
 #include "sensing.h"
+#include "rtc.h"
 
 #include "keys.h"
-#include "keyboard.h"
 #include "macros.h"
+#include "keyboard.h"
 
 #include "venabili.c"
 
@@ -37,11 +41,16 @@ int main(void)
 {
     rcc_clock_setup_in_hse_8mhz_out_72mhz();
     usb_init();
+    rtc_init();
     keyboard_sensing_init();
     keyboard_init();
 
     // Invoke user code
     venabili();
+
+
+	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
+	gpio_clear(GPIOB, GPIO13);
 
     while (1)
     {
@@ -57,6 +66,28 @@ void sys_tick_handler(void)
     int n_pressed_keys = map_layer(pressed_keys);
     apply_modifiers(pressed_keys, n_pressed_keys);
     execute(pressed_keys, n_pressed_keys);
+}
+
+void rtc_isr(void)
+{
+	volatile uint32_t j = 0, c = 0;
+
+	rtc_clear_flag(RTC_SEC);
+
+	gpio_toggle(GPIOB, GPIO13);
+
+	c = rtc_get_counter_val();
+
+	/* Display the current counter value in binary via USART1. */
+	/* for (j = 0; j < 32; j++) { */
+	/* 	if ((c & (0x80000000 >> j)) != 0) { */
+	/* 		usart_send_blocking(USART1, '1'); */
+	/* 	} else { */
+	/* 		usart_send_blocking(USART1, '0'); */
+	/* 	} */
+	/* } */
+	/* usart_send_blocking(USART1, '\n'); */
+	/* usart_send_blocking(USART1, '\r'); */
 }
 
 /* USB ISR handlers */
