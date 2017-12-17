@@ -28,8 +28,8 @@
 #include "usb_mouse.h"
 #include "keys_internal.h"
 #include "keys.h"
-#include "keyboard.h"
 #include "macros.h"
+#include "keyboard.h"
 
 static Key LAYERS[NLAYERS][NROWS][NCOLS];
 static int N_LAYERS = 0;
