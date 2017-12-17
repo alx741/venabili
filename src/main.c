@@ -49,8 +49,8 @@ int main(void)
     venabili();
 
 
-	gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
-	gpio_clear(GPIOB, GPIO13);
+    gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
+    gpio_clear(GPIOB, GPIO13);
 
     while (1)
     {
@@ -70,24 +70,24 @@ void sys_tick_handler(void)
 
 void rtc_isr(void)
 {
-	volatile uint32_t j = 0, c = 0;
+    volatile uint32_t j = 0, c = 0;
 
-	rtc_clear_flag(RTC_SEC);
+    rtc_clear_flag(RTC_SEC);
 
-	gpio_toggle(GPIOB, GPIO13);
+    gpio_toggle(GPIOB, GPIO13);
 
-	c = rtc_get_counter_val();
+    c = rtc_get_counter_val();
 
-	/* Display the current counter value in binary via USART1. */
-	/* for (j = 0; j < 32; j++) { */
-	/* 	if ((c & (0x80000000 >> j)) != 0) { */
-	/* 		usart_send_blocking(USART1, '1'); */
-	/* 	} else { */
-	/* 		usart_send_blocking(USART1, '0'); */
-	/* 	} */
-	/* } */
-	/* usart_send_blocking(USART1, '\n'); */
-	/* usart_send_blocking(USART1, '\r'); */
+    /* Display the current counter value in binary via USART1. */
+    /* for (j = 0; j < 32; j++) { */
+    /*  if ((c & (0x80000000 >> j)) != 0) { */
+    /*      usart_send_blocking(USART1, '1'); */
+    /*  } else { */
+    /*      usart_send_blocking(USART1, '0'); */
+    /*  } */
+    /* } */
+    /* usart_send_blocking(USART1, '\n'); */
+    /* usart_send_blocking(USART1, '\r'); */
 }
 
 /* USB ISR handlers */
