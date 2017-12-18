@@ -57,6 +57,11 @@ int main(void)
     }
 }
 
+
+/* SysTick handler
+ *
+ * Main Keyboard loop occurs here
+ */
 void sys_tick_handler(void)
 {
     Key pressed_keys[NKEYS] = {0};
@@ -68,6 +73,8 @@ void sys_tick_handler(void)
     execute(pressed_keys, n_pressed_keys);
 }
 
+
+/* RTC ISR handler */
 void rtc_isr(void)
 {
     volatile uint32_t j = 0, c = 0;
@@ -77,18 +84,8 @@ void rtc_isr(void)
     gpio_toggle(GPIOB, GPIO13);
 
     c = rtc_get_counter_val();
-
-    /* Display the current counter value in binary via USART1. */
-    /* for (j = 0; j < 32; j++) { */
-    /*  if ((c & (0x80000000 >> j)) != 0) { */
-    /*      usart_send_blocking(USART1, '1'); */
-    /*  } else { */
-    /*      usart_send_blocking(USART1, '0'); */
-    /*  } */
-    /* } */
-    /* usart_send_blocking(USART1, '\n'); */
-    /* usart_send_blocking(USART1, '\r'); */
 }
+
 
 /* USB ISR handlers */
 void usb_hp_can_tx_isr(void)
