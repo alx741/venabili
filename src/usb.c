@@ -310,9 +310,9 @@ static void hid_set_config(usbd_device *dev, uint16_t wValue)
                 dfu_control_request);
 #endif
 
-    // Systick pulse every 10ms
+    // Systick pulse 18 times per second
     systick_set_clocksource(STK_CSR_CLKSOURCE_AHB_DIV8);
-    systick_set_reload(90000);
+    systick_set_reload(500000);
     systick_interrupt_enable();
     systick_counter_enable();
 }
