@@ -30,7 +30,6 @@
 #include "keys.h"
 #include "macros.h"
 #include "keyboard.h"
-#include <libopencm3/stm32/gpio.h>
 
 static Key LAYERS[NLAYERS][NROWS][NCOLS];
 static int N_LAYERS = 0;
@@ -70,7 +69,6 @@ void execute(const Key keys[NKEYS], int n)
         }
         else if (isMouseClickKey(k))
         {
-            gpio_set(GPIOB, GPIO13);
             if (n_mouse_btns < N_MOUSE_BTNS)
             {
                 mouse_btns[n_mouse_btns++] = getMouseClickButton(k);
