@@ -174,19 +174,35 @@ extern const Key     k_plus,                 k_close_brace;
 
 
 /* Non-printables */
-extern const Key     k_print_screen,         k_f1,         k_enter;
-extern const Key     k_scroll_lock,          k_f2,         k_escape;
-extern const Key     k_pause,                k_f3,         k_backspace;
-extern const Key     k_insert,               k_f4,         k_tab;
-extern const Key     k_delete,               k_f5,         k_space;
-extern const Key     k_home,                 k_f6,         k_caps;
-extern const Key     k_end,                  k_f7;
-extern const Key     k_pageup,               k_f8;
-extern const Key     k_pagedown,             k_f9;
-extern const Key     k_arrow_up,             k_f10;
-extern const Key     k_arrow_down,           k_f11;
-extern const Key     k_arrow_left,           k_f12;
-extern const Key     k_arrow_right;
+extern const Key     k_print_screen,       k_enter;
+extern const Key     k_scroll_lock,        k_escape;
+extern const Key     k_pause,              k_backspace;
+extern const Key     k_insert,             k_tab;
+extern const Key     k_delete,             k_space;
+extern const Key     k_home,               k_caps;
+extern const Key     k_end,                k_undo;
+extern const Key     k_pageup,             k_cut;
+extern const Key     k_pagedown,           k_copy;
+extern const Key     k_arrow_up,           k_paste;
+extern const Key     k_arrow_down,         k_find;
+extern const Key     k_arrow_left,         k_mute;
+extern const Key     k_arrow_right,        k_vol_up;
+extern const Key     k_menu,               k_vol_down;
+extern const Key     k_select,             k_again;
+extern const Key     k_stop;
+
+extern const Key     k_f1,                 k_f13;
+extern const Key     k_f2,                 k_f14;
+extern const Key     k_f3,                 k_f15;
+extern const Key     k_f4,                 k_f16;
+extern const Key     k_f5,                 k_f17;
+extern const Key     k_f6,                 k_f18;
+extern const Key     k_f7,                 k_f19;
+extern const Key     k_f8,                 k_f20;
+extern const Key     k_f9,                 k_f21;
+extern const Key     k_f10,                k_f22;
+extern const Key     k_f11,                k_f23;
+extern const Key     k_f12,                k_f24;
 
 
 /***********
