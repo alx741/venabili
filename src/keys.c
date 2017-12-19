@@ -89,7 +89,7 @@ bool isMouseMovementKey(Key k)
 {
     return isMouseCommandKey(k)
         && k.command >= CMD_MOUSE_UP
-        && k.command < CMD_MOUSE_CLICK_5;
+        && k.command < CMD_MOUSE_CLICK_1;
 }
 
 bool isMouseClickKey(Key k)
@@ -150,7 +150,7 @@ uint8_t getMouseMovementSpeed(Key k)
 uint8_t getMouseClickButton(Key k)
 {
     // Click button is in the first nibble
-    return k.command & 0x000F;
+    return (k.command & 0x000F) + 1;
 }
 
 
