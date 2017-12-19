@@ -77,13 +77,8 @@ void sys_tick_handler(void)
 /* RTC ISR handler */
 void rtc_isr(void)
 {
-    volatile uint32_t j = 0, c = 0;
-
     rtc_clear_flag(RTC_SEC);
-
     gpio_toggle(GPIOB, GPIO13);
-
-    c = rtc_get_counter_val();
 }
 
 
