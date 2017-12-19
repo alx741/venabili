@@ -92,11 +92,11 @@ void report_mouse_buttons(MouseButton bs[N_MOUSE_BTNS])
     while(usbd_ep_write_packet(usbd_dev, 0x81, &mr, 5) != 5);
 }
 
-/* void report_mouse_click(uint8_t button) */
-/* { */
-/*     uint8_t buttons[N_MOUSE_BTNS] = {0}; */
-/*     buttons[0] = button; */
-/*     report_mouse_buttons(buttons); */
-/*     buttons[0] = 0; */
-/*     report_mouse_buttons(buttons); */
-/* } */
+void report_mouse_click(uint8_t button)
+{
+    uint8_t buttons[N_MOUSE_BTNS] = {0};
+    buttons[0] = button;
+    report_mouse_buttons(buttons);
+    buttons[0] = 0;
+    report_mouse_buttons(buttons);
+}
