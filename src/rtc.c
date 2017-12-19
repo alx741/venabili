@@ -34,3 +34,15 @@ int rtc_get_hour(void)
     volatile uint32_t c = rtc_get_counter_val();
     return c / 3600;
 }
+
+int rtc_get_minute(void)
+{
+    volatile uint32_t c = rtc_get_counter_val();
+    return (c % 3600) / 60;
+}
+
+int rtc_get_second(void)
+{
+    volatile uint32_t c = rtc_get_counter_val();
+    return (c % 3600) % 60;
+}
