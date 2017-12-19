@@ -21,4 +21,7 @@
 #pragma once
 
 void rtc_init(void);
+
 int rtc_get_hour(void);
+int rtc_get_minute(void);
+int rtc_get_second(void);
