@@ -304,6 +304,20 @@ const Key k_arrow_up     = mkNormalKey(KEY_UP_ARROW);
 const Key k_arrow_down   = mkNormalKey(KEY_DOWN_ARROW);
 const Key k_arrow_left   = mkNormalKey(KEY_LEFT_ARROW);
 const Key k_arrow_right  = mkNormalKey(KEY_RIGHT_ARROW);
+
+const Key k_menu         = mkNormalKey(KEY_MENU);
+const Key k_select       = mkNormalKey(KEY_SELECT);
+const Key k_stop         = mkNormalKey(KEY_STOP);
+const Key k_again        = mkNormalKey(KEY_AGAIN);
+const Key k_undo         = mkNormalKey(KEY_UNDO);
+const Key k_cut          = mkNormalKey(KEY_CUT);
+const Key k_copy         = mkNormalKey(KEY_COPY);
+const Key k_paste        = mkNormalKey(KEY_PASTE);
+const Key k_find         = mkNormalKey(KEY_FIND);
+const Key k_mute         = mkNormalKey(KEY_MUTE);
+const Key k_vol_up       = mkNormalKey(KEY_VOL_UP);
+const Key k_vol_down     = mkNormalKey(KEY_VOL_DOWN);
+
 const Key k_f1           = mkNormalKey(KEY_F1);
 const Key k_f2           = mkNormalKey(KEY_F2);
 const Key k_f3           = mkNormalKey(KEY_F3);
@@ -316,7 +330,18 @@ const Key k_f9           = mkNormalKey(KEY_F9);
 const Key k_f10          = mkNormalKey(KEY_F10);
 const Key k_f11          = mkNormalKey(KEY_F11);
 const Key k_f12          = mkNormalKey(KEY_F12);
-
+const Key k_f13          = mkNormalKey(KEY_F13);
+const Key k_f14          = mkNormalKey(KEY_F14);
+const Key k_f15          = mkNormalKey(KEY_F15);
+const Key k_f16          = mkNormalKey(KEY_F16);
+const Key k_f17          = mkNormalKey(KEY_F17);
+const Key k_f18          = mkNormalKey(KEY_F18);
+const Key k_f19          = mkNormalKey(KEY_F19);
+const Key k_f20          = mkNormalKey(KEY_F20);
+const Key k_f21          = mkNormalKey(KEY_F21);
+const Key k_f22          = mkNormalKey(KEY_F22);
+const Key k_f23          = mkNormalKey(KEY_F23);
+const Key k_f24          = mkNormalKey(KEY_F24);
 
 
 const Key c_layer_lock = mkCommandKey(CMD_LOCK_LAYER);
