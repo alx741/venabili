@@ -138,6 +138,32 @@
 #define     KEY_DOWN_ARROW      0x51
 #define     KEY_UP_ARROW        0x52
 
+#define     KEY_F13             0x68
+#define     KEY_F14             0x69
+#define     KEY_F15             0x6a
+#define     KEY_F16             0x6b
+#define     KEY_F17             0x6c
+#define     KEY_F18             0x6d
+#define     KEY_F19             0x6e
+#define     KEY_F20             0x6f
+#define     KEY_F21             0x70
+#define     KEY_F22             0x71
+#define     KEY_F23             0x72
+#define     KEY_F24             0x73
+
+#define     KEY_MENU            0x76
+#define     KEY_SELECT          0x77
+#define     KEY_STOP            0x78
+#define     KEY_AGAIN           0x79
+#define     KEY_UNDO            0x7A
+#define     KEY_CUT             0x7B
+#define     KEY_COPY            0x7C
+#define     KEY_PASTE           0x7D
+#define     KEY_FIND            0x7E
+#define     KEY_MUTE            0x7F
+#define     KEY_VOL_UP          0x80
+#define     KEY_VOL_DOWN        0x81
+
 
 /* Modifiers */
 #define     MOD_NONE         0x00
