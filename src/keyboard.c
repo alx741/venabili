@@ -30,6 +30,7 @@
 #include "keys.h"
 #include "macros.h"
 #include "keyboard.h"
+#include <libopencm3/stm32/gpio.h>
 
 static Key LAYERS[NLAYERS][NROWS][NCOLS];
 static int N_LAYERS = 0;
@@ -40,7 +41,7 @@ static bool TAP_IS_TIMEDOUT = false;
 
 void handle_6_normal_keys(Key k[6], int n);
 void handle_command_keys(Key k);
-void handle_mouse_command_keys(Key k);
+void handle_mouse_movement(Key k);
 void lock_layer(void);
 void unlock_layer(void);
 void reset_tap_timer(void);
@@ -53,6 +54,9 @@ void execute(const Key keys[NKEYS], int n)
     Key normal_keys[XKRO] = {0};
     int n_normal_keys = 0;
 
+    MouseButton mouse_btns[N_MOUSE_BTNS] = {0};
+    int n_mouse_btns = 0;
+
     for (int i = 0; i < n; i++)
     {
         Key k = keys[i];
@@ -64,6 +68,14 @@ void execute(const Key keys[NKEYS], int n)
                 normal_keys[n_normal_keys++] = k;
             }
         }
+        else if (isMouseClickKey(k))
+        {
+            gpio_set(GPIOB, GPIO13);
+            if (n_mouse_btns < N_MOUSE_BTNS)
+            {
+                mouse_btns[n_mouse_btns++] = getMouseClickButton(k);
+            }
+        }
         else if (isCommandKey(k))
         {
             handle_command_keys(k);
@@ -71,6 +83,7 @@ void execute(const Key keys[NKEYS], int n)
     }
 
     handle_6_normal_keys(normal_keys, n_normal_keys);
+    /* report_mouse_buttons(mouse_btns); */
 }
 
 void handle_6_normal_keys(Key k[6], int n)
@@ -96,27 +109,19 @@ void handle_command_keys(Key k)
         else { lock_layer(); }
     }
 
-    else if (isMouseCommandKey(k)) { handle_mouse_command_keys(k); }
+    else if (isMouseMovementKey(k)) { handle_mouse_movement(k); }
     else if (isMacroCommandkey(k)) { report_macro(getMacroId(k)); }
 }
 
-void handle_mouse_command_keys(Key k)
+void handle_mouse_movement(Key k)
 {
-    if (isMouseMovementKey(k))
-    {
-        uint8_t speed = getMouseMovementSpeed(k);
-        if (isMouseUpKey(k))             { report_mouse_movement(UP, speed); }
-        else if (isMouseDownKey(k))      { report_mouse_movement(DOWN, speed); }
-        else if (isMouseRightKey(k))     { report_mouse_movement(RIGHT, speed); }
-        else if (isMouseLeftKey(k))      { report_mouse_movement(LEFT, speed); }
-        else if (isMouseWheelUpKey(k))   { report_mouse_movement(WHEELUP, speed); }
-        else if (isMouseWheelDownKey(k)) { report_mouse_movement(WHEELDOWN, speed); }
-    }
-    else if (isMouseClickKey(k))
-    {
-        /* uint8_t button = getMouseClickButton(k); */
-        /* report_mouse_click(button); */
-    }
+    uint8_t speed = getMouseMovementSpeed(k);
+    if (isMouseUpKey(k))             { report_mouse_movement(UP, speed); }
+    else if (isMouseDownKey(k))      { report_mouse_movement(DOWN, speed); }
+    else if (isMouseRightKey(k))     { report_mouse_movement(RIGHT, speed); }
+    else if (isMouseLeftKey(k))      { report_mouse_movement(LEFT, speed); }
+    else if (isMouseWheelUpKey(k))   { report_mouse_movement(WHEELUP, speed); }
+    else if (isMouseWheelDownKey(k)) { report_mouse_movement(WHEELDOWN, speed); }
 }
 
 
