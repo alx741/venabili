@@ -20,7 +20,20 @@
 
 #pragma once
 
+#define N_MOUSE_BTNS 5
+
 typedef enum _mouse_axis {UP, DOWN, LEFT, RIGHT, WHEELUP, WHEELDOWN} MouseMovement;
 
+typedef enum _mouse_btns {BTN1 = 1, BTN2, BTN3, BTN4, BTN5} MouseButton;
+
+/* Report mouse movement in direction M and some SPEED
+ */
 void report_mouse_movement(MouseMovement m, uint8_t speed);
-void report_mouse_click(uint8_t button);
+
+/* Report the state of mouse buttons
+ */
+void report_mouse_buttons(MouseButton bs[N_MOUSE_BTNS]);
+
+/* Report a click down, immediately followed by a click release
+ */
+void report_mouse_click(MouseButton b);

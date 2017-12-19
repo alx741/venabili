@@ -81,7 +81,7 @@ void rtc_isr(void)
 
     rtc_clear_flag(RTC_SEC);
 
-    gpio_toggle(GPIOB, GPIO13);
+    /* gpio_toggle(GPIOB, GPIO13); */
 
     c = rtc_get_counter_val();
 }

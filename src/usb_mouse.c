@@ -62,3 +62,41 @@ void report_mouse_movement(MouseMovement m, uint8_t speed)
     }
     while(usbd_ep_write_packet(usbd_dev, 0x81, &mr, 5) != 5);
 }
+
+void report_mouse_buttons(MouseButton bs[N_MOUSE_BTNS])
+{
+    mouse_report_t mr = {0};
+    mr.report_id = MOUSE_REPORT_ID;
+    mr.buttons = 0;
+    for (int i = 0; i < N_MOUSE_BTNS; i++)
+    {
+        switch (bs[i])
+        {
+            case BTN1:
+                mr.buttons |= 1 << 1;
+                break;
+            case BTN2:
+                mr.buttons |= 1 << 2;
+                break;
+            case BTN3:
+                mr.buttons |= 1 << 3;
+                break;
+            case BTN4:
+                mr.buttons |= 1 << 4;
+                break;
+            case BTN5:
+                mr.buttons |= 1 << 5;
+                break;
+        }
+    }
+    while(usbd_ep_write_packet(usbd_dev, 0x81, &mr, 5) != 5);
+}
+
+/* void report_mouse_click(uint8_t button) */
+/* { */
+/*     uint8_t buttons[N_MOUSE_BTNS] = {0}; */
+/*     buttons[0] = button; */
+/*     report_mouse_buttons(buttons); */
+/*     buttons[0] = 0; */
+/*     report_mouse_buttons(buttons); */
+/* } */

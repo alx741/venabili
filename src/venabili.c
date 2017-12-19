@@ -35,10 +35,10 @@ void venabili(void)
 
     Key layer1[NROWS][NCOLS] =
     {
-        { MU(10), MACRO(0) },
-        { MD(5),  MACRO(1) },
-        { ML(15), k_empty },
-        { MR(1),  MACRO(2) },
+        { m_click_1, MACRO(0) },
+        { m_click_2,  MACRO(1) },
+        { m_click_3, k_empty },
+        { m_click_4,  MACRO(2) },
     };
 
     // Macros definition
