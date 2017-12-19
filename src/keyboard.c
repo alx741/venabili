@@ -83,7 +83,7 @@ void execute(const Key keys[NKEYS], int n)
     }
 
     handle_6_normal_keys(normal_keys, n_normal_keys);
-    /* report_mouse_buttons(mouse_btns); */
+    report_mouse_buttons(mouse_btns);
 }
 
 void handle_6_normal_keys(Key k[6], int n)

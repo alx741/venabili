@@ -73,19 +73,19 @@ void report_mouse_buttons(MouseButton bs[N_MOUSE_BTNS])
         switch (bs[i])
         {
             case BTN1:
-                mr.buttons |= 1 << 1;
+                mr.buttons |= 1 << 0;
                 break;
             case BTN2:
-                mr.buttons |= 1 << 2;
+                mr.buttons |= 1 << 1;
                 break;
             case BTN3:
-                mr.buttons |= 1 << 3;
+                mr.buttons |= 1 << 2;
                 break;
             case BTN4:
-                mr.buttons |= 1 << 4;
+                mr.buttons |= 1 << 3;
                 break;
             case BTN5:
-                mr.buttons |= 1 << 5;
+                mr.buttons |= 1 << 4;
                 break;
         }
     }
