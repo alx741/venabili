@@ -212,7 +212,7 @@ int map_layer(Key keys[NKEYS])
 
 #ifdef ENABLE_DOUBLE_SHIFT_CAPS_LOCK
             static bool shifted = false;
-            static Key_coordinate shift_coord = {0};
+            static Key_coord shift_coord = {0};
             if ((k.modifiers == MOD_LEFT_SHIFT
                     || k.modifiers == MOD_RIGHT_SHIFT
                     || k.hold_mod == MOD_LEFT_SHIFT
@@ -227,7 +227,7 @@ int map_layer(Key keys[NKEYS])
                 }
                 // If the shift keys are in different positions, then
                 // trigger caps lock
-                else if ((shift_coord.i != i || shift_coord.j != j)
+                else if (! areKeysInSamePlace(shift_coord, coord(i, j))
                         && currently_pressed(shift_coord.i, shift_coord.j))
                 {
                     keys[index++] = k_caps;

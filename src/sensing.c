@@ -28,8 +28,8 @@ int N_PRESSED = 0;
 int N_PREV_PRESSED = 0;
 bool KMAT_PREV_STATE[NROWS][NCOLS] = { { false } };
 bool KMAT_STATE[NROWS][NCOLS] = { { false } };
-Key_coordinate PRESSED_KEYS[NKEYS] = { {0, 0} };
-Key_coordinate PRESSED_PREV_KEYS[NKEYS] = { {0, 0} };
+Key_coord PRESSED_KEYS[NKEYS] = { {0, 0} };
+Key_coord PRESSED_PREV_KEYS[NKEYS] = { {0, 0} };
 
 void keyboard_sensing_init(void)
 {
@@ -50,9 +50,9 @@ void keyboard_sensing_init(void)
 void backup_and_wipe_current_state(void)
 {
     memcpy(KMAT_PREV_STATE, KMAT_STATE, sizeof(bool) * NROWS * NCOLS);
-    memcpy(PRESSED_PREV_KEYS, PRESSED_KEYS, sizeof(Key_coordinate) * NKEYS);
+    memcpy(PRESSED_PREV_KEYS, PRESSED_KEYS, sizeof(Key_coord) * NKEYS);
     memset(KMAT_STATE, 0, sizeof(bool) * NROWS * NCOLS);
-    memset(PRESSED_KEYS, 0, sizeof(Key_coordinate) * NKEYS);
+    memset(PRESSED_KEYS, 0, sizeof(Key_coord) * NKEYS);
 
     N_PREV_PRESSED = N_PRESSED;
     N_PRESSED = 0;
@@ -62,7 +62,7 @@ int sense_keys(void)
 {
     int n = 0;
     int i, j = 0; // Key index
-    Key_coordinate coordinate = {0, 0};
+    Key_coord coordinate = {0, 0};
 
     // Debouncing variables
     int debounce_counter = 0;
@@ -144,7 +144,18 @@ bool tapped_alone(int i, int j)
     return (previously_pressed_alone(i, j) && !currently_pressed(i, j));
 }
 
-bool isNullCoordinate(Key_coordinate kc)
+bool isNullCoordinate(Key_coord kc)
 {
     return (kc.i == -1 && kc.j == -1);
+}
+
+bool areKeysInSamePlace(Key_coord kc1, Key_coord kc2)
+{
+    return (kc1.i == kc2.i && kc1.j == kc2.j);
+}
+
+Key_coord coord(int i, int j)
+{
+    Key_coord kc = {i, j};
+    return kc;
 }
