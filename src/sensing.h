@@ -57,19 +57,30 @@
  *
  */
 
-/* Physical coordinate of a key in the matrix
+/* Physical coordinates of a key in the matrix
  */
 typedef struct
 {
-    int8_t i, j;
-} Key_coordinate;
+    int8_t i; // Row coordinate
+    int8_t j; // Col coordinate
+} Key_coord;
+
+/**
+ * Key_coord constructor from I and J coordinates
+ */
+Key_coord coord(int i, int j);
 
 /* A NULL COORDINATE indicates the end of an array of pressed keys
  *
- * e.g.  Key_coordinate* k = &PRESSED_KEYS[0];
+ * e.g.  Key_coord* k = &PRESSED_KEYS[0];
  *       while (! isNullCoordinate(*k)) { k++; }
  */
-bool isNullCoordinate(Key_coordinate kc);
+bool isNullCoordinate(Key_coord kc);
+
+/**
+ * Tell if two keys are in the same physical place
+ */
+bool areKeysInSamePlace(Key_coord kc1, Key_coord kc2);
 
 
 /* Keys status will be stored in these
@@ -77,10 +88,10 @@ bool isNullCoordinate(Key_coordinate kc);
  * Use the 'sense_keys()' function to populate them
  */
 extern int N_PRESSED; // Number of keys currently pressed
-extern Key_coordinate PRESSED_KEYS[NKEYS]; // Coordinates of currently pressed keys
+extern Key_coord PRESSED_KEYS[NKEYS]; // Coordinates of currently pressed keys
 
 extern int N_PREV_PRESSED; // Number of keys previously pressed
-extern Key_coordinate PRESSED_PREV_KEYS[NKEYS]; // Coordinates of previous pressed keys
+extern Key_coord PRESSED_PREV_KEYS[NKEYS]; // Coordinates of previous pressed keys
 
 
 /* Initialize Keyboard matrix sensing
