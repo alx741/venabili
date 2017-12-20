@@ -20,4 +20,14 @@
 
 #pragma once
 
+/**
+ * Initialize RTC clock
+ */
 void rtc_init(void);
+
+/**
+ * Obtain RTC data
+ */
+int rtc_get_hour(void);
+int rtc_get_minute(void);
+int rtc_get_second(void);
