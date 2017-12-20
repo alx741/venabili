@@ -102,7 +102,7 @@ void handle_command_keys(Key k)
 {
     if (areKeysEqual(k, c_layer_lock))
     {
-        // Togle layer locking
+        // Toggle layer locking
         if (LAYER_LOCKED) { unlock_layer(); }
         else { lock_layer(); }
     }
@@ -183,7 +183,7 @@ int map_layer(Key keys[NKEYS])
             {
                 if (hasHoldKey(k)) // Double functionality
                 {
-                    // Send a key which is only a modifier
+                    // Send a key that is only a modifier
                     Key nk = {KEY_NONE, k.hold_mod, k.hold_mod, CMD_NONE};
                     keys[index++] = nk;
                 }
@@ -196,7 +196,7 @@ int map_layer(Key keys[NKEYS])
             // Handle Taps
             if (hasHoldKey(k))
             {
-                // Reset Tap timer on first pressed of a key with Tap
+                // Reset Tap timer on first press of a key with Tap
                 // functionality
                 if (! previously_pressed(i, j) && currently_pressed(i, j))
                 {

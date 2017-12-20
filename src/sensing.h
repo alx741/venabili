@@ -57,7 +57,7 @@
  *
  */
 
-/* Phisical coordinate of a key in the matrix
+/* Physical coordinate of a key in the matrix
  */
 typedef struct
 {
