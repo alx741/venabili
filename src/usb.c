@@ -167,7 +167,7 @@ const struct usb_endpoint_descriptor hid_endpoint = {
     .bEndpointAddress = 0x81,
     .bmAttributes = USB_ENDPOINT_ATTR_INTERRUPT,
     .wMaxPacketSize = 0x0F,
-    .bInterval = 0x0A, // 10ms polling interval
+    .bInterval = 0x02, // 2ms polling interval
 };
 
 const struct usb_interface_descriptor hid_iface = {
@@ -310,9 +310,8 @@ static void hid_set_config(usbd_device *dev, uint16_t wValue)
                 dfu_control_request);
 #endif
 
-    // Systick pulse 18 times per second
-    systick_set_clocksource(STK_CSR_CLKSOURCE_AHB_DIV8);
-    systick_set_reload(500000);
+    // Systick pulse 20 times per second
+    systick_set_frequency(20, 9000000);
     systick_interrupt_enable();
     systick_counter_enable();
 }
