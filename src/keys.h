@@ -212,6 +212,7 @@ extern const Key     k_f12,                k_f24;
 /* Layers */
 // For layer selection use the LS(n) macro
 extern const Key    c_layer_lock;
+extern const Key    c_flash_mode;
 
 
 /* Mouse */
