@@ -245,8 +245,16 @@ int main(void)
 	usbd_device *usbd_dev;
 
 	rcc_periph_clock_enable(RCC_GPIOA);
+    gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_PULL_UPDOWN, GPIO0);
+
+    rcc_periph_clock_enable(RCC_GPIOB);
+    gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL,
+                GPIO5 | GPIO13);
+    gpio_set(GPIOB, GPIO5);  // Pull row 1 high for boot detection
+
 
 	if (!gpio_get(GPIOA, GPIO0)) {
+
 		/* Boot the application if it's valid. */
 		if ((*(volatile uint32_t *)APP_ADDRESS & 0x2FFE0000) == 0x20000000) {
 			/* Set vector table base address. */
@@ -259,13 +267,15 @@ int main(void)
 		}
 	}
 
+    gpio_set(GPIOB, GPIO13); // Bootloader indicator LED
+
 	rcc_clock_setup_in_hsi_out_48mhz();
 
 	rcc_periph_clock_enable(RCC_GPIOC);
 
-	gpio_set_mode(GPIOC, GPIO_MODE_OUTPUT_50_MHZ,
-		      GPIO_CNF_OUTPUT_PUSHPULL, GPIO11);
-	gpio_set(GPIOC, GPIO11);
+	/* gpio_set_mode(GPIOC, GPIO_MODE_OUTPUT_50_MHZ, */
+	/* 	      GPIO_CNF_OUTPUT_PUSHPULL, GPIO11); */
+	/* gpio_set(GPIOC, GPIO11); */
 
 	usbd_dev = usbd_init(&st_usbfs_v1_usb_driver, &dev, &config, usb_strings, 4, usbd_control_buffer, sizeof(usbd_control_buffer));
 	usbd_register_set_config_callback(usbd_dev, usbdfu_set_config);
