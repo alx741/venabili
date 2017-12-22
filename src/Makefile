@@ -39,7 +39,7 @@ $(BINARY).bin: $(BINARY).elf
 	arm-none-eabi-objcopy -O binary $< $@
 
 burn: $(BINARY).bin
-	st-flash write $< 0x8000000
+	dfu-util -a 0 -d 0483:df11 -s 0x08002000:leave -D $<
 
 check:
 	sudo lshw -class input
