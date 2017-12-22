@@ -345,6 +345,7 @@ const Key k_f24          = mkNormalKey(KEY_F24);
 
 
 const Key c_layer_lock = mkCommandKey(CMD_LOCK_LAYER);
+const Key c_flash_mode = mkCommandKey(CMD_FLASH_MODE);
 
 const Key m_click_1 = mkCommandKey(CMD_MOUSE_CLICK_1);
 const Key m_click_2 = mkCommandKey(CMD_MOUSE_CLICK_2);

@@ -62,6 +62,8 @@ typedef struct
 // Macros
 #define CMD_MACRO_FIRST          0x0075
 #define CMD_MACRO_LAST           0x0090
+
+#define CMD_FLASH_MODE           0x0091
 // ... Up to 0x00FF
 
 // Use the LS(n) macro for Layer Selection
