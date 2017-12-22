@@ -31,7 +31,7 @@ OBJS += keys.o
 OBJS += macros.o
 OBJS += keyboard.o
 
-include ../libopencm3.target.mk
+include ./libopencm3.target.mk
 
 all: $(BINARY).bin
 
