@@ -44,6 +44,7 @@ void handle_mouse_movement(Key k);
 void lock_layer(void);
 void unlock_layer(void);
 void reset_tap_timer(void);
+void enter_flash_mode(void);
 
 // USB can handle up to 6KRO
 #define XKRO  6
@@ -311,4 +312,13 @@ void reset_tap_timer(void)
 
     // Start TIM2
     TIM_CR1(TIM2) |= TIM_CR1_CEN;
+}
+
+void enter_flash_mode(void)
+{
+    RCC_APB1ENR |= RCC_APB1ENR_PWREN;
+    RCC_APB1ENR |= RCC_APB1ENR_BKPEN;
+    PWR_CR |= PWR_CR_DBP;
+    BKP_DR1 = 1;
+    scb_reset_system();
 }

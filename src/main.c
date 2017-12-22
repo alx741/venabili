@@ -24,6 +24,7 @@
 #include <libopencm3/stm32/rtc.h>
 #include <libopencm3/cm3/nvic.h>
 #include <libopencm3/cm3/scb.h>
+#include <libopencm3/stm32/f1/bkp.h>
 #include <libopencm3/stm32/gpio.h>
 
 #include "usb.h"
@@ -68,10 +69,6 @@ void sys_tick_handler(void)
     Key pressed_keys[NKEYS] = {0};
 
     sense_keys();
-
-    /* Reset upon condition */
-    if (reset_condition()) { scb_reset_system(); }
-
     select_layer();
     int n_pressed_keys = map_layer(pressed_keys);
     apply_modifiers(pressed_keys, n_pressed_keys);

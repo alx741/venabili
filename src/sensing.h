@@ -129,11 +129,6 @@ bool tapped(int i, int j);
 bool tapped_alone(int i, int j);
 
 
-/* Tell if the reset condition is triggered
- */
-bool reset_condition(void);
-
-
 
 /*************************
  *    MOUSE SENSING
