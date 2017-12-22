@@ -154,6 +154,21 @@ bool areKeysInSamePlace(Key_coord kc1, Key_coord kc2)
     return (kc1.i == kc2.i && kc1.j == kc2.j);
 }
 
+bool reset_condition(void)
+{
+    /* Reset condition: A1 + A6 + D6 + A7 + A12 + D7
+     *
+     * Having A1 in the condition enables the user to automatically enter
+     * bootloader mode when performing a reset
+     */
+    return currently_pressed(0,0)
+        && currently_pressed(0,5)
+        && currently_pressed(3,5)
+        && currently_pressed(0,6)
+        && currently_pressed(0,11)
+        && currently_pressed(3,6);
+}
+
 Key_coord coord(int i, int j)
 {
     Key_coord kc = {i, j};
