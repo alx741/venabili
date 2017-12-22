@@ -20,8 +20,11 @@
 
 #include <stdint.h>
 #include <libopencm3/stm32/timer.h>
+#include <libopencm3/stm32/f1/bkp.h>
 #include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/pwr.h>
 #include <libopencm3/cm3/nvic.h>
+#include <libopencm3/cm3/scb.h>
 #include "sensing.h"
 #include "usb_keys.h"
 #include "usb_keyboard.h"
@@ -107,7 +110,7 @@ void handle_command_keys(Key k)
         if (LAYER_LOCKED) { unlock_layer(); }
         else { lock_layer(); }
     }
-
+    else if (areKeysEqual(k, c_flash_mode)) { enter_flash_mode(); }
     else if (isMouseMovementKey(k)) { handle_mouse_movement(k); }
     else if (isMacroCommandkey(k)) { report_macro(getMacroId(k)); }
 }

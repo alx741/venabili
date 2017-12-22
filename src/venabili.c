@@ -38,7 +38,7 @@ void venabili(void)
         { m_click_1, MACRO(0) },
         { m_click_2,  MACRO(1) },
         { m_click_3, k_empty },
-        { m_click_4,  MACRO(2) },
+        { c_flash_mode,  MACRO(2) },
     };
 
     // Macros definition
