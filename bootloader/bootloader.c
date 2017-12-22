@@ -19,7 +19,9 @@
 
 #include <string.h>
 #include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/pwr.h>
 #include <libopencm3/stm32/gpio.h>
+#include <libopencm3/stm32/f1/bkp.h>
 #include <libopencm3/stm32/flash.h>
 #include <libopencm3/cm3/scb.h>
 #include <libopencm3/usb/usbd.h>
@@ -266,6 +268,14 @@ static void usbdfu_set_config(usbd_device *usbd_dev, uint16_t wValue)
         usbdfu_control_request);
 }
 
+void clear_boot_condition(void)
+{
+    RCC_APB1ENR |= RCC_APB1ENR_PWREN;
+    RCC_APB1ENR |= RCC_APB1ENR_BKPEN;
+    PWR_CR |= PWR_CR_DBP;
+    BKP_DR1 = 0;
+}
+
 int main(void)
 {
     usbd_device *usbd_dev;
@@ -284,7 +294,7 @@ int main(void)
      *
      * Top left key must be pressed in order to enter bootloader
      */
-    if (!gpio_get(GPIOA, GPIO0))
+    if (BKP_DR1 != 1)
     {
 
         /* Boot the application if it's valid. */
@@ -307,6 +317,9 @@ int main(void)
                          usbd_control_buffer, sizeof(usbd_control_buffer));
     usbd_register_set_config_callback(usbd_dev, usbdfu_set_config);
     gpio_clear(GPIOC, GPIO11);
+
+    clear_boot_condition();
+
 
     while (1)
     {
