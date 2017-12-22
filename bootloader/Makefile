@@ -17,9 +17,17 @@
 ## along with this library.  If not, see <http://www.gnu.org/licenses/>.
 ##
 
-BINARY = usbdfu
+BINARY = bootloader
 CSTD = -std=gnu99
 LDSCRIPT = f103x8_base.ld
 OPENCM3_DIR=../lib/libopencm3
 
 include ./libopencm3.target.mk
+
+all: $(BINARY).bin
+
+$(BINARY).bin: $(BINARY).elf
+	arm-none-eabi-objcopy -O binary $< $@
+
+burn: $(BINARY).bin
+	st-flash write $< 0x8000000
