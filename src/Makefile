@@ -19,7 +19,7 @@
 
 SRC_DIR=./
 BINARY = $(SRC_DIR)/main
-LDSCRIPT=$(SRC_DIR)/f103x8.ld
+LDSCRIPT=$(SRC_DIR)/f103x8_boot_offset.ld
 OPENCM3_DIR=../lib/libopencm3
 
 OBJS += usb.o
