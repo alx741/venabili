@@ -41,5 +41,8 @@ $(BINARY).bin: $(BINARY).elf
 burn: $(BINARY).bin
 	dfu-util -a 0 -d 0483:df11 -s 0x08002000:leave -D $<
 
+burn_low: $(BINARY).bin
+	st-flash write $< 0x8002000
+
 check:
 	sudo lshw -class input
