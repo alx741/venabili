@@ -29,13 +29,10 @@
 
 #define APP_ADDRESS 0x08002000
 
-/* Commands sent with wBlockNum == 0 as per ST implementation. */
 #define CMD_SETADDR 0x21
 #define CMD_ERASE   0x41
 
-/* We need a special large control buffer for this device: */
 uint8_t usbd_control_buffer[1024];
-
 static enum dfu_state usbdfu_state = STATE_DFU_IDLE;
 
 static struct
@@ -81,12 +78,9 @@ const struct usb_interface_descriptor iface =
     .bInterfaceNumber = 0,
     .bAlternateSetting = 0,
     .bNumEndpoints = 0,
-    .bInterfaceClass = 0xFE, /* Device Firmware Upgrade */
+    .bInterfaceClass = 0xFE,
     .bInterfaceSubClass = 1,
     .bInterfaceProtocol = 2,
-
-    /* The ST Microelectronics DfuSe application needs this string.
-     * The format isn't documented... */
     .iInterface = 4,
 
     .extra = &dfu_function,
@@ -118,7 +112,6 @@ static const char *usb_strings[] =
     "Daniel Campoverde",
     "Venabili Keyboard",
     "0000-0000-0000-0001",
-    /* This string is used by ST Microelectronics' DfuSe utility. */
     "@Internal Flash   /0x08000000/8*001Ka,56*001Kg",
 };
 
@@ -133,7 +126,6 @@ static uint8_t usbdfu_getstatus(usbd_device *usbd_dev, uint32_t *bwPollTimeout)
             *bwPollTimeout = 100;
             return DFU_STATUS_OK;
         case STATE_DFU_MANIFEST_SYNC:
-            /* Device will reset when read is complete. */
             usbdfu_state = STATE_DFU_MANIFEST;
             return DFU_STATUS_OK;
         default:
@@ -181,13 +173,12 @@ static void usbdfu_getstatus_complete(usbd_device *usbd_dev,
             }
             flash_lock();
 
-            /* Jump straight to dfuDNLOAD-IDLE, skipping dfuDNLOAD-SYNC. */
+            // Jump straight to dfuDNLOAD-IDLE, skipping dfuDNLOAD-SYNC
             usbdfu_state = STATE_DFU_DNLOAD_IDLE;
             return;
         case STATE_DFU_MANIFEST:
-            /* USB device must detach, we just reset... */
             scb_reset_system();
-            return; /* Will never return. */
+            return;
         default:
             return;
     }
@@ -200,7 +191,7 @@ static int usbdfu_control_request(usbd_device *usbd_dev,
 {
     if ((req->bmRequestType & 0x7F) != 0x21)
     {
-        return 0;    /* Only accept class request. */
+        return 0; // Only accept class request
     }
 
     switch (req->bRequest)
@@ -236,13 +227,13 @@ static int usbdfu_control_request(usbd_device *usbd_dev,
             return 0;
         case DFU_GETSTATUS:
         {
-            uint32_t bwPollTimeout = 0; /* 24-bit integer in DFU class spec */
+            uint32_t bwPollTimeout = 0; // 24-bit integer in DFU class spec
             (*buf)[0] = usbdfu_getstatus(usbd_dev, &bwPollTimeout);
             (*buf)[1] = bwPollTimeout & 0xFF;
             (*buf)[2] = (bwPollTimeout >> 8) & 0xFF;
             (*buf)[3] = (bwPollTimeout >> 16) & 0xFF;
             (*buf)[4] = usbdfu_state;
-            (*buf)[5] = 0; /* iString not used here */
+            (*buf)[5] = 0; // iString not used here
             *len = 6;
             *complete = usbdfu_getstatus_complete;
             return 1;
@@ -276,6 +267,23 @@ void clear_boot_condition(void)
     BKP_DR1 = 0;
 }
 
+/*
+* Flashing mode condition
+*
+* In order to enter flashing mode
+*
+* 1) Top left key must be pressed
+*
+* OR
+*
+* 2) Backup data register must be set to 1
+*
+*/
+bool should_enter_flashing_mode(void)
+{
+    return true;
+}
+
 int main(void)
 {
     usbd_device *usbd_dev;
@@ -289,11 +297,6 @@ int main(void)
     gpio_set(GPIOB, GPIO5);  // Pull row 1 high for boot detection
 
 
-    /*
-     * Boot condition
-     *
-     * Top left key must be pressed in order to enter bootloader
-     */
     if (BKP_DR1 != 1)
     {
 
