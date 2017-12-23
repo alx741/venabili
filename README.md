@@ -1,10 +1,7 @@
 ![The Venabili keyboard](./artwork/logo_margin.png)
 
-* Mechanical
-* Layered
-* Programmable
-* Ergonomic
-* Hackable
+A *mechanical*, *layered*, *programmable*, *ergonomic*, *hackable*
+[keyboard](http://venabili.sillybytes.net).
 
 ## Why?
 
