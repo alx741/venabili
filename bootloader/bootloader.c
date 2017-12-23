@@ -152,11 +152,13 @@ static void usbdfu_getstatus_complete(usbd_device *usbd_dev,
                     {
                         uint32_t *dat = (uint32_t *)(prog.buf + 1);
                         flash_erase_page(*dat);
+                        break;
                     }
                     case CMD_SETADDR:
                     {
                         uint32_t *dat = (uint32_t *)(prog.buf + 1);
                         prog.addr = *dat;
+                        break;
                     }
                 }
             }
@@ -259,12 +261,36 @@ static void usbdfu_set_config(usbd_device *usbd_dev, uint16_t wValue)
         usbdfu_control_request);
 }
 
-void clear_boot_condition(void)
+bool should_enter_flashing_mode(void);
+void clear_boot_condition(void);
+void boot_main_firmware(void);
+
+int main(void)
 {
-    RCC_APB1ENR |= RCC_APB1ENR_PWREN;
-    RCC_APB1ENR |= RCC_APB1ENR_BKPEN;
-    PWR_CR |= PWR_CR_DBP;
-    BKP_DR1 = 0;
+    usbd_device *usbd_dev;
+
+    rcc_periph_clock_enable(RCC_GPIOA);
+    rcc_periph_clock_enable(RCC_GPIOB);
+    gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_PULL_UPDOWN, GPIO0);
+    gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO5 | GPIO13);
+
+    gpio_set(GPIOB, GPIO5);  // Pull row 1 high for boot detection
+
+
+    if (should_enter_flashing_mode())
+    {
+        gpio_set(GPIOB, GPIO13); // Flashing mode indicator LED
+        rcc_clock_setup_in_hsi_out_48mhz();
+        usbd_dev = usbd_init(&st_usbfs_v1_usb_driver, &dev, &config, usb_strings, 4,
+                            usbd_control_buffer, sizeof(usbd_control_buffer));
+        usbd_register_set_config_callback(usbd_dev, usbdfu_set_config);
+        clear_boot_condition();
+        while (1) { usbd_poll(usbd_dev); }
+    }
+    else
+    {
+        boot_main_firmware();
+    }
 }
 
 /*
@@ -281,51 +307,27 @@ void clear_boot_condition(void)
 */
 bool should_enter_flashing_mode(void)
 {
-    return true;
+    return BKP_DR1 == 1 || gpio_get(GPIOA, GPIO0);
 }
 
-int main(void)
+void clear_boot_condition(void)
 {
-    usbd_device *usbd_dev;
+    RCC_APB1ENR |= RCC_APB1ENR_PWREN;
+    RCC_APB1ENR |= RCC_APB1ENR_BKPEN;
+    PWR_CR |= PWR_CR_DBP;
+    BKP_DR1 = 0;
+}
 
-    rcc_periph_clock_enable(RCC_GPIOA);
-    gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_PULL_UPDOWN, GPIO0);
-
-    rcc_periph_clock_enable(RCC_GPIOB);
-    gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL,
-                  GPIO5 | GPIO13);
-    gpio_set(GPIOB, GPIO5);  // Pull row 1 high for boot detection
-
-
-    if (BKP_DR1 != 1)
+void boot_main_firmware(void)
+{
+    /* Boot the application if it's valid. */
+    if ((*(volatile uint32_t *)APP_ADDRESS & 0x2FFE0000) == 0x20000000)
     {
-
-        /* Boot the application if it's valid. */
-        if ((*(volatile uint32_t *)APP_ADDRESS & 0x2FFE0000) == 0x20000000)
-        {
-            /* Set vector table base address. */
-            SCB_VTOR = APP_ADDRESS & 0xFFFF;
-            /* Initialise master stack pointer. */
-            asm volatile("msr msp, %0"::"g"
-                         (*(volatile uint32_t *)APP_ADDRESS));
-            /* Jump to application. */
-            (*(void (* *)())(APP_ADDRESS + 4))();
-        }
-    }
-
-    gpio_set(GPIOB, GPIO13); // Bootloader indicator LED
-    rcc_clock_setup_in_hsi_out_48mhz();
-    rcc_periph_clock_enable(RCC_GPIOC);
-    usbd_dev = usbd_init(&st_usbfs_v1_usb_driver, &dev, &config, usb_strings, 4,
-                         usbd_control_buffer, sizeof(usbd_control_buffer));
-    usbd_register_set_config_callback(usbd_dev, usbdfu_set_config);
-    gpio_clear(GPIOC, GPIO11);
-
-    clear_boot_condition();
-
-
-    while (1)
-    {
-        usbd_poll(usbd_dev);
+        /* Set vector table base address. */
+        SCB_VTOR = APP_ADDRESS & 0xFFFF;
+        /* Initialise master stack pointer. */
+        asm volatile("msr msp, %0"::"g" (*(volatile uint32_t *)APP_ADDRESS));
+        /* Jump to application. */
+        (*(void (* *)())(APP_ADDRESS + 4))();
     }
 }
