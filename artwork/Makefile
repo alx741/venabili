@@ -9,6 +9,7 @@
 
 OUTPUTS = logo.png \
 		  logo_small.png \
+		  logo_margin.png \
 
 make: $(OUTPUTS)
 
@@ -17,6 +18,9 @@ logo.png: logo.svg
 
 logo_small.png: logo.png
 	convert $< -resize 200x55 $@
+
+logo_margin.png: logo.png
+	convert $< -background transparent -gravity center -extent 1200x250 $@
 
 clean:
 	rm *.png

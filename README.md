@@ -1,4 +1,4 @@
-<img src='./artwork/logo.png' style='display:block; max-width: 70%; margin: 0 auto'/>
+![The Venabili keyboard](./artwork/logo_margin.png)
 
 * Mechanical
 * Layered
