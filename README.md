@@ -1,7 +1,9 @@
 ![The Venabili keyboard](./artwork/logo_margin.png)
 
+<p style="text-align:center;font-size:1.2em;margin-left:30px;">
 A *mechanical*, *layered*, *programmable*, *ergonomic*, *hackable*
 [keyboard](http://venabili.sillybytes.net).
+</p>
 
 ## Why?
 
