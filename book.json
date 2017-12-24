@@ -1,3 +1,6 @@
 {
-	"root": "./docs"
+	"root": "./docs",
+	"title": "Venabili Keyboard",
+	"description": "The Venabili mechanical keyboard",
+	"author": "Daniel Campoverde C. [alx741]"
 }
