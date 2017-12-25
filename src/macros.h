@@ -20,6 +20,8 @@
 
 #pragma once
 
+#include "keys_internal.h"
+
 #define NMACROS 10
 #define MACRO_LENGTH 20
 
