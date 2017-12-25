@@ -20,6 +20,8 @@
 
 #pragma once
 
+#include <stdint.h>
+
 #define N_MOUSE_BTNS 5
 
 typedef enum _mouse_axis {UP, DOWN, LEFT, RIGHT, WHEELUP, WHEELDOWN} MouseMovement;
