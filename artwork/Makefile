@@ -10,11 +10,15 @@
 OUTPUTS = logo.png \
 		  logo_small.png \
 		  logo_margin.png \
+		  favicon.png \
 
 make: $(OUTPUTS)
 
 logo.png: logo.svg
 	inkscape -D $< -e $@
+
+favicon.png: favicon.svg
+	inkscape -C $< -e $@
 
 logo_small.png: logo.png
 	convert $< -resize 200x55 $@
