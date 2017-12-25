@@ -6,6 +6,6 @@
 
     "plugins" : ["custom-favicon"],
     "pluginsConfig" : {
-        "favicon": "artwork/favicon.ico"
+        "favicon": "artwork/favicon.png"
     }
 }
