@@ -1,6 +1,4 @@
-:imagesdir: {img/}
-
-image::logo_margin.png[The Venabili Keyboard]
+image::img/logo_margin.png[The Venabili Keyboard]
 
 A _mechanical_, _layered_, _programmable_, _ergonomic_, _hackable_
 http://venabili.sillybytes.net[keyboard].
