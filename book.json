@@ -4,7 +4,7 @@
 	"description": "The Venabili mechanical keyboard",
 	"author": "Daniel Campoverde C. [alx741]",
 
-    "plugins" : ["custom-favicon"],
+    "plugins" : ["custom-favicon", "asciidoc-admonition-icons"],
     "pluginsConfig" : {
         "favicon": "artwork/favicon.png"
     }
