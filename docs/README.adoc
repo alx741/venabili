@@ -1,6 +1,6 @@
-![The Venabili keyboard](img/logo_margin.png)
+:imagesdir: {img}
 
-A *mechanical*, *layered*, *programmable*, *ergonomic*, *hackable*
-[keyboard](http://venabili.sillybytes.net).
+image::logo_margin.png[The Venabili Keyboard]
 
-WARNING: test warning
+A _mechanical_, _layered_, _programmable_, _ergonomic_, _hackable_
+http://venabili.sillybytes.net[keyboard].
