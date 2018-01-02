@@ -3,5 +3,7 @@
 . link:README.adoc[Introduction]
 
 . link:building.adoc[Building Guide]
+.. link:hardware_guide.adoc[Hardware]
+.. link:firmware_guide.adoc[Firmware]
 
 . link:customizing.adoc[Customizing]
