@@ -7,3 +7,10 @@
 .. link:firmware_guide.adoc[Firmware]
 
 . link:customizing.adoc[Customizing]
+.. link:compiling-flashing.adoc[Compiling & Flashing]
+.. link:layers.adoc[Layers]
+// dual-function keys, pre-modified keys, double-shift capslock, mouse
+.. link:keys.adoc[Keys]
+.. link:macros.adoc[Macros]
+
+. link:keys-list.adoc[Available Keys]
