@@ -25,3 +25,17 @@ aspect of it to adapt it to your needs and liking.
 
 
 == Features
+
+* Free as in Freedom
+** FOSS hardware and software
+* Ergonomic
+** Vertically Staggered
+** Fixed-split
+* Programmable
+** Custom keys placement
+** Up to 256 key layers
+** Dual function keys
+** Pre-modified keys
+** Double-shift CapsLock
+** Mouse control
+* Hackable
