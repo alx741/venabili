@@ -1,10 +1,7 @@
 = Summary
 
-.link:README.adoc[Introduction]
-..link:something[something]
+. link:README.adoc[Introduction]
 
-.link:building.adoc[Building Guide]
-..link:something[something]
+. link:building.adoc[Building Guide]
 
-.link:customizing.adoc[Customizing]
-..link:keys.adoc[Keys]
+. link:customizing.adoc[Customizing]
