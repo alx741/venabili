@@ -2,3 +2,9 @@
 
 .link:README.adoc[Introduction]
 ..link:something[something]
+
+.link:building.adoc[Building Guide]
+..link:something[something]
+
+.link:customizing.adoc[Customizing]
+..link:keys.adoc[Keys]

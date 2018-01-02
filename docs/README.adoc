@@ -17,7 +17,8 @@ and normal keys, control the mouse, define macros, and more.
 
 Venabili is not a commercial keyboard, you cannot buy neither a fully assembled
 one nor a DIY kit. Instead, the project provides: hardware designs, circuitry
-schematics, firmware, and very detailed instructions on how to build your own.
+schematics, firmware, and very detailed instructions on how to build your own in
+the link:building.adoc[Building Guide].
 
 The whole project is released under FOSS and CC licences, so you can tweak every
 aspect of it to adapt it to your needs and liking.
