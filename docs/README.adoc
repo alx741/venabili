@@ -37,5 +37,6 @@ aspect of it to adapt it to your needs and liking.
 ** Dual function keys
 ** Pre-modified keys
 ** Double-shift CapsLock
+** Macros
 ** Mouse control
 * Hackable
