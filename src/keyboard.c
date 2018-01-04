@@ -127,7 +127,7 @@ void handle_mouse_movement(Key k)
 }
 
 
-void add_layer(const Key layer[NROWS][NCOLS])
+void add_layer(const Layer layer)
 {
     for (int i = 0; i < NROWS; i++)
     {
