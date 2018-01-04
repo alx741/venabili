@@ -23,14 +23,14 @@
 #include "keys_internal.h"
 #include "config.h"
 
+typedef Key Macro[MAX_MACRO_LENGTH];
 
-extern Key MACROS[N_MACROS][MAX_MACRO_LENGTH];
 
 /* Add a macro
  *
  * Macros end with an empty key 'k_empty'
  */
-void add_macro(const Key macro[MAX_MACRO_LENGTH]);
+void add_macro(const Macro);
 
 /* Add a string macro
  *

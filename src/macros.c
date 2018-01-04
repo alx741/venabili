@@ -31,7 +31,7 @@ void wipe_macro(int id)
     memset(MACROS[id], 0, sizeof(Key) * MAX_MACRO_LENGTH);
 }
 
-void add_macro(const Key macro[MAX_MACRO_LENGTH])
+void add_macro(const Macro macro)
 {
     wipe_macro(MACROS_CTR);
     int i = 0;
