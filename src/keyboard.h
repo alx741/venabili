@@ -24,6 +24,8 @@
 #include "sensing.h"
 #include "config.h"
 
+typedef Key Layer[NROWS][NCOLS];
+
 
 /**
  * Initialize keyboard
@@ -33,7 +35,8 @@ void keyboard_init(void);
 /**
  * Add a new layer to the keyboard
  */
-void add_layer(const Key layer[NROWS][NCOLS]);
+/* void add_layer(const Key layer[NROWS][NCOLS]); */
+void add_layer(const Layer);
 
 /**
  * Selects a layer based on user commands

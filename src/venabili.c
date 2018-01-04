@@ -22,22 +22,23 @@
 #include "keyboard.h"
 #include "macros.h"
 
+
 void venabili(void)
 {
     // Layers definition
-    Key layer0[NROWS][NCOLS] =
+    Layer l0 =
     {
-        { k_r, k_t                 },
-        { HRshift(k_f), HLshift(k_g)  },
-        { k_v, k_b                  },
-        { m_lshift, LS(1) },
+        { k_r, k_t                   },
+        { HRshift(k_f), HLshift(k_g) },
+        { k_v, k_b                   },
+        { m_lshift, LS(1)            },
     };
 
-    Key layer1[NROWS][NCOLS] =
+    Layer l1 =
     {
-        { m_click_1, MACRO(0) },
-        { m_click_2,  MACRO(1) },
-        { m_click_3, k_empty },
+        { m_click_1, MACRO(0)    },
+        { m_click_2,  MACRO(1)   },
+        { m_click_3, k_empty     },
         { c_flash_mode,  k_empty },
     };
 
@@ -46,8 +47,8 @@ void venabili(void)
     Key macro1[MAX_MACRO_LENGTH] = { Rctrl(k_c), k_l, k_s, k_enter, k_empty };
 
 
-    add_layer(layer0);
-    add_layer(layer1);
+    add_layer(l0);
+    add_layer(l1);
 
     add_macro(macro0);
     add_macro(macro1);
