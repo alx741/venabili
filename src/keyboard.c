@@ -305,7 +305,7 @@ void reset_tap_timer(void)
 {
     TAP_IS_TIMEDOUT = false;
     TIM_CNT(TIM2) = 1;
-    TIM_PSC(TIM2) = 72000; // 1000 counts per second (1ms)
+    TIM_PSC(TIM2) = 720000; // 1000 counts per second (1ms)
     TIM_ARR(TIM2) = TAP_TIMEOUT_MS;
     TIM_DIER(TIM2) |= TIM_DIER_UIE; // Enable TIM2 interrupt
 
