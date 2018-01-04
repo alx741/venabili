@@ -24,19 +24,19 @@
 #include "config.h"
 
 
-extern Key MACROS[N_MACROS][MACRO_LENGTH];
+extern Key MACROS[N_MACROS][MAX_MACRO_LENGTH];
 
 /* Add a macro
  *
  * Macros end with an empty key 'k_empty'
  */
-void add_macro(const Key macro[MACRO_LENGTH]);
+void add_macro(const Key macro[MAX_MACRO_LENGTH]);
 
 /* Add a string macro
  *
  * String macros end with a null character '\0'
  */
-void add_string_macro(const char macro[MACRO_LENGTH]);
+void add_string_macro(const char macro[MAX_MACRO_LENGTH]);
 
 /* Report a macro to the host
  */
