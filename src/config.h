@@ -24,17 +24,18 @@
  * Configuration
  *****************/
 
-// How many layers are you going to have?
+// Number of defined layers
 #define N_LAYERS 4
 
-// How many macros are you going to have?
+// Number of defined macros
 #define N_MACROS 10
 
-// What is the maximum length of your macros?
+// Maximum length for macros (in characters)
 #define MAX_MACRO_LENGTH 20
 
-// If you hold a double-function key longer than this (in milliseconds),
-// then the key press will be discarded
+/* If you hold a double-function key longer than this (in milliseconds),
+ * then the key press will be discarded
+ */
 #define TAP_TIMEOUT_MS  250
 
 // Pressing two shift keys simultaneously triggers CapsLock
