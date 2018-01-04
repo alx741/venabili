@@ -23,8 +23,8 @@
 #include "keys_internal.h"
 #include "macros.h"
 
-Key MACROS[NMACROS][MACRO_LENGTH];
-int N_MACROS = 0;
+Key MACROS[N_MACROS][MACRO_LENGTH];
+int MACROS_CTR = 0;
 
 void wipe_macro(int id)
 {
@@ -33,28 +33,28 @@ void wipe_macro(int id)
 
 void add_macro(const Key macro[MACRO_LENGTH])
 {
-    wipe_macro(N_MACROS);
+    wipe_macro(MACROS_CTR);
     int i = 0;
     const Key *k = &macro[0];
     while (! isEmptyKey(*k))
     {
-        MACROS[N_MACROS][i++] = *k;
+        MACROS[MACROS_CTR][i++] = *k;
         k++;
     }
-    N_MACROS++;
+    MACROS_CTR++;
 }
 
 void add_string_macro(const char macro[MACRO_LENGTH])
 {
-    wipe_macro(N_MACROS);
+    wipe_macro(MACROS_CTR);
     int i = 0;
     const char *c = &macro[0];
     while (*c != '\0')
     {
-        MACROS[N_MACROS][i++] = char2key(*c);
+        MACROS[MACROS_CTR][i++] = char2key(*c);
         c++;
     }
-    N_MACROS++;
+    MACROS_CTR++;
 }
 
 void report_macro(int id)
