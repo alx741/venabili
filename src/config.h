@@ -28,10 +28,10 @@
 #define N_LAYERS 4
 
 // Number of defined macros
-#define N_MACROS 10
+#define N_MACROS 2
 
 // Maximum length for macros (in characters)
-#define MAX_MACRO_LENGTH 20
+#define MAX_MACRO_LENGTH 30
 
 /* If you hold a double-function key longer than this (in milliseconds),
  * then the key press will be discarded

@@ -56,10 +56,8 @@ void venabili(void)
     *      MACROS
     *********************/
 
-    Key macro0[MAX_MACRO_LENGTH] = { k_V, k_e, k_n, k_a, k_v, k_i, k_l, k_i, k_space, k_empty };
-    Key macro1[MAX_MACRO_LENGTH] = { Rctrl(k_c), k_l, k_s, k_enter, k_empty };
+    Macro m1 = { Rctrl(k_c), k_l, k_s, k_enter, k_empty };
 
-    add_macro(macro0);
-    add_macro(macro1);
+    add_macro(m1);
     add_string_macro("This is Venabili typing!");
 }
