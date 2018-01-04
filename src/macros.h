@@ -21,11 +21,10 @@
 #pragma once
 
 #include "keys_internal.h"
+#include "config.h"
 
-#define NMACROS 10
-#define MACRO_LENGTH 20
 
-extern Key MACROS[NMACROS][MACRO_LENGTH];
+extern Key MACROS[N_MACROS][MACRO_LENGTH];
 
 /* Add a macro
  *
