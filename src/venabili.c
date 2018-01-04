@@ -27,10 +27,10 @@ void venabili(void)
     // Layers definition
     Key layer0[NROWS][NCOLS] =
     {
-        { k_a, k_caps                 },
-        { k_c, HLshift(k_open_paren)  },
-        { k_d, LS(1)                  },
-        { k_A, HLshift(k_close_paren) },
+        { k_r, k_t                 },
+        { HRshift(k_f), HLshift(k_g)  },
+        { k_v, k_b                  },
+        { m_lshift, LS(1) },
     };
 
     Key layer1[NROWS][NCOLS] =
@@ -38,7 +38,7 @@ void venabili(void)
         { m_click_1, MACRO(0) },
         { m_click_2,  MACRO(1) },
         { m_click_3, k_empty },
-        { c_flash_mode,  MACRO(2) },
+        { c_flash_mode,  k_empty },
     };
 
     // Macros definition

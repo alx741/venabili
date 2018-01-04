@@ -188,7 +188,7 @@ int map_layer(Key keys[NKEYS])
                 if (hasHoldKey(k)) // Double functionality
                 {
                     // Send a key that is only a modifier
-                    Key nk = {KEY_NONE, k.hold_mod, k.hold_mod, CMD_NONE};
+                    Key nk = {KEY_NONE, k.hold_mod, MOD_NONE, CMD_NONE};
                     keys[index++] = nk;
                 }
                 else // Only press functionality
@@ -208,7 +208,7 @@ int map_layer(Key keys[NKEYS])
                 }
 
                 // Tap functionality is only triggered when tapped alone
-                else if (tapped_alone(i, j) && ! TAP_IS_TIMEDOUT)
+                else if (tapped(i, j) && ! TAP_IS_TIMEDOUT)
                 {
                     keys[index++] = k;
                 }
