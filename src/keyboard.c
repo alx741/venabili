@@ -34,8 +34,8 @@
 #include "macros.h"
 #include "keyboard.h"
 
-static Key LAYERS[NLAYERS][NROWS][NCOLS];
-static int N_LAYERS = 0;
+static Key LAYERS[N_LAYERS][NROWS][NCOLS];
+static int LAYERS_CTR = 0;
 static int CURRENT_LAYER = 0;
 static int CURRENT_LOCKED_LAYER = 0;
 static bool LAYER_LOCKED = false;
@@ -133,10 +133,10 @@ void add_layer(const Key layer[NROWS][NCOLS])
     {
         for (int j = 0; j < NCOLS; j++)
         {
-            LAYERS[N_LAYERS][i][j] = layer[i][j];
+            LAYERS[LAYERS_CTR][i][j] = layer[i][j];
         }
     }
-    N_LAYERS++;
+    LAYERS_CTR++;
 }
 
 int get_layer_selection(uint16_t current_layer)
