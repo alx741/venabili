@@ -27,7 +27,6 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "config.h"
 
 /*************************
  *   KEYBOARD SENSING
@@ -36,6 +35,8 @@
 #define NROWS 4
 #define NCOLS 12
 #define NKEYS (NROWS * NCOLS) // 48
+
+#define DEBOUNCE_FACTOR 20
 
 /*
  *

@@ -23,15 +23,15 @@
 #include "keys_internal.h"
 #include "macros.h"
 
-Key MACROS[N_MACROS][MACRO_LENGTH];
+Key MACROS[N_MACROS][MAX_MACRO_LENGTH];
 int MACROS_CTR = 0;
 
 void wipe_macro(int id)
 {
-    memset(MACROS[id], 0, sizeof(Key) * MACRO_LENGTH);
+    memset(MACROS[id], 0, sizeof(Key) * MAX_MACRO_LENGTH);
 }
 
-void add_macro(const Key macro[MACRO_LENGTH])
+void add_macro(const Key macro[MAX_MACRO_LENGTH])
 {
     wipe_macro(MACROS_CTR);
     int i = 0;
@@ -44,7 +44,7 @@ void add_macro(const Key macro[MACRO_LENGTH])
     MACROS_CTR++;
 }
 
-void add_string_macro(const char macro[MACRO_LENGTH])
+void add_string_macro(const char macro[MAX_MACRO_LENGTH])
 {
     wipe_macro(MACROS_CTR);
     int i = 0;
