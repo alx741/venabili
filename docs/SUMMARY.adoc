@@ -6,7 +6,9 @@
 .. link:hardware_guide.adoc[Hardware]
 .. link:firmware_guide.adoc[Firmware]
 
-. link:customizing.adoc[Customizing]
+. link:default.adoc[Default Layers]
+
+. link:customizing.adoc[Customizing Guide]
 .. link:compiling-flashing.adoc[Compiling & Flashing]
 .. link:layers.adoc[Layers]
 // dual-function keys, pre-modified keys, double-shift capslock, mouse
