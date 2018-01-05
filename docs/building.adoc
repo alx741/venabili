@@ -1,1 +1,10 @@
 = Building Guide
+
+== Materials
+
+- case/plate pieces
+- switches
+- caps
+- mcu
+- stlink
+- ...
