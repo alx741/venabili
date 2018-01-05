@@ -17,3 +17,7 @@ flashing the main firmware each time you want to change your keyboard's
 behaviour as *"user level"* flashing.
 
 == Low Level Flashing
+
+Because we're still building the keyboard, we're only going to address the
+first-time-only low level flashing here and let the user level flashing for the
+link:customizing.adoc[Customizing Guide].
