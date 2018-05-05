@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="245.59mm" height="57.103mm" version="1.1" viewBox="0 0 245.59 57.103" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(-18.625 -237.46)">
+        <text transform="scale(.9992 1.0008)" x="64.787056" y="288.57355" fill="#000000" font-family="sans-serif" font-size="48.494px" letter-spacing="0px" opacity=".97" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="64.787056" y="288.57355" font-family="Selectric" stroke-width=".26458" style="line-height:2.25">enabili</tspan></text>
+        <g transform="matrix(.887 0 0 .88751 7.1304 32.274)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m49.053 271.92-4.7951 8.3083 4.7951 8.3084 4.7951-8.3084z" stroke-width="2.7265"/>
+            <path d="m68.05 238.25h10.034l-20.855 36.122-5.0171-8.6928z" stroke-width="2.8527"/>
+            <path d="m30.056 238.25h-10.034l20.855 36.122 5.0171-8.6928z" stroke-width="2.8527"/>
+        </g>
+    </g>
+</svg>
