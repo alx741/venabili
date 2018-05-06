@@ -13,7 +13,7 @@
    height="63.91008mm"
    viewBox="0 0 249.49583 63.910079"
    version="1.1"
-   id="svg8"
+   id="logo"
    sodipodi:docname="logo.svg"
    inkscape:version="0.92.2 2405546, 2018-03-11">
   <defs
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.54214737"
-     inkscape:cx="408.36575"
-     inkscape:cy="196.7806"
+     inkscape:zoom="0.78767695"
+     inkscape:cx="455.21359"
+     inkscape:cy="103.77704"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -55,7 +55,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -66,7 +66,7 @@
      transform="translate(-14.720518,-230.6534)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:48.49358749px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;opacity:0.97000002;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-weight:normal;font-size:48.49358749px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;opacity:0.97000002;fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="64.787056"
        y="288.57355"
        id="text819"
@@ -75,19 +75,19 @@
          id="tspan817"
          x="64.787056"
          y="288.57355"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:2.25;font-family:Selectric;-inkscape-font-specification:Selectric;stroke-width:0.26458332">enabili</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:2.25;font-family:Selectric;-inkscape-font-specification:Selectric;fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.26458332">enabili</tspan></text>
     <g
-       id="g877"
+       id="logo-v"
        transform="matrix(1.07459,0,0,1.0756353,-2.0713721,-20.674759)"
-       style="stroke-width:0.87451035">
+       style="stroke:#333333;stroke-width:0.87451035;stroke-opacity:1">
       <path
          inkscape:connector-curvature="0"
          id="path831"
          d="m 49.053094,271.92038 -4.79514,8.30831 4.795136,8.30835 4.79514,-8.30835 z"
-         style="fill:none;stroke:#000000;stroke-width:2.57526159;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="fill:none;stroke:#333333;stroke-width:2.57526159;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="ccccc"
-         style="fill:none;stroke:#000000;stroke-width:2.69445086;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:none;stroke:#333333;stroke-width:2.69445086;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 68.050206,238.25343 h 10.034139 l -20.855158,36.12219 -5.017069,-8.69284 z"
          id="path829"
          inkscape:connector-curvature="0" />
@@ -95,7 +95,7 @@
          inkscape:connector-curvature="0"
          id="path864"
          d="M 30.055973,238.25343 H 20.021834 l 20.855158,36.12219 5.017069,-8.69284 z"
-         style="fill:none;stroke:#000000;stroke-width:2.69445086;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:none;stroke:#333333;stroke-width:2.69445086;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          sodipodi:nodetypes="ccccc" />
     </g>
   </g>
