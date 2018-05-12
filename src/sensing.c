@@ -31,20 +31,23 @@ bool KMAT_STATE[NROWS][NCOLS] = { { false } };
 Key_coord PRESSED_KEYS[NKEYS] = { {0, 0} };
 Key_coord PRESSED_PREV_KEYS[NKEYS] = { {0, 0} };
 
+#define MATRIX_OUTPUTS_START 6
+
 void keyboard_sensing_init(void)
 {
     rcc_periph_clock_enable(RCC_GPIOA);
     rcc_periph_clock_enable(RCC_GPIOB);
 
-    // PORTA (0-11) as matrix inputs
+    // PORTA [0-10], PORTB 15 as matrix inputs
     gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_PULL_UPDOWN,
             GPIO0 | GPIO1 | GPIO2 | GPIO3 | GPIO4 | GPIO5 | GPIO6 | GPIO7
-            | GPIO8 | GPIO9 | GPIO10 | GPIO11);
+            | GPIO8 | GPIO9 | GPIO10);
+    gpio_set_mode(GPIOB, GPIO_MODE_INPUT, GPIO_CNF_INPUT_PULL_UPDOWN, GPIO15);
 
-    // PORTB (5-8) as matrix outputs
+    // PORTB [6-9] as matrix outputs
     gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL,
-            GPIO5 | GPIO6 | GPIO7 | GPIO8);
-    gpio_clear(GPIOB, GPIO5 | GPIO6 | GPIO7 | GPIO8);
+            GPIO6 | GPIO7 | GPIO8 | GPIO9);
+    gpio_clear(GPIOB, GPIO6 | GPIO7 | GPIO8 | GPIO9);
 }
 
 void backup_and_wipe_current_state(void)
@@ -56,6 +59,18 @@ void backup_and_wipe_current_state(void)
 
     N_PREV_PRESSED = N_PRESSED;
     N_PRESSED = 0;
+}
+
+uint16_t read_column(uint16_t c)
+{
+    if (c < 11)
+    {
+        return gpio_get(GPIOA, 1 << c);
+    }
+    else
+    {
+        return gpio_get(GPIOB, 1 << 15);
+    }
 }
 
 int sense_keys(void)
@@ -71,9 +86,9 @@ int sense_keys(void)
 
     backup_and_wipe_current_state();
 
-    for (int r = 5; r < (NROWS + 5); r++)
+    for (int r = MATRIX_OUTPUTS_START; r < (NROWS + MATRIX_OUTPUTS_START); r++)
     {
-        i = r - 5;
+        i = r - MATRIX_OUTPUTS_START;
         gpio_set(GPIOB, 1 << r);
         for (int c = 0; c < NCOLS; c++)
         {
@@ -85,7 +100,7 @@ int sense_keys(void)
             debounce_counter = 0;
             while (debounce_counter < DEBOUNCE_FACTOR)
             {
-                key_state = gpio_get(GPIOA, 1 << c);
+                key_state = read_column(c);
                 // Some bouncing going on
                 if (key_state != key_prev_state) { debounce_counter = 0; }
                 // Seems stable
@@ -95,7 +110,7 @@ int sense_keys(void)
             }
 
             // Read key state
-            if (gpio_get(GPIOA, 1 << c))
+            if (read_column(c))
             {
                 KMAT_STATE[i][j] = true;
                 PRESSED_KEYS[n++] = coordinate;
