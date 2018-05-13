@@ -11,8 +11,8 @@ layout, custom everything.
 
 ## No, I mean why "Venabili"?
 
-Oh, that! It's named after "Dors Venabili", a fictional character from Isaac
-Asimov's "Foundation" series of novels.
+Oh, that! It's named after *Dors Venabili*, a fictional character from Isaac
+Asimov's "*Foundation*" series of novels.
 
 ## I want it!
 
