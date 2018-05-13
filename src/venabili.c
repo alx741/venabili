@@ -32,10 +32,10 @@ void venabili(void)
 
     Layer l0 =
     {
-        { k_r,           k_t          },
-        { HRshift(k_f),  HLshift(k_g) },
-        { k_v,           k_b          },
-        { m_lshift,      LS(1)        },
+        { k_r,           k_t         , k_a, k_b, k_i, k_j, k_a, k_b, k_i, k_j, k_a, k_x},
+        { HRshift(k_f),  HLshift(k_g), k_c, k_f, k_k, k_l, k_c, k_f, k_k, k_l, k_c, k_y},
+        { k_v,           k_b         , k_d, k_g, k_n, k_m, k_d, k_g, k_n, k_m, k_d, k_z},
+        { m_lshift,      LS(1)       , k_e, k_h, k_o, k_p, k_e, k_h, k_o, k_p, k_e, k_w},
     };
 
     Layer l1 =
