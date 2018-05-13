@@ -272,9 +272,9 @@ int main(void)
     rcc_periph_clock_enable(RCC_GPIOA);
     rcc_periph_clock_enable(RCC_GPIOB);
     gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_PULL_UPDOWN, GPIO0);
-    gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO5 | GPIO13);
+    gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO6 | GPIO13);
 
-    gpio_set(GPIOB, GPIO5);  // Pull row 1 high for boot detection
+    gpio_set(GPIOB, GPIO6);  // Pull row 1 high for boot detection
 
 
     if (should_enter_flashing_mode())
