@@ -32,19 +32,29 @@ void venabili(void)
 
     Layer l0 =
     {
-        { k_r,           k_t         , k_a, k_b, k_i, k_j, k_a, k_b, k_i, k_j, k_a, k_x},
-        { HRshift(k_f),  HLshift(k_g), k_c, k_f, k_k, k_l, k_c, k_f, k_k, k_l, k_c, k_y},
-        { k_v,           k_b         , k_d, k_g, k_n, k_m, k_d, k_g, k_n, k_m, k_d, k_z},
-        { m_lshift,      LS(1)       , k_e, k_h, k_o, k_p, k_e, k_h, k_o, k_p, k_e, k_w},
+        { k_tab,                 k_q, k_w, k_e, k_r, k_t, k_y, k_u, k_i,     k_o,   k_p,         k_backslash},
+        { HLctrl(k_escape),      k_a, k_s, k_d, k_f, HLshift(k_g), HRshift(k_h), k_j, k_k,     k_l,   k_semicolon, HRctrl(k_enter)},
+        { HLshift(k_open_paren), k_z, k_x, k_c, k_v, k_b, k_n, k_m, k_comma, k_dot, k_slash,     HRshift(k_close_paren)},
+        { k_empty,               k_empty, k_empty, k_empty, k_empty, LS(1), k_space, k_empty, k_empty, k_empty, k_empty, k_empty},
     };
 
     Layer l1 =
     {
-        { m_click_1,     MACRO(0) },
-        { m_click_2,     MACRO(1) },
-        { m_click_3,     k_empty  },
-        { c_flash_mode,  k_empty  },
+        { k_empty, k_empty, k_empty, k_empty, k_empty, k_empty, k_empty,     k_empty, k_empty, k_empty, k_empty, k_empty},
+        { k_empty, k_empty, k_empty, k_empty, k_empty, k_empty, k_backspace, k_empty, k_empty, k_empty, k_empty, k_empty},
+        { k_empty, k_empty, k_empty, k_empty, k_empty, k_empty, k_empty,     k_empty, k_empty, k_empty, k_empty, k_empty},
+        { c_flash_mode, k_empty, k_empty, k_empty, k_empty, k_empty, k_empty,     k_empty, k_empty, k_empty, k_empty, k_empty},
     };
+
+    /* { k_empty, k_empty, k_empty, k_empty, k_empty, k_empty, k_empty, k_empty, k_empty, k_empty, k_empty, k_empty}, */
+
+    /* Layer l2 = */
+    /* { */
+    /*     { m_click_1,     MACRO(0) }, */
+    /*     { m_click_2,     MACRO(1) }, */
+    /*     { m_click_3,     k_empty  }, */
+    /*     { c_flash_mode,  k_empty  }, */
+    /* }; */
 
     add_layer(l0);
     add_layer(l1);
