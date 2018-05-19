@@ -172,6 +172,17 @@ void select_layer()
     }
 }
 
+bool containsCtrl(Key keys[NKEYS])
+{
+    for (int i = 0; i < NKEYS; i++)
+    {
+        if (hasCtrl(keys[i]))
+        {
+            return true;
+        }
+    }
+    return false;
+}
 
 int map_layer(Key keys[NKEYS])
 {
@@ -188,9 +199,20 @@ int map_layer(Key keys[NKEYS])
             {
                 if (hasHoldKey(k)) // Double functionality
                 {
+                    // Special case: allow for Ctrl + double function key,
+                    // without the hold-modified getting in the way
+                    if (containsCtrl(keys))
+                    {
+                        Key nk = {k.usb_keycode, MOD_NONE, MOD_NONE, CMD_NONE};
+                        keys[index++] = nk;
+                    }
+
                     // Send a key that is only a modifier
-                    Key nk = {KEY_NONE, k.hold_mod, MOD_NONE, CMD_NONE};
-                    keys[index++] = nk;
+                    else
+                    {
+                        Key nk = {KEY_NONE, k.hold_mod, MOD_NONE, CMD_NONE};
+                        keys[index++] = nk;
+                    }
                 }
                 else // Only press functionality
                 {
