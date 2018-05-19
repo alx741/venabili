@@ -189,8 +189,7 @@ const struct usb_config_descriptor config = {
     .bConfigurationValue = 1,
     .iConfiguration = 0,
     .bmAttributes = 0xC0,
-    .bMaxPower = 0x32, // TODO: Is this enough power for the LCD display?
-
+    .bMaxPower = 0x32,
     .interface = ifaces,
 };
 

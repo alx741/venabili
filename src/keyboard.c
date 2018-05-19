@@ -94,6 +94,7 @@ void handle_6_normal_keys(Key k[6], int n)
     uint8_t keycodes[6] = {0};
 
     // Combine modifiers
+    // TODO: special case for ctrl + mod(key) = ctrl + key (here?)
     for (int i = 0; i < n; i++)
     {
         mods |= k[i].modifiers;
@@ -208,7 +209,7 @@ int map_layer(Key keys[NKEYS])
                 }
 
                 // Tap functionality is only triggered when tapped alone
-                else if (tapped(i, j) && ! TAP_IS_TIMEDOUT)
+                else if (tapped_alone(i, j) && ! TAP_IS_TIMEDOUT)
                 {
                     keys[index++] = k;
                 }
