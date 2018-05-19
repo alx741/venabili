@@ -26,6 +26,14 @@ bool hasHoldKey(Key k)
     return k.hold_mod != MOD_NONE;
 }
 
+bool hasCtrl(Key k)
+{
+    return (k.modifiers & MOD_LEFT_CTRL)
+        || (k.modifiers & MOD_RIGHT_CTRL)
+        || (k.hold_mod & MOD_LEFT_CTRL)
+        || (k.hold_mod & MOD_RIGHT_CTRL);
+}
+
 bool isNormalKey(Key k)
 {
     return (k.usb_keycode != KEY_NONE || k.modifiers != MOD_NONE)

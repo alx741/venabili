@@ -71,9 +71,13 @@ typedef struct
 #define LS_LAST  0xFF00
 
 
-/* Tell if Mapkey has hold key functionality
+/* Tell if KEY has hold key functionality
  */
 bool hasHoldKey(Key k);
+
+/* Tell if KEY has CTRL modifier or CTRL hold-modifier
+ */
+bool hasCtrl(Key k);
 
 /* Tell if a KEY is normal
  * It's not a command key
