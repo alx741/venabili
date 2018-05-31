@@ -330,52 +330,38 @@ void keyboard_init(void)
     nvic_set_priority(NVIC_TIM3_IRQ, 5);
     rcc_periph_clock_enable(RCC_TIM2);
     rcc_periph_clock_enable(RCC_TIM3);
-    /* reset_tap_timer(); */
-    /* reset_layer_dropping_timer(); */
 }
 
-void tim2_isr(void)
+void clear_timer_interrupt_flag(uint32_t timer)
 {
-    TAP_IS_TIMEDOUT = true;
-    TIM_SR(TIM2) &= ~TIM_SR_UIF; // Clear interrupt flag
+    TIM_SR(timer) &= ~TIM_SR_UIF;
 }
 
-void tim3_isr(void)
+void reset_1ms_timer(uint32_t timer, uint16_t timout)
 {
-    LAYER_DROPPING_HOLD_IS_TIMEDOUT = true;
-    TIM_SR(TIM3) &= ~TIM_SR_UIF; // Clear interrupt flag
+    TIM_CNT(timer) = 1;
+    TIM_PSC(timer) = 720000; // 1000 counts per second (1ms)
+    TIM_ARR(timer) = timout;
+    TIM_DIER(timer) |= TIM_DIER_UIE; // Enable timer interrupt
+
+    // Configure timer
+    TIM_CR1(timer) |= TIM_CR1_DIR_UP;
+    TIM_CR1(timer) |= TIM_CR1_OPM;
+
+    // Start timer
+    TIM_CR1(timer) |= TIM_CR1_CEN;
 }
 
 void reset_tap_timer(void)
 {
     TAP_IS_TIMEDOUT = false;
-    TIM_CNT(TIM2) = 1;
-    TIM_PSC(TIM2) = 720000; // 1000 counts per second (1ms)
-    TIM_ARR(TIM2) = TAP_TIMEOUT_MS;
-    TIM_DIER(TIM2) |= TIM_DIER_UIE; // Enable TIM2 interrupt
-
-    // Configure TIM2
-    TIM_CR1(TIM2) |= TIM_CR1_DIR_UP;
-    TIM_CR1(TIM2) |= TIM_CR1_OPM;
-
-    // Start TIM2
-    TIM_CR1(TIM2) |= TIM_CR1_CEN;
+    reset_1ms_timer(TIM2, TAP_TIMEOUT_MS);
 }
 
 void reset_layer_dropping_timer(void)
 {
     LAYER_DROPPING_HOLD_IS_TIMEDOUT = false;
-    TIM_CNT(TIM3) = 1;
-    TIM_PSC(TIM3) = 720000; // 1000 counts per second (1ms)
-    TIM_ARR(TIM3) = LAYER_DROPPING_TIMEOUT_MS;
-    TIM_DIER(TIM3) |= TIM_DIER_UIE; // Enable TIM3 interrupt
-
-    // Configure TIM3
-    TIM_CR1(TIM3) |= TIM_CR1_DIR_UP;
-    TIM_CR1(TIM3) |= TIM_CR1_OPM;
-
-    // Start TIM3
-    TIM_CR1(TIM3) |= TIM_CR1_CEN;
+    reset_1ms_timer(TIM3, LAYER_DROPPING_TIMEOUT_MS);
 }
 
 void enter_flash_mode(void)
@@ -385,4 +371,16 @@ void enter_flash_mode(void)
     PWR_CR |= PWR_CR_DBP;
     BKP_DR1 = 1;
     scb_reset_system();
+}
+
+void tim2_isr(void)
+{
+    TAP_IS_TIMEDOUT = true;
+    clear_timer_interrupt_flag(TIM2);
+}
+
+void tim3_isr(void)
+{
+    LAYER_DROPPING_HOLD_IS_TIMEDOUT = true;
+    clear_timer_interrupt_flag(TIM3);
 }
