@@ -174,9 +174,6 @@ void select_layer()
         // Start layer evaluation from layer 0
         int new_layer = get_layer_selection(0);
 
-        // Wait a bit when dropping to the default layer to avoid premature
-        // layer_key releasing issues
-
         // Dropping to default layer
         if (CURRENT_LAYER != 0 && new_layer == 0)
         {

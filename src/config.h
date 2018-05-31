@@ -36,7 +36,12 @@
 /* If you hold a double-function key longer than this (in milliseconds),
  * then the key press will be discarded
  */
-#define TAP_TIMEOUT_MS  250
+#define TAP_TIMEOUT_MS  130
+
+/* When dropping to the default layer, give enough time to release the
+ * layer-shifting-keys to avoid unintentional pressing of default layer keys
+ */
+#define LAYER_DROPPING_TIMEOUT_MS  50
 
 // Pressing two shift keys simultaneously triggers CapsLock
 //#define ENABLE_DOUBLE_SHIFT_CAPS_LOCK
