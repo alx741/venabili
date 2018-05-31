@@ -224,8 +224,18 @@ int map_layer(Key keys[NKEYS])
             {
                 if (hasHoldKey(k)) // Double functionality
                 {
-                    Key nk = {KEY_NONE, k.hold_mod, MOD_NONE, CMD_NONE};
-                    keys[index++] = nk;
+                    // If Ctrl is already held down, avoid double Ctrl and
+                    // triger Ctrl + key instead
+                    if (hasCtrl(k) && containsCtrl(keys))
+                    {
+                        Key nk = {k.usb_keycode, MOD_NONE, MOD_NONE, CMD_NONE};
+                        keys[index++] = nk;
+                    }
+                    else
+                    {
+                        Key nk = {KEY_NONE, k.hold_mod, MOD_NONE, CMD_NONE};
+                        keys[index++] = nk;
+                    }
                 }
                 else // Only press functionality
                 {
