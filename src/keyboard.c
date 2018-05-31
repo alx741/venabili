@@ -40,6 +40,7 @@ static int CURRENT_LAYER = 0;
 static int CURRENT_LOCKED_LAYER = 0;
 static bool LAYER_LOCKED = false;
 static bool TAP_IS_TIMEDOUT = false;
+static bool LAYER_DROPPING_HOLD_IS_TIMEDOUT = false;
 
 void handle_6_normal_keys(Key k[6], int n);
 void handle_command_keys(Key k);
@@ -47,6 +48,7 @@ void handle_mouse_movement(Key k);
 void lock_layer(void);
 void unlock_layer(void);
 void reset_tap_timer(void);
+void reset_layer_dropping_timer(void);
 void enter_flash_mode(void);
 
 // USB can handle up to 6KRO
@@ -161,6 +163,8 @@ int get_layer_selection(uint16_t current_layer)
 
 void select_layer()
 {
+    static bool holding_layer_drop = false;
+
     if (LAYER_LOCKED)
     {
         CURRENT_LAYER = get_layer_selection(CURRENT_LOCKED_LAYER);
@@ -168,7 +172,31 @@ void select_layer()
     else
     {
         // Start layer evaluation from layer 0
-        CURRENT_LAYER = get_layer_selection(0);
+        int new_layer = get_layer_selection(0);
+
+        // Wait a bit when dropping to the default layer to avoid premature
+        // layer_key releasing issues
+
+        // Dropping to default layer
+        if (CURRENT_LAYER != 0 && new_layer == 0)
+        {
+            if (LAYER_DROPPING_HOLD_IS_TIMEDOUT && holding_layer_drop)
+            {
+                CURRENT_LAYER = new_layer;
+                holding_layer_drop = false;
+            }
+            else if (!holding_layer_drop)
+            {
+                reset_layer_dropping_timer();
+                holding_layer_drop = true;
+            }
+        }
+
+        // Normal layer shifting
+        else
+        {
+            CURRENT_LAYER = new_layer;
+        }
     }
 }
 
@@ -300,15 +328,25 @@ void keyboard_init(void)
 {
     // Enable tap timer interrupt
     nvic_enable_irq(NVIC_TIM2_IRQ);
-    nvic_set_priority(NVIC_TIM2_IRQ, 1);
+    nvic_enable_irq(NVIC_TIM3_IRQ);
+    nvic_set_priority(NVIC_TIM2_IRQ, 5);
+    nvic_set_priority(NVIC_TIM3_IRQ, 5);
     rcc_periph_clock_enable(RCC_TIM2);
-    reset_tap_timer();
+    rcc_periph_clock_enable(RCC_TIM3);
+    /* reset_tap_timer(); */
+    /* reset_layer_dropping_timer(); */
 }
 
 void tim2_isr(void)
 {
     TAP_IS_TIMEDOUT = true;
     TIM_SR(TIM2) &= ~TIM_SR_UIF; // Clear interrupt flag
+}
+
+void tim3_isr(void)
+{
+    LAYER_DROPPING_HOLD_IS_TIMEDOUT = true;
+    TIM_SR(TIM3) &= ~TIM_SR_UIF; // Clear interrupt flag
 }
 
 void reset_tap_timer(void)
@@ -325,6 +363,22 @@ void reset_tap_timer(void)
 
     // Start TIM2
     TIM_CR1(TIM2) |= TIM_CR1_CEN;
+}
+
+void reset_layer_dropping_timer(void)
+{
+    LAYER_DROPPING_HOLD_IS_TIMEDOUT = false;
+    TIM_CNT(TIM3) = 1;
+    TIM_PSC(TIM3) = 720000; // 1000 counts per second (1ms)
+    TIM_ARR(TIM3) = LAYER_DROPPING_TIMEOUT_MS;
+    TIM_DIER(TIM3) |= TIM_DIER_UIE; // Enable TIM3 interrupt
+
+    // Configure TIM3
+    TIM_CR1(TIM3) |= TIM_CR1_DIR_UP;
+    TIM_CR1(TIM3) |= TIM_CR1_OPM;
+
+    // Start TIM3
+    TIM_CR1(TIM3) |= TIM_CR1_CEN;
 }
 
 void enter_flash_mode(void)
