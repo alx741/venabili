@@ -47,7 +47,7 @@ bool isCommandKey(Key k)
 
 bool isLayerSelectionKey(Key k)
 {
-    return isCommandKey(k) && (k.command & 0xFF00);
+    return k.command & 0xFF00;
 }
 
 bool isModifierKey(Key k)
@@ -182,6 +182,16 @@ Key apply_hold_mod(Key k, uint8_t mod)
     new.usb_keycode = k.usb_keycode;
     new.command = k.command;
     return new;
+}
+
+Key LS(uint8_t n, Key k)
+{
+    Key ls;
+    ls.usb_keycode = k.usb_keycode;
+    ls.modifiers = k.modifiers;
+    ls.hold_mod = MOD_NONE;
+    ls.command = LS_FIRST + n;
+    return ls;
 }
 
 Key Lctrl(Key k)  { return apply_mod(k, MOD_LEFT_CTRL); }

@@ -22,15 +22,6 @@
 
 #include "keys_internal.h"
 
-/* Layer selection macro command
- *
- * LS(0) is the first (main) layer
- *
- * Up to 256 layers. From 1 to 256
- */
-#define LS(n) {KEY_NONE, MOD_NONE, MOD_NONE, LS_FIRST + n}
-
-
 /* Mouse movement macros
  *
  * Valid speeds are between 0 and 15
@@ -48,6 +39,15 @@
  * Up to 27 macros. Valid ids are between 0 and 26
  */
 #define MACRO(id) { KEY_NONE, MOD_NONE, MOD_NONE, CMD_MACRO_FIRST + id}
+
+
+/* Layer selection command
+ *
+ * 0 is the first (main) layer
+ *
+ * Up to 256 layers. From 1 to 256
+ */
+Key LS(uint8_t n, Key k);
 
 
 /* Apply modifiers to a key
