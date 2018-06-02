@@ -36,6 +36,7 @@
 
 static Key LAYERS[N_LAYERS][NROWS][NCOLS];
 static int LAYERS_CTR = 0;
+static int PREVIOUS_LAYER = 0;
 static int CURRENT_LAYER = 0;
 static int CURRENT_LOCKED_LAYER = 0;
 static bool LAYER_LOCKED = false;
@@ -96,7 +97,7 @@ void handle_6_normal_keys(Key k[6], int n)
     uint8_t keycodes[6] = {0};
 
     // Combine modifiers
-    // TODO: special case for ctrl + mod(key) = ctrl + key (here?)
+    // TODO: special case for Ctrl + mod(key) = Ctrl + key (here?)
     for (int i = 0; i < n; i++)
     {
         mods |= k[i].modifiers;
@@ -164,6 +165,7 @@ int get_layer_selection(uint16_t current_layer)
 void select_layer()
 {
     static bool holding_layer_drop = false;
+    int tmp_current_layer = CURRENT_LAYER;
 
     if (LAYER_LOCKED)
     {
@@ -194,6 +196,13 @@ void select_layer()
         {
             CURRENT_LAYER = new_layer;
         }
+    }
+
+
+    // Update previous layer only when the current layer has changed upwards
+    if (tmp_current_layer < CURRENT_LAYER)
+    {
+        PREVIOUS_LAYER = tmp_current_layer;
     }
 }
 
