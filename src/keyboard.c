@@ -234,7 +234,7 @@ int map_layer(Key keys[NKEYS])
                 if (hasHoldKey(k)) // Double functionality
                 {
                     // If Ctrl is already held down, avoid double Ctrl and
-                    // triger Ctrl + key instead
+                    // trigger Ctrl + key instead
                     if (hasCtrl(k) && containsCtrl(keys))
                     {
                         Key nk = {k.usb_keycode, MOD_NONE, MOD_NONE, CMD_NONE};
@@ -253,7 +253,8 @@ int map_layer(Key keys[NKEYS])
             }
 
             // Handle Taps
-            if (hasHoldKey(k))
+            Key prev_layer_k = LAYERS[PREVIOUS_LAYER][i][j];
+            if (hasHoldKey(k) || isLayerSelectionKey(prev_layer_k))
             {
                 // Reset Tap timer on first press of a key with Tap
                 // functionality
@@ -264,7 +265,18 @@ int map_layer(Key keys[NKEYS])
 
                 else if (tapped_alone(i, j) && ! TAP_IS_TIMEDOUT)
                 {
-                    keys[index++] = k;
+                    if (isLayerSelectionKey(prev_layer_k))
+                    {
+                        Key nk = {prev_layer_k.usb_keycode,
+                            prev_layer_k.modifiers, MOD_NONE, CMD_NONE};
+                        keys[index++] = nk;
+                    }
+                    else
+                    {
+                        Key nk = {k.usb_keycode, k.modifiers, MOD_NONE,
+                            CMD_NONE};
+                        keys[index++] = nk;
+                    }
                 }
             }
 
