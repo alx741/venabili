@@ -22,6 +22,8 @@ BINARY = $(SRC_DIR)/main
 LDSCRIPT=$(SRC_DIR)/f103x8_boot_offset.ld
 OPENCM3_DIR=../lib/libopencm3
 
+SCRIPTS_DIR= ../scripts/
+
 OBJS += usb.o
 OBJS += usb_keyboard.o
 OBJS += usb_mouse.o
@@ -33,6 +35,7 @@ OBJS += keyboard.o
 include ./libopencm3.target.mk
 
 all: $(BINARY).bin
+	@$(SCRIPTS_DIR)/checks.sh
 
 $(BINARY).bin: $(BINARY).elf
 	arm-none-eabi-objcopy -O binary $< $@
