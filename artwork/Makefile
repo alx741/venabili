@@ -8,6 +8,7 @@
 
 
 OUTPUTS = logo.png \
+		  logo_v.png \
 		  logo_small.png \
 		  logo_margin.png \
 		  favicon.png \
@@ -16,6 +17,9 @@ OUTPUTS = logo.png \
 make: $(OUTPUTS)
 
 logo.png: logo.svg
+	inkscape -D $< -e $@
+
+logo_v.png: logo_v.svg
 	inkscape -D $< -e $@
 
 design.png: design.svg
