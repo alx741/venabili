@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name venabili-rescue)(type Legacy)(uri ${KIPRJMOD}/venabili-rescue.lib)(options "")(descr ""))
+)

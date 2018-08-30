@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/mnt/hdd/alx/lab/venabili/schematics/venabili.sch</source>
+    <date>Thu 30 Aug 2018 03:02:04 PM -05</date>
+    <tool>Eeschema 5.0.0</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Venabili Keyboard</title>
+        <company/>
+        <rev/>
+        <date/>
+        <source>venabili.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="D1">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36E514</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36EBC4</tstamp>
+    </comp>
+    <comp ref="D3">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36EBF0</tstamp>
+    </comp>
+    <comp ref="D4">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36EC23</tstamp>
+    </comp>
+    <comp ref="SW1">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36F4C1</tstamp>
+    </comp>
+    <comp ref="SW2">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36F617</tstamp>
+    </comp>
+    <comp ref="SW3">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36F643</tstamp>
+    </comp>
+    <comp ref="SW4">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36F676</tstamp>
+    </comp>
+    <comp ref="D5">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36F9FC</tstamp>
+    </comp>
+    <comp ref="D6">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36FA03</tstamp>
+    </comp>
+    <comp ref="D7">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36FA09</tstamp>
+    </comp>
+    <comp ref="D8">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36FA0F</tstamp>
+    </comp>
+    <comp ref="SW5">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36FA15</tstamp>
+    </comp>
+    <comp ref="SW6">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36FA1B</tstamp>
+    </comp>
+    <comp ref="SW7">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36FA21</tstamp>
+    </comp>
+    <comp ref="SW8">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A36FA27</tstamp>
+    </comp>
+    <comp ref="D9">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A3705ED</tstamp>
+    </comp>
+    <comp ref="D10">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A3705F4</tstamp>
+    </comp>
+    <comp ref="D11">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A3705FA</tstamp>
+    </comp>
+    <comp ref="D12">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A370600</tstamp>
+    </comp>
+    <comp ref="SW9">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A370606</tstamp>
+    </comp>
+    <comp ref="SW10">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A37060C</tstamp>
+    </comp>
+    <comp ref="SW11">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A370612</tstamp>
+    </comp>
+    <comp ref="SW12">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A370618</tstamp>
+    </comp>
+    <comp ref="D13">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371710</tstamp>
+    </comp>
+    <comp ref="D14">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371717</tstamp>
+    </comp>
+    <comp ref="D15">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A37171D</tstamp>
+    </comp>
+    <comp ref="D16">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371723</tstamp>
+    </comp>
+    <comp ref="SW13">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371729</tstamp>
+    </comp>
+    <comp ref="SW14">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A37172F</tstamp>
+    </comp>
+    <comp ref="SW15">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371735</tstamp>
+    </comp>
+    <comp ref="SW16">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A37173B</tstamp>
+    </comp>
+    <comp ref="D17">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B41</tstamp>
+    </comp>
+    <comp ref="D18">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B48</tstamp>
+    </comp>
+    <comp ref="D19">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B4E</tstamp>
+    </comp>
+    <comp ref="D20">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B54</tstamp>
+    </comp>
+    <comp ref="SW17">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B5A</tstamp>
+    </comp>
+    <comp ref="SW18">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B60</tstamp>
+    </comp>
+    <comp ref="SW19">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B66</tstamp>
+    </comp>
+    <comp ref="SW20">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B6C</tstamp>
+    </comp>
+    <comp ref="D21">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B72</tstamp>
+    </comp>
+    <comp ref="D22">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B79</tstamp>
+    </comp>
+    <comp ref="D23">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B7F</tstamp>
+    </comp>
+    <comp ref="D24">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B85</tstamp>
+    </comp>
+    <comp ref="SW21">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B8B</tstamp>
+    </comp>
+    <comp ref="SW22">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B91</tstamp>
+    </comp>
+    <comp ref="SW23">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B97</tstamp>
+    </comp>
+    <comp ref="SW24">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A371B9D</tstamp>
+    </comp>
+    <comp ref="D25">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A53</tstamp>
+    </comp>
+    <comp ref="D26">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A5A</tstamp>
+    </comp>
+    <comp ref="D27">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A60</tstamp>
+    </comp>
+    <comp ref="D28">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A66</tstamp>
+    </comp>
+    <comp ref="SW25">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A6C</tstamp>
+    </comp>
+    <comp ref="SW26">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A72</tstamp>
+    </comp>
+    <comp ref="SW27">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A78</tstamp>
+    </comp>
+    <comp ref="SW28">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A7E</tstamp>
+    </comp>
+    <comp ref="D29">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A84</tstamp>
+    </comp>
+    <comp ref="D30">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A8B</tstamp>
+    </comp>
+    <comp ref="D31">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A91</tstamp>
+    </comp>
+    <comp ref="D32">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A97</tstamp>
+    </comp>
+    <comp ref="SW29">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378A9D</tstamp>
+    </comp>
+    <comp ref="SW30">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AA3</tstamp>
+    </comp>
+    <comp ref="SW31">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AA9</tstamp>
+    </comp>
+    <comp ref="SW32">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AAF</tstamp>
+    </comp>
+    <comp ref="D33">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AB5</tstamp>
+    </comp>
+    <comp ref="D34">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378ABC</tstamp>
+    </comp>
+    <comp ref="D35">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AC2</tstamp>
+    </comp>
+    <comp ref="D36">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AC8</tstamp>
+    </comp>
+    <comp ref="SW33">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378ACE</tstamp>
+    </comp>
+    <comp ref="SW34">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AD4</tstamp>
+    </comp>
+    <comp ref="SW35">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378ADA</tstamp>
+    </comp>
+    <comp ref="SW36">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AE0</tstamp>
+    </comp>
+    <comp ref="D37">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AE6</tstamp>
+    </comp>
+    <comp ref="D38">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AED</tstamp>
+    </comp>
+    <comp ref="D39">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AF3</tstamp>
+    </comp>
+    <comp ref="D40">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AF9</tstamp>
+    </comp>
+    <comp ref="SW37">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378AFF</tstamp>
+    </comp>
+    <comp ref="SW38">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B05</tstamp>
+    </comp>
+    <comp ref="SW39">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B0B</tstamp>
+    </comp>
+    <comp ref="SW40">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B11</tstamp>
+    </comp>
+    <comp ref="D41">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B17</tstamp>
+    </comp>
+    <comp ref="D42">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B1E</tstamp>
+    </comp>
+    <comp ref="D43">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B24</tstamp>
+    </comp>
+    <comp ref="D44">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B2A</tstamp>
+    </comp>
+    <comp ref="SW41">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B30</tstamp>
+    </comp>
+    <comp ref="SW42">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B36</tstamp>
+    </comp>
+    <comp ref="SW43">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B3C</tstamp>
+    </comp>
+    <comp ref="SW44">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B42</tstamp>
+    </comp>
+    <comp ref="D45">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B48</tstamp>
+    </comp>
+    <comp ref="D46">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B4F</tstamp>
+    </comp>
+    <comp ref="D47">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B55</tstamp>
+    </comp>
+    <comp ref="D48">
+      <value>1n4148</value>
+      <libsource lib="venabili-rescue" part="D" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B5B</tstamp>
+    </comp>
+    <comp ref="SW45">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B61</tstamp>
+    </comp>
+    <comp ref="SW46">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B67</tstamp>
+    </comp>
+    <comp ref="SW47">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B6D</tstamp>
+    </comp>
+    <comp ref="SW48">
+      <value> </value>
+      <libsource lib="venabili-rescue" part="SW_Push" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A378B73</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>USB_B_Mini</value>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="USB_B_Mini" description="USB Mini Type B connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B88D3DA</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="USB_B_Micro">
+      <aliases>
+        <alias>USB_B_Mini</alias>
+      </aliases>
+      <description>USB Micro Type B connector</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>USB*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">USB_B_Micro</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VBUS" type="power_out"/>
+        <pin num="2" name="D-" type="passive"/>
+        <pin num="3" name="D+" type="passive"/>
+        <pin num="4" name="ID" type="passive"/>
+        <pin num="5" name="GND" type="power_out"/>
+        <pin num="6" name="Shield" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="venabili-rescue" part="D">
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*SingleDiode</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="venabili-rescue" part="SW_Push">
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>/usr/share/kicad/library/Connector.lib</uri>
+    </library>
+    <library logical="venabili-rescue">
+      <uri>/mnt/hdd/alx/lab/venabili/schematics/venabili-rescue.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="A3">
+      <node ref="D16" pin="1"/>
+    </net>
+    <net code="2" name="A4">
+      <node ref="D20" pin="1"/>
+    </net>
+    <net code="3" name="A5">
+      <node ref="D24" pin="1"/>
+    </net>
+    <net code="4" name="A6">
+      <node ref="D28" pin="1"/>
+    </net>
+    <net code="5" name="A7">
+      <node ref="D32" pin="1"/>
+    </net>
+    <net code="6" name="A8">
+      <node ref="D36" pin="1"/>
+    </net>
+    <net code="7" name="A9">
+      <node ref="D40" pin="1"/>
+    </net>
+    <net code="8" name="A10">
+      <node ref="D44" pin="1"/>
+    </net>
+    <net code="9" name="A2">
+      <node ref="D12" pin="1"/>
+    </net>
+    <net code="10" name="A0">
+      <node ref="D4" pin="1"/>
+    </net>
+    <net code="11" name="A1">
+      <node ref="D8" pin="1"/>
+    </net>
+    <net code="12" name="Net-(D48-Pad2)">
+      <node ref="D48" pin="2"/>
+      <node ref="SW48" pin="1"/>
+    </net>
+    <net code="13" name="B7">
+      <node ref="SW46" pin="2"/>
+      <node ref="SW38" pin="2"/>
+      <node ref="SW42" pin="2"/>
+      <node ref="SW34" pin="2"/>
+      <node ref="SW30" pin="2"/>
+      <node ref="SW26" pin="2"/>
+      <node ref="SW22" pin="2"/>
+      <node ref="SW18" pin="2"/>
+      <node ref="SW14" pin="2"/>
+      <node ref="SW2" pin="2"/>
+      <node ref="SW10" pin="2"/>
+      <node ref="SW6" pin="2"/>
+    </net>
+    <net code="14" name="B6">
+      <node ref="SW17" pin="2"/>
+      <node ref="SW33" pin="2"/>
+      <node ref="SW13" pin="2"/>
+      <node ref="SW29" pin="2"/>
+      <node ref="SW21" pin="2"/>
+      <node ref="SW5" pin="2"/>
+      <node ref="SW37" pin="2"/>
+      <node ref="SW9" pin="2"/>
+      <node ref="SW45" pin="2"/>
+      <node ref="SW25" pin="2"/>
+      <node ref="SW1" pin="2"/>
+      <node ref="SW41" pin="2"/>
+    </net>
+    <net code="15" name="G">
+      <node ref="J1" pin="5"/>
+    </net>
+    <net code="16" name="A11">
+      <node ref="D48" pin="1"/>
+      <node ref="J1" pin="2"/>
+    </net>
+    <net code="17" name="A12">
+      <node ref="J1" pin="3"/>
+    </net>
+    <net code="18" name="5V">
+      <node ref="J1" pin="1"/>
+    </net>
+    <net code="19" name="Net-(J1-Pad6)">
+      <node ref="J1" pin="6"/>
+    </net>
+    <net code="20" name="Net-(J1-Pad4)">
+      <node ref="J1" pin="4"/>
+    </net>
+    <net code="21" name="B9">
+      <node ref="SW8" pin="2"/>
+      <node ref="SW40" pin="2"/>
+      <node ref="SW36" pin="2"/>
+      <node ref="SW32" pin="2"/>
+      <node ref="SW44" pin="2"/>
+      <node ref="SW4" pin="2"/>
+      <node ref="SW28" pin="2"/>
+      <node ref="SW24" pin="2"/>
+      <node ref="SW20" pin="2"/>
+      <node ref="SW48" pin="2"/>
+      <node ref="SW12" pin="2"/>
+      <node ref="SW16" pin="2"/>
+    </net>
+    <net code="22" name="B8">
+      <node ref="SW27" pin="2"/>
+      <node ref="SW19" pin="2"/>
+      <node ref="SW7" pin="2"/>
+      <node ref="SW3" pin="2"/>
+      <node ref="SW39" pin="2"/>
+      <node ref="SW43" pin="2"/>
+      <node ref="SW35" pin="2"/>
+      <node ref="SW11" pin="2"/>
+      <node ref="SW15" pin="2"/>
+      <node ref="SW23" pin="2"/>
+      <node ref="SW47" pin="2"/>
+      <node ref="SW31" pin="2"/>
+    </net>
+    <net code="23" name="Net-(D47-Pad2)">
+      <node ref="SW47" pin="1"/>
+      <node ref="D47" pin="2"/>
+    </net>
+    <net code="24" name="Net-(D19-Pad2)">
+      <node ref="D19" pin="2"/>
+      <node ref="SW19" pin="1"/>
+    </net>
+    <net code="25" name="Net-(D19-Pad1)">
+      <node ref="D19" pin="1"/>
+    </net>
+    <net code="26" name="Net-(D18-Pad2)">
+      <node ref="SW18" pin="1"/>
+      <node ref="D18" pin="2"/>
+    </net>
+    <net code="27" name="Net-(D18-Pad1)">
+      <node ref="D18" pin="1"/>
+    </net>
+    <net code="28" name="Net-(D17-Pad2)">
+      <node ref="SW17" pin="1"/>
+      <node ref="D17" pin="2"/>
+    </net>
+    <net code="29" name="Net-(D17-Pad1)">
+      <node ref="D17" pin="1"/>
+    </net>
+    <net code="30" name="Net-(D16-Pad2)">
+      <node ref="SW16" pin="1"/>
+      <node ref="D16" pin="2"/>
+    </net>
+    <net code="31" name="Net-(D15-Pad2)">
+      <node ref="SW15" pin="1"/>
+      <node ref="D15" pin="2"/>
+    </net>
+    <net code="32" name="Net-(D20-Pad2)">
+      <node ref="D20" pin="2"/>
+      <node ref="SW20" pin="1"/>
+    </net>
+    <net code="33" name="Net-(D14-Pad2)">
+      <node ref="SW14" pin="1"/>
+      <node ref="D14" pin="2"/>
+    </net>
+    <net code="34" name="Net-(D13-Pad2)">
+      <node ref="SW13" pin="1"/>
+      <node ref="D13" pin="2"/>
+    </net>
+    <net code="35" name="Net-(D15-Pad1)">
+      <node ref="D15" pin="1"/>
+    </net>
+    <net code="36" name="Net-(D14-Pad1)">
+      <node ref="D14" pin="1"/>
+    </net>
+    <net code="37" name="Net-(D13-Pad1)">
+      <node ref="D13" pin="1"/>
+    </net>
+    <net code="38" name="Net-(D22-Pad1)">
+      <node ref="D22" pin="1"/>
+    </net>
+    <net code="39" name="Net-(D23-Pad2)">
+      <node ref="SW23" pin="1"/>
+      <node ref="D23" pin="2"/>
+    </net>
+    <net code="40" name="Net-(D22-Pad2)">
+      <node ref="D22" pin="2"/>
+      <node ref="SW22" pin="1"/>
+    </net>
+    <net code="41" name="Net-(D21-Pad2)">
+      <node ref="SW21" pin="1"/>
+      <node ref="D21" pin="2"/>
+    </net>
+    <net code="42" name="Net-(D24-Pad2)">
+      <node ref="SW24" pin="1"/>
+      <node ref="D24" pin="2"/>
+    </net>
+    <net code="43" name="Net-(D23-Pad1)">
+      <node ref="D23" pin="1"/>
+    </net>
+    <net code="44" name="Net-(D21-Pad1)">
+      <node ref="D21" pin="1"/>
+    </net>
+    <net code="45" name="Net-(D3-Pad2)">
+      <node ref="D3" pin="2"/>
+      <node ref="SW3" pin="1"/>
+    </net>
+    <net code="46" name="Net-(D8-Pad2)">
+      <node ref="SW8" pin="1"/>
+      <node ref="D8" pin="2"/>
+    </net>
+    <net code="47" name="Net-(D7-Pad2)">
+      <node ref="SW7" pin="1"/>
+      <node ref="D7" pin="2"/>
+    </net>
+    <net code="48" name="Net-(D7-Pad1)">
+      <node ref="D7" pin="1"/>
+    </net>
+    <net code="49" name="Net-(D6-Pad2)">
+      <node ref="D6" pin="2"/>
+      <node ref="SW6" pin="1"/>
+    </net>
+    <net code="50" name="Net-(D6-Pad1)">
+      <node ref="D6" pin="1"/>
+    </net>
+    <net code="51" name="Net-(D5-Pad2)">
+      <node ref="D5" pin="2"/>
+      <node ref="SW5" pin="1"/>
+    </net>
+    <net code="52" name="Net-(D5-Pad1)">
+      <node ref="D5" pin="1"/>
+    </net>
+    <net code="53" name="Net-(D4-Pad2)">
+      <node ref="D4" pin="2"/>
+      <node ref="SW4" pin="1"/>
+    </net>
+    <net code="54" name="Net-(D2-Pad2)">
+      <node ref="D2" pin="2"/>
+      <node ref="SW2" pin="1"/>
+    </net>
+    <net code="55" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2"/>
+      <node ref="SW1" pin="1"/>
+    </net>
+    <net code="56" name="Net-(D3-Pad1)">
+      <node ref="D3" pin="1"/>
+    </net>
+    <net code="57" name="Net-(D2-Pad1)">
+      <node ref="D2" pin="1"/>
+    </net>
+    <net code="58" name="Net-(D10-Pad2)">
+      <node ref="SW10" pin="1"/>
+      <node ref="D10" pin="2"/>
+    </net>
+    <net code="59" name="Net-(D12-Pad2)">
+      <node ref="SW12" pin="1"/>
+      <node ref="D12" pin="2"/>
+    </net>
+    <net code="60" name="Net-(D11-Pad2)">
+      <node ref="SW11" pin="1"/>
+      <node ref="D11" pin="2"/>
+    </net>
+    <net code="61" name="Net-(D9-Pad2)">
+      <node ref="D9" pin="2"/>
+      <node ref="SW9" pin="1"/>
+    </net>
+    <net code="62" name="Net-(D11-Pad1)">
+      <node ref="D11" pin="1"/>
+    </net>
+    <net code="63" name="Net-(D10-Pad1)">
+      <node ref="D10" pin="1"/>
+    </net>
+    <net code="64" name="Net-(D9-Pad1)">
+      <node ref="D9" pin="1"/>
+    </net>
+    <net code="65" name="Net-(D43-Pad1)">
+      <node ref="D43" pin="1"/>
+    </net>
+    <net code="66" name="Net-(D42-Pad2)">
+      <node ref="SW42" pin="1"/>
+      <node ref="D42" pin="2"/>
+    </net>
+    <net code="67" name="Net-(D42-Pad1)">
+      <node ref="D42" pin="1"/>
+    </net>
+    <net code="68" name="Net-(D41-Pad2)">
+      <node ref="D41" pin="2"/>
+      <node ref="SW41" pin="1"/>
+    </net>
+    <net code="69" name="Net-(D41-Pad1)">
+      <node ref="D41" pin="1"/>
+    </net>
+    <net code="70" name="Net-(D40-Pad2)">
+      <node ref="D40" pin="2"/>
+      <node ref="SW40" pin="1"/>
+    </net>
+    <net code="71" name="Net-(D39-Pad2)">
+      <node ref="SW39" pin="1"/>
+      <node ref="D39" pin="2"/>
+    </net>
+    <net code="72" name="Net-(D38-Pad2)">
+      <node ref="D38" pin="2"/>
+      <node ref="SW38" pin="1"/>
+    </net>
+    <net code="73" name="Net-(D43-Pad2)">
+      <node ref="D43" pin="2"/>
+      <node ref="SW43" pin="1"/>
+    </net>
+    <net code="74" name="Net-(D37-Pad2)">
+      <node ref="D37" pin="2"/>
+      <node ref="SW37" pin="1"/>
+    </net>
+    <net code="75" name="Net-(D39-Pad1)">
+      <node ref="D39" pin="1"/>
+    </net>
+    <net code="76" name="Net-(D38-Pad1)">
+      <node ref="D38" pin="1"/>
+    </net>
+    <net code="77" name="Net-(D37-Pad1)">
+      <node ref="D37" pin="1"/>
+    </net>
+    <net code="78" name="Net-(D36-Pad2)">
+      <node ref="D36" pin="2"/>
+      <node ref="SW36" pin="1"/>
+    </net>
+    <net code="79" name="Net-(D45-Pad1)">
+      <node ref="D45" pin="1"/>
+    </net>
+    <net code="80" name="Net-(D46-Pad2)">
+      <node ref="D46" pin="2"/>
+      <node ref="SW46" pin="1"/>
+    </net>
+    <net code="81" name="Net-(D45-Pad2)">
+      <node ref="SW45" pin="1"/>
+      <node ref="D45" pin="2"/>
+    </net>
+    <net code="82" name="Net-(D47-Pad1)">
+      <node ref="D47" pin="1"/>
+    </net>
+    <net code="83" name="Net-(D46-Pad1)">
+      <node ref="D46" pin="1"/>
+    </net>
+    <net code="84" name="Net-(D44-Pad2)">
+      <node ref="D44" pin="2"/>
+      <node ref="SW44" pin="1"/>
+    </net>
+    <net code="85" name="Net-(D26-Pad2)">
+      <node ref="SW26" pin="1"/>
+      <node ref="D26" pin="2"/>
+    </net>
+    <net code="86" name="Net-(D31-Pad2)">
+      <node ref="D31" pin="2"/>
+      <node ref="SW31" pin="1"/>
+    </net>
+    <net code="87" name="Net-(D31-Pad1)">
+      <node ref="D31" pin="1"/>
+    </net>
+    <net code="88" name="Net-(D30-Pad2)">
+      <node ref="SW30" pin="1"/>
+      <node ref="D30" pin="2"/>
+    </net>
+    <net code="89" name="Net-(D30-Pad1)">
+      <node ref="D30" pin="1"/>
+    </net>
+    <net code="90" name="Net-(D29-Pad2)">
+      <node ref="D29" pin="2"/>
+      <node ref="SW29" pin="1"/>
+    </net>
+    <net code="91" name="Net-(D29-Pad1)">
+      <node ref="D29" pin="1"/>
+    </net>
+    <net code="92" name="Net-(D28-Pad2)">
+      <node ref="SW28" pin="1"/>
+      <node ref="D28" pin="2"/>
+    </net>
+    <net code="93" name="Net-(D27-Pad2)">
+      <node ref="D27" pin="2"/>
+      <node ref="SW27" pin="1"/>
+    </net>
+    <net code="94" name="Net-(D25-Pad2)">
+      <node ref="SW25" pin="1"/>
+      <node ref="D25" pin="2"/>
+    </net>
+    <net code="95" name="Net-(D27-Pad1)">
+      <node ref="D27" pin="1"/>
+    </net>
+    <net code="96" name="Net-(D26-Pad1)">
+      <node ref="D26" pin="1"/>
+    </net>
+    <net code="97" name="Net-(D25-Pad1)">
+      <node ref="D25" pin="1"/>
+    </net>
+    <net code="98" name="Net-(D33-Pad2)">
+      <node ref="SW33" pin="1"/>
+      <node ref="D33" pin="2"/>
+    </net>
+    <net code="99" name="Net-(D35-Pad2)">
+      <node ref="SW35" pin="1"/>
+      <node ref="D35" pin="2"/>
+    </net>
+    <net code="100" name="Net-(D34-Pad2)">
+      <node ref="SW34" pin="1"/>
+      <node ref="D34" pin="2"/>
+    </net>
+    <net code="101" name="Net-(D35-Pad1)">
+      <node ref="D35" pin="1"/>
+    </net>
+    <net code="102" name="Net-(D34-Pad1)">
+      <node ref="D34" pin="1"/>
+    </net>
+    <net code="103" name="Net-(D1-Pad1)">
+      <node ref="D1" pin="1"/>
+    </net>
+    <net code="104" name="Net-(D33-Pad1)">
+      <node ref="D33" pin="1"/>
+    </net>
+    <net code="105" name="Net-(D32-Pad2)">
+      <node ref="SW32" pin="1"/>
+      <node ref="D32" pin="2"/>
+    </net>
+  </nets>
+</export>
