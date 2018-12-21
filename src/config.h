@@ -44,4 +44,4 @@
 #define LAYER_DROPPING_TIMEOUT_MS  50
 
 // Pressing two shift keys simultaneously triggers CapsLock
-//#define ENABLE_DOUBLE_SHIFT_CAPS_LOCK
+// #define ENABLE_DOUBLE_SHIFT_CAPS_LOCK
