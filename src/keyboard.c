@@ -263,6 +263,12 @@ int map_layer(Key keys[NKEYS])
                     reset_tap_timer();
                 }
 
+                // FIXME: tapping does not work on layers other than default,
+                // because LS keys are pressed and thus 'tapped_alone' does not
+                // hold.
+                //
+                // Posible fix: check if n - 1 keys are being pressed, where n
+                // is the current layer
                 else if (tapped_alone(i, j) && ! TAP_IS_TIMEDOUT)
                 {
                     if (isLayerSelectionKey(prev_layer_k))
