@@ -25,10 +25,10 @@
  *****************/
 
 // Number of defined layers
-#define N_LAYERS 4
+#define N_LAYERS 5
 
 // Number of defined macros
-#define N_MACROS 2
+#define N_MACROS 3
 
 // Maximum length for macros (in characters)
 #define MAX_MACRO_LENGTH 30
