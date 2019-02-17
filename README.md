@@ -24,4 +24,4 @@ For complete information about this keyboard and how to build it, please visit:
 
 Checkout [more photos here](http://venabili.sillybytes.net/pics.html)
 
-![Pic](./img/pic.jpg)
+![Pic](./pic.jpg)
