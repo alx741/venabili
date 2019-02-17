@@ -41,7 +41,7 @@ $(BINARY).bin: $(BINARY).elf
 	arm-none-eabi-objcopy -O binary $< $@
 
 burn: $(BINARY).bin
-	@echo Enter flashing mode now
+	@echo Enter flash mode now
 	@echo Starting flashing process in 5 seconds...
 	@sleep 5
 	dfu-util -a 0 -d 0483:df11 -s 0x08002000:leave -D $<
