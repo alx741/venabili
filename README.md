@@ -19,3 +19,9 @@ Asimov's "*Foundation*" series of novels.
 
 For complete information about this keyboard and how to build it, please visit:
 [venabili.sillybytes.net](http://venabili.sillybytes.net)
+
+## Show me
+
+Checkout [more photos here](http://venabili.sillybytes.net/pics.html)
+
+![Pic](./img/pic.jpg)
