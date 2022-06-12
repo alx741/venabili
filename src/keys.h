@@ -21,6 +21,7 @@
 #pragma once
 
 #include "keys_internal.h"
+#include "usb_keys.h"
 
 /* Mouse movement macros
  *

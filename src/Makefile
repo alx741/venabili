@@ -17,12 +17,10 @@
 ## along with this library.  If not, see <http://www.gnu.org/licenses/>.
 ##
 
-SRC_DIR=./
-BINARY = $(SRC_DIR)/main
-LDSCRIPT=$(SRC_DIR)/f103x8_boot_offset.ld
 OPENCM3_DIR=../lib/libopencm3
-
 SCRIPTS_DIR= ../scripts/
+
+DEVICE = stm32f103c8
 
 OBJS += usb.o
 OBJS += usb_keyboard.o
@@ -31,26 +29,35 @@ OBJS += sensing.o
 OBJS += keys.o
 OBJS += macros.o
 OBJS += keyboard.o
+OBJS += main.o
 
-include ./libopencm3.target.mk
+CFLAGS   += -Os -ggdb3
+CPPFLAGS += -MD
+LDFLAGS  += -static -nostartfiles
+LDLIBS   += -Wl,--start-group -lc -lgcc -lnosys -Wl,--end-group
 
-all: $(BINARY).bin
-	@$(SCRIPTS_DIR)/checks.sh
+include $(OPENCM3_DIR)/mk/genlink-config.mk
+include $(OPENCM3_DIR)/mk/gcc-config.mk
 
-$(BINARY).bin: $(BINARY).elf
-	arm-none-eabi-objcopy -O binary $< $@
+all: binary.elf binary.hex
 
-burn: $(BINARY).bin
+flash: $(BINARY).bin
 	@echo Enter flash mode now
 	@echo Starting flashing process in 5 seconds...
 	@sleep 5
 	dfu-util -a 0 -d 0483:df11 -s 0x08002000:leave -D $<
 
-burn_low: $(BINARY).bin
+flash_low: $(BINARY).bin
 	st-flash write $< 0x8002000
 
 check:
-	sudo lshw -class input
+	lsbusb -v | grep Venabili
 
 test:
 	sudo showkey -s
+
+clean:
+	$(Q)$(RM) -rf binary.* *.o *.d generated.*.ld
+
+include $(OPENCM3_DIR)/mk/genlink-rules.mk
+include $(OPENCM3_DIR)/mk/gcc-rules.mk
