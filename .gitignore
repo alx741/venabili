@@ -1,5 +1,8 @@
 *.bin
 *.elf
+*.hex
 *.map
 *.d
 *.o
+src/generated.*.ld
+lib/libopencm3
