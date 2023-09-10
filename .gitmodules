@@ -1,0 +1,3 @@
+[submodule "embassy"]
+	path = embassy
+	url = git@github.com:embassy-rs/embassy.git
