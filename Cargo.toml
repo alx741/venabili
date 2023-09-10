@@ -25,7 +25,7 @@ embassy-futures = { version = "0.1.0", path = "embassy/embassy-futures" }
 embassy-sync = { version = "0.2.0", path = "embassy/embassy-sync", features = ["defmt"] }
 embassy-executor = { version = "0.3.0", path = "embassy/embassy-executor", features = ["arch-cortex-m", "executor-thread", "executor-interrupt", "defmt", "integrated-timers"] }
 embassy-time = { version = "0.1.3", path = "embassy/embassy-time", features = ["defmt", "defmt-timestamp-uptime"] }
-embassy-nrf = { version = "0.1.0", path = "embassy/embassy-nrf", features = ["defmt", "nrf52840", "time-driver-rtc1", "gpiote", "unstable-pac", "time"] }
+embassy-nrf = { version = "0.1.0", path = "embassy/embassy-nrf", features = ["defmt", "nrf52820", "time-driver-rtc1", "gpiote", "unstable-pac", "time"] }
 embassy-usb = { version = "0.1.0", path = "embassy/embassy-usb", features = ["defmt", "msos-descriptor",], optional = true }
 embedded-io = { version = "0.5.0", features = ["defmt-03"]  }
 embedded-io-async = { version = "0.5.0", optional = true, features = ["defmt-03"] }
@@ -51,3 +51,4 @@ microfft = "0.5.0"
 
 [profile.release]
 debug = 2
+strip = true
