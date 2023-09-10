@@ -5,4 +5,4 @@
 *.d
 *.o
 src/generated.*.ld
-lib/libopencm3
+target
